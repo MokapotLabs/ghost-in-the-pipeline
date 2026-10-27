@@ -50,250 +50,199 @@ function line(x1, y1, x2, y2, color, width = 1) {
   ctx.lineWidth = width;
   ctx.stroke();
 }
-function draw(o) {
+// Render only this room. A continuous camera yaw connects the same 90° rule turns.
+// Near-plane clipping keeps walls stable while the camera passes a corner.
+function draw(o, yaw = (o.direction * Math.PI) / 2, turnLabel = "") {
   const W = 960,
-    H = 600;
-  ctx.clearRect(0, 0, W, H);
-  let bg = ctx.createLinearGradient(0, 0, 0, H);
-  bg.addColorStop(0, "#030b15");
-  bg.addColorStop(0.5, "#10202d");
-  bg.addColorStop(1, "#121127");
-  ctx.fillStyle = bg;
+    H = 600,
+    focal = 200,
+    halfHeight = 0.6;
+  ctx.fillStyle = "#050e1b";
   ctx.fillRect(0, 0, W, H);
-  const d = o.direction,
-    front = o.edges[d],
-    left = o.edges[(d + 3) % 4],
-    right = o.edges[(d + 1) % 4];
-  let fog = ctx.createRadialGradient(480, 290, 10, 480, 300, 440);
-  fog.addColorStop(0, "#224c5266");
-  fog.addColorStop(0.6, "#0a1b2533");
-  fog.addColorStop(1, "#00000000");
-  ctx.fillStyle = fog;
-  ctx.fillRect(0, 0, W, H);
-  // Original room geometry. Openings dissolve into fog; no unseen cell data is used.
-  polygon(
+  const cos = Math.cos(yaw),
+    sin = Math.sin(yaw);
+  const camera = ([x, y, z]) => [x * cos - z * sin, y, x * sin + z * cos];
+  function clip(points) {
+    const result = [];
+    for (let i = 0; i < points.length; i++) {
+      const a = points[i],
+        b = points[(i + 1) % points.length];
+      if (a[2] >= 0.05) result.push(a);
+      if (a[2] >= 0.05 !== b[2] >= 0.05) {
+        const t = (0.05 - a[2]) / (b[2] - a[2]);
+        result.push(a.map((v, j) => v + (b[j] - v) * t));
+      }
+    }
+    return result;
+  }
+  const project = ([x, y, z]) => [480 + (focal * x) / z, 300 - (focal * y) / z];
+  function face(points, fill, stroke = "#69ede5", width = 2) {
+    const visible = clip(points.map(camera));
+    if (visible.length >= 3) polygon(visible.map(project), fill, stroke, width);
+  }
+  function wire(a, b, color, width = 1) {
+    a = camera(a);
+    b = camera(b);
+    if (a[2] < 0.05 && b[2] < 0.05) return;
+    if (a[2] < 0.05) {
+      const t = (0.05 - a[2]) / (b[2] - a[2]);
+      a = a.map((v, j) => v + (b[j] - v) * t);
+    } else if (b[2] < 0.05) {
+      const t = (0.05 - b[2]) / (a[2] - b[2]);
+      b = b.map((v, j) => v + (a[j] - v) * t);
+    }
+    line(...project(a), ...project(b), color, width);
+  }
+  face(
     [
-      [0, 0],
-      [960, 0],
-      [680, 180],
-      [280, 180],
+      [-1, halfHeight, -1],
+      [1, halfHeight, -1],
+      [1, halfHeight, 1],
+      [-1, halfHeight, 1],
     ],
     "#08111d",
     "#30505c",
   );
-  polygon(
+  face(
     [
-      [0, 600],
-      [960, 600],
-      [680, 420],
-      [280, 420],
+      [-1, -halfHeight, -1],
+      [1, -halfHeight, -1],
+      [1, -halfHeight, 1],
+      [-1, -halfHeight, 1],
     ],
     "#11182a",
     "#38606e",
   );
-  for (let i = -5; i <= 5; i++)
-    line(480 + i * 195, 600, 480 + i * 32, 420, "#5d8d9b38");
-  for (let y of [442, 478, 530, 598]) {
-    line(0, y, 960, y, "#7879bf38");
+  for (let v = -1; v <= 1.01; v += 0.25) {
+    wire([v, -halfHeight, -1], [v, -halfHeight, 1], "#7879bf55");
+    wire([-1, -halfHeight, v], [1, -halfHeight, v], "#7879bf55");
   }
-  const wallFill = ctx.createLinearGradient(0, 0, 400, 0);
-  wallFill.addColorStop(0, "#102531");
-  wallFill.addColorStop(1, "#173943");
-  const wallFillR = ctx.createLinearGradient(650, 0, 960, 0);
-  wallFillR.addColorStop(0, "#17333d");
-  wallFillR.addColorStop(1, "#0b202d");
-  function side(isLeft, edge) {
-    const flip = (ps) => ps.map(([x, y]) => [isLeft ? x : 960 - x, y]);
-    if (edge === "#") {
-      polygon(
-        flip([
-          [0, 0],
-          [280, 180],
-          [280, 420],
-          [0, 600],
-        ]),
-        isLeft ? wallFill : wallFillR,
-        "#69ede5",
-        2,
+  // N/E/S/W world planes, with a doorway cut from each observed opening.
+  const planes = [
+    (u, y) => [u, y, -1],
+    (u, y) => [1, y, u],
+    (u, y) => [-u, y, 1],
+    (u, y) => [-1, y, -u],
+  ];
+  // World north points into the screen at yaw zero.
+  const world = (p) => [p[0], p[1], -p[2]];
+  const ordered = planes
+    .map((plane, d) => ({ plane, d, depth: camera(world(plane(0, 0)))[2] }))
+    .sort((a, b) => b.depth - a.depth);
+  for (const { plane, d } of ordered) {
+    const p = (u, y) => world(plane(u, y));
+    const edge = o.edges[d];
+    const rect = (a, b, bottom, top, color, stroke = "#69ede5", width = 2) =>
+      face(
+        [p(a, bottom), p(b, bottom), p(b, top), p(a, top)],
+        color,
+        stroke,
+        width,
       );
-      for (let t of [0.25, 0.5, 0.75]) {
-        let x = 280 * t;
-        line(
-          isLeft ? x : 960 - x,
-          180 * t,
-          isLeft ? x : 960 - x,
-          600 - 180 * t,
-          "#4498a590",
-          1,
-        );
-      }
-      for (let t of [0.25, 0.5, 0.75]) {
-        line(
-          isLeft ? 0 : 960,
-          600 * t,
-          isLeft ? 280 : 680,
-          180 + 240 * t,
-          "#57a6b477",
-          1,
-        );
-      }
-    } else {
-      polygon(
-        flip([
-          [0, 0],
-          [280, 180],
-          [280, 420],
-          [0, 600],
-        ]),
-        "#040e1b",
-        "#346d7b",
-        2,
-      );
-      polygon(
-        flip([
-          [0, 0],
-          [76, 49],
-          [76, 551],
-          [0, 600],
-        ]),
-        "#12313a",
-        "#70e8e2",
-        2,
-      );
-      polygon(
-        flip([
-          [236, 152],
-          [280, 180],
-          [280, 420],
-          [236, 448],
-        ]),
-        "#193d45",
-        "#70e8e2",
-        2,
-      );
-      line(isLeft ? 76 : 884, 106, isLeft ? 236 : 724, 193, "#40919a", 2);
-      line(isLeft ? 76 : 884, 494, isLeft ? 236 : 724, 407, "#40919a", 2);
-      if (edge === "E") exitPortal(isLeft ? 154 : 806, 310, 0.5);
-    }
-  }
-  side(true, left);
-  side(false, right);
-  if (front === "#") {
-    let grad = ctx.createLinearGradient(280, 180, 680, 420);
+    const grad = ctx.createLinearGradient(0, 0, 960, 600);
     grad.addColorStop(0, "#1d4048");
     grad.addColorStop(1, "#102832");
-    polygon(
-      [
-        [280, 180],
-        [680, 180],
-        [680, 420],
-        [280, 420],
-      ],
-      grad,
-      "#9cffe7",
-      2,
-    );
-    for (let x of [380, 480, 580]) line(x, 180, x, 420, "#568f9870");
-    for (let y of [240, 300, 360]) line(280, y, 680, y, "#568f9870");
-    // Subtle original glyph: a trace of the machine, not a copied game asset.
-    ctx.fillStyle = "#7fe2cf22";
-    ctx.fillRect(465, 267, 30, 4);
-    ctx.fillRect(478, 255, 4, 30);
-  } else {
-    polygon(
-      [
-        [280, 180],
-        [680, 180],
-        [680, 420],
-        [280, 420],
-      ],
-      "#05101c",
-      "#95ffe5",
-      2,
-    );
-    polygon(
-      [
-        [280, 180],
-        [332, 210],
-        [332, 390],
-        [280, 420],
-      ],
-      "#16323e",
-      "#4d9aa6",
-      1,
-    );
-    polygon(
-      [
-        [680, 180],
-        [628, 210],
-        [628, 390],
-        [680, 420],
-      ],
-      "#132b37",
-      "#4d9aa6",
-      1,
-    );
-    line(332, 210, 628, 210, "#3a7684");
-    line(332, 390, 628, 390, "#3a7684");
-    if (front === "E") exitPortal(480, 300, 1);
-    else {
-      let glow = ctx.createRadialGradient(480, 300, 10, 480, 300, 190);
-      glow.addColorStop(0, "#19424a65");
-      glow.addColorStop(1, "#07111b00");
-      ctx.fillStyle = glow;
-      ctx.fillRect(332, 210, 296, 180);
-      ctx.fillStyle = "#6397a5";
-      ctx.font = "10px monospace";
-      ctx.textAlign = "center";
-      ctx.fillText("PASSAGE", 480, 309);
+    if (edge === "#" || edge === "?") {
+      rect(
+        -1,
+        1,
+        -halfHeight,
+        halfHeight,
+        grad,
+        edge === "?" ? "#346d7b" : "#9cffe7",
+      );
+      for (const u of [-0.5, 0, 0.5])
+        wire(p(u, -halfHeight), p(u, halfHeight), "#568f9870");
+      for (const y of [-0.3, 0, 0.3]) wire(p(-1, y), p(1, y), "#568f9870");
+    } else {
+      rect(-1, -0.74, -halfHeight, halfHeight, grad);
+      rect(0.74, 1, -halfHeight, halfHeight, grad);
+      rect(-0.74, 0.74, 0.45, halfHeight, "#16323e");
+      rect(-0.74, 0.74, -halfHeight, 0.45, "#040e1b", "#4d9aa6", 1);
+      if (edge === "E") {
+        rect(-0.28, 0.28, -0.4, 0.4, "#82ffe51c", "#a6ffde", 3);
+        wire(p(0, -0.1), p(0, 0.15), "#8fffe0", 3);
+        wire(p(0, 0.15), p(-0.09, 0.04), "#8fffe0", 3);
+        wire(p(0, 0.15), p(0.09, 0.04), "#8fffe0", 3);
+      }
+      const center = camera(p(0, edge === "E" ? 0.52 : 0));
+      if (center[2] > 0.25 && Math.abs(center[0] / center[2]) < 1.8) {
+        const [x, y] = project(center);
+        ctx.fillStyle = edge === "E" ? "#a6ffde" : "#6397a5";
+        ctx.font = edge === "E" ? "bold 16px monospace" : "10px monospace";
+        ctx.textAlign = "center";
+        ctx.fillText(edge === "E" ? "E X I T" : "PASSAGE", x, y);
+      }
     }
   }
-  // Perspective floor lights and generous dark vignette make the chamber readable.
-  line(0, 600, 280, 420, "#5ee8e7", 2);
-  line(960, 600, 680, 420, "#5ee8e7", 2);
-  for (let x of [340, 620]) {
-    polygon(
-      [
-        [x - 15, 532],
-        [x + 12, 532],
-        [x + 5, 537],
-        [x - 24, 537],
-      ],
-      "#d9b5ff",
-      null,
-    );
+  const vignette = ctx.createRadialGradient(480, 300, 170, 480, 300, 570);
+  vignette.addColorStop(0, "#00000000");
+  vignette.addColorStop(1, "#00000077");
+  ctx.fillStyle = vignette;
+  ctx.fillRect(0, 0, W, H);
+  if (turnLabel) {
+    ctx.fillStyle = "#05101ce8";
+    ctx.fillRect(200, 534, 560, 48);
+    ctx.strokeStyle = "#5ee8e788";
+    ctx.strokeRect(200, 534, 560, 48);
   }
   ctx.fillStyle = "#85c6cf";
-  ctx.font = "10px monospace";
+  ctx.font = turnLabel ? "bold 18px monospace" : "10px monospace";
   ctx.textAlign = "center";
   ctx.fillText(
-    "G H O S T   /   L E V E L  " + String(o.level).padStart(2, "0"),
+    turnLabel ||
+      "G H O S T   /   L E V E L  " + String(o.level).padStart(2, "0"),
     480,
     565,
   );
-  drawMap(o);
+  drawMap(o, yaw);
 }
-function exitPortal(x, y, s) {
-  ctx.save();
-  ctx.translate(x, y);
-  ctx.scale(s, s);
-  let glow = ctx.createRadialGradient(0, 0, 10, 0, 0, 120);
-  glow.addColorStop(0, "#82ffe55f");
-  glow.addColorStop(1, "#82ffe500");
-  ctx.fillStyle = glow;
-  ctx.fillRect(-125, -130, 250, 260);
-  ctx.strokeStyle = "#a6ffde";
-  ctx.lineWidth = 3;
-  ctx.strokeRect(-54, -80, 108, 160);
-  ctx.fillStyle = "#8fffe0";
-  ctx.font = "bold 16px monospace";
-  ctx.textAlign = "center";
-  ctx.fillText("E X I T", 0, -100);
-  ctx.font = "35px monospace";
-  ctx.fillText("↑", 0, 15);
-  ctx.restore();
+let turnFrame = 0,
+  cameraYaw = null;
+const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
+function renderFrame(previous, current) {
+  cancelAnimationFrame(turnFrame);
+  const o = current.observation,
+    target = (o.direction * Math.PI) / 2;
+  const turning =
+    previous &&
+    previous.generation === current.generation &&
+    previous.level === current.level &&
+    previous.observation.room === o.room &&
+    previous.observation.direction !== o.direction;
+  if (!turning || reducedMotion.matches || cameraYaw === null) {
+    cameraYaw = target;
+    draw(o);
+    return;
+  }
+  const startYaw = cameraYaw;
+  let delta = Math.atan2(
+    Math.sin(target - startYaw),
+    Math.cos(target - startYaw),
+  );
+  // Keep the intended turn direction even if an earlier animation was interrupted.
+  if (current.latestAction === "TURN_RIGHT" && delta < 0) delta += 2 * Math.PI;
+  if (current.latestAction === "TURN_LEFT" && delta > 0) delta -= 2 * Math.PI;
+  const from = previous.observation.facing,
+    label =
+      from +
+      "  →  " +
+      o.facing +
+      (current.latestAction === "TURN_LEFT"
+        ? "   /   TURNING LEFT"
+        : "   /   TURNING RIGHT");
+  const started = performance.now();
+  function tick(now) {
+    const t = reducedMotion.matches ? 1 : Math.min(1, (now - started) / 280);
+    const eased = t * t * (3 - 2 * t);
+    cameraYaw = startYaw + delta * eased;
+    draw(o, cameraYaw, t < 1 ? label : "");
+    if (t < 1) turnFrame = requestAnimationFrame(tick);
+    else cameraYaw = target;
+  }
+  turnFrame = requestAnimationFrame(tick);
 }
-function drawMap(o) {
+function drawMap(o, yaw = (o.direction * Math.PI) / 2) {
   let n = o.size,
     c = 180 / n,
     x0 = 18,
@@ -349,7 +298,7 @@ function drawMap(o) {
     y = y0 + (Math.floor(o.room / n) + 0.5) * c;
   map.save();
   map.translate(x, y);
-  map.rotate((o.direction * Math.PI) / 2);
+  map.rotate(yaw);
   map.fillStyle = "#9bffe2";
   map.beginPath();
   map.moveTo(0, -c * 0.24);
@@ -362,13 +311,14 @@ function drawMap(o) {
 }
 function update(f) {
   if (!f.ready) return;
+  const previous = frame;
   const previousCollisions = frame ? frame.collisions : 0;
   frame = f;
   $("player").options[0].textContent = "AI · " + f.model;
   const o = f.observation,
     k = f.generation + ":" + f.revision;
   if (lastKey !== k) {
-    draw(o);
+    renderFrame(previous, f);
     if (
       f.collisions > previousCollisions &&
       !matchMedia("(prefers-reduced-motion: reduce)").matches
