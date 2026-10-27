@@ -19,6 +19,8 @@ class AgentSafetyTest {
       var question = request.questions().getFirst();
       assertTrue(question.instructions().contains("front is wall"));
       assertTrue(question.instructions().contains("FORWARD cannot pass a wall"));
+      assertTrue(question.instructions().contains("If front is open passage, choose FORWARD."));
+      assertTrue(question.instructions().contains("Do not keep turning"));
       assertEquals(clues, question.instructions().contains("Signal order:"));
       var criteria = new LinkedHashMap<String, String>();
       question.criteria().forEach(c -> criteria.put(c.label(), c.description()));

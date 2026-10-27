@@ -4,50 +4,36 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Ghost in the Pipeline</title>
-    <link rel="icon" href="ghost.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="style.css?v=action-controls-1" />
+    <link rel="icon" href="portal.png" type="image/png" />
+    <link rel="stylesheet" href="style.css?v=game-polish-2" />
   </head>
   <body>
     <header>
-      <a class="brand" href="/" aria-label="Ghost in the Pipeline home"
-        ><svg viewBox="0 0 32 32" aria-hidden="true">
-          <path d="M5 28V12h3V6h5V3h8v3h5v6h2v16l-5-4-4 4-5-4-4 4z" />
-          <path class="eyes" d="M11 12h4v5h-4zm9 0h4v5h-4z" /></svg
-        ><span>GHOST<span class="brand-sub">IN THE PIPELINE</span></span></a
-      >
-      <div class="edition">
-        <span class="live-dot"></span> 1980s SOUL · 2026 MACHINE
+      <a class="brand" href="/" aria-label="Ghost in the Pipeline home">
+        <img src="portal.png" width="42" height="42" alt="" />
+        <span>GHOST IN THE PIPELINE</span>
+      </a>
+      <div class="header-controls">
+        <button
+          id="help-open"
+          class="quiet"
+          aria-label="Help"
+          aria-haspopup="dialog"
+        >
+          ?
+        </button>
+        <button id="scanlines" class="quiet" aria-pressed="true">CRT ON</button>
       </div>
-      <button id="scanlines" class="quiet" aria-pressed="true">CRT ON</button>
     </header>
     <main>
-      <section class="intro">
-        <div>
-          <p class="eyebrow">AN MSX-INSPIRED EXPLORATION EXPERIMENT</p>
-          <h1>
-            Some ghosts<br />never find the exit<span class="blink">_</span>
-          </h1>
-          <p class="subhead">
-            A maze from the 1980s. A human at the keys.<br />A tiny AI trying to
-            find its way out.
-          </p>
-        </div>
-        <div class="mission">
-          <span class="micro">THE RULE IS SIMPLE</span
-          ><strong>7 ENTRIES.<br />THEN YOU’RE A GHOST.</strong>
-          <p>
-            Find the exit. Remember the rooms.<br />Don’t wear out your welcome.
-          </p>
-        </div>
-      </section>
       <section class="machine" aria-label="Maze game">
         <div class="machine-top">
-          <div>
-            <span class="live-dot"></span
-            ><span id="mode">HUMAN AT THE KEYS</span>
+          <span id="mode">HUMAN</span>
+          <div class="level-info">
+            <span id="level">LEVEL 01 / 03</span
+            ><span id="dimensions">3 × 3</span>
           </div>
-          <span id="level">LEVEL 01 / 03</span
-          ><span id="dimensions">3 × 3 ROOMS</span>
+          <span id="status" role="status">READY</span>
         </div>
         <div class="play-area">
           <div class="viewport">
@@ -61,24 +47,15 @@
             <div class="view-top">
               <span id="facing">N ↑</span><span id="room">ROOM 01</span>
             </div>
-            <div class="view-bottom">
-              <span id="signal">LINK ONLINE</span
-              ><span id="status">FIND THE EXIT</span>
-            </div>
             <div id="overlay" hidden>
-              <span class="eyebrow" id="overlay-kicker"></span>
-              <h2 id="overlay-title"></h2>
+              <span id="overlay-kicker"></span>
+              <h1 id="overlay-title"></h1>
               <p id="overlay-copy"></p>
-              <button id="overlay-reset" class="primary">
-                ENTER THE MAZE AGAIN ↵
-              </button>
+              <button id="overlay-reset" class="primary">NEW GAME ↵</button>
             </div>
           </div>
-          <aside>
-            <div class="side-heading">
-              <span class="micro">YOUR FOOTPRINT</span
-              ><span class="micro magenta">LIVE</span>
-            </div>
+          <aside aria-label="Game information">
+            <h2 class="side-heading">MAP</h2>
             <canvas
               id="map"
               width="216"
@@ -86,96 +63,103 @@
               aria-label="Map of observed rooms only"
             ></canvas>
             <div class="legend">
-              <i></i> Explored memory <span>?</span> Unseen
+              <span><i></i> Visited</span><span>? Unseen</span>
             </div>
             <div class="entry-box">
-              <span class="micro">THIS ROOM · ENTRIES LEFT</span>
-              <div id="entries" class="entry-dots"></div>
-              <p id="entry-caption">Seven chances. Make them count.</p>
+              <h2>ENTRIES LEFT</h2>
+              <div
+                id="entries"
+                class="entry-dots"
+                role="img"
+                aria-label="7 entries remaining"
+              ></div>
+              <p id="entry-caption">7 / 7 remaining</p>
             </div>
             <div class="numbers">
               <div><strong id="moves">00</strong><span>MOVES</span></div>
-              <div>
-                <strong id="explored">01</strong><span>ROOMS SEEN</span>
-              </div>
+              <div><strong id="explored">01</strong><span>ROOMS</span></div>
               <div><strong id="repeats">00</strong><span>REVISITS</span></div>
             </div>
             <div class="decision">
-              <span class="micro" id="decision-label">NEXT MOVE IS YOURS</span
-              ><strong id="decision-action">MAKE A LITTLE HISTORY.</strong
-              ><span id="latency">↑ Forward &nbsp; ← → Turn</span>
+              <h2 id="decision-label">LAST ACTION</h2>
+              <strong id="decision-action">—</strong>
+              <span id="latency">—</span>
             </div>
           </aside>
         </div>
         <div class="clue-controls" role="group" aria-label="Navigation clues">
           <label
-            ><input id="visual-clues" type="checkbox" checked /> GHOST
-            GLOW</label
+            ><input id="visual-clues" type="checkbox" checked /> GLOW</label
           >
           <button id="audio-toggle" class="quiet" aria-pressed="false">
             SOUND OFF
           </button>
-          <label
-            title="Give the selected AI the same qualitative signal and its visited-room readings"
-            ><input id="agent-clues" type="checkbox" checked /> AI SIXTH
-            SENSE</label
+          <label title="Give the AI the signal and its visited-room readings"
+            ><input id="agent-clues" type="checkbox" checked /> AI CLUES</label
           >
-        </div>
-        <div class="message-bar">
-          <span>›</span>
-          <p id="message" role="status" aria-live="polite">
-            Find the exit. Seven entries per room.
-          </p>
-          <span id="thinking" hidden>DECIDING<span class="blink">…</span></span>
+          <div class="message-bar">
+            <p id="message" role="status" aria-live="polite">Ready.</p>
+            <span id="signal" hidden></span>
+          </div>
         </div>
         <div class="control-panel">
           <div class="movement" aria-label="Movement controls">
-            <button data-action="TURN_LEFT" aria-label="Turn left">←</button
-            ><button data-action="FORWARD" aria-label="Move forward">↑</button
-            ><button data-action="TURN_RIGHT" aria-label="Turn right">→</button
-            ><span>ARROWS / W A D</span>
+            <button data-action="TURN_LEFT" aria-label="Turn left">←</button>
+            <button data-action="FORWARD" aria-label="Move forward">↑</button>
+            <button data-action="TURN_RIGHT" aria-label="Turn right">→</button>
+          </div>
+          <div class="seed-control">
+            <label for="seed">SEED</label
+            ><input
+              id="seed"
+              type="number"
+              value="1983"
+              aria-label="Maze seed"
+            />
+            <button id="reset" class="quiet">NEW GAME</button>
           </div>
           <div class="player-controls">
             <select id="player" aria-label="Choose automated player">
-              <option value="TEV1">TEV1 · 0.8B AI</option>
-              <option value="TEV1_4B">TEV1-4B · AI</option>
-              <option value="EXPLORER">EXPLORER · DETERMINISTIC</option>
-              <option value="RANDOM">RANDOM · BASELINE</option></select
-            ><button id="play" class="primary">▶ LET THE GHOST PLAY</button
-            ><button id="pause" class="quiet" disabled>Ⅱ PAUSE</button>
+              <option value="TEV1">tev1:0.8b</option>
+              <option value="TEV1_4B">tev1:latest · 4B</option>
+              <option value="EXPLORER">Explorer</option>
+              <option value="RANDOM">Random</option>
+            </select>
+            <button id="play" class="primary">▶ AI PLAY</button>
+            <button id="pause" class="quiet" disabled>Ⅱ PAUSE</button>
           </div>
         </div>
       </section>
-      <div class="under-game">
-        <div>
-          <span class="micro">SAME MAZE. SAME RULES. DIFFERENT MINDS.</span>
-          <p>
-            The AI sees the openings and memories you see. Every move answers to
-            the same game rules.
-          </p>
-        </div>
-        <div class="seed-control">
-          <label for="seed">MAZE SEED</label
-          ><input
-            id="seed"
-            type="number"
-            value="1983"
-            aria-label="Maze seed"
-          /><button id="reset" class="quiet">↻ NEW RUN</button>
-        </div>
-      </div>
-      <section id="run-result" hidden aria-label="Run result"></section>
-      <footer>
-        <span>BUILT WITH THE PIPELINE FRAMEWORK</span
-        ><a
-          href="https://github.com/antor44/3dmaze"
-          target="_blank"
-          rel="noreferrer"
-          >INSPIRED BY 3D MAZE PRO ↗</a
-        ><span>ORIGINAL CODE & VISUALS · APACHE-2.0</span>
-      </footer>
     </main>
+    <dialog id="help" aria-labelledby="help-title">
+      <div class="help-heading">
+        <h2 id="help-title">HELP</h2>
+        <button id="help-close" class="quiet" autofocus>Close</button>
+      </div>
+      <ul>
+        <li>
+          <strong>↑ / W</strong> moves forward. <strong>← / A</strong> and
+          <strong>→ / D</strong> turn.
+        </li>
+        <li>Find and cross the exit to complete each level.</li>
+        <li>
+          Each room allows seven entries. Entering uses one; reaching zero ends
+          the game. Turns and walls use none.
+        </li>
+        <li>
+          <strong>SIGNAL</strong> grows from faint to intense as the exit gets
+          closer through corridors. Sound pulses become quicker and slightly
+          higher. Both are optional.
+        </li>
+        <li>
+          Choose a player and press <strong>AI PLAY</strong>.
+          <strong>PAUSE</strong> finishes at most the current turn, then returns
+          control. <strong>AI CLUES</strong> shares signal readings with the
+          next AI run.
+        </li>
+      </ul>
+    </dialog>
     <script src="sound.js"></script>
-    <script src="game.js?v=action-controls-1"></script>
+    <script src="game.js?v=game-polish-2"></script>
   </body>
 </html>

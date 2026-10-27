@@ -13,6 +13,16 @@ class PromptControls(unittest.TestCase):
     def test_actual_old_new_trials(self):
         self.assertEqual('PASS',module.compare(*self.reports)['result'])
 
+    def test_actual_forward_first_reruns(self):
+        reports=[json.loads((ROOT/'evidence'/f'{name}.json').read_text()) for name in ['action-08b-off','action-08b-on','forward-08b-off','forward-08b-on']]
+        self.assertEqual('PASS',module.compare(*reports)['result'])
+        before=json.loads((ROOT/'evidence/action-prompt-definition.json').read_text())
+        after=json.loads((ROOT/'evidence/forward-prompt-definition.json').read_text())
+        for arm in ['off','on']:
+            self.assertEqual(before[arm]['state'],after[arm]['state'])
+            self.assertEqual(before[arm]['questions']['action']['criteria'],after[arm]['questions']['action']['criteria'])
+            self.assertIn('If front is open passage, choose FORWARD.',after[arm]['questions']['action']['instructions'])
+
     def test_wrong_prompt_rejected(self):
         self.reports[2]['decisionPrompt']='other'
         with self.assertRaises(ValueError):module.compare(*self.reports)
@@ -42,9 +52,9 @@ class PromptControls(unittest.TestCase):
     def test_evaluator_rejects_old_or_unknown_serving_prompt(self):
         spec=importlib.util.spec_from_file_location('evaluate',ROOT/'scripts/evaluate.py')
         evaluator=importlib.util.module_from_spec(spec);spec.loader.exec_module(evaluator)
-        for frame in [{}, {'decisionPrompt':'previous'}]:
+        for frame in [{}, {'decisionPrompt':'previous'}, {'decisionPrompt':'action-focused-v1'}]:
             with self.assertRaises(ValueError):evaluator.verify_prompt(frame)
-        self.assertEqual('action-focused-v1',evaluator.verify_prompt({'decisionPrompt':'action-focused-v1'}))
+        self.assertEqual('forward-first-v2',evaluator.verify_prompt({'decisionPrompt':'forward-first-v2'}))
 
     def test_actual_exported_request_states_are_unchanged(self):
         before=json.loads((ROOT/'evidence/action-prompt-previous.json').read_text())

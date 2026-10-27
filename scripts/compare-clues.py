@@ -10,9 +10,10 @@ def require(condition, message):
 
 
 def compare(off, on):
-    require(off['protocol'] == on['protocol'] and off['protocol'] in ['ghost-haunted-v1','ghost-action-prompt-v1'], 'Wrong experiment protocol')
-    if off['protocol']=='ghost-action-prompt-v1':
-        require(off.get('decisionPrompt')==on.get('decisionPrompt')=='action-focused-v1','Wrong decision prompt')
+    require(off['protocol'] == on['protocol'] and off['protocol'] in ['ghost-haunted-v1','ghost-action-prompt-v1','ghost-forward-prompt-v2'], 'Wrong experiment protocol')
+    versions={'ghost-action-prompt-v1':'action-focused-v1','ghost-forward-prompt-v2':'forward-first-v2'}
+    if off['protocol'] in versions:
+        require(off.get('decisionPrompt')==on.get('decisionPrompt')==versions[off['protocol']],'Wrong decision prompt')
     require(off['agentClues'] is False and on['agentClues'] is True, 'Expected off/on arms')
     require(len(off['players'])==1 and off['players'][0] in ['TEV1','TEV1_4B'], 'Compare one genuine model policy at a time')
     expected_hashes={

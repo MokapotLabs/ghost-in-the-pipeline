@@ -7,12 +7,13 @@ import org.pipelineframework.connector.decision.*;
 /** The only projection eligible for model input and the browser view. */
 public final class Observations {
   private static final ObjectMapper JSON = new ObjectMapper();
-  public static final String PROMPT_VERSION = "action-focused-v1";
+  public static final String PROMPT_VERSION = "forward-first-v2";
   public static final String ACTION_PROMPT =
       """
       Choose ONE action for this turn. Read relativeEdges: front, left, right.
       If front is wall, choose a turn: FORWARD cannot pass a wall.
       If front is exit, choose FORWARD.
+      If front is open passage, choose FORWARD. Do not keep turning when the corridor ahead is open.
       Prefer an open passage and avoid needless revisits or rooms with one entry left.
       memory rows are [room, visits, NESW edges, entriesLeft].
       Edges: # wall, . passage, E exit, ? unseen. Rooms are row-major.

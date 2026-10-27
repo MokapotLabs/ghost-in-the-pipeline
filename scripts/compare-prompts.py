@@ -28,10 +28,12 @@ def non_question_source(source):
 def compare(old_off, old_on, new_off, new_on):
     old = clues.compare(old_off, old_on)
     new = clues.compare(new_off, new_on)
-    clues.require(old_off['protocol'] == 'ghost-haunted-v1' and new_off['protocol'] == 'ghost-action-prompt-v1', 'Expected historical and action-focused protocols')
+    pair=(old_off['protocol'],new_off['protocol'])
+    clues.require(pair in [('ghost-haunted-v1','ghost-action-prompt-v1'),('ghost-action-prompt-v1','ghost-forward-prompt-v2')], 'Expected adjacent frozen prompt protocols')
     path='connectors/src/main/java/dev/ghost/Observations.java'
-    previous=subprocess.check_output(['git','show','1f263f8:'+path],cwd=ROOT).decode()
-    current=(ROOT/path).read_text()
+    previous_ref,current_ref=('1f263f8','1a59ac4') if pair[0]=='ghost-haunted-v1' else ('1a59ac4',None)
+    previous=subprocess.check_output(['git','show',previous_ref+':'+path],cwd=ROOT).decode()
+    current=subprocess.check_output(['git','show',current_ref+':'+path],cwd=ROOT).decode() if current_ref else (ROOT/path).read_text()
     clues.require(non_question_source(previous)==non_question_source(current),'Observation logic changed outside the question/constants')
     for before, after in [(old_off, new_off), (old_on, new_on)]:
         for report,source in [(before,previous),(after,current)]:

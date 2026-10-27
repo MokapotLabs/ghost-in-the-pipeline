@@ -6,19 +6,9 @@ const $ = (id) => document.getElementById(id),
 const isAI = (player) => player === "TEV1" || player === "TEV1_4B";
 let frame = null,
   busy = false,
-  lastKey = "",
-  recentResults = [],
-  lastCompleted = "";
+  lastKey = "";
 let visualCluesEnabled = true;
 let lastCollisionFlash = -Infinity;
-const esc = (s) =>
-  String(s).replace(
-    /[&<>"']/g,
-    (c) =>
-      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[
-        c
-      ],
-  );
 async function api(path = "", body) {
   const r = await fetch("/api/game" + path, {
     method: body === undefined ? "GET" : "POST",
@@ -199,15 +189,12 @@ function draw(
     ctx.strokeStyle = "#5ee8e788";
     ctx.strokeRect(200, 534, 560, 48);
   }
-  ctx.fillStyle = "#85c6cf";
-  ctx.font = turnLabel ? "bold 18px monospace" : "10px monospace";
-  ctx.textAlign = "center";
-  ctx.fillText(
-    turnLabel ||
-      "G H O S T   /   L E V E L  " + String(o.level).padStart(2, "0"),
-    480,
-    565,
-  );
+  if (turnLabel) {
+    ctx.fillStyle = "#85c6cf";
+    ctx.font = "bold 18px monospace";
+    ctx.textAlign = "center";
+    ctx.fillText(turnLabel, 480, 565);
+  }
   drawMap(o, yaw);
   drawSignal();
 }
@@ -234,14 +221,14 @@ function drawSignal() {
   ctx.fillStyle = "#b3ffe4";
   ctx.font = "bold 15px monospace";
   ctx.textAlign = "left";
-  ctx.fillText(signal, 430, 47);
-  ctx.font = "10px monospace";
+  ctx.fillText("SIGNAL · " + signal, 430, 47);
+  ctx.font = "12px monospace";
   ctx.fillText(
     {
       GETTING_STRONGER: "WARMER ↑",
       GETTING_WEAKER: "COLDER ↓",
-      UNCHANGED: "SAME SIGNAL",
-      NO_MOVEMENT: "LISTEN TO THE MAZE",
+      UNCHANGED: "UNCHANGED",
+      NO_MOVEMENT: "NO MOVEMENT",
     }[frame.navigation.signalTrend] || "",
     430,
     65,
@@ -393,8 +380,7 @@ function update(f) {
   for (const option of $("player").options) {
     if (f.models?.[option.value]) {
       const label =
-        (option.value === "TEV1_4B" ? "TEV1-4B · " : "AI · ") +
-        f.models[option.value];
+        f.models[option.value] + (option.value === "TEV1_4B" ? " · 4B" : "");
       // Replacing option text while a native menu is open can dismiss/rebuild it in WebKit.
       if (option.textContent !== label) option.textContent = label;
     }
@@ -419,51 +405,58 @@ function update(f) {
     }
     lastKey = k;
   }
-  $("mode").textContent = f.active
-    ? isAI(f.player)
-      ? (f.player === "TEV1_4B" ? "TEV1 4B" : f.model.toUpperCase()) +
-        " AT THE KEYS"
-      : f.player + " AT THE KEYS"
-    : "HUMAN AT THE KEYS";
+  const actor = isAI(f.player) ? f.model : f.player;
+  $("mode").textContent = f.active || f.status !== "PLAYING" ? actor : "HUMAN";
+  $("mode").title = $("mode").textContent;
   $("level").textContent =
     "LEVEL " + String(f.level).padStart(2, "0") + " / 03";
-  $("dimensions").textContent = o.size + " × " + o.size + " ROOMS";
+  $("dimensions").textContent = o.size + " × " + o.size;
   $("facing").textContent = o.facing + " " + ["↑", "→", "↓", "←"][o.direction];
   $("room").textContent = "ROOM " + String(o.room + 1).padStart(2, "0");
-  $("message").textContent = f.reason.startsWith("PROVIDER_")
-    ? "The AI couldn’t finish its turn. You can take the keys."
-    : f.message;
+  const failed = f.reason.startsWith("PROVIDER_");
+  $("status").textContent = f.pausing
+    ? "PAUSING"
+    : failed
+      ? "AI FAILED"
+      : f.active
+        ? "RUNNING"
+        : {
+            PAUSED: "PAUSED",
+            DECISION_LIMIT: "COMPLETED",
+            TIME_LIMIT: "COMPLETED",
+          }[f.reason] || "READY";
+  $("status").hidden = f.status !== "PLAYING";
+  $("message").textContent = failed
+    ? "AI stopped: provider or pipeline error."
+    : f.reason === "DECISION_LIMIT"
+      ? "Decision limit reached."
+      : f.reason === "TIME_LIMIT"
+        ? "Time limit reached."
+        : f.reason === "PAUSED"
+          ? "Human controls available."
+          : f.message.startsWith("BUMP")
+            ? "Wall ahead. Position unchanged."
+            : f.message.startsWith("EXIT FOUND")
+              ? "Level " + f.level + " started."
+              : f.active && isAI(f.player) && f.decisions === 0
+                ? "Waiting for model decision."
+                : "";
   $("entries").innerHTML = Array.from(
     { length: 7 },
     (_, i) => '<i class="' + (i < o.entriesLeft ? "" : "empty") + '"></i>',
   ).join("");
+  $("entries").setAttribute("aria-label", o.entriesLeft + " entries remaining");
   $("entry-caption").textContent =
-    o.entriesLeft <= 2
-      ? "Careful. This room is nearly exhausted."
-      : "Seven chances. Make them count.";
+    o.entriesLeft + " / 7 remaining" + (o.entriesLeft <= 2 ? " · LOW" : "");
   $("entries").style.filter = o.entriesLeft <= 2 ? "hue-rotate(170deg)" : "";
   for (let id of ["moves", "explored", "repeats"])
     $(id).textContent = String(f[id]).padStart(2, "0");
-  $("decision-label").textContent = isAI(f.player)
-    ? (f.player === "TEV1_4B" ? "AI · 4B · " : "AI · ") +
-      (f.model || "tev1:0.8b")
-    : f.player === "HUMAN"
-      ? "NEXT MOVE IS YOURS"
-      : f.player + " · BASELINE";
   $("decision-action").textContent =
-    f.latestAction === "START"
-      ? "MAKE A LITTLE HISTORY."
-      : f.latestAction.replaceAll("_", " ");
-  $("latency").textContent = isAI(f.player)
-    ? f.latencyMs.toLocaleString() + " ms · decision " + f.decisions
-    : "↑ Forward   ← → Turn";
-  if (isAI(f.player) && f.decisions === 0) {
-    $("decision-action").textContent = f.active
-      ? "CHOOSING FIRST ACTION…"
-      : "NO DECISION";
-    $("latency").textContent = "—";
-  }
-  $("thinking").hidden = !(f.active && isAI(f.player));
+    f.latestAction === "START" ? "—" : f.latestAction.replaceAll("_", " ");
+  $("latency").textContent =
+    isAI(f.player) && f.decisions > 0
+      ? f.latencyMs.toLocaleString() + " ms · " + f.decisions + " decisions"
+      : "—";
   $("pause").disabled = !f.active || f.pausing;
   $("pause").textContent = f.pausing ? "PAUSING…" : "Ⅱ PAUSE";
   $("play").disabled = f.active || f.status !== "PLAYING";
@@ -471,64 +464,18 @@ function update(f) {
   document
     .querySelectorAll("[data-action]")
     .forEach((b) => (b.disabled = f.active || busy || f.status !== "PLAYING"));
-  $("status").textContent =
-    f.status === "PLAYING"
-      ? f.active
-        ? "EXPLORING"
-        : "FIND THE EXIT"
-      : f.status;
   $("overlay").hidden = f.status === "PLAYING";
   if (f.status !== "PLAYING") {
     $("overlay-kicker").textContent =
-      f.status === "WON" ? "SIGNAL RECEIVED" : "THE MAZE REMEMBERS";
-    $("overlay-title").textContent =
-      f.status === "WON" ? "GHOST, RELEASED." : "ROOM EXHAUSTED.";
+      f.status === "WON" ? "COMPLETED" : "ENTRIES EXHAUSTED";
+    $("overlay-title").textContent = f.status;
     $("overlay-copy").textContent =
       f.moves +
-      " total moves · " +
+      " moves · " +
       f.explored +
-      " rooms explored · " +
+      " rooms · " +
       f.repeats +
       " revisits";
-  }
-  if (!f.active && f.player !== "HUMAN" && f.reason !== "READY") {
-    let id = f.segment || f.generation + ":" + f.player + ":" + f.decisions;
-    if (lastCompleted !== id) {
-      lastCompleted = id;
-      recentResults.push({
-        player: f.player === "TEV1_4B" ? "TEV1 4B" : f.player,
-        reason: f.reason.startsWith("PROVIDER_")
-          ? "AI TURN FAILED"
-          : {
-              DECISION_LIMIT: "OUT OF TURNS",
-              TIME_LIMIT: "TIME’S UP",
-              WON: "ESCAPED",
-              LOST: "ROOM EXHAUSTED",
-            }[f.reason] || f.reason,
-        moves: f.moves,
-        decisions: f.decisions,
-        rooms: f.explored,
-      });
-      recentResults = recentResults.slice(-3);
-      $("run-result").hidden = false;
-      $("run-result").innerHTML =
-        "<strong>THE GHOST’S FIELD NOTES</strong><br>" +
-        recentResults
-          .map(
-            (r) =>
-              esc(r.player) +
-              " · " +
-              esc(r.reason) +
-              " · " +
-              r.decisions +
-              " decisions · " +
-              r.moves +
-              " total moves · " +
-              r.rooms +
-              " total rooms",
-          )
-          .join("<br>");
-    }
   }
 }
 async function reset() {
@@ -588,7 +535,7 @@ $("audio-toggle").onclick = async () => {
   try {
     await ghostAudio.setEnabled(!ghostAudio.enabled);
     $("audio-toggle").textContent = ghostAudio.enabled
-      ? "SOUND ON · QUIET"
+      ? "SOUND ON"
       : "SOUND OFF";
     $("audio-toggle").setAttribute("aria-pressed", String(ghostAudio.enabled));
   } catch (_) {
@@ -599,7 +546,7 @@ document
   .querySelectorAll("[data-action]")
   .forEach((b) => (b.onclick = () => action(b.dataset.action)));
 document.addEventListener("keydown", (e) => {
-  if (e.ctrlKey || e.metaKey || e.altKey) return;
+  if (e.ctrlKey || e.metaKey || e.altKey || $("help").open) return;
   if (
     e.target.closest(
       'select, textarea, input:not([type="checkbox"]):not([type="radio"]), [contenteditable="true"]',
@@ -651,6 +598,11 @@ $("pause").onclick = async () => {
     $("message").textContent = e.message;
   }
 };
+$("help-open").onclick = () => $("help").showModal();
+$("help-close").onclick = () => $("help").close();
+$("help").addEventListener("close", () =>
+  canvas.focus({ preventScroll: true }),
+);
 $("scanlines").onclick = () => {
   const off = document.body.classList.toggle("no-crt");
   $("scanlines").textContent = off ? "CRT OFF" : "CRT ON";
@@ -674,12 +626,12 @@ $("scanlines").onclick = () => {
     events.onmessage = (e) => update(JSON.parse(e.data));
     events.onerror = () => {
       $("signal").textContent = "RECONNECTING";
+      $("signal").hidden = false;
     };
     events.onopen = () => {
-      $("signal").textContent = "LINK ONLINE";
+      $("signal").hidden = true;
     };
   } catch (e) {
-    $("message").textContent =
-      "Cannot reach the game. Start the Java application and reload.";
+    $("message").textContent = "Game unavailable. Reload to reconnect.";
   }
 })();
