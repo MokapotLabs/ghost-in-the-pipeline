@@ -1,0 +1,34 @@
+{
+  "result": "PASS",
+  "documentsDiagnostic": 3,
+  "distinctRootTracesDiagnostic": 3,
+  "runs": [
+    {
+      "file": "explorer-segment.json",
+      "traceId": "3330fd705623810c48b6c2ab3c0bfa9b",
+      "status": "completed",
+      "events": 277,
+      "nestedInvocations": 11,
+      "modelQueries": 0,
+      "rootLineage": "PASS"
+    },
+    {
+      "file": "human-turn.json",
+      "traceId": "0969bb143e57b994de53259273bb1639",
+      "status": "completed",
+      "events": 24,
+      "nestedInvocations": 0,
+      "modelQueries": 0,
+      "rootLineage": "PASS"
+    },
+    {
+      "file": "tev1-segment.json",
+      "traceId": "b96f4f2e8f5169e35d4fe9eda51a767e",
+      "status": "completed",
+      "events": 82,
+      "nestedInvocations": 2,
+      "modelQueries": 3,
+      "rootLineage": "PASS"
+    }
+  ]
+}

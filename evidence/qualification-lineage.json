@@ -1,0 +1,69 @@
+{
+  "result": "PASS",
+  "documentsDiagnostic": 7,
+  "runs": [
+    {
+      "file": "Ghost-in-the-Pipeline-1793121304870-80671159-2f2f-4c97-a13b-3616c62f78cb.json",
+      "traceId": "76fea0c4d551bb46e787b99904d230c0",
+      "status": "completed",
+      "events": 24,
+      "nestedInvocations": 0,
+      "modelQueries": 0,
+      "rootLineage": "PASS"
+    },
+    {
+      "file": "Ghost-in-the-Pipeline-1793121313160-82cc4d9e-8496-484f-b20b-2c991e1017d5.json",
+      "traceId": "f1a73c9dfbd5e4301d947d3991415012",
+      "status": "completed",
+      "events": 82,
+      "nestedInvocations": 2,
+      "modelQueries": 3,
+      "rootLineage": "PASS"
+    },
+    {
+      "file": "Ghost-in-the-Pipeline-1793121577449-fe2ddb09-18db-44eb-afaa-5ec3908f1b68.json",
+      "traceId": "f8539d5ca41cc0d0ef2330a69c448cfa",
+      "status": "completed",
+      "events": 24,
+      "nestedInvocations": 0,
+      "modelQueries": 0,
+      "rootLineage": "PASS"
+    },
+    {
+      "file": "Ghost-in-the-Pipeline-1793121577743-3816aa47-6f77-448e-abba-e7e2e4173a14.json",
+      "traceId": "dd41db1a42122bad1045c5578200c224",
+      "status": "completed",
+      "events": 24,
+      "nestedInvocations": 0,
+      "modelQueries": 0,
+      "rootLineage": "PASS"
+    },
+    {
+      "file": "Ghost-in-the-Pipeline-1793121594822-ce4ba030-eab8-4b7a-8204-a66e4dda2a45.json",
+      "traceId": "2056a14ec08108a02d2cd2fc30c2349e",
+      "status": "completed",
+      "events": 24,
+      "nestedInvocations": 0,
+      "modelQueries": 0,
+      "rootLineage": "PASS"
+    },
+    {
+      "file": "Ghost-in-the-Pipeline-1793121600809-128223e8-94b1-4cae-9c76-226a818a26b8.json",
+      "traceId": "fe284a9004bbb55399dfd77e22233415",
+      "status": "completed",
+      "events": 24,
+      "nestedInvocations": 0,
+      "modelQueries": 0,
+      "rootLineage": "PASS"
+    },
+    {
+      "file": "Ghost-in-the-Pipeline-1793121604460-ed0eeca3-cb95-465c-907c-9cf8a682faf4.json",
+      "traceId": "ebf1136356050bdc64515f1de663672c",
+      "status": "completed",
+      "events": 24,
+      "nestedInvocations": 0,
+      "modelQueries": 0,
+      "rootLineage": "PASS"
+    }
+  ]
+}
