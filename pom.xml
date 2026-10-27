@@ -1,25 +1,150 @@
+<?xml version="1.0" ?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-<modelVersion>4.0.0</modelVersion><groupId>dev.ghost</groupId><artifactId>ghost-parent</artifactId><version>1.0.0</version><packaging>pom</packaging>
-<properties><maven.compiler.release>21</maven.compiler.release><project.build.sourceEncoding>UTF-8</project.build.sourceEncoding><tpf.version>26.10.1-SNAPSHOT</tpf.version><quarkus.version>3.39.2</quarkus.version></properties>
-<modules><module>connectors</module><module>app</module></modules>
-<dependencyManagement><dependencies><dependency><groupId>io.quarkus.platform</groupId><artifactId>quarkus-bom</artifactId><version>${quarkus.version}</version><type>pom</type><scope>import</scope></dependency><dependency><groupId>org.pipelineframework</groupId><artifactId>pipelineframework-bom</artifactId><version>26.10.1-20261027.143053-27</version><type>pom</type><scope>import</scope></dependency>
-<!-- Timestamp pins for the exact public TPF artifacts exercised by this demo. -->
-<dependency><groupId>org.pipelineframework</groupId><artifactId>connector-maven-plugin</artifactId><version>26.10.1-20261027.110129-21</version></dependency>
-<dependency><groupId>org.pipelineframework</groupId><artifactId>decision-query-connector</artifactId><version>26.10.1-20261027.110129-21</version></dependency>
-<dependency><groupId>org.pipelineframework</groupId><artifactId>decision-query-jev-connector</artifactId><version>26.10.1-20261027.110129-21</version></dependency>
-<dependency><groupId>org.pipelineframework</groupId><artifactId>pipelineframework</artifactId><version>26.10.1-20261027.142733-32</version></dependency>
-<dependency><groupId>org.pipelineframework</groupId><artifactId>pipelineframework-api</artifactId><version>26.10.1-20261026.143159-18</version></dependency>
-<dependency><groupId>org.pipelineframework</groupId><artifactId>pipelineframework-compiler</artifactId><version>26.10.1-20261026.143220-22</version></dependency>
-<dependency><groupId>org.pipelineframework</groupId><artifactId>pipelineframework-dsl</artifactId><version>26.10.1-20261026.143159-18</version></dependency>
-<dependency><groupId>org.pipelineframework</groupId><artifactId>pipelineframework-runtime-api</artifactId><version>26.10.1-20261026.143159-18</version></dependency>
-<dependency><groupId>org.pipelineframework</groupId><artifactId>pipelineframework-runtime-core</artifactId><version>26.10.1-20261026.143159-18</version></dependency>
-<dependency><groupId>org.pipelineframework</groupId><artifactId>pipelineframework-runtime-protocol</artifactId><version>26.10.1-20261026.143159-18</version></dependency>
-<dependency><groupId>org.pipelineframework</groupId><artifactId>pipelineframework-runtime-serialization</artifactId><version>26.10.1-20261026.143159-18</version></dependency>
-<dependency><groupId>org.pipelineframework</groupId><artifactId>pipelineframework-runtime-spi</artifactId><version>26.10.1-20261026.143159-18</version></dependency>
-<dependency><groupId>org.pipelineframework</groupId><artifactId>pipelineframework-semantic-model</artifactId><version>26.10.1-20261026.143159-18</version></dependency>
-<dependency><groupId>org.pipelineframework</groupId><artifactId>tpf-release-resolver</artifactId><version>26.10.1-20261009.194941-6</version></dependency>
-</dependencies></dependencyManagement>
-<repositories><repository><id>central-portal-snapshots</id><url>https://central.sonatype.com/repository/maven-snapshots/</url><snapshots><enabled>true</enabled><updatePolicy>daily</updatePolicy></snapshots></repository></repositories>
-<pluginRepositories><pluginRepository><id>central-portal-snapshots</id><url>https://central.sonatype.com/repository/maven-snapshots/</url><snapshots><enabled>true</enabled></snapshots></pluginRepository></pluginRepositories>
-<build><pluginManagement><plugins><plugin><artifactId>maven-compiler-plugin</artifactId><version>3.14.0</version></plugin><plugin><artifactId>maven-surefire-plugin</artifactId><version>3.5.4</version><configuration><systemPropertyVariables><java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager></systemPropertyVariables></configuration></plugin><plugin><groupId>io.quarkus</groupId><artifactId>quarkus-maven-plugin</artifactId><version>${quarkus.version}</version></plugin></plugins></pluginManagement></build>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>dev.ghost</groupId>
+  <artifactId>ghost-parent</artifactId>
+  <version>1.0.0</version>
+  <packaging>pom</packaging>
+  <properties>
+    <maven.compiler.release>21</maven.compiler.release>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <tpf.version>26.10.1-SNAPSHOT</tpf.version>
+    <quarkus.version>3.39.2</quarkus.version>
+  </properties>
+  <modules>
+    <module>connectors</module>
+    <module>app</module>
+  </modules>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>io.quarkus.platform</groupId>
+        <artifactId>quarkus-bom</artifactId>
+        <version>${quarkus.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.pipelineframework</groupId>
+        <artifactId>pipelineframework-bom</artifactId>
+        <version>26.10.1-20261027.143053-27</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <!-- Timestamp pins for the exact public TPF artifacts exercised by this demo. -->
+      <dependency>
+        <groupId>org.pipelineframework</groupId>
+        <artifactId>connector-maven-plugin</artifactId>
+        <version>26.10.1-20261027.110129-21</version>
+      </dependency>
+      <dependency>
+        <groupId>org.pipelineframework</groupId>
+        <artifactId>decision-query-connector</artifactId>
+        <version>26.10.1-20261027.110129-21</version>
+      </dependency>
+      <dependency>
+        <groupId>org.pipelineframework</groupId>
+        <artifactId>decision-query-jev-connector</artifactId>
+        <version>26.10.1-20261027.110129-21</version>
+      </dependency>
+      <dependency>
+        <groupId>org.pipelineframework</groupId>
+        <artifactId>pipelineframework</artifactId>
+        <version>26.10.1-20261027.142733-32</version>
+      </dependency>
+      <dependency>
+        <groupId>org.pipelineframework</groupId>
+        <artifactId>pipelineframework-api</artifactId>
+        <version>26.10.1-20261026.143159-18</version>
+      </dependency>
+      <dependency>
+        <groupId>org.pipelineframework</groupId>
+        <artifactId>pipelineframework-compiler</artifactId>
+        <version>26.10.1-20261026.143220-22</version>
+      </dependency>
+      <dependency>
+        <groupId>org.pipelineframework</groupId>
+        <artifactId>pipelineframework-dsl</artifactId>
+        <version>26.10.1-20261026.143159-18</version>
+      </dependency>
+      <dependency>
+        <groupId>org.pipelineframework</groupId>
+        <artifactId>pipelineframework-runtime-api</artifactId>
+        <version>26.10.1-20261026.143159-18</version>
+      </dependency>
+      <dependency>
+        <groupId>org.pipelineframework</groupId>
+        <artifactId>pipelineframework-runtime-core</artifactId>
+        <version>26.10.1-20261026.143159-18</version>
+      </dependency>
+      <dependency>
+        <groupId>org.pipelineframework</groupId>
+        <artifactId>pipelineframework-runtime-protocol</artifactId>
+        <version>26.10.1-20261026.143159-18</version>
+      </dependency>
+      <dependency>
+        <groupId>org.pipelineframework</groupId>
+        <artifactId>pipelineframework-runtime-serialization</artifactId>
+        <version>26.10.1-20261026.143159-18</version>
+      </dependency>
+      <dependency>
+        <groupId>org.pipelineframework</groupId>
+        <artifactId>pipelineframework-runtime-spi</artifactId>
+        <version>26.10.1-20261026.143159-18</version>
+      </dependency>
+      <dependency>
+        <groupId>org.pipelineframework</groupId>
+        <artifactId>pipelineframework-semantic-model</artifactId>
+        <version>26.10.1-20261026.143159-18</version>
+      </dependency>
+      <dependency>
+        <groupId>org.pipelineframework</groupId>
+        <artifactId>tpf-release-resolver</artifactId>
+        <version>26.10.1-20261009.194941-6</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+  <repositories>
+    <repository>
+      <id>central-portal-snapshots</id>
+      <url>https://central.sonatype.com/repository/maven-snapshots/</url>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>daily</updatePolicy>
+      </snapshots>
+    </repository>
+  </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>central-portal-snapshots</id>
+      <url>https://central.sonatype.com/repository/maven-snapshots/</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.14.0</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>3.5.4</version>
+          <configuration>
+            <systemPropertyVariables>
+              <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
+            </systemPropertyVariables>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>io.quarkus</groupId>
+          <artifactId>quarkus-maven-plugin</artifactId>
+          <version>${quarkus.version}</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
 </project>

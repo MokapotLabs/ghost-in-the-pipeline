@@ -56,12 +56,19 @@ class GhostRecordingE2ETest {
   }
 
   @Test
-  void ghostRecordingE2ECompletesHumanCampaignThenBoundedExplorer() throws Exception {
+  void ghostRecordingE2ECompletesHumanCampaignThenBoundedPlayers() throws Exception {
     reset(1983, 1, false);
     for (int level = 1; level <= 3; level++)
       for (String a : Rules.witness(session.latest().game())) action(a);
     assertEquals("WON", session.latest().game().status());
     assertEquals(3, session.latest().game().exitsFound());
+    if (Boolean.getBoolean("ghost.live")) {
+      reset(1983, 1, true);
+      play("TEV1", 3, 40000);
+      waitForPlayer();
+      assertTrue(session.latest().decisions() > 0);
+      assertFalse(session.frame().get("reason").toString().startsWith("PROVIDER_"));
+    }
     reset(1983, 1, true);
     play("EXPLORER", 128, 120000);
     waitForPlayer();
@@ -74,6 +81,18 @@ class GhostRecordingE2ETest {
   @Test
   void validatesActionsOwnershipAndBounds() throws Exception {
     reset(1986, 1, true);
+    given()
+        .contentType("application/json")
+        .body(Map.of())
+        .post("/api/game/actions")
+        .then()
+        .statusCode(400);
+    given()
+        .contentType("application/json")
+        .body(Map.of())
+        .post("/api/game/play")
+        .then()
+        .statusCode(400);
     given()
         .contentType("application/json")
         .body(Map.of("action", "TELEPORT", "revision", session.latest().revision()))
@@ -94,6 +113,7 @@ class GhostRecordingE2ETest {
     play("EXPLORER", 128, 1);
     waitForPlayer();
     assertTrue(session.latest().decisions() <= 128);
+    assertEquals("TIME_LIMIT", session.frame().get("reason"));
   }
 
   @Test

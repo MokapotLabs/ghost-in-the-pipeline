@@ -1,0 +1,66 @@
+{
+  "generation": "independent seeded depth-first maze; farthest-room start; admission witness validated through the same reducer",
+  "cases": [
+    {
+      "seed": 1983,
+      "level": 1,
+      "size": 3,
+      "singleLevel": true
+    },
+    {
+      "seed": 1983,
+      "level": 2,
+      "size": 4,
+      "singleLevel": true
+    },
+    {
+      "seed": 1983,
+      "level": 3,
+      "size": 6,
+      "singleLevel": true
+    },
+    {
+      "seed": 1986,
+      "level": 1,
+      "size": 3,
+      "singleLevel": true
+    },
+    {
+      "seed": 1986,
+      "level": 2,
+      "size": 4,
+      "singleLevel": true
+    },
+    {
+      "seed": 1986,
+      "level": 3,
+      "size": 6,
+      "singleLevel": true
+    },
+    {
+      "seed": 2026,
+      "level": 1,
+      "size": 3,
+      "singleLevel": true
+    },
+    {
+      "seed": 2026,
+      "level": 2,
+      "size": 4,
+      "singleLevel": true
+    },
+    {
+      "seed": 2026,
+      "level": 3,
+      "size": 6,
+      "singleLevel": true
+    }
+  ],
+  "humanE2E": {
+    "seed": 1983,
+    "level": 1,
+    "lastLevel": 3,
+    "expected": "WON after three exits"
+  },
+  "liveAIExpected": "Actual validated decisions and bounded termination; no exact action or escape assertion"
+}

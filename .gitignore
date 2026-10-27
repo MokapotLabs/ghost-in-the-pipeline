@@ -28,3 +28,5 @@ replay_pid*
 .DS_Store
 .env
 evidence/raw/
+
+__pycache__/

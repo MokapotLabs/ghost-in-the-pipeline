@@ -3,7 +3,7 @@ package dev.ghost;
 import jakarta.enterprise.context.ApplicationScoped;
 import java.util.*;
 
-/** One local host session; authoritative writes enter through the publish Command. */
+/** One local host session; gameplay transitions enter through the publish Command. */
 @ApplicationScoped
 public class Session {
   private RunState latest;

@@ -27,7 +27,12 @@ public final class Observations {
             .map(r -> List.of(r.room(), r.visits(), r.edges(), g.remaining().get(r.room())))
             .toList());
     out.put("previousAction", g.lastAction());
-    out.put("previousResult", g.message());
+    // UI room labels are one-based; never mix those labels into zero-based model identities.
+    out.put(
+        "previousResult",
+        g.message().startsWith("Room ")
+            ? "Entered a room; " + g.remaining().get(g.room()) + " entries left."
+            : g.message());
     return out;
   }
 

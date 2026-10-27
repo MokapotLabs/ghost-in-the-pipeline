@@ -13,7 +13,7 @@ public class LocalConnection implements ConnectionResolver {
 
   public <C extends ResolvedConnection> CompletionStage<C> resolve(
       ConnectionResolutionRequest<C> r) {
-    if (!r.reference().toString().contains("local-ollama")
+    if (!r.reference().value().equals("local-ollama")
         || r.connectionType() != AuthenticatedJevConnection.class)
       return CompletableFuture.failedFuture(
           new IllegalArgumentException("unknown-local-connection"));

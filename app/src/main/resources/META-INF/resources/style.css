@@ -650,3 +650,14 @@ footer a {
     padding: 14px 20px;
   }
 }
+
+@media (max-width: 760px) {
+  #map {
+    display: block;
+    max-width: 96px;
+    margin: 0 auto;
+  }
+  .numbers {
+    grid-column: 1/-1;
+  }
+}

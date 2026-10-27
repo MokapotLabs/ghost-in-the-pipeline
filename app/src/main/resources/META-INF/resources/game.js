@@ -245,7 +245,7 @@ function draw(o) {
       ctx.fillStyle = "#6397a5";
       ctx.font = "10px monospace";
       ctx.textAlign = "center";
-      ctx.fillText("UNEXPLORED", 480, 309);
+      ctx.fillText("PASSAGE", 480, 309);
     }
   }
   // Perspective floor lights and generous dark vignette make the chamber readable.
@@ -362,16 +362,30 @@ function drawMap(o) {
 }
 function update(f) {
   if (!f.ready) return;
+  const previousCollisions = frame ? frame.collisions : 0;
   frame = f;
+  $("player").options[0].textContent = "AI · " + f.model;
   const o = f.observation,
     k = f.generation + ":" + f.revision;
   if (lastKey !== k) {
     draw(o);
+    if (
+      f.collisions > previousCollisions &&
+      !matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      canvas.animate(
+        [
+          { filter: "brightness(1.4) hue-rotate(35deg)" },
+          { filter: "brightness(1)" },
+        ],
+        { duration: 140 },
+      );
+    }
     lastKey = k;
   }
   $("mode").textContent = f.active
     ? f.player === "TEV1"
-      ? "TEV1 AT THE KEYS"
+      ? f.model.toUpperCase() + " AT THE KEYS"
       : f.player + " AT THE KEYS"
     : "HUMAN AT THE KEYS";
   $("level").textContent =
@@ -380,7 +394,7 @@ function update(f) {
   $("facing").textContent = o.facing + " " + ["↑", "→", "↓", "←"][o.direction];
   $("room").textContent = "ROOM " + String(o.room + 1).padStart(2, "0");
   $("message").textContent = f.reason.startsWith("PROVIDER_")
-    ? "AI stopped — inference or pipeline failed. Human play is available."
+    ? "The AI couldn’t finish its turn. You can take the keys."
     : f.message;
   $("entries").innerHTML = Array.from(
     { length: 7 },
@@ -395,7 +409,7 @@ function update(f) {
     $(id).textContent = String(f[id]).padStart(2, "0");
   $("decision-label").textContent =
     f.player === "TEV1"
-      ? "TEV1 · " + (f.model || "tev1:0.8b")
+      ? "AI · " + (f.model || "tev1:0.8b")
       : f.player === "HUMAN"
         ? "NEXT MOVE IS YOURS"
         : f.player + " · BASELINE";
@@ -405,8 +419,14 @@ function update(f) {
       : f.latestAction.replaceAll("_", " ");
   $("latency").textContent =
     f.player === "TEV1"
-      ? f.latencyMs.toLocaleString() + " ms · actual inference"
+      ? f.latencyMs.toLocaleString() + " ms · decision " + f.decisions
       : "↑ Forward   ← → Turn";
+  if (f.player === "TEV1" && f.decisions === 0) {
+    $("decision-action").textContent = f.active
+      ? "CHOOSING FIRST ACTION…"
+      : "NO DECISION";
+    $("latency").textContent = "—";
+  }
   $("thinking").hidden = !(f.active && f.player === "TEV1");
   $("pause").disabled = !f.active || f.pausing;
   $("pause").textContent = f.pausing ? "PAUSING…" : "Ⅱ PAUSE";
@@ -429,7 +449,7 @@ function update(f) {
       f.status === "WON" ? "GHOST, RELEASED." : "ROOM EXHAUSTED.";
     $("overlay-copy").textContent =
       f.moves +
-      " moves · " +
+      " total moves · " +
       f.explored +
       " rooms explored · " +
       f.repeats +
@@ -441,7 +461,14 @@ function update(f) {
       lastCompleted = id;
       recentResults.push({
         player: f.player,
-        reason: f.reason,
+        reason: f.reason.startsWith("PROVIDER_")
+          ? "AI TURN FAILED"
+          : {
+              DECISION_LIMIT: "OUT OF TURNS",
+              TIME_LIMIT: "TIME’S UP",
+              WON: "ESCAPED",
+              LOST: "ROOM EXHAUSTED",
+            }[f.reason] || f.reason,
         moves: f.moves,
         decisions: f.decisions,
         rooms: f.explored,
@@ -460,9 +487,9 @@ function update(f) {
               r.decisions +
               " decisions · " +
               r.moves +
-              " moves · " +
+              " total moves · " +
               r.rooms +
-              " rooms",
+              " total rooms",
           )
           .join("<br>");
     }
@@ -500,6 +527,12 @@ document
   .querySelectorAll("[data-action]")
   .forEach((b) => (b.onclick = () => action(b.dataset.action)));
 document.addEventListener("keydown", (e) => {
+  if (e.ctrlKey || e.metaKey || e.altKey) return;
+  if (e.key === "Enter" && frame && frame.status !== "PLAYING") {
+    e.preventDefault();
+    reset();
+    return;
+  }
   if (["INPUT", "SELECT", "TEXTAREA"].includes(e.target.tagName)) return;
   let a = {
     ArrowUp: "FORWARD",

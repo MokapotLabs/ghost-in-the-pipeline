@@ -32,6 +32,7 @@ public class GameResource {
 
   @POST
   public Uni<Map<String, Object>> reset(NewGame request) {
+    if (request == null) throw new BadRequestException("Game request is required");
     int level = request.level() == 0 ? 1 : request.level();
     RunState r;
     try {
@@ -45,7 +46,8 @@ public class GameResource {
   @POST
   @Path("/actions")
   public Uni<Map<String, Object>> action(Action action) {
-    if (!Rules.ACTIONS.contains(action.action())) throw new BadRequestException("Unknown action");
+    if (action == null || action.action() == null || !Rules.ACTIONS.contains(action.action()))
+      throw new BadRequestException("Unknown action");
     RunState r = admit("HUMAN", action.action(), action.revision(), 1, 120000);
     return execute(r).replaceWith(this::view);
   }
@@ -53,7 +55,9 @@ public class GameResource {
   @POST
   @Path("/play")
   public Map<String, Object> play(Play p) {
-    if (!List.of("TEV1", "RANDOM", "EXPLORER").contains(p.player()))
+    if (p == null
+        || p.player() == null
+        || !List.of("TEV1", "RANDOM", "EXPLORER").contains(p.player()))
       throw new BadRequestException("Unknown player");
     int limit = p.maxDecisions() == null ? 128 : p.maxDecisions();
     long millis = p.durationMs() == null ? 120000 : p.durationMs();
@@ -121,8 +125,12 @@ public class GameResource {
                             failure ->
                                 session.finish(
                                     r.segment(),
-                                    "PROVIDER_OR_PIPELINE_FAILURE: "
-                                        + failure.getClass().getSimpleName()))
+                                    failure instanceof io.smallrye.mutiny.TimeoutException
+                                            || failure
+                                                instanceof java.util.concurrent.TimeoutException
+                                        ? "TIME_LIMIT"
+                                        : "PROVIDER_OR_PIPELINE_FAILURE: "
+                                            + failure.getClass().getSimpleName()))
                         .subscribe()
                         .with(emitter::complete, emitter::fail);
                 emitter.onTermination(subscription::cancel);

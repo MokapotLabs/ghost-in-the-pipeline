@@ -1,6 +1,5 @@
 package dev.ghost;
 
-
 public record ActionLog(
     int turn,
     int level,
