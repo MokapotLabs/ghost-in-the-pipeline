@@ -29,12 +29,19 @@ def compare(old_off, old_on, new_off, new_on):
     old = clues.compare(old_off, old_on)
     new = clues.compare(new_off, new_on)
     pair=(old_off['protocol'],new_off['protocol'])
-    clues.require(pair in [('ghost-haunted-v1','ghost-action-prompt-v1'),('ghost-action-prompt-v1','ghost-forward-prompt-v2')], 'Expected adjacent frozen prompt protocols')
+    references={('ghost-haunted-v1','ghost-action-prompt-v1'):('1f263f8','1a59ac4'),('ghost-action-prompt-v1','ghost-forward-prompt-v2'):('1a59ac4','4bd190a'),('ghost-forward-prompt-v2','ghost-ordered-policy-v3'):('4bd190a',None)}
+    clues.require(pair in references,'Expected adjacent frozen prompt protocols')
+    policy=pair[1]=='ghost-ordered-policy-v3'
     path='connectors/src/main/java/dev/ghost/Observations.java'
-    previous_ref,current_ref=('1f263f8','1a59ac4') if pair[0]=='ghost-haunted-v1' else ('1a59ac4',None)
+    previous_ref,current_ref=references[pair]
     previous=subprocess.check_output(['git','show',previous_ref+':'+path],cwd=ROOT).decode()
     current=subprocess.check_output(['git','show',current_ref+':'+path],cwd=ROOT).decode() if current_ref else (ROOT/path).read_text()
-    clues.require(non_question_source(previous)==non_question_source(current),'Observation logic changed outside the question/constants')
+    before_projection,after_projection=non_question_source(previous),non_question_source(current)
+    if policy:
+        alias='out.put("current_room_visits",current.visits());'
+        clues.require(after_projection.count(alias)==1,'Expected exactly the observed-memory visit alias')
+        after_projection=after_projection.replace(alias,'',1)
+    clues.require(before_projection==after_projection,'Observation logic changed outside the question and allowed visit alias')
     for before, after in [(old_off, new_off), (old_on, new_on)]:
         for report,source in [(before,previous),(after,current)]:
             clues.require(report['sourceSha256'][path]==hashlib.sha256(source.encode()).hexdigest(),'Observation source does not match recorded revision')
@@ -47,8 +54,14 @@ def compare(old_off, old_on, new_off, new_on):
         clues.require(a.keys() == b.keys(), 'Different prompt cases')
         for key in a:
             for field in ['initialObservation','initialNavigation','model']:
-                clues.require(a[key][field] == b[key][field], 'Prompt starting control changed: '+field)
-    return {'result':'PASS','controls':'Same seeds, models, initial observations/readings, rules, baselines, signals and budgets. Only observation-authoring class changed among recorded game classes; fixture export shows state unchanged and question text changed.', 'previous':old['arms'],'actionFocused':new['arms']}
+                actual=b[key][field]
+                if policy and field=='initialObservation':
+                    actual=dict(actual)
+                    count=actual.pop('current_room_visits',None)
+                    row=next(r for r in actual['memory'] if r[0]==actual['room'])
+                    clues.require(count==row[1],'Visit alias does not match observed memory')
+                clues.require(a[key][field] == actual, 'Prompt starting control changed: '+field)
+    return {'result':'PASS','controls':'Same seeds, models, existing starting facts/readings, rules, baselines, signals and budgets. Observation source differs only in question and, for ordered policy, the checked current_room_visits alias of observed memory.', 'previous':old['arms'],'actionFocused':new['arms']}
 
 
 if __name__ == '__main__':

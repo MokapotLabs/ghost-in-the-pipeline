@@ -52,9 +52,9 @@ class PromptControls(unittest.TestCase):
     def test_evaluator_rejects_old_or_unknown_serving_prompt(self):
         spec=importlib.util.spec_from_file_location('evaluate',ROOT/'scripts/evaluate.py')
         evaluator=importlib.util.module_from_spec(spec);spec.loader.exec_module(evaluator)
-        for frame in [{}, {'decisionPrompt':'previous'}, {'decisionPrompt':'action-focused-v1'}]:
+        for frame in [{}, {'decisionPrompt':'previous'}, {'decisionPrompt':'action-focused-v1'}, {'decisionPrompt':'forward-first-v2'}]:
             with self.assertRaises(ValueError):evaluator.verify_prompt(frame)
-        self.assertEqual('forward-first-v2',evaluator.verify_prompt({'decisionPrompt':'forward-first-v2'}))
+        self.assertEqual('ordered-policy-v3',evaluator.verify_prompt({'decisionPrompt':'ordered-policy-v3'}))
 
     def test_actual_exported_request_states_are_unchanged(self):
         before=json.loads((ROOT/'evidence/action-prompt-previous.json').read_text())

@@ -10,8 +10,8 @@ def require(condition, message):
 
 
 def compare(off, on):
-    require(off['protocol'] == on['protocol'] and off['protocol'] in ['ghost-haunted-v1','ghost-action-prompt-v1','ghost-forward-prompt-v2'], 'Wrong experiment protocol')
-    versions={'ghost-action-prompt-v1':'action-focused-v1','ghost-forward-prompt-v2':'forward-first-v2'}
+    require(off['protocol'] == on['protocol'] and off['protocol'] in ['ghost-haunted-v1','ghost-action-prompt-v1','ghost-forward-prompt-v2','ghost-ordered-policy-v3'], 'Wrong experiment protocol')
+    versions={'ghost-action-prompt-v1':'action-focused-v1','ghost-forward-prompt-v2':'forward-first-v2','ghost-ordered-policy-v3':'ordered-policy-v3'}
     if off['protocol'] in versions:
         require(off.get('decisionPrompt')==on.get('decisionPrompt')==versions[off['protocol']],'Wrong decision prompt')
     require(off['agentClues'] is False and on['agentClues'] is True, 'Expected off/on arms')

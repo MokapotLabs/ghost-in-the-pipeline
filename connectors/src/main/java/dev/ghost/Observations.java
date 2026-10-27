@@ -7,16 +7,22 @@ import org.pipelineframework.connector.decision.*;
 /** The only projection eligible for model input and the browser view. */
 public final class Observations {
   private static final ObjectMapper JSON = new ObjectMapper();
-  public static final String PROMPT_VERSION = "forward-first-v2";
+  public static final String PROMPT_VERSION = "ordered-policy-v3";
   public static final String ACTION_PROMPT =
       """
-      Choose ONE action for this turn. Read relativeEdges: front, left, right.
-      If front is wall, choose a turn: FORWARD cannot pass a wall.
-      If front is exit, choose FORWARD.
-      If front is open passage, choose FORWARD. Do not keep turning when the corridor ahead is open.
-      Prefer an open passage and avoid needless revisits or rooms with one entry left.
-      memory rows are [room, visits, NESW edges, entriesLeft].
-      Edges: # wall, . passage, E exit, ? unseen. Rooms are row-major.
+      Choose ONE action: FORWARD, TURN_LEFT, TURN_RIGHT.
+      front, left, right mean relativeEdges.front, relativeEdges.left, relativeEdges.right.
+      Edge values are "wall", "open passage", "exit".
+      Apply rules top-to-bottom. Stop at the first match. Other state fields do not override these rules.
+      1. If front == "exit", choose FORWARD.
+      2. If left == "exit", choose TURN_LEFT.
+      3. If right == "exit", choose TURN_RIGHT.
+      4. If previousAction is TURN_LEFT or TURN_RIGHT and front == "open passage", choose FORWARD.
+      5. If front == "open passage" and current_room_visits == 1, choose FORWARD.
+      6. If left == "open passage", choose TURN_LEFT.
+      7. If right == "open passage", choose TURN_RIGHT.
+      8. If front == "open passage", choose FORWARD.
+      9. Otherwise, choose TURN_RIGHT to look behind.
       """
           .strip();
   public static final String CLUE_PROMPT =
@@ -53,6 +59,7 @@ public final class Observations {
           });
     }
     out.put("entriesLeft", g.remaining().get(g.room()));
+    out.put("current_room_visits", current.visits());
     out.put(
         "memory",
         g.memory().stream()

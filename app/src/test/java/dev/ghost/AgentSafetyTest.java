@@ -17,10 +17,9 @@ class AgentSafetyTest {
     for (boolean clues : List.of(false, true)) {
       var request = Observations.request(game, Signals.initial(game), clues);
       var question = request.questions().getFirst();
-      assertTrue(question.instructions().contains("front is wall"));
-      assertTrue(question.instructions().contains("FORWARD cannot pass a wall"));
-      assertTrue(question.instructions().contains("If front is open passage, choose FORWARD."));
-      assertTrue(question.instructions().contains("Do not keep turning"));
+      assertTrue(question.instructions().contains("Apply rules top-to-bottom"));
+      assertTrue(question.instructions().contains("previousAction is TURN_LEFT or TURN_RIGHT"));
+      assertTrue(question.instructions().contains("current_room_visits == 1"));
       assertEquals(clues, question.instructions().contains("Signal order:"));
       var criteria = new LinkedHashMap<String, String>();
       question.criteria().forEach(c -> criteria.put(c.label(), c.description()));
@@ -43,6 +42,26 @@ class AgentSafetyTest {
     java.nio.file.Files.createDirectories(java.nio.file.Path.of("target"));
     json.writerWithDefaultPrettyPrinter()
         .writeValue(java.nio.file.Path.of("target/decision-prompts.json").toFile(), output);
+  }
+
+  @Test
+  void visitSummaryIsAnExactAliasOfObservedMemory() throws Exception {
+    var json = new com.fasterxml.jackson.databind.ObjectMapper();
+    var game = Rules.newGame(1983, 1, 1);
+    for (String action :
+        List.of("START", "TURN_RIGHT", "FORWARD", "TURN_RIGHT", "TURN_RIGHT", "FORWARD")) {
+      game = Rules.act(game, action);
+      var state = json.readTree(Observations.request(game).stateJson());
+      int visits =
+          game.memory().stream()
+              .filter(m -> m.room() == state.get("room").asInt())
+              .findFirst()
+              .orElseThrow()
+              .visits();
+      assertEquals(visits, state.get("current_room_visits").asInt());
+      assertTrue(state.has("memory"));
+      assertFalse(state.has("desiredAction"));
+    }
   }
 
   @Test

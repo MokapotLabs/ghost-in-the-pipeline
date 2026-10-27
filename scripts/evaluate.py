@@ -3,7 +3,7 @@
 import argparse,json,time,urllib.request,statistics,datetime,os,hashlib,zipfile
 from pathlib import Path
 
-PROMPT_VERSION = "forward-first-v2"
+PROMPT_VERSION = "ordered-policy-v3"
 
 def verify_prompt(view):
  if view.get("decisionPrompt") != PROMPT_VERSION:
@@ -11,13 +11,15 @@ def verify_prompt(view):
  return view["decisionPrompt"]
 
 def main():
- p=argparse.ArgumentParser(description=__doc__);p.add_argument('--url',default='http://127.0.0.1:8087');p.add_argument('--out',default='evidence/evaluation-forward-prompt.json');p.add_argument('--players',nargs='+',choices=['TEV1','TEV1_4B','RANDOM','EXPLORER'],default=['TEV1','RANDOM','EXPLORER']);p.add_argument('--runtime',type=Path,help='Quarkus package actually serving this URL; records compiled class hashes separately from checkout sources');p.add_argument('--agent-clues',choices=['on','off'],default='off');p.add_argument('--levels',nargs='+',type=int,choices=[1,2,3],default=[1,2,3]);args=p.parse_args()
+ p=argparse.ArgumentParser(description=__doc__);p.add_argument('--url',default='http://127.0.0.1:8087');p.add_argument('--out',default='evidence/evaluation-policy.json');p.add_argument('--players',nargs='+',choices=['TEV1','TEV1_4B','RANDOM','EXPLORER'],default=['TEV1','RANDOM','EXPLORER']);p.add_argument('--runtime',type=Path,help='Quarkus package actually serving this URL; records compiled class hashes separately from checkout sources');p.add_argument('--agent-clues',choices=['on','off'],default='off');p.add_argument('--levels',nargs='+',type=int,choices=[1,2,3],default=[1,2,3]);args=p.parse_args()
  def call(path='',body=None):
   req=urllib.request.Request(args.url+'/api/game'+path,data=None if body is None else json.dumps(body).encode(),headers={'Content-Type':'application/json'})
   with urllib.request.urlopen(req,timeout=20) as r:return json.load(r)
  decision_prompt=verify_prompt(call())
- out=Path(args.out);out.parent.mkdir(parents=True,exist_ok=True)
- report={'protocol':'ghost-forward-prompt-v2','decisionPrompt':decision_prompt,'recordedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'seeds':[1983,1986,2026],'levels':args.levels,'agentClues':args.agent_clues=='on','players':args.players,'maxDecisions':128,'durationMs':120000,'information':'local visible edges plus persistent observed-room memory; no full map or witness','trials':[]}
+ out=Path(args.out)
+ if out.exists():raise ValueError('Choose a fresh output path; earlier results are preserved')
+ out.parent.mkdir(parents=True,exist_ok=True)
+ report={'protocol':'ghost-ordered-policy-v3','decisionPrompt':decision_prompt,'recordedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'seeds':[1983,1986,2026],'levels':args.levels,'agentClues':args.agent_clues=='on','players':args.players,'maxDecisions':128,'durationMs':120000,'information':'local visible edges plus persistent observed-room memory; no full map or witness','trials':[]}
  repo=Path(__file__).resolve().parents[1]
  report['sourceSha256']={str(p):hashlib.sha256((repo/p).read_bytes()).hexdigest() for p in [Path('connectors/src/main/java/dev/ghost')/name for name in ['Rules.java','Observations.java','Baselines.java','Signals.java']]}
  report['sourceIdentityScope']='Local checkout files; these do not prove which binary the server loaded.'
