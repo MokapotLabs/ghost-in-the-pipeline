@@ -1,0 +1,67 @@
+{
+  "cli_version": "0.12.2",
+  "checkpoint_id": "01M5ZRVF6DFFSZYMN3B2H5ADT6",
+  "strategy": "manual-commit",
+  "branch": "codex/ghost-playable-demo",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "README.md",
+    "app/src/main/resources/META-INF/resources/game.js",
+    "app/src/main/resources/META-INF/resources/index.html",
+    "docs/action-prompt.md",
+    "docs/forward-and-polish.md",
+    "docs/recording.md",
+    "docs/screenshots/polished-ai-1280.png",
+    "docs/screenshots/polished-game-1280.png",
+    "evidence/README.md",
+    "evidence/forward-08b-comparison.json",
+    "evidence/forward-08b-off.json",
+    "evidence/forward-08b-on.json",
+    "evidence/forward-08b-prompt-comparison.json",
+    "evidence/forward-4b-comparison.json",
+    "evidence/forward-4b-off.json",
+    "evidence/forward-4b-on.json",
+    "evidence/forward-4b-prompt-comparison.json",
+    "evidence/forward-lineage.json",
+    "evidence/forward-prompt-definition.json",
+    "evidence/polish-acceptance.json",
+    "evidence/polish-browser-checks.json",
+    "evidence/polish-build.json",
+    "evidence/polish-live-resume.json",
+    "evidence/polish-live-ui.json",
+    "evidence/replay-forward/Ghost-in-the-Pipeline-1793140178894-03c7a4ae-2800-483d-8f45-bede453ce32c.json",
+    "evidence/replay-forward/Ghost-in-the-Pipeline-1793140183390-d89ceecf-2b00-41b7-baa1-6e5eac977c9e.json",
+    "evidence/replay-forward/Ghost-in-the-Pipeline-1793140194648-b8427a81-40f9-4ac5-8962-108bf7adc591.json",
+    "scripts/test-browser-controls.cjs"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": ""
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 4350,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 2634240,
+    "output_tokens": 12255,
+    "api_call_count": 11
+  },
+  "redaction": {
+    "replacements": 55565,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 9,
+      "credentialed_uri": 0,
+      "entropy": 63262,
+      "key_context": 0,
+      "provider_token": 0,
+      "shell_stdin": 0
+    }
+  }
+}
