@@ -1,0 +1,56 @@
+{
+  "cli_version": "0.12.2",
+  "checkpoint_id": "01M5Z8CM34AJB5MXYYN4M8H3R5",
+  "session_id": "01a17e2b-ff39-76b1-bf13-8682399e184e",
+  "strategy": "manual-commit",
+  "created_at": "2026-10-27T18:01:35.260652Z",
+  "branch": "codex/ghost-playable-demo",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "NOTICE.md",
+    "README.md",
+    "docs/architecture.md",
+    "docs/dev-submission.md",
+    "docs/development-evidence.md",
+    "docs/historical-reference.md",
+    "docs/limitations.md",
+    "docs/recording.md",
+    "docs/screenshots/ai.png",
+    "docs/screenshots/game.png",
+    "evidence/README.md",
+    "evidence/acceptance.json",
+    "evidence/lineage.json",
+    "evidence/qualification-lineage.json",
+    "evidence/replay/explorer-segment.json",
+    "evidence/replay/human-turn.json",
+    "evidence/replay/tev1-segment.json",
+    "scripts/verify-replay.py"
+  ],
+  "agent": "Codex",
+  "model": "gpt-6.1-sol",
+  "turn_id": "00d63e999730",
+  "checkpoint_transcript_start": 1159,
+  "transcript_lines_at_start": 1159,
+  "compact_transcript_start": 134,
+  "token_usage": {
+    "input_tokens": 589,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 432000,
+    "output_tokens": 3331,
+    "api_call_count": 1
+  },
+  "redaction": {
+    "replacements": 6014,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 9,
+      "credentialed_uri": 0,
+      "entropy": 8869,
+      "key_context": 0,
+      "provider_token": 0,
+      "shell_stdin": 0
+    }
+  }
+}
