@@ -1,0 +1,50 @@
+{
+  "result": "PASS",
+  "featureCommit": "15b97f4",
+  "promptVersion": "ordered-policy-v3",
+  "javaTests": 23,
+  "javaSuites": [
+    {
+      "name": "dev.ghost.SignalsTest",
+      "tests": 3,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0
+    },
+    {
+      "name": "dev.ghost.RulesTest",
+      "tests": 8,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0
+    },
+    {
+      "name": "dev.ghost.AgentSafetyTest",
+      "tests": 7,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0
+    },
+    {
+      "name": "dev.ghost.GhostRecordingE2ETest",
+      "tests": 5,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0
+    }
+  ],
+  "liveProvider": true,
+  "namedE2E": "ghostRecordingE2ECompletesHumanCampaignThenBoundedPlayers",
+  "fixedCases": 15,
+  "fixedCaseProviderDecisions": 60,
+  "fullMazeTrials": 24,
+  "policyChecks": 6,
+  "historicalChecks": 49,
+  "rendererAndAudio": "PASS",
+  "nativeLineage": "policy-lineage.json",
+  "buildAndUnchangedUiPipeline": "policy-build.json",
+  "definition": "policy-prompt-definition.json",
+  "review": "Signal tie-breaker suggestion not adopted: it changes the approved frozen policy. Clue arms explicitly measure context sensitivity, not signal-aware navigation. Script review minor output-parent handling fixed.",
+  "limitations": "Synthetic classification fixtures are not full valid gameplay histories. One trial per maze/model/clue arm. Gameplay changes question and redundant visit alias; fixed cases hold state identical.",
+  "publication": "Local only; no push or upload."
+}

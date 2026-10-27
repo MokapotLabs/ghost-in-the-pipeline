@@ -1,0 +1,34 @@
+{
+  "result": "PASS",
+  "documentsDiagnostic": 3,
+  "distinctRootTracesDiagnostic": 3,
+  "runs": [
+    {
+      "file": "Ghost-in-the-Pipeline-1793142652963-23e006f6-6646-47c6-bd26-e930db8341ae.json",
+      "traceId": "00e030b21ef53b17db3c0abe10728940",
+      "status": "completed",
+      "events": 85,
+      "nestedInvocations": 2,
+      "modelQueries": 3,
+      "rootLineage": "PASS"
+    },
+    {
+      "file": "Ghost-in-the-Pipeline-1793142656467-308fb61b-aa0f-4fc4-8c6a-781dccf54740.json",
+      "traceId": "f43d62efd5627686fec3577c58656555",
+      "status": "completed",
+      "events": 85,
+      "nestedInvocations": 2,
+      "modelQueries": 3,
+      "rootLineage": "PASS"
+    },
+    {
+      "file": "Ghost-in-the-Pipeline-1793142666760-f1fec921-913f-4752-a480-027c22defb00.json",
+      "traceId": "f7105c9c8e251d247ce2eb20ed0c876a",
+      "status": "completed",
+      "events": 85,
+      "nestedInvocations": 2,
+      "modelQueries": 3,
+      "rootLineage": "PASS"
+    }
+  ]
+}

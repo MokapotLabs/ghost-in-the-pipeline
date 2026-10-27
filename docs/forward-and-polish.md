@@ -1,5 +1,7 @@
 # Forward instruction and compact game UI
 
+This preserves `forward-first-v2` at revision `1d9d389`. The [ordered-policy follow-up](ordered-policy.md) contains the current question and separate results; the UI remains unchanged.
+
 The new `forward-first-v2` question adds exactly one instruction to the preceding action-focused prompt:
 
 > If front is open passage, choose FORWARD. Do not keep turning when the corridor ahead is open.

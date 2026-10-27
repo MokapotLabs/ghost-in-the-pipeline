@@ -6,7 +6,9 @@ An independently implemented, MSX-inspired first-person maze built with [The Pip
 
 **New: a haunted sixth sense.** Optional glow and quiet synthesized tones grow stronger along corridors toward the exit. The AI can receive the same qualitative signal and visited-room readings. [Watch the 90-second audiovisual demonstration](docs/recordings/sixth-sense-90s.mp4) and read [the controlled clue-on/off experiment](docs/haunted-sense.md): escape counts did not improve in these tested cases.
 
-**Latest:** [compact game UI and forward-first prompt results](docs/forward-and-polish.md). The hero and slogans are removed; the supplied portal PNG is used for branding and favicon. Instructions live in Help. The model receives an explicit instruction to walk when the corridor ahead is open; earlier results remain preserved.
+**Latest experiment:** [ordered policy with a turn-commit rule](docs/ordered-policy.md). The fixed-case comparison and same-seed reruns showed no escape gain. Existing memory is preserved, with a direct current-room visit summary.
+
+**Game UI:** [compact game UI and forward-first prompt results](docs/forward-and-polish.md). The hero and slogans are removed; the supplied portal PNG is used for branding and favicon. Instructions live in Help. The model now receives the ordered policy described above; earlier questions and results remain preserved.
 
 ![The game at 1280×720](docs/screenshots/polished-game-1280.png)
 
@@ -43,7 +45,7 @@ python3 scripts/evaluate.py
 ./scripts/recording-reset.sh
 ```
 
-The ordinary test suite uses real TPF gameplay and observation-only baselines. The opt-in live test validates genuine decisions from both models without requiring an escape or an exact action. The [current acceptance record](evidence/polish-acceptance.json) reports **22 passing Java tests**, with signal distance/trend/privacy checks, plus audio and renderer checks. Core tests validate **600 seeded levels**. `haunted-acceptance.json`, `relative-acceptance.json` and `acceptance.json` retain the historical 21-, 18- and 16-test deliveries.
+The ordinary test suite uses real TPF gameplay and observation-only baselines. The opt-in live test validates genuine decisions from both models without requiring an escape or an exact action. The [current acceptance record](evidence/policy-acceptance.json) reports **23 passing Java tests**, with signal distance/trend/privacy checks, plus audio and renderer checks. Core tests validate **600 seeded levels**. `haunted-acceptance.json`, `relative-acceptance.json` and `acceptance.json` retain the historical 21-, 18- and 16-test deliveries.
 
 Evaluation uses the same nine seed/level combinations for all players, with 128 decisions and 120 seconds per case. For timings without the visual pause, restart with `GHOST_PACE_MS=0 ./scripts/run.sh --no-build`, then run `GHOST_PACE_MS=0 python3 scripts/evaluate.py`. Do not interact with that single session during evaluation. The script leaves a fresh normal campaign ready afterwards.
 

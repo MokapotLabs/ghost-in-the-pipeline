@@ -1,0 +1,86 @@
+{
+  "result": "PASS",
+  "controls": "Same seeds, models, existing starting facts/readings, rules, baselines, signals and budgets. Observation source differs only in question and, for ordered policy, the checked current_room_visits alias of observed memory.",
+  "previous": [
+    {
+      "agentClues": false,
+      "trials": 9,
+      "escapes": 0,
+      "decisions": 1152,
+      "moves": 4,
+      "collisions": 1022,
+      "repeatedPositions": 0,
+      "roomsExplored": 13,
+      "roomExhaustions": 0,
+      "terminationReasons": {
+        "DECISION_LIMIT": 9
+      },
+      "latencyMs": {
+        "median": 9.0,
+        "max": 1186
+      }
+    },
+    {
+      "agentClues": true,
+      "trials": 9,
+      "escapes": 0,
+      "decisions": 1152,
+      "moves": 10,
+      "collisions": 1038,
+      "repeatedPositions": 2,
+      "roomsExplored": 17,
+      "roomExhaustions": 0,
+      "terminationReasons": {
+        "DECISION_LIMIT": 9
+      },
+      "latencyMs": {
+        "median": 9.0,
+        "max": 933
+      }
+    }
+  ],
+  "actionFocused": [
+    {
+      "agentClues": false,
+      "trials": 9,
+      "escapes": 0,
+      "decisions": 1152,
+      "moves": 6,
+      "collisions": 899,
+      "repeatedPositions": 0,
+      "roomsExplored": 15,
+      "roomExhaustions": 0,
+      "terminationReasons": {
+        "DECISION_LIMIT": 9
+      },
+      "latencyMs": {
+        "median": 9.0,
+        "max": 602
+      }
+    },
+    {
+      "agentClues": true,
+      "trials": 9,
+      "escapes": 0,
+      "decisions": 1152,
+      "moves": 6,
+      "collisions": 643,
+      "repeatedPositions": 0,
+      "roomsExplored": 15,
+      "roomExhaustions": 0,
+      "terminationReasons": {
+        "DECISION_LIMIT": 9
+      },
+      "latencyMs": {
+        "median": 9.0,
+        "max": 848
+      }
+    }
+  ],
+  "inputsSha256": {
+    "evidence/forward-08b-off.json": "704c4dd892a9632d6a77ae3e94b8149331ef29a39fe911a6520c6886d5372486",
+    "evidence/forward-08b-on.json": "96f19a140adaff2c017266af16d1ca648e097d7cfa30a3af327dbfe0b2412244",
+    "evidence/policy-08b-off.json": "0db935b264ecf36ed9e86f87b6487ef28e03b0a1509e70d2169de9ea9e6c7a93",
+    "evidence/policy-08b-on.json": "ca3946e44566a93d7d096f0ffd9465e8ed34a296ba5a21519425bbab90998cf5"
+  }
+}
