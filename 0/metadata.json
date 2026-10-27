@@ -15,7 +15,7 @@
   "turn_id": "5e067672f846",
   "checkpoint_transcript_start": 4405,
   "transcript_lines_at_start": 4405,
-  "compact_transcript_start": 23,
+  "compact_transcript_start": 34,
   "token_usage": {
     "input_tokens": 847309,
     "cache_creation_tokens": 0,
