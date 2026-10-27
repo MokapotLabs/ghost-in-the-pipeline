@@ -13,3 +13,7 @@ CodeRabbit reviewed the application changes. Five relevant application findings 
 Delivery timing, interruptions and repair notes are kept separately in `.work/implementation-metrics.json`, not in the customer-facing dataset.
 
 The follow-up CodeRabbit review of the corrected application changes completed with zero findings.
+
+The later wall-choice investigation adds an animation milestone and a separate model-comparison checkpoint. A compiled-class check caught an older immutable evaluation package: its observation formatter lacked the existing room-label normalization. Both models had used that same package, but the trials were ineligible as current-release evidence. All records were retained under `evidence/prior-build/`, and both models were rerun from a package verified byte-for-byte against the current build. Evaluation records now distinguish checkout hashes from serving-class hashes. This was an application verification mistake; it required no TPF change.
+
+The turn renderer has its own clock/geometry checks, and model-pairing tests reject altered observations, identities, budgets, duplicate cases and execution failures even under Python optimization. Provider-only observation probes apply no game actions. The fixed gameplay observations and maze generator were not tuned to improve either model's results.

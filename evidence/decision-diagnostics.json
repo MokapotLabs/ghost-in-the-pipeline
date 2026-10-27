@@ -1,0 +1,1627 @@
+{
+  "recordedAt": "2026-10-27T18:40:00.323826+00:00",
+  "purpose": "Diagnostic only; no gameplay state is modified. Counterbalance choice order and add redundant relative-edge facts derived only from the same visible observation.",
+  "timeoutSeconds": 10,
+  "retries": 0,
+  "probes": [
+    {
+      "fixture": "start",
+      "representation": "compact",
+      "order": [
+        "FORWARD",
+        "TURN_LEFT",
+        "TURN_RIGHT"
+      ],
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 0,
+          "facing": "E",
+          "direction": 1,
+          "edges": "##.?",
+          "entriesLeft": 7,
+          "memory": [
+            [
+              0,
+              1,
+              "##.?",
+              7
+            ]
+          ],
+          "previousAction": "START",
+          "previousResult": "Find the exit. Seven entries per room."
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Explore the maze and escape through an observed exit. Choose one action. Edges and memory use N,E,S,W: # wall, . passage, E exit, ? unseen. Memory rows are [room, visits, edges, entriesLeft]. Avoid walls and repeated rooms. Room numbers are row-major; north decreases the row. You cannot move backwards. A turn changes only orientation; FORWARD goes in the facing direction. Entering the same room seven times loses. Use explored memory to navigate; an exit requires moving FORWARD through it.",
+            "criteria": {
+              "FORWARD": "Move one room in the current facing direction, or cross an exit ahead.",
+              "TURN_LEFT": "Rotate 90 degrees left; stay in the same room.",
+              "TURN_RIGHT": "Rotate 90 degrees right; stay in the same room."
+            }
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.7648102732047756,
+              "TURN_LEFT": 0.07098270462994727,
+              "TURN_RIGHT": 0.16420702216527724
+            },
+            "confidence": 0.37239055749157635
+          }
+        },
+        "usage": {
+          "input_tokens": 326,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 0
+      },
+      "latencyMs": 4184
+    },
+    {
+      "fixture": "start",
+      "representation": "compact",
+      "order": [
+        "TURN_LEFT",
+        "TURN_RIGHT",
+        "FORWARD"
+      ],
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 0,
+          "facing": "E",
+          "direction": 1,
+          "edges": "##.?",
+          "entriesLeft": 7,
+          "memory": [
+            [
+              0,
+              1,
+              "##.?",
+              7
+            ]
+          ],
+          "previousAction": "START",
+          "previousResult": "Find the exit. Seven entries per room."
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Explore the maze and escape through an observed exit. Choose one action. Edges and memory use N,E,S,W: # wall, . passage, E exit, ? unseen. Memory rows are [room, visits, edges, entriesLeft]. Avoid walls and repeated rooms. Room numbers are row-major; north decreases the row. You cannot move backwards. A turn changes only orientation; FORWARD goes in the facing direction. Entering the same room seven times loses. Use explored memory to navigate; an exit requires moving FORWARD through it.",
+            "criteria": {
+              "TURN_LEFT": "Rotate 90 degrees left; stay in the same room.",
+              "TURN_RIGHT": "Rotate 90 degrees right; stay in the same room.",
+              "FORWARD": "Move one room in the current facing direction, or cross an exit ahead."
+            }
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "TURN_LEFT": 0.02510023814438349,
+              "TURN_RIGHT": 0.12407668412864842,
+              "FORWARD": 0.8508230777269682
+            },
+            "confidence": 0.5550087984590284
+          }
+        },
+        "usage": {
+          "input_tokens": 326,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 0
+      },
+      "latencyMs": 174
+    },
+    {
+      "fixture": "start",
+      "representation": "compact",
+      "order": [
+        "TURN_RIGHT",
+        "FORWARD",
+        "TURN_LEFT"
+      ],
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 0,
+          "facing": "E",
+          "direction": 1,
+          "edges": "##.?",
+          "entriesLeft": 7,
+          "memory": [
+            [
+              0,
+              1,
+              "##.?",
+              7
+            ]
+          ],
+          "previousAction": "START",
+          "previousResult": "Find the exit. Seven entries per room."
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Explore the maze and escape through an observed exit. Choose one action. Edges and memory use N,E,S,W: # wall, . passage, E exit, ? unseen. Memory rows are [room, visits, edges, entriesLeft]. Avoid walls and repeated rooms. Room numbers are row-major; north decreases the row. You cannot move backwards. A turn changes only orientation; FORWARD goes in the facing direction. Entering the same room seven times loses. Use explored memory to navigate; an exit requires moving FORWARD through it.",
+            "criteria": {
+              "TURN_RIGHT": "Rotate 90 degrees right; stay in the same room.",
+              "FORWARD": "Move one room in the current facing direction, or cross an exit ahead.",
+              "TURN_LEFT": "Rotate 90 degrees left; stay in the same room."
+            }
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "TURN_RIGHT": 0.050974028773075594,
+              "FORWARD": 0.8789855223609437,
+              "TURN_LEFT": 0.07004044886598056
+            },
+            "confidence": 0.5891963213370954
+          }
+        },
+        "usage": {
+          "input_tokens": 326,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 231
+      },
+      "latencyMs": 171
+    },
+    {
+      "fixture": "start",
+      "representation": "relative-edges",
+      "order": [
+        "FORWARD",
+        "TURN_LEFT",
+        "TURN_RIGHT"
+      ],
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 0,
+          "facing": "E",
+          "direction": 1,
+          "edges": "##.?",
+          "entriesLeft": 7,
+          "memory": [
+            [
+              0,
+              1,
+              "##.?",
+              7
+            ]
+          ],
+          "previousAction": "START",
+          "previousResult": "Find the exit. Seven entries per room.",
+          "relativeEdges": {
+            "front": "wall",
+            "left": "wall",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Explore the maze and escape through an observed exit. Choose one action. Edges and memory use N,E,S,W: # wall, . passage, E exit, ? unseen. Memory rows are [room, visits, edges, entriesLeft]. Avoid walls and repeated rooms. Room numbers are row-major; north decreases the row. You cannot move backwards. A turn changes only orientation; FORWARD goes in the facing direction. Entering the same room seven times loses. Use explored memory to navigate; an exit requires moving FORWARD through it.",
+            "criteria": {
+              "FORWARD": "Move one room in the current facing direction, or cross an exit ahead.",
+              "TURN_LEFT": "Rotate 90 degrees left; stay in the same room.",
+              "TURN_RIGHT": "Rotate 90 degrees right; stay in the same room."
+            }
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.7473417519970809,
+              "TURN_LEFT": 0.07195808070724435,
+              "TURN_RIGHT": 0.18070016729567473
+            },
+            "confidence": 0.3481019357315255
+          }
+        },
+        "usage": {
+          "input_tokens": 345,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 0
+      },
+      "latencyMs": 155
+    },
+    {
+      "fixture": "start",
+      "representation": "relative-edges",
+      "order": [
+        "TURN_LEFT",
+        "TURN_RIGHT",
+        "FORWARD"
+      ],
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 0,
+          "facing": "E",
+          "direction": 1,
+          "edges": "##.?",
+          "entriesLeft": 7,
+          "memory": [
+            [
+              0,
+              1,
+              "##.?",
+              7
+            ]
+          ],
+          "previousAction": "START",
+          "previousResult": "Find the exit. Seven entries per room.",
+          "relativeEdges": {
+            "front": "wall",
+            "left": "wall",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Explore the maze and escape through an observed exit. Choose one action. Edges and memory use N,E,S,W: # wall, . passage, E exit, ? unseen. Memory rows are [room, visits, edges, entriesLeft]. Avoid walls and repeated rooms. Room numbers are row-major; north decreases the row. You cannot move backwards. A turn changes only orientation; FORWARD goes in the facing direction. Entering the same room seven times loses. Use explored memory to navigate; an exit requires moving FORWARD through it.",
+            "criteria": {
+              "TURN_LEFT": "Rotate 90 degrees left; stay in the same room.",
+              "TURN_RIGHT": "Rotate 90 degrees right; stay in the same room.",
+              "FORWARD": "Move one room in the current facing direction, or cross an exit ahead."
+            }
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "TURN_LEFT": 0.02975438009282924,
+              "TURN_RIGHT": 0.12805263342339415,
+              "FORWARD": 0.8421929864837765
+            },
+            "confidence": 0.5335826986554568
+          }
+        },
+        "usage": {
+          "input_tokens": 345,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 105
+      },
+      "latencyMs": 120
+    },
+    {
+      "fixture": "start",
+      "representation": "relative-edges",
+      "order": [
+        "TURN_RIGHT",
+        "FORWARD",
+        "TURN_LEFT"
+      ],
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 0,
+          "facing": "E",
+          "direction": 1,
+          "edges": "##.?",
+          "entriesLeft": 7,
+          "memory": [
+            [
+              0,
+              1,
+              "##.?",
+              7
+            ]
+          ],
+          "previousAction": "START",
+          "previousResult": "Find the exit. Seven entries per room.",
+          "relativeEdges": {
+            "front": "wall",
+            "left": "wall",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Explore the maze and escape through an observed exit. Choose one action. Edges and memory use N,E,S,W: # wall, . passage, E exit, ? unseen. Memory rows are [room, visits, edges, entriesLeft]. Avoid walls and repeated rooms. Room numbers are row-major; north decreases the row. You cannot move backwards. A turn changes only orientation; FORWARD goes in the facing direction. Entering the same room seven times loses. Use explored memory to navigate; an exit requires moving FORWARD through it.",
+            "criteria": {
+              "TURN_RIGHT": "Rotate 90 degrees right; stay in the same room.",
+              "FORWARD": "Move one room in the current facing direction, or cross an exit ahead.",
+              "TURN_LEFT": "Rotate 90 degrees left; stay in the same room."
+            }
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "TURN_RIGHT": 0.06249348526065624,
+              "FORWARD": 0.847358362664622,
+              "TURN_LEFT": 0.09014815207472193
+            },
+            "confidence": 0.5170742877038262
+          }
+        },
+        "usage": {
+          "input_tokens": 345,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 250
+      },
+      "latencyMs": 67
+    },
+    {
+      "fixture": "after-collisions",
+      "representation": "compact",
+      "order": [
+        "FORWARD",
+        "TURN_LEFT",
+        "TURN_RIGHT"
+      ],
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 0,
+          "facing": "E",
+          "direction": 1,
+          "edges": "##.?",
+          "entriesLeft": 7,
+          "memory": [
+            [
+              0,
+              1,
+              "##.?",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "BUMP \u2014 a wall. Try turning."
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Explore the maze and escape through an observed exit. Choose one action. Edges and memory use N,E,S,W: # wall, . passage, E exit, ? unseen. Memory rows are [room, visits, edges, entriesLeft]. Avoid walls and repeated rooms. Room numbers are row-major; north decreases the row. You cannot move backwards. A turn changes only orientation; FORWARD goes in the facing direction. Entering the same room seven times loses. Use explored memory to navigate; an exit requires moving FORWARD through it.",
+            "criteria": {
+              "FORWARD": "Move one room in the current facing direction, or cross an exit ahead.",
+              "TURN_LEFT": "Rotate 90 degrees left; stay in the same room.",
+              "TURN_RIGHT": "Rotate 90 degrees right; stay in the same room."
+            }
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.7543122037692889,
+              "TURN_LEFT": 0.08918328045846813,
+              "TURN_RIGHT": 0.1565045157722432
+            },
+            "confidence": 0.3459901050491915
+          }
+        },
+        "usage": {
+          "input_tokens": 332,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 0
+      },
+      "latencyMs": 162
+    },
+    {
+      "fixture": "after-collisions",
+      "representation": "compact",
+      "order": [
+        "TURN_LEFT",
+        "TURN_RIGHT",
+        "FORWARD"
+      ],
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 0,
+          "facing": "E",
+          "direction": 1,
+          "edges": "##.?",
+          "entriesLeft": 7,
+          "memory": [
+            [
+              0,
+              1,
+              "##.?",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "BUMP \u2014 a wall. Try turning."
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Explore the maze and escape through an observed exit. Choose one action. Edges and memory use N,E,S,W: # wall, . passage, E exit, ? unseen. Memory rows are [room, visits, edges, entriesLeft]. Avoid walls and repeated rooms. Room numbers are row-major; north decreases the row. You cannot move backwards. A turn changes only orientation; FORWARD goes in the facing direction. Entering the same room seven times loses. Use explored memory to navigate; an exit requires moving FORWARD through it.",
+            "criteria": {
+              "TURN_LEFT": "Rotate 90 degrees left; stay in the same room.",
+              "TURN_RIGHT": "Rotate 90 degrees right; stay in the same room.",
+              "FORWARD": "Move one room in the current facing direction, or cross an exit ahead."
+            }
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "TURN_LEFT": 0.02543817024161871,
+              "TURN_RIGHT": 0.12838907215467485,
+              "FORWARD": 0.8461727576037064
+            },
+            "confidence": 0.5464487070906575
+          }
+        },
+        "usage": {
+          "input_tokens": 332,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 92
+      },
+      "latencyMs": 135
+    },
+    {
+      "fixture": "after-collisions",
+      "representation": "compact",
+      "order": [
+        "TURN_RIGHT",
+        "FORWARD",
+        "TURN_LEFT"
+      ],
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 0,
+          "facing": "E",
+          "direction": 1,
+          "edges": "##.?",
+          "entriesLeft": 7,
+          "memory": [
+            [
+              0,
+              1,
+              "##.?",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "BUMP \u2014 a wall. Try turning."
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Explore the maze and escape through an observed exit. Choose one action. Edges and memory use N,E,S,W: # wall, . passage, E exit, ? unseen. Memory rows are [room, visits, edges, entriesLeft]. Avoid walls and repeated rooms. Room numbers are row-major; north decreases the row. You cannot move backwards. A turn changes only orientation; FORWARD goes in the facing direction. Entering the same room seven times loses. Use explored memory to navigate; an exit requires moving FORWARD through it.",
+            "criteria": {
+              "TURN_RIGHT": "Rotate 90 degrees right; stay in the same room.",
+              "FORWARD": "Move one room in the current facing direction, or cross an exit ahead.",
+              "TURN_LEFT": "Rotate 90 degrees left; stay in the same room."
+            }
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "TURN_RIGHT": 0.07998527323807048,
+              "FORWARD": 0.8428722231569744,
+              "TURN_LEFT": 0.07714250360495513
+            },
+            "confidence": 0.5050454091809294
+          }
+        },
+        "usage": {
+          "input_tokens": 332,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 237
+      },
+      "latencyMs": 84
+    },
+    {
+      "fixture": "after-collisions",
+      "representation": "relative-edges",
+      "order": [
+        "FORWARD",
+        "TURN_LEFT",
+        "TURN_RIGHT"
+      ],
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 0,
+          "facing": "E",
+          "direction": 1,
+          "edges": "##.?",
+          "entriesLeft": 7,
+          "memory": [
+            [
+              0,
+              1,
+              "##.?",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "BUMP \u2014 a wall. Try turning.",
+          "relativeEdges": {
+            "front": "wall",
+            "left": "wall",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Explore the maze and escape through an observed exit. Choose one action. Edges and memory use N,E,S,W: # wall, . passage, E exit, ? unseen. Memory rows are [room, visits, edges, entriesLeft]. Avoid walls and repeated rooms. Room numbers are row-major; north decreases the row. You cannot move backwards. A turn changes only orientation; FORWARD goes in the facing direction. Entering the same room seven times loses. Use explored memory to navigate; an exit requires moving FORWARD through it.",
+            "criteria": {
+              "FORWARD": "Move one room in the current facing direction, or cross an exit ahead.",
+              "TURN_LEFT": "Rotate 90 degrees left; stay in the same room.",
+              "TURN_RIGHT": "Rotate 90 degrees right; stay in the same room."
+            }
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.7185988227125754,
+              "TURN_LEFT": 0.10299594666481265,
+              "TURN_RIGHT": 0.17840523062261193
+            },
+            "confidence": 0.29083654220167876
+          }
+        },
+        "usage": {
+          "input_tokens": 351,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 92
+      },
+      "latencyMs": 178
+    },
+    {
+      "fixture": "after-collisions",
+      "representation": "relative-edges",
+      "order": [
+        "TURN_LEFT",
+        "TURN_RIGHT",
+        "FORWARD"
+      ],
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 0,
+          "facing": "E",
+          "direction": 1,
+          "edges": "##.?",
+          "entriesLeft": 7,
+          "memory": [
+            [
+              0,
+              1,
+              "##.?",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "BUMP \u2014 a wall. Try turning.",
+          "relativeEdges": {
+            "front": "wall",
+            "left": "wall",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Explore the maze and escape through an observed exit. Choose one action. Edges and memory use N,E,S,W: # wall, . passage, E exit, ? unseen. Memory rows are [room, visits, edges, entriesLeft]. Avoid walls and repeated rooms. Room numbers are row-major; north decreases the row. You cannot move backwards. A turn changes only orientation; FORWARD goes in the facing direction. Entering the same room seven times loses. Use explored memory to navigate; an exit requires moving FORWARD through it.",
+            "criteria": {
+              "TURN_LEFT": "Rotate 90 degrees left; stay in the same room.",
+              "TURN_RIGHT": "Rotate 90 degrees right; stay in the same room.",
+              "FORWARD": "Move one room in the current facing direction, or cross an exit ahead."
+            }
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "TURN_LEFT": 0.026459333458102353,
+              "TURN_RIGHT": 0.12162706739861001,
+              "FORWARD": 0.8519135991432877
+            },
+            "confidence": 0.5549987037525104
+          }
+        },
+        "usage": {
+          "input_tokens": 351,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 111
+      },
+      "latencyMs": 124
+    },
+    {
+      "fixture": "after-collisions",
+      "representation": "relative-edges",
+      "order": [
+        "TURN_RIGHT",
+        "FORWARD",
+        "TURN_LEFT"
+      ],
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 0,
+          "facing": "E",
+          "direction": 1,
+          "edges": "##.?",
+          "entriesLeft": 7,
+          "memory": [
+            [
+              0,
+              1,
+              "##.?",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "BUMP \u2014 a wall. Try turning.",
+          "relativeEdges": {
+            "front": "wall",
+            "left": "wall",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Explore the maze and escape through an observed exit. Choose one action. Edges and memory use N,E,S,W: # wall, . passage, E exit, ? unseen. Memory rows are [room, visits, edges, entriesLeft]. Avoid walls and repeated rooms. Room numbers are row-major; north decreases the row. You cannot move backwards. A turn changes only orientation; FORWARD goes in the facing direction. Entering the same room seven times loses. Use explored memory to navigate; an exit requires moving FORWARD through it.",
+            "criteria": {
+              "TURN_RIGHT": "Rotate 90 degrees right; stay in the same room.",
+              "FORWARD": "Move one room in the current facing direction, or cross an exit ahead.",
+              "TURN_LEFT": "Rotate 90 degrees left; stay in the same room."
+            }
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "TURN_RIGHT": 0.08886066871588257,
+              "FORWARD": 0.8185092830901735,
+              "TURN_LEFT": 0.09263004819394402
+            },
+            "confidence": 0.45439618791536107
+          }
+        },
+        "usage": {
+          "input_tokens": 351,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 256
+      },
+      "latencyMs": 59
+    },
+    {
+      "fixture": "start",
+      "representation": "compact",
+      "order": [
+        "FORWARD",
+        "TURN_LEFT",
+        "TURN_RIGHT"
+      ],
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 0,
+          "facing": "E",
+          "direction": 1,
+          "edges": "##.?",
+          "entriesLeft": 7,
+          "memory": [
+            [
+              0,
+              1,
+              "##.?",
+              7
+            ]
+          ],
+          "previousAction": "START",
+          "previousResult": "Find the exit. Seven entries per room."
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Explore the maze and escape through an observed exit. Choose one action. Edges and memory use N,E,S,W: # wall, . passage, E exit, ? unseen. Memory rows are [room, visits, edges, entriesLeft]. Avoid walls and repeated rooms. Room numbers are row-major; north decreases the row. You cannot move backwards. A turn changes only orientation; FORWARD goes in the facing direction. Entering the same room seven times loses. Use explored memory to navigate; an exit requires moving FORWARD through it.",
+            "criteria": {
+              "FORWARD": "Move one room in the current facing direction, or cross an exit ahead.",
+              "TURN_LEFT": "Rotate 90 degrees left; stay in the same room.",
+              "TURN_RIGHT": "Rotate 90 degrees right; stay in the same room."
+            }
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.7732714625474476,
+              "TURN_LEFT": 0.13437443140456315,
+              "TURN_RIGHT": 0.09235410604798919
+            },
+            "confidence": 0.37327039854818844
+          }
+        },
+        "usage": {
+          "input_tokens": 326,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 326
+      },
+      "latencyMs": 35
+    },
+    {
+      "fixture": "start",
+      "representation": "compact",
+      "order": [
+        "TURN_LEFT",
+        "TURN_RIGHT",
+        "FORWARD"
+      ],
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 0,
+          "facing": "E",
+          "direction": 1,
+          "edges": "##.?",
+          "entriesLeft": 7,
+          "memory": [
+            [
+              0,
+              1,
+              "##.?",
+              7
+            ]
+          ],
+          "previousAction": "START",
+          "previousResult": "Find the exit. Seven entries per room."
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Explore the maze and escape through an observed exit. Choose one action. Edges and memory use N,E,S,W: # wall, . passage, E exit, ? unseen. Memory rows are [room, visits, edges, entriesLeft]. Avoid walls and repeated rooms. Room numbers are row-major; north decreases the row. You cannot move backwards. A turn changes only orientation; FORWARD goes in the facing direction. Entering the same room seven times loses. Use explored memory to navigate; an exit requires moving FORWARD through it.",
+            "criteria": {
+              "TURN_LEFT": "Rotate 90 degrees left; stay in the same room.",
+              "TURN_RIGHT": "Rotate 90 degrees right; stay in the same room.",
+              "FORWARD": "Move one room in the current facing direction, or cross an exit ahead."
+            }
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "TURN_LEFT": 0.07323399598373094,
+              "TURN_RIGHT": 0.0345932902262843,
+              "FORWARD": 0.8921727137899846
+            },
+            "confidence": 0.6271580727434494
+          }
+        },
+        "usage": {
+          "input_tokens": 326,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 0
+      },
+      "latencyMs": 1240
+    },
+    {
+      "fixture": "start",
+      "representation": "compact",
+      "order": [
+        "TURN_RIGHT",
+        "FORWARD",
+        "TURN_LEFT"
+      ],
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 0,
+          "facing": "E",
+          "direction": 1,
+          "edges": "##.?",
+          "entriesLeft": 7,
+          "memory": [
+            [
+              0,
+              1,
+              "##.?",
+              7
+            ]
+          ],
+          "previousAction": "START",
+          "previousResult": "Find the exit. Seven entries per room."
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Explore the maze and escape through an observed exit. Choose one action. Edges and memory use N,E,S,W: # wall, . passage, E exit, ? unseen. Memory rows are [room, visits, edges, entriesLeft]. Avoid walls and repeated rooms. Room numbers are row-major; north decreases the row. You cannot move backwards. A turn changes only orientation; FORWARD goes in the facing direction. Entering the same room seven times loses. Use explored memory to navigate; an exit requires moving FORWARD through it.",
+            "criteria": {
+              "TURN_RIGHT": "Rotate 90 degrees right; stay in the same room.",
+              "FORWARD": "Move one room in the current facing direction, or cross an exit ahead.",
+              "TURN_LEFT": "Rotate 90 degrees left; stay in the same room."
+            }
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "TURN_RIGHT": 0.10785679592583577,
+              "FORWARD": 0.7969599157469153,
+              "TURN_LEFT": 0.09518328832724887
+            },
+            "confidence": 0.4129603486374598
+          }
+        },
+        "usage": {
+          "input_tokens": 326,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 231
+      },
+      "latencyMs": 543
+    },
+    {
+      "fixture": "start",
+      "representation": "relative-edges",
+      "order": [
+        "FORWARD",
+        "TURN_LEFT",
+        "TURN_RIGHT"
+      ],
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 0,
+          "facing": "E",
+          "direction": 1,
+          "edges": "##.?",
+          "entriesLeft": 7,
+          "memory": [
+            [
+              0,
+              1,
+              "##.?",
+              7
+            ]
+          ],
+          "previousAction": "START",
+          "previousResult": "Find the exit. Seven entries per room.",
+          "relativeEdges": {
+            "front": "wall",
+            "left": "wall",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Explore the maze and escape through an observed exit. Choose one action. Edges and memory use N,E,S,W: # wall, . passage, E exit, ? unseen. Memory rows are [room, visits, edges, entriesLeft]. Avoid walls and repeated rooms. Room numbers are row-major; north decreases the row. You cannot move backwards. A turn changes only orientation; FORWARD goes in the facing direction. Entering the same room seven times loses. Use explored memory to navigate; an exit requires moving FORWARD through it.",
+            "criteria": {
+              "FORWARD": "Move one room in the current facing direction, or cross an exit ahead.",
+              "TURN_LEFT": "Rotate 90 degrees left; stay in the same room.",
+              "TURN_RIGHT": "Rotate 90 degrees right; stay in the same room."
+            }
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "TURN_RIGHT",
+            "probabilities": {
+              "FORWARD": 0.33149896042409155,
+              "TURN_LEFT": 0.12195165230972886,
+              "TURN_RIGHT": 0.5465493872661796
+            },
+            "confidence": 0.13271717980827158
+          }
+        },
+        "usage": {
+          "input_tokens": 345,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 0
+      },
+      "latencyMs": 1149
+    },
+    {
+      "fixture": "start",
+      "representation": "relative-edges",
+      "order": [
+        "TURN_LEFT",
+        "TURN_RIGHT",
+        "FORWARD"
+      ],
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 0,
+          "facing": "E",
+          "direction": 1,
+          "edges": "##.?",
+          "entriesLeft": 7,
+          "memory": [
+            [
+              0,
+              1,
+              "##.?",
+              7
+            ]
+          ],
+          "previousAction": "START",
+          "previousResult": "Find the exit. Seven entries per room.",
+          "relativeEdges": {
+            "front": "wall",
+            "left": "wall",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Explore the maze and escape through an observed exit. Choose one action. Edges and memory use N,E,S,W: # wall, . passage, E exit, ? unseen. Memory rows are [room, visits, edges, entriesLeft]. Avoid walls and repeated rooms. Room numbers are row-major; north decreases the row. You cannot move backwards. A turn changes only orientation; FORWARD goes in the facing direction. Entering the same room seven times loses. Use explored memory to navigate; an exit requires moving FORWARD through it.",
+            "criteria": {
+              "TURN_LEFT": "Rotate 90 degrees left; stay in the same room.",
+              "TURN_RIGHT": "Rotate 90 degrees right; stay in the same room.",
+              "FORWARD": "Move one room in the current facing direction, or cross an exit ahead."
+            }
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "TURN_RIGHT",
+            "probabilities": {
+              "TURN_LEFT": 0.11367898207225725,
+              "TURN_RIGHT": 0.5773095066830043,
+              "FORWARD": 0.30901151124473847
+            },
+            "confidence": 0.15599224629230868
+          }
+        },
+        "usage": {
+          "input_tokens": 345,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 105
+      },
+      "latencyMs": 819
+    },
+    {
+      "fixture": "start",
+      "representation": "relative-edges",
+      "order": [
+        "TURN_RIGHT",
+        "FORWARD",
+        "TURN_LEFT"
+      ],
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 0,
+          "facing": "E",
+          "direction": 1,
+          "edges": "##.?",
+          "entriesLeft": 7,
+          "memory": [
+            [
+              0,
+              1,
+              "##.?",
+              7
+            ]
+          ],
+          "previousAction": "START",
+          "previousResult": "Find the exit. Seven entries per room.",
+          "relativeEdges": {
+            "front": "wall",
+            "left": "wall",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Explore the maze and escape through an observed exit. Choose one action. Edges and memory use N,E,S,W: # wall, . passage, E exit, ? unseen. Memory rows are [room, visits, edges, entriesLeft]. Avoid walls and repeated rooms. Room numbers are row-major; north decreases the row. You cannot move backwards. A turn changes only orientation; FORWARD goes in the facing direction. Entering the same room seven times loses. Use explored memory to navigate; an exit requires moving FORWARD through it.",
+            "criteria": {
+              "TURN_RIGHT": "Rotate 90 degrees right; stay in the same room.",
+              "FORWARD": "Move one room in the current facing direction, or cross an exit ahead.",
+              "TURN_LEFT": "Rotate 90 degrees left; stay in the same room."
+            }
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "TURN_RIGHT",
+            "probabilities": {
+              "TURN_RIGHT": 0.8338453529847986,
+              "FORWARD": 0.11284869702173102,
+              "TURN_LEFT": 0.05330594999347029
+            },
+            "confidence": 0.49573103802596385
+          }
+        },
+        "usage": {
+          "input_tokens": 345,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 250
+      },
+      "latencyMs": 335
+    },
+    {
+      "fixture": "after-collisions",
+      "representation": "compact",
+      "order": [
+        "FORWARD",
+        "TURN_LEFT",
+        "TURN_RIGHT"
+      ],
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 0,
+          "facing": "E",
+          "direction": 1,
+          "edges": "##.?",
+          "entriesLeft": 7,
+          "memory": [
+            [
+              0,
+              1,
+              "##.?",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "BUMP \u2014 a wall. Try turning."
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Explore the maze and escape through an observed exit. Choose one action. Edges and memory use N,E,S,W: # wall, . passage, E exit, ? unseen. Memory rows are [room, visits, edges, entriesLeft]. Avoid walls and repeated rooms. Room numbers are row-major; north decreases the row. You cannot move backwards. A turn changes only orientation; FORWARD goes in the facing direction. Entering the same room seven times loses. Use explored memory to navigate; an exit requires moving FORWARD through it.",
+            "criteria": {
+              "FORWARD": "Move one room in the current facing direction, or cross an exit ahead.",
+              "TURN_LEFT": "Rotate 90 degrees left; stay in the same room.",
+              "TURN_RIGHT": "Rotate 90 degrees right; stay in the same room."
+            }
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "TURN_LEFT",
+            "probabilities": {
+              "FORWARD": 0.23269653761889864,
+              "TURN_LEFT": 0.38365173119055074,
+              "TURN_RIGHT": 0.38365173119055074
+            },
+            "confidence": 0.022067777833632674
+          }
+        },
+        "usage": {
+          "input_tokens": 332,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 0
+      },
+      "latencyMs": 1119
+    },
+    {
+      "fixture": "after-collisions",
+      "representation": "compact",
+      "order": [
+        "TURN_LEFT",
+        "TURN_RIGHT",
+        "FORWARD"
+      ],
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 0,
+          "facing": "E",
+          "direction": 1,
+          "edges": "##.?",
+          "entriesLeft": 7,
+          "memory": [
+            [
+              0,
+              1,
+              "##.?",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "BUMP \u2014 a wall. Try turning."
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Explore the maze and escape through an observed exit. Choose one action. Edges and memory use N,E,S,W: # wall, . passage, E exit, ? unseen. Memory rows are [room, visits, edges, entriesLeft]. Avoid walls and repeated rooms. Room numbers are row-major; north decreases the row. You cannot move backwards. A turn changes only orientation; FORWARD goes in the facing direction. Entering the same room seven times loses. Use explored memory to navigate; an exit requires moving FORWARD through it.",
+            "criteria": {
+              "TURN_LEFT": "Rotate 90 degrees left; stay in the same room.",
+              "TURN_RIGHT": "Rotate 90 degrees right; stay in the same room.",
+              "FORWARD": "Move one room in the current facing direction, or cross an exit ahead."
+            }
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "TURN_LEFT",
+            "probabilities": {
+              "TURN_LEFT": 0.4995177298132149,
+              "TURN_RIGHT": 0.3890247991365822,
+              "FORWARD": 0.11145747105020275
+            },
+            "confidence": 0.12748600880529282
+          }
+        },
+        "usage": {
+          "input_tokens": 332,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 92
+      },
+      "latencyMs": 820
+    },
+    {
+      "fixture": "after-collisions",
+      "representation": "compact",
+      "order": [
+        "TURN_RIGHT",
+        "FORWARD",
+        "TURN_LEFT"
+      ],
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 0,
+          "facing": "E",
+          "direction": 1,
+          "edges": "##.?",
+          "entriesLeft": 7,
+          "memory": [
+            [
+              0,
+              1,
+              "##.?",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "BUMP \u2014 a wall. Try turning."
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Explore the maze and escape through an observed exit. Choose one action. Edges and memory use N,E,S,W: # wall, . passage, E exit, ? unseen. Memory rows are [room, visits, edges, entriesLeft]. Avoid walls and repeated rooms. Room numbers are row-major; north decreases the row. You cannot move backwards. A turn changes only orientation; FORWARD goes in the facing direction. Entering the same room seven times loses. Use explored memory to navigate; an exit requires moving FORWARD through it.",
+            "criteria": {
+              "TURN_RIGHT": "Rotate 90 degrees right; stay in the same room.",
+              "FORWARD": "Move one room in the current facing direction, or cross an exit ahead.",
+              "TURN_LEFT": "Rotate 90 degrees left; stay in the same room."
+            }
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "TURN_RIGHT",
+            "probabilities": {
+              "TURN_RIGHT": 0.48418985050779795,
+              "FORWARD": 0.13872271476150247,
+              "TURN_LEFT": 0.3770874347306995
+            },
+            "confidence": 0.09617482123769905
+          }
+        },
+        "usage": {
+          "input_tokens": 332,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 237
+      },
+      "latencyMs": 451
+    },
+    {
+      "fixture": "after-collisions",
+      "representation": "relative-edges",
+      "order": [
+        "FORWARD",
+        "TURN_LEFT",
+        "TURN_RIGHT"
+      ],
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 0,
+          "facing": "E",
+          "direction": 1,
+          "edges": "##.?",
+          "entriesLeft": 7,
+          "memory": [
+            [
+              0,
+              1,
+              "##.?",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "BUMP \u2014 a wall. Try turning.",
+          "relativeEdges": {
+            "front": "wall",
+            "left": "wall",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Explore the maze and escape through an observed exit. Choose one action. Edges and memory use N,E,S,W: # wall, . passage, E exit, ? unseen. Memory rows are [room, visits, edges, entriesLeft]. Avoid walls and repeated rooms. Room numbers are row-major; north decreases the row. You cannot move backwards. A turn changes only orientation; FORWARD goes in the facing direction. Entering the same room seven times loses. Use explored memory to navigate; an exit requires moving FORWARD through it.",
+            "criteria": {
+              "FORWARD": "Move one room in the current facing direction, or cross an exit ahead.",
+              "TURN_LEFT": "Rotate 90 degrees left; stay in the same room.",
+              "TURN_RIGHT": "Rotate 90 degrees right; stay in the same room."
+            }
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "TURN_RIGHT",
+            "probabilities": {
+              "FORWARD": 0.043565803737052426,
+              "TURN_LEFT": 0.0813916367140338,
+              "TURN_RIGHT": 0.8750425595489137
+            },
+            "confidence": 0.5835789318499924
+          }
+        },
+        "usage": {
+          "input_tokens": 351,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 92
+      },
+      "latencyMs": 942
+    },
+    {
+      "fixture": "after-collisions",
+      "representation": "relative-edges",
+      "order": [
+        "TURN_LEFT",
+        "TURN_RIGHT",
+        "FORWARD"
+      ],
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 0,
+          "facing": "E",
+          "direction": 1,
+          "edges": "##.?",
+          "entriesLeft": 7,
+          "memory": [
+            [
+              0,
+              1,
+              "##.?",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "BUMP \u2014 a wall. Try turning.",
+          "relativeEdges": {
+            "front": "wall",
+            "left": "wall",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Explore the maze and escape through an observed exit. Choose one action. Edges and memory use N,E,S,W: # wall, . passage, E exit, ? unseen. Memory rows are [room, visits, edges, entriesLeft]. Avoid walls and repeated rooms. Room numbers are row-major; north decreases the row. You cannot move backwards. A turn changes only orientation; FORWARD goes in the facing direction. Entering the same room seven times loses. Use explored memory to navigate; an exit requires moving FORWARD through it.",
+            "criteria": {
+              "TURN_LEFT": "Rotate 90 degrees left; stay in the same room.",
+              "TURN_RIGHT": "Rotate 90 degrees right; stay in the same room.",
+              "FORWARD": "Move one room in the current facing direction, or cross an exit ahead."
+            }
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "TURN_RIGHT",
+            "probabilities": {
+              "TURN_LEFT": 0.09310488123433706,
+              "TURN_RIGHT": 0.8833545182269242,
+              "FORWARD": 0.023540600538738708
+            },
+            "confidence": 0.618746913620334
+          }
+        },
+        "usage": {
+          "input_tokens": 351,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 111
+      },
+      "latencyMs": 851
+    },
+    {
+      "fixture": "after-collisions",
+      "representation": "relative-edges",
+      "order": [
+        "TURN_RIGHT",
+        "FORWARD",
+        "TURN_LEFT"
+      ],
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 0,
+          "facing": "E",
+          "direction": 1,
+          "edges": "##.?",
+          "entriesLeft": 7,
+          "memory": [
+            [
+              0,
+              1,
+              "##.?",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "BUMP \u2014 a wall. Try turning.",
+          "relativeEdges": {
+            "front": "wall",
+            "left": "wall",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Explore the maze and escape through an observed exit. Choose one action. Edges and memory use N,E,S,W: # wall, . passage, E exit, ? unseen. Memory rows are [room, visits, edges, entriesLeft]. Avoid walls and repeated rooms. Room numbers are row-major; north decreases the row. You cannot move backwards. A turn changes only orientation; FORWARD goes in the facing direction. Entering the same room seven times loses. Use explored memory to navigate; an exit requires moving FORWARD through it.",
+            "criteria": {
+              "TURN_RIGHT": "Rotate 90 degrees right; stay in the same room.",
+              "FORWARD": "Move one room in the current facing direction, or cross an exit ahead.",
+              "TURN_LEFT": "Rotate 90 degrees left; stay in the same room."
+            }
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "TURN_RIGHT",
+            "probabilities": {
+              "TURN_RIGHT": 0.9135146946316708,
+              "FORWARD": 0.01149945291657713,
+              "TURN_LEFT": 0.07498585245175202
+            },
+            "confidence": 0.7012316735930342
+          }
+        },
+        "usage": {
+          "input_tokens": 351,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 256
+      },
+      "latencyMs": 367
+    }
+  ],
+  "localModels": [
+    {
+      "name": "tev1:0.8b",
+      "model": "tev1:0.8b",
+      "modified_at": "2026-10-27T17:49:53.890682345+01:00",
+      "size": 1524372929,
+      "digest": "b661d56508169d2b6c4cab5a047409f50bd9694a215bc232469d44291f4bdbf1",
+      "details": {
+        "parent_model": "",
+        "format": "safetensors",
+        "family": "qwen3_5",
+        "families": [
+          "qwen3_5"
+        ],
+        "parameter_size": "752M",
+        "quantization_level": "BF16",
+        "runner": "mlx"
+      },
+      "capabilities": [
+        "decision"
+      ]
+    },
+    {
+      "name": "tev1:latest",
+      "model": "tev1:latest",
+      "modified_at": "2026-10-13T19:17:11.060858551+02:00",
+      "size": 4361568327,
+      "digest": "4d24c6f6d61a48d9b72902f4805c5f1da53010736b834b0372377fb4bb7e53d3",
+      "details": {
+        "parent_model": "",
+        "format": "safetensors",
+        "family": "qwen3_5",
+        "families": [
+          "qwen3_5"
+        ],
+        "parameter_size": "4.2B",
+        "quantization_level": "mxfp8",
+        "runner": "mlx"
+      },
+      "capabilities": [
+        "decision"
+      ]
+    }
+  ],
+  "localOllamaVersion": {
+    "version": "0.40.2"
+  }
+}

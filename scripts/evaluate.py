@@ -1,15 +1,28 @@
 #!/usr/bin/env python3
 """Paired live trials through the application's actual TPF entrypoints. No solver."""
-import argparse,json,time,urllib.request,statistics,datetime,os
+import argparse,json,time,urllib.request,statistics,datetime,os,hashlib,zipfile
 from pathlib import Path
 
 def main():
- p=argparse.ArgumentParser(description=__doc__);p.add_argument('--url',default='http://127.0.0.1:8087');p.add_argument('--out',default='evidence/evaluation.json');args=p.parse_args()
+ p=argparse.ArgumentParser(description=__doc__);p.add_argument('--url',default='http://127.0.0.1:8087');p.add_argument('--out',default='evidence/evaluation.json');p.add_argument('--players',nargs='+',choices=['TEV1','RANDOM','EXPLORER'],default=['TEV1','RANDOM','EXPLORER']);p.add_argument('--runtime',type=Path,help='Quarkus package actually serving this URL; records compiled class hashes separately from checkout sources');args=p.parse_args()
  def call(path='',body=None):
   req=urllib.request.Request(args.url+'/api/game'+path,data=None if body is None else json.dumps(body).encode(),headers={'Content-Type':'application/json'})
   with urllib.request.urlopen(req,timeout=20) as r:return json.load(r)
  out=Path(args.out);out.parent.mkdir(parents=True,exist_ok=True)
- report={'protocol':'ghost-paired-v1','recordedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'seeds':[1983,1986,2026],'levels':[1,2,3],'players':['TEV1','RANDOM','EXPLORER'],'maxDecisions':128,'durationMs':120000,'information':'local visible edges plus persistent observed-room memory; no full map or witness','trials':[]}
+ report={'protocol':'ghost-paired-v1','recordedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'seeds':[1983,1986,2026],'levels':[1,2,3],'players':args.players,'maxDecisions':128,'durationMs':120000,'information':'local visible edges plus persistent observed-room memory; no full map or witness','trials':[]}
+ repo=Path(__file__).resolve().parents[1]
+ report['sourceSha256']={str(p):hashlib.sha256((repo/p).read_bytes()).hexdigest() for p in [Path('connectors/src/main/java/dev/ghost')/name for name in ['Rules.java','Observations.java','Baselines.java']]}
+ report['sourceIdentityScope']='Local checkout files; these do not prove which binary the server loaded.'
+ if args.runtime:
+  classes=['dev/ghost/'+name+'.class' for name in ['Rules','Observations','Baselines','DecodeChoice','Runs','Session']]
+  report['runtimeClassesSha256']={}
+  for jar in args.runtime.rglob('*.jar'):
+   if 'ghost' not in jar.name:continue
+   with zipfile.ZipFile(jar) as z:
+    for name in classes:
+     if name in z.namelist():report['runtimeClassesSha256'][name]=hashlib.sha256(z.read(name)).hexdigest()
+  if set(report['runtimeClassesSha256'])!=set(classes):raise ValueError('Runtime package missing expected game classes')
+  report['runtimeIdentityScope']='Caller-supplied serving package; verify server process command points to this immutable package before evaluating.'
  try:
   configured_model=call().get('model')
   with urllib.request.urlopen('http://localhost:11434/api/tags',timeout=3) as r:report['localModels']=[m for m in json.load(r)['models'] if m['name']==configured_model]

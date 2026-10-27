@@ -1,5 +1,7 @@
 # What the players actually did
 
+**Follow-up:** the [fresh paired model investigation](model-comparison.md) compares Tev1 0.8B and the installed 4B variant on the same nine cases: **0/9 versus 1/9 escapes**, with **1,148 versus 257 wall rejections**. It includes controlled observation/order probes and preserves the original gameplay inputs. The three-player experiment below remains the original baseline record.
+
 Protocol: nine fixed cases (seeds 1983, 1986 and 2026 × levels 1–3), each started afresh for Tev1, Random and Explorer. All paired starting observations were verified identical. Each trial allowed 128 decisions and 120 seconds. No seed, map or route was changed in response to a model result.
 
 | Player | Escaped | Decisions | Successful moves | Wall rejections | Rooms explored, summed over cases |

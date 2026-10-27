@@ -1,0 +1,6901 @@
+{
+  "protocol": "ghost-paired-v1",
+  "recordedAt": "2026-10-27T18:41:50.158722+00:00",
+  "seeds": [
+    1983,
+    1986,
+    2026
+  ],
+  "levels": [
+    1,
+    2,
+    3
+  ],
+  "players": [
+    "TEV1"
+  ],
+  "maxDecisions": 128,
+  "durationMs": 120000,
+  "information": "local visible edges plus persistent observed-room memory; no full map or witness",
+  "trials": [
+    {
+      "seed": 1983,
+      "level": 1,
+      "size": 3,
+      "player": "TEV1",
+      "model": "tev1:latest",
+      "initialObservation": {
+        "level": 1,
+        "size": 3,
+        "room": 0,
+        "facing": "E",
+        "direction": 1,
+        "edges": "##.?",
+        "entriesLeft": 7,
+        "memory": [
+          [
+            0,
+            1,
+            "##.?",
+            7
+          ]
+        ],
+        "previousAction": "START",
+        "previousResult": "Find the exit. Seven entries per room."
+      },
+      "exitFound": false,
+      "status": "LOST",
+      "termination": "LOST",
+      "decisions": 68,
+      "moves": 14,
+      "collisions": 27,
+      "repeatedPositions": 11,
+      "roomsExplored": 4,
+      "rejectedActions": 27,
+      "executionFailure": false,
+      "elapsedSeconds": 70.447,
+      "decisionLatencyMs": {
+        "median": 1002.5,
+        "max": 2034
+      },
+      "actions": [
+        {
+          "turn": 1,
+          "level": 1,
+          "room": 0,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 578,
+          "player": "TEV1"
+        },
+        {
+          "turn": 2,
+          "level": 1,
+          "room": 0,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1818,
+          "player": "TEV1"
+        },
+        {
+          "turn": 3,
+          "level": 1,
+          "room": 0,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1127,
+          "player": "TEV1"
+        },
+        {
+          "turn": 4,
+          "level": 1,
+          "room": 0,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 915,
+          "player": "TEV1"
+        },
+        {
+          "turn": 5,
+          "level": 1,
+          "room": 0,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 938,
+          "player": "TEV1"
+        },
+        {
+          "turn": 6,
+          "level": 1,
+          "room": 0,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 909,
+          "player": "TEV1"
+        },
+        {
+          "turn": 7,
+          "level": 1,
+          "room": 0,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 4 \u00b7 6 entries left.",
+          "latencyMs": 921,
+          "player": "TEV1"
+        },
+        {
+          "turn": 8,
+          "level": 1,
+          "room": 3,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1097,
+          "player": "TEV1"
+        },
+        {
+          "turn": 9,
+          "level": 1,
+          "room": 3,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 917,
+          "player": "TEV1"
+        },
+        {
+          "turn": 10,
+          "level": 1,
+          "room": 3,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 5 \u00b7 6 entries left.",
+          "latencyMs": 1214,
+          "player": "TEV1"
+        },
+        {
+          "turn": 11,
+          "level": 1,
+          "room": 4,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1032,
+          "player": "TEV1"
+        },
+        {
+          "turn": 12,
+          "level": 1,
+          "room": 4,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1092,
+          "player": "TEV1"
+        },
+        {
+          "turn": 13,
+          "level": 1,
+          "room": 4,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 2 \u00b7 6 entries left.",
+          "latencyMs": 1008,
+          "player": "TEV1"
+        },
+        {
+          "turn": 14,
+          "level": 1,
+          "room": 1,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1013,
+          "player": "TEV1"
+        },
+        {
+          "turn": 15,
+          "level": 1,
+          "room": 1,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1010,
+          "player": "TEV1"
+        },
+        {
+          "turn": 16,
+          "level": 1,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1006,
+          "player": "TEV1"
+        },
+        {
+          "turn": 17,
+          "level": 1,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1019,
+          "player": "TEV1"
+        },
+        {
+          "turn": 18,
+          "level": 1,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 5 \u00b7 5 entries left.",
+          "latencyMs": 1006,
+          "player": "TEV1"
+        },
+        {
+          "turn": 19,
+          "level": 1,
+          "room": 4,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1032,
+          "player": "TEV1"
+        },
+        {
+          "turn": 20,
+          "level": 1,
+          "room": 4,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1012,
+          "player": "TEV1"
+        },
+        {
+          "turn": 21,
+          "level": 1,
+          "room": 4,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1003,
+          "player": "TEV1"
+        },
+        {
+          "turn": 22,
+          "level": 1,
+          "room": 4,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 949,
+          "player": "TEV1"
+        },
+        {
+          "turn": 23,
+          "level": 1,
+          "room": 4,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 2 \u00b7 5 entries left.",
+          "latencyMs": 1025,
+          "player": "TEV1"
+        },
+        {
+          "turn": 24,
+          "level": 1,
+          "room": 1,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1298,
+          "player": "TEV1"
+        },
+        {
+          "turn": 25,
+          "level": 1,
+          "room": 1,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 917,
+          "player": "TEV1"
+        },
+        {
+          "turn": 26,
+          "level": 1,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1021,
+          "player": "TEV1"
+        },
+        {
+          "turn": 27,
+          "level": 1,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 911,
+          "player": "TEV1"
+        },
+        {
+          "turn": 28,
+          "level": 1,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 5 \u00b7 4 entries left.",
+          "latencyMs": 1050,
+          "player": "TEV1"
+        },
+        {
+          "turn": 29,
+          "level": 1,
+          "room": 4,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1079,
+          "player": "TEV1"
+        },
+        {
+          "turn": 30,
+          "level": 1,
+          "room": 4,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 928,
+          "player": "TEV1"
+        },
+        {
+          "turn": 31,
+          "level": 1,
+          "room": 4,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1006,
+          "player": "TEV1"
+        },
+        {
+          "turn": 32,
+          "level": 1,
+          "room": 4,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1044,
+          "player": "TEV1"
+        },
+        {
+          "turn": 33,
+          "level": 1,
+          "room": 4,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 2 \u00b7 4 entries left.",
+          "latencyMs": 1106,
+          "player": "TEV1"
+        },
+        {
+          "turn": 34,
+          "level": 1,
+          "room": 1,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 959,
+          "player": "TEV1"
+        },
+        {
+          "turn": 35,
+          "level": 1,
+          "room": 1,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1002,
+          "player": "TEV1"
+        },
+        {
+          "turn": 36,
+          "level": 1,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1027,
+          "player": "TEV1"
+        },
+        {
+          "turn": 37,
+          "level": 1,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 926,
+          "player": "TEV1"
+        },
+        {
+          "turn": 38,
+          "level": 1,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 5 \u00b7 3 entries left.",
+          "latencyMs": 950,
+          "player": "TEV1"
+        },
+        {
+          "turn": 39,
+          "level": 1,
+          "room": 4,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 937,
+          "player": "TEV1"
+        },
+        {
+          "turn": 40,
+          "level": 1,
+          "room": 4,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 939,
+          "player": "TEV1"
+        },
+        {
+          "turn": 41,
+          "level": 1,
+          "room": 4,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1014,
+          "player": "TEV1"
+        },
+        {
+          "turn": 42,
+          "level": 1,
+          "room": 4,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 928,
+          "player": "TEV1"
+        },
+        {
+          "turn": 43,
+          "level": 1,
+          "room": 4,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 2 \u00b7 3 entries left.",
+          "latencyMs": 947,
+          "player": "TEV1"
+        },
+        {
+          "turn": 44,
+          "level": 1,
+          "room": 1,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 940,
+          "player": "TEV1"
+        },
+        {
+          "turn": 45,
+          "level": 1,
+          "room": 1,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 956,
+          "player": "TEV1"
+        },
+        {
+          "turn": 46,
+          "level": 1,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1326,
+          "player": "TEV1"
+        },
+        {
+          "turn": 47,
+          "level": 1,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 998,
+          "player": "TEV1"
+        },
+        {
+          "turn": 48,
+          "level": 1,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 5 \u00b7 2 entries left.",
+          "latencyMs": 2034,
+          "player": "TEV1"
+        },
+        {
+          "turn": 49,
+          "level": 1,
+          "room": 4,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 969,
+          "player": "TEV1"
+        },
+        {
+          "turn": 50,
+          "level": 1,
+          "room": 4,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 947,
+          "player": "TEV1"
+        },
+        {
+          "turn": 51,
+          "level": 1,
+          "room": 4,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 992,
+          "player": "TEV1"
+        },
+        {
+          "turn": 52,
+          "level": 1,
+          "room": 4,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 962,
+          "player": "TEV1"
+        },
+        {
+          "turn": 53,
+          "level": 1,
+          "room": 4,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 2 \u00b7 2 entries left.",
+          "latencyMs": 1026,
+          "player": "TEV1"
+        },
+        {
+          "turn": 54,
+          "level": 1,
+          "room": 1,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 945,
+          "player": "TEV1"
+        },
+        {
+          "turn": 55,
+          "level": 1,
+          "room": 1,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 926,
+          "player": "TEV1"
+        },
+        {
+          "turn": 56,
+          "level": 1,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1037,
+          "player": "TEV1"
+        },
+        {
+          "turn": 57,
+          "level": 1,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 925,
+          "player": "TEV1"
+        },
+        {
+          "turn": 58,
+          "level": 1,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 5 \u00b7 1 entries left.",
+          "latencyMs": 974,
+          "player": "TEV1"
+        },
+        {
+          "turn": 59,
+          "level": 1,
+          "room": 4,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 918,
+          "player": "TEV1"
+        },
+        {
+          "turn": 60,
+          "level": 1,
+          "room": 4,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 943,
+          "player": "TEV1"
+        },
+        {
+          "turn": 61,
+          "level": 1,
+          "room": 4,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 935,
+          "player": "TEV1"
+        },
+        {
+          "turn": 62,
+          "level": 1,
+          "room": 4,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 986,
+          "player": "TEV1"
+        },
+        {
+          "turn": 63,
+          "level": 1,
+          "room": 4,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 2 \u00b7 1 entries left.",
+          "latencyMs": 1118,
+          "player": "TEV1"
+        },
+        {
+          "turn": 64,
+          "level": 1,
+          "room": 1,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1080,
+          "player": "TEV1"
+        },
+        {
+          "turn": 65,
+          "level": 1,
+          "room": 1,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1015,
+          "player": "TEV1"
+        },
+        {
+          "turn": 66,
+          "level": 1,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1008,
+          "player": "TEV1"
+        },
+        {
+          "turn": 67,
+          "level": 1,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 932,
+          "player": "TEV1"
+        },
+        {
+          "turn": 68,
+          "level": 1,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "GAME OVER \u2014 this room has no entries left.",
+          "latencyMs": 1039,
+          "player": "TEV1"
+        }
+      ],
+      "finalObservation": {
+        "level": 1,
+        "size": 3,
+        "room": 4,
+        "facing": "S",
+        "direction": 2,
+        "edges": ".##.",
+        "entriesLeft": 0,
+        "memory": [
+          [
+            0,
+            1,
+            "##.#",
+            7
+          ],
+          [
+            1,
+            6,
+            "#..#",
+            1
+          ],
+          [
+            3,
+            1,
+            "..##",
+            6
+          ],
+          [
+            4,
+            7,
+            ".##.",
+            0
+          ]
+        ],
+        "previousAction": "FORWARD",
+        "previousResult": "GAME OVER \u2014 this room has no entries left."
+      }
+    },
+    {
+      "seed": 1983,
+      "level": 2,
+      "size": 4,
+      "player": "TEV1",
+      "model": "tev1:latest",
+      "initialObservation": {
+        "level": 2,
+        "size": 4,
+        "room": 6,
+        "facing": "E",
+        "direction": 1,
+        "edges": ".##?",
+        "entriesLeft": 7,
+        "memory": [
+          [
+            6,
+            1,
+            ".##?",
+            7
+          ]
+        ],
+        "previousAction": "START",
+        "previousResult": "Find the exit. Seven entries per room."
+      },
+      "exitFound": false,
+      "status": "LOST",
+      "termination": "LOST",
+      "decisions": 63,
+      "moves": 13,
+      "collisions": 25,
+      "repeatedPositions": 12,
+      "roomsExplored": 2,
+      "rejectedActions": 25,
+      "executionFailure": false,
+      "elapsedSeconds": 71.134,
+      "decisionLatencyMs": {
+        "median": 986,
+        "max": 3132
+      },
+      "actions": [
+        {
+          "turn": 1,
+          "level": 2,
+          "room": 6,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1142,
+          "player": "TEV1"
+        },
+        {
+          "turn": 2,
+          "level": 2,
+          "room": 6,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 918,
+          "player": "TEV1"
+        },
+        {
+          "turn": 3,
+          "level": 2,
+          "room": 6,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 3 \u00b7 6 entries left.",
+          "latencyMs": 980,
+          "player": "TEV1"
+        },
+        {
+          "turn": 4,
+          "level": 2,
+          "room": 2,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1105,
+          "player": "TEV1"
+        },
+        {
+          "turn": 5,
+          "level": 2,
+          "room": 2,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 989,
+          "player": "TEV1"
+        },
+        {
+          "turn": 6,
+          "level": 2,
+          "room": 2,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 990,
+          "player": "TEV1"
+        },
+        {
+          "turn": 7,
+          "level": 2,
+          "room": 2,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1076,
+          "player": "TEV1"
+        },
+        {
+          "turn": 8,
+          "level": 2,
+          "room": 2,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 7 \u00b7 6 entries left.",
+          "latencyMs": 946,
+          "player": "TEV1"
+        },
+        {
+          "turn": 9,
+          "level": 2,
+          "room": 6,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 906,
+          "player": "TEV1"
+        },
+        {
+          "turn": 10,
+          "level": 2,
+          "room": 6,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 921,
+          "player": "TEV1"
+        },
+        {
+          "turn": 11,
+          "level": 2,
+          "room": 6,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 2980,
+          "player": "TEV1"
+        },
+        {
+          "turn": 12,
+          "level": 2,
+          "room": 6,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 973,
+          "player": "TEV1"
+        },
+        {
+          "turn": 13,
+          "level": 2,
+          "room": 6,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 3 \u00b7 5 entries left.",
+          "latencyMs": 1000,
+          "player": "TEV1"
+        },
+        {
+          "turn": 14,
+          "level": 2,
+          "room": 2,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1071,
+          "player": "TEV1"
+        },
+        {
+          "turn": 15,
+          "level": 2,
+          "room": 2,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 952,
+          "player": "TEV1"
+        },
+        {
+          "turn": 16,
+          "level": 2,
+          "room": 2,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 936,
+          "player": "TEV1"
+        },
+        {
+          "turn": 17,
+          "level": 2,
+          "room": 2,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 964,
+          "player": "TEV1"
+        },
+        {
+          "turn": 18,
+          "level": 2,
+          "room": 2,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 7 \u00b7 5 entries left.",
+          "latencyMs": 1031,
+          "player": "TEV1"
+        },
+        {
+          "turn": 19,
+          "level": 2,
+          "room": 6,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1000,
+          "player": "TEV1"
+        },
+        {
+          "turn": 20,
+          "level": 2,
+          "room": 6,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 926,
+          "player": "TEV1"
+        },
+        {
+          "turn": 21,
+          "level": 2,
+          "room": 6,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 934,
+          "player": "TEV1"
+        },
+        {
+          "turn": 22,
+          "level": 2,
+          "room": 6,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1078,
+          "player": "TEV1"
+        },
+        {
+          "turn": 23,
+          "level": 2,
+          "room": 6,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 3 \u00b7 4 entries left.",
+          "latencyMs": 1533,
+          "player": "TEV1"
+        },
+        {
+          "turn": 24,
+          "level": 2,
+          "room": 2,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1025,
+          "player": "TEV1"
+        },
+        {
+          "turn": 25,
+          "level": 2,
+          "room": 2,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 993,
+          "player": "TEV1"
+        },
+        {
+          "turn": 26,
+          "level": 2,
+          "room": 2,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 927,
+          "player": "TEV1"
+        },
+        {
+          "turn": 27,
+          "level": 2,
+          "room": 2,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 997,
+          "player": "TEV1"
+        },
+        {
+          "turn": 28,
+          "level": 2,
+          "room": 2,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 7 \u00b7 4 entries left.",
+          "latencyMs": 944,
+          "player": "TEV1"
+        },
+        {
+          "turn": 29,
+          "level": 2,
+          "room": 6,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 933,
+          "player": "TEV1"
+        },
+        {
+          "turn": 30,
+          "level": 2,
+          "room": 6,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1056,
+          "player": "TEV1"
+        },
+        {
+          "turn": 31,
+          "level": 2,
+          "room": 6,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1057,
+          "player": "TEV1"
+        },
+        {
+          "turn": 32,
+          "level": 2,
+          "room": 6,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 986,
+          "player": "TEV1"
+        },
+        {
+          "turn": 33,
+          "level": 2,
+          "room": 6,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 3 \u00b7 3 entries left.",
+          "latencyMs": 932,
+          "player": "TEV1"
+        },
+        {
+          "turn": 34,
+          "level": 2,
+          "room": 2,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 964,
+          "player": "TEV1"
+        },
+        {
+          "turn": 35,
+          "level": 2,
+          "room": 2,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 936,
+          "player": "TEV1"
+        },
+        {
+          "turn": 36,
+          "level": 2,
+          "room": 2,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 956,
+          "player": "TEV1"
+        },
+        {
+          "turn": 37,
+          "level": 2,
+          "room": 2,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 998,
+          "player": "TEV1"
+        },
+        {
+          "turn": 38,
+          "level": 2,
+          "room": 2,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 7 \u00b7 3 entries left.",
+          "latencyMs": 981,
+          "player": "TEV1"
+        },
+        {
+          "turn": 39,
+          "level": 2,
+          "room": 6,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1066,
+          "player": "TEV1"
+        },
+        {
+          "turn": 40,
+          "level": 2,
+          "room": 6,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 942,
+          "player": "TEV1"
+        },
+        {
+          "turn": 41,
+          "level": 2,
+          "room": 6,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 915,
+          "player": "TEV1"
+        },
+        {
+          "turn": 42,
+          "level": 2,
+          "room": 6,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 986,
+          "player": "TEV1"
+        },
+        {
+          "turn": 43,
+          "level": 2,
+          "room": 6,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 3 \u00b7 2 entries left.",
+          "latencyMs": 944,
+          "player": "TEV1"
+        },
+        {
+          "turn": 44,
+          "level": 2,
+          "room": 2,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 3132,
+          "player": "TEV1"
+        },
+        {
+          "turn": 45,
+          "level": 2,
+          "room": 2,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1059,
+          "player": "TEV1"
+        },
+        {
+          "turn": 46,
+          "level": 2,
+          "room": 2,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 2494,
+          "player": "TEV1"
+        },
+        {
+          "turn": 47,
+          "level": 2,
+          "room": 2,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1086,
+          "player": "TEV1"
+        },
+        {
+          "turn": 48,
+          "level": 2,
+          "room": 2,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 7 \u00b7 2 entries left.",
+          "latencyMs": 945,
+          "player": "TEV1"
+        },
+        {
+          "turn": 49,
+          "level": 2,
+          "room": 6,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1016,
+          "player": "TEV1"
+        },
+        {
+          "turn": 50,
+          "level": 2,
+          "room": 6,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 933,
+          "player": "TEV1"
+        },
+        {
+          "turn": 51,
+          "level": 2,
+          "room": 6,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 909,
+          "player": "TEV1"
+        },
+        {
+          "turn": 52,
+          "level": 2,
+          "room": 6,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 990,
+          "player": "TEV1"
+        },
+        {
+          "turn": 53,
+          "level": 2,
+          "room": 6,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 3 \u00b7 1 entries left.",
+          "latencyMs": 937,
+          "player": "TEV1"
+        },
+        {
+          "turn": 54,
+          "level": 2,
+          "room": 2,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 929,
+          "player": "TEV1"
+        },
+        {
+          "turn": 55,
+          "level": 2,
+          "room": 2,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1079,
+          "player": "TEV1"
+        },
+        {
+          "turn": 56,
+          "level": 2,
+          "room": 2,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 979,
+          "player": "TEV1"
+        },
+        {
+          "turn": 57,
+          "level": 2,
+          "room": 2,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1003,
+          "player": "TEV1"
+        },
+        {
+          "turn": 58,
+          "level": 2,
+          "room": 2,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 7 \u00b7 1 entries left.",
+          "latencyMs": 933,
+          "player": "TEV1"
+        },
+        {
+          "turn": 59,
+          "level": 2,
+          "room": 6,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 931,
+          "player": "TEV1"
+        },
+        {
+          "turn": 60,
+          "level": 2,
+          "room": 6,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1010,
+          "player": "TEV1"
+        },
+        {
+          "turn": 61,
+          "level": 2,
+          "room": 6,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 923,
+          "player": "TEV1"
+        },
+        {
+          "turn": 62,
+          "level": 2,
+          "room": 6,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 2144,
+          "player": "TEV1"
+        },
+        {
+          "turn": 63,
+          "level": 2,
+          "room": 6,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "GAME OVER \u2014 this room has no entries left.",
+          "latencyMs": 2091,
+          "player": "TEV1"
+        }
+      ],
+      "finalObservation": {
+        "level": 2,
+        "size": 4,
+        "room": 2,
+        "facing": "N",
+        "direction": 0,
+        "edges": "#..#",
+        "entriesLeft": 0,
+        "memory": [
+          [
+            2,
+            7,
+            "#..#",
+            0
+          ],
+          [
+            6,
+            7,
+            ".###",
+            1
+          ]
+        ],
+        "previousAction": "FORWARD",
+        "previousResult": "GAME OVER \u2014 this room has no entries left."
+      }
+    },
+    {
+      "seed": 1983,
+      "level": 3,
+      "size": 6,
+      "player": "TEV1",
+      "model": "tev1:latest",
+      "initialObservation": {
+        "level": 3,
+        "size": 6,
+        "room": 0,
+        "facing": "N",
+        "direction": 0,
+        "edges": "#.?#",
+        "entriesLeft": 7,
+        "memory": [
+          [
+            0,
+            1,
+            "#.?#",
+            7
+          ]
+        ],
+        "previousAction": "START",
+        "previousResult": "Find the exit. Seven entries per room."
+      },
+      "exitFound": false,
+      "status": "PLAYING",
+      "termination": "DECISION_LIMIT",
+      "decisions": 128,
+      "moves": 8,
+      "collisions": 60,
+      "repeatedPositions": 7,
+      "roomsExplored": 2,
+      "rejectedActions": 60,
+      "executionFailure": false,
+      "elapsedSeconds": 57.966,
+      "decisionLatencyMs": {
+        "median": 28.0,
+        "max": 3192
+      },
+      "actions": [
+        {
+          "turn": 1,
+          "level": 3,
+          "room": 0,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1132,
+          "player": "TEV1"
+        },
+        {
+          "turn": 2,
+          "level": 3,
+          "room": 0,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1008,
+          "player": "TEV1"
+        },
+        {
+          "turn": 3,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 935,
+          "player": "TEV1"
+        },
+        {
+          "turn": 4,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 999,
+          "player": "TEV1"
+        },
+        {
+          "turn": 5,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 914,
+          "player": "TEV1"
+        },
+        {
+          "turn": 6,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1448,
+          "player": "TEV1"
+        },
+        {
+          "turn": 7,
+          "level": 3,
+          "room": 0,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 2 \u00b7 6 entries left.",
+          "latencyMs": 950,
+          "player": "TEV1"
+        },
+        {
+          "turn": 8,
+          "level": 3,
+          "room": 1,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1173,
+          "player": "TEV1"
+        },
+        {
+          "turn": 9,
+          "level": 3,
+          "room": 1,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 992,
+          "player": "TEV1"
+        },
+        {
+          "turn": 10,
+          "level": 3,
+          "room": 1,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1069,
+          "player": "TEV1"
+        },
+        {
+          "turn": 11,
+          "level": 3,
+          "room": 1,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 939,
+          "player": "TEV1"
+        },
+        {
+          "turn": 12,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 1 \u00b7 6 entries left.",
+          "latencyMs": 995,
+          "player": "TEV1"
+        },
+        {
+          "turn": 13,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 945,
+          "player": "TEV1"
+        },
+        {
+          "turn": 14,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1004,
+          "player": "TEV1"
+        },
+        {
+          "turn": 15,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 932,
+          "player": "TEV1"
+        },
+        {
+          "turn": 16,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1072,
+          "player": "TEV1"
+        },
+        {
+          "turn": 17,
+          "level": 3,
+          "room": 0,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 2 \u00b7 5 entries left.",
+          "latencyMs": 942,
+          "player": "TEV1"
+        },
+        {
+          "turn": 18,
+          "level": 3,
+          "room": 1,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1059,
+          "player": "TEV1"
+        },
+        {
+          "turn": 19,
+          "level": 3,
+          "room": 1,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 973,
+          "player": "TEV1"
+        },
+        {
+          "turn": 20,
+          "level": 3,
+          "room": 1,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1005,
+          "player": "TEV1"
+        },
+        {
+          "turn": 21,
+          "level": 3,
+          "room": 1,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 992,
+          "player": "TEV1"
+        },
+        {
+          "turn": 22,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 1 \u00b7 5 entries left.",
+          "latencyMs": 1083,
+          "player": "TEV1"
+        },
+        {
+          "turn": 23,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1199,
+          "player": "TEV1"
+        },
+        {
+          "turn": 24,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 2840,
+          "player": "TEV1"
+        },
+        {
+          "turn": 25,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 3192,
+          "player": "TEV1"
+        },
+        {
+          "turn": 26,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1107,
+          "player": "TEV1"
+        },
+        {
+          "turn": 27,
+          "level": 3,
+          "room": 0,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 2 \u00b7 4 entries left.",
+          "latencyMs": 1088,
+          "player": "TEV1"
+        },
+        {
+          "turn": 28,
+          "level": 3,
+          "room": 1,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1007,
+          "player": "TEV1"
+        },
+        {
+          "turn": 29,
+          "level": 3,
+          "room": 1,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1207,
+          "player": "TEV1"
+        },
+        {
+          "turn": 30,
+          "level": 3,
+          "room": 1,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1225,
+          "player": "TEV1"
+        },
+        {
+          "turn": 31,
+          "level": 3,
+          "room": 1,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1047,
+          "player": "TEV1"
+        },
+        {
+          "turn": 32,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 1 \u00b7 4 entries left.",
+          "latencyMs": 1121,
+          "player": "TEV1"
+        },
+        {
+          "turn": 33,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1382,
+          "player": "TEV1"
+        },
+        {
+          "turn": 34,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1234,
+          "player": "TEV1"
+        },
+        {
+          "turn": 35,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 2171,
+          "player": "TEV1"
+        },
+        {
+          "turn": 36,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1078,
+          "player": "TEV1"
+        },
+        {
+          "turn": 37,
+          "level": 3,
+          "room": 0,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 2 \u00b7 3 entries left.",
+          "latencyMs": 1053,
+          "player": "TEV1"
+        },
+        {
+          "turn": 38,
+          "level": 3,
+          "room": 1,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1000,
+          "player": "TEV1"
+        },
+        {
+          "turn": 39,
+          "level": 3,
+          "room": 1,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1096,
+          "player": "TEV1"
+        },
+        {
+          "turn": 40,
+          "level": 3,
+          "room": 1,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1071,
+          "player": "TEV1"
+        },
+        {
+          "turn": 41,
+          "level": 3,
+          "room": 1,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1050,
+          "player": "TEV1"
+        },
+        {
+          "turn": 42,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 1 \u00b7 3 entries left.",
+          "latencyMs": 1012,
+          "player": "TEV1"
+        },
+        {
+          "turn": 43,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 957,
+          "player": "TEV1"
+        },
+        {
+          "turn": 44,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1046,
+          "player": "TEV1"
+        },
+        {
+          "turn": 45,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1003,
+          "player": "TEV1"
+        },
+        {
+          "turn": 46,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 951,
+          "player": "TEV1"
+        },
+        {
+          "turn": 47,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1008,
+          "player": "TEV1"
+        },
+        {
+          "turn": 48,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 31,
+          "player": "TEV1"
+        },
+        {
+          "turn": 49,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 26,
+          "player": "TEV1"
+        },
+        {
+          "turn": 50,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 28,
+          "player": "TEV1"
+        },
+        {
+          "turn": 51,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 24,
+          "player": "TEV1"
+        },
+        {
+          "turn": 52,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 27,
+          "player": "TEV1"
+        },
+        {
+          "turn": 53,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 23,
+          "player": "TEV1"
+        },
+        {
+          "turn": 54,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 25,
+          "player": "TEV1"
+        },
+        {
+          "turn": 55,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 21,
+          "player": "TEV1"
+        },
+        {
+          "turn": 56,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 21,
+          "player": "TEV1"
+        },
+        {
+          "turn": 57,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 25,
+          "player": "TEV1"
+        },
+        {
+          "turn": 58,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 25,
+          "player": "TEV1"
+        },
+        {
+          "turn": 59,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 32,
+          "player": "TEV1"
+        },
+        {
+          "turn": 60,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 31,
+          "player": "TEV1"
+        },
+        {
+          "turn": 61,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 28,
+          "player": "TEV1"
+        },
+        {
+          "turn": 62,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 22,
+          "player": "TEV1"
+        },
+        {
+          "turn": 63,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 38,
+          "player": "TEV1"
+        },
+        {
+          "turn": 64,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 34,
+          "player": "TEV1"
+        },
+        {
+          "turn": 65,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 23,
+          "player": "TEV1"
+        },
+        {
+          "turn": 66,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 22,
+          "player": "TEV1"
+        },
+        {
+          "turn": 67,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 23,
+          "player": "TEV1"
+        },
+        {
+          "turn": 68,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 28,
+          "player": "TEV1"
+        },
+        {
+          "turn": 69,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 26,
+          "player": "TEV1"
+        },
+        {
+          "turn": 70,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 27,
+          "player": "TEV1"
+        },
+        {
+          "turn": 71,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 19,
+          "player": "TEV1"
+        },
+        {
+          "turn": 72,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 20,
+          "player": "TEV1"
+        },
+        {
+          "turn": 73,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 22,
+          "player": "TEV1"
+        },
+        {
+          "turn": 74,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 27,
+          "player": "TEV1"
+        },
+        {
+          "turn": 75,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 16,
+          "player": "TEV1"
+        },
+        {
+          "turn": 76,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 20,
+          "player": "TEV1"
+        },
+        {
+          "turn": 77,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 22,
+          "player": "TEV1"
+        },
+        {
+          "turn": 78,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 28,
+          "player": "TEV1"
+        },
+        {
+          "turn": 79,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 32,
+          "player": "TEV1"
+        },
+        {
+          "turn": 80,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 32,
+          "player": "TEV1"
+        },
+        {
+          "turn": 81,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 46,
+          "player": "TEV1"
+        },
+        {
+          "turn": 82,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 22,
+          "player": "TEV1"
+        },
+        {
+          "turn": 83,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 23,
+          "player": "TEV1"
+        },
+        {
+          "turn": 84,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 32,
+          "player": "TEV1"
+        },
+        {
+          "turn": 85,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 26,
+          "player": "TEV1"
+        },
+        {
+          "turn": 86,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 17,
+          "player": "TEV1"
+        },
+        {
+          "turn": 87,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 18,
+          "player": "TEV1"
+        },
+        {
+          "turn": 88,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 27,
+          "player": "TEV1"
+        },
+        {
+          "turn": 89,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 22,
+          "player": "TEV1"
+        },
+        {
+          "turn": 90,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 20,
+          "player": "TEV1"
+        },
+        {
+          "turn": 91,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 22,
+          "player": "TEV1"
+        },
+        {
+          "turn": 92,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 27,
+          "player": "TEV1"
+        },
+        {
+          "turn": 93,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 26,
+          "player": "TEV1"
+        },
+        {
+          "turn": 94,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 24,
+          "player": "TEV1"
+        },
+        {
+          "turn": 95,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 23,
+          "player": "TEV1"
+        },
+        {
+          "turn": 96,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 19,
+          "player": "TEV1"
+        },
+        {
+          "turn": 97,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 20,
+          "player": "TEV1"
+        },
+        {
+          "turn": 98,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 26,
+          "player": "TEV1"
+        },
+        {
+          "turn": 99,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 25,
+          "player": "TEV1"
+        },
+        {
+          "turn": 100,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 29,
+          "player": "TEV1"
+        },
+        {
+          "turn": 101,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 19,
+          "player": "TEV1"
+        },
+        {
+          "turn": 102,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 16,
+          "player": "TEV1"
+        },
+        {
+          "turn": 103,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 35,
+          "player": "TEV1"
+        },
+        {
+          "turn": 104,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 22,
+          "player": "TEV1"
+        },
+        {
+          "turn": 105,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 16,
+          "player": "TEV1"
+        },
+        {
+          "turn": 106,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 21,
+          "player": "TEV1"
+        },
+        {
+          "turn": 107,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 20,
+          "player": "TEV1"
+        },
+        {
+          "turn": 108,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 21,
+          "player": "TEV1"
+        },
+        {
+          "turn": 109,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 16,
+          "player": "TEV1"
+        },
+        {
+          "turn": 110,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 17,
+          "player": "TEV1"
+        },
+        {
+          "turn": 111,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 19,
+          "player": "TEV1"
+        },
+        {
+          "turn": 112,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 33,
+          "player": "TEV1"
+        },
+        {
+          "turn": 113,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 20,
+          "player": "TEV1"
+        },
+        {
+          "turn": 114,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 20,
+          "player": "TEV1"
+        },
+        {
+          "turn": 115,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 19,
+          "player": "TEV1"
+        },
+        {
+          "turn": 116,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 23,
+          "player": "TEV1"
+        },
+        {
+          "turn": 117,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 22,
+          "player": "TEV1"
+        },
+        {
+          "turn": 118,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 40,
+          "player": "TEV1"
+        },
+        {
+          "turn": 119,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 29,
+          "player": "TEV1"
+        },
+        {
+          "turn": 120,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 21,
+          "player": "TEV1"
+        },
+        {
+          "turn": 121,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 19,
+          "player": "TEV1"
+        },
+        {
+          "turn": 122,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 19,
+          "player": "TEV1"
+        },
+        {
+          "turn": 123,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 22,
+          "player": "TEV1"
+        },
+        {
+          "turn": 124,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 25,
+          "player": "TEV1"
+        },
+        {
+          "turn": 125,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 28,
+          "player": "TEV1"
+        },
+        {
+          "turn": 126,
+          "level": 3,
+          "room": 0,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 26,
+          "player": "TEV1"
+        },
+        {
+          "turn": 127,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 19,
+          "player": "TEV1"
+        },
+        {
+          "turn": 128,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 17,
+          "player": "TEV1"
+        }
+      ],
+      "finalObservation": {
+        "level": 3,
+        "size": 6,
+        "room": 0,
+        "facing": "S",
+        "direction": 2,
+        "edges": "#.##",
+        "entriesLeft": 3,
+        "memory": [
+          [
+            0,
+            5,
+            "#.##",
+            3
+          ],
+          [
+            1,
+            4,
+            "##..",
+            3
+          ]
+        ],
+        "previousAction": "TURN_LEFT",
+        "previousResult": "Turned left."
+      }
+    },
+    {
+      "seed": 1986,
+      "level": 1,
+      "size": 3,
+      "player": "TEV1",
+      "model": "tev1:latest",
+      "initialObservation": {
+        "level": 1,
+        "size": 3,
+        "room": 0,
+        "facing": "N",
+        "direction": 0,
+        "edges": "##?#",
+        "entriesLeft": 7,
+        "memory": [
+          [
+            0,
+            1,
+            "##?#",
+            7
+          ]
+        ],
+        "previousAction": "START",
+        "previousResult": "Find the exit. Seven entries per room."
+      },
+      "exitFound": true,
+      "status": "WON",
+      "termination": "WON",
+      "decisions": 15,
+      "moves": 7,
+      "collisions": 4,
+      "repeatedPositions": 0,
+      "roomsExplored": 7,
+      "rejectedActions": 4,
+      "executionFailure": false,
+      "elapsedSeconds": 17.448,
+      "decisionLatencyMs": {
+        "median": 1056,
+        "max": 1674
+      },
+      "actions": [
+        {
+          "turn": 1,
+          "level": 1,
+          "room": 0,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1025,
+          "player": "TEV1"
+        },
+        {
+          "turn": 2,
+          "level": 1,
+          "room": 0,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 985,
+          "player": "TEV1"
+        },
+        {
+          "turn": 3,
+          "level": 1,
+          "room": 0,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 989,
+          "player": "TEV1"
+        },
+        {
+          "turn": 4,
+          "level": 1,
+          "room": 0,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1594,
+          "player": "TEV1"
+        },
+        {
+          "turn": 5,
+          "level": 1,
+          "room": 0,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 4 \u00b7 6 entries left.",
+          "latencyMs": 938,
+          "player": "TEV1"
+        },
+        {
+          "turn": 6,
+          "level": 1,
+          "room": 3,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 7 \u00b7 6 entries left.",
+          "latencyMs": 1674,
+          "player": "TEV1"
+        },
+        {
+          "turn": 7,
+          "level": 1,
+          "room": 6,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1040,
+          "player": "TEV1"
+        },
+        {
+          "turn": 8,
+          "level": 1,
+          "room": 6,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1024,
+          "player": "TEV1"
+        },
+        {
+          "turn": 9,
+          "level": 1,
+          "room": 6,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 8 \u00b7 6 entries left.",
+          "latencyMs": 996,
+          "player": "TEV1"
+        },
+        {
+          "turn": 10,
+          "level": 1,
+          "room": 7,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 9 \u00b7 6 entries left.",
+          "latencyMs": 1090,
+          "player": "TEV1"
+        },
+        {
+          "turn": 11,
+          "level": 1,
+          "room": 8,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1104,
+          "player": "TEV1"
+        },
+        {
+          "turn": 12,
+          "level": 1,
+          "room": 8,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1056,
+          "player": "TEV1"
+        },
+        {
+          "turn": 13,
+          "level": 1,
+          "room": 8,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 6 \u00b7 6 entries left.",
+          "latencyMs": 1090,
+          "player": "TEV1"
+        },
+        {
+          "turn": 14,
+          "level": 1,
+          "room": 5,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 3 \u00b7 6 entries left.",
+          "latencyMs": 1337,
+          "player": "TEV1"
+        },
+        {
+          "turn": 15,
+          "level": 1,
+          "room": 2,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "ESCAPED \u2014 the ghost is free.",
+          "latencyMs": 1293,
+          "player": "TEV1"
+        }
+      ],
+      "finalObservation": {
+        "level": 1,
+        "size": 3,
+        "room": 2,
+        "facing": "N",
+        "direction": 0,
+        "edges": "E#..",
+        "entriesLeft": 6,
+        "memory": [
+          [
+            0,
+            1,
+            "##.#",
+            7
+          ],
+          [
+            2,
+            1,
+            "E#..",
+            6
+          ],
+          [
+            3,
+            1,
+            ".#.#",
+            6
+          ],
+          [
+            5,
+            1,
+            ".#.#",
+            6
+          ],
+          [
+            6,
+            1,
+            "..##",
+            6
+          ],
+          [
+            7,
+            1,
+            "#.#.",
+            6
+          ],
+          [
+            8,
+            1,
+            ".##.",
+            6
+          ]
+        ],
+        "previousAction": "FORWARD",
+        "previousResult": "ESCAPED \u2014 the ghost is free."
+      }
+    },
+    {
+      "seed": 1986,
+      "level": 2,
+      "size": 4,
+      "player": "TEV1",
+      "model": "tev1:latest",
+      "initialObservation": {
+        "level": 2,
+        "size": 4,
+        "room": 12,
+        "facing": "E",
+        "direction": 1,
+        "edges": ".##?",
+        "entriesLeft": 7,
+        "memory": [
+          [
+            12,
+            1,
+            ".##?",
+            7
+          ]
+        ],
+        "previousAction": "START",
+        "previousResult": "Find the exit. Seven entries per room."
+      },
+      "exitFound": false,
+      "status": "LOST",
+      "termination": "LOST",
+      "decisions": 39,
+      "moves": 13,
+      "collisions": 13,
+      "repeatedPositions": 11,
+      "roomsExplored": 3,
+      "rejectedActions": 13,
+      "executionFailure": false,
+      "elapsedSeconds": 41.502,
+      "decisionLatencyMs": {
+        "median": 1041,
+        "max": 1332
+      },
+      "actions": [
+        {
+          "turn": 1,
+          "level": 2,
+          "room": 12,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1066,
+          "player": "TEV1"
+        },
+        {
+          "turn": 2,
+          "level": 2,
+          "room": 12,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 981,
+          "player": "TEV1"
+        },
+        {
+          "turn": 3,
+          "level": 2,
+          "room": 12,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 9 \u00b7 6 entries left.",
+          "latencyMs": 1218,
+          "player": "TEV1"
+        },
+        {
+          "turn": 4,
+          "level": 2,
+          "room": 8,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 5 \u00b7 6 entries left.",
+          "latencyMs": 926,
+          "player": "TEV1"
+        },
+        {
+          "turn": 5,
+          "level": 2,
+          "room": 4,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1041,
+          "player": "TEV1"
+        },
+        {
+          "turn": 6,
+          "level": 2,
+          "room": 4,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1118,
+          "player": "TEV1"
+        },
+        {
+          "turn": 7,
+          "level": 2,
+          "room": 4,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1030,
+          "player": "TEV1"
+        },
+        {
+          "turn": 8,
+          "level": 2,
+          "room": 4,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1102,
+          "player": "TEV1"
+        },
+        {
+          "turn": 9,
+          "level": 2,
+          "room": 4,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 9 \u00b7 5 entries left.",
+          "latencyMs": 975,
+          "player": "TEV1"
+        },
+        {
+          "turn": 10,
+          "level": 2,
+          "room": 8,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 13 \u00b7 6 entries left.",
+          "latencyMs": 1332,
+          "player": "TEV1"
+        },
+        {
+          "turn": 11,
+          "level": 2,
+          "room": 12,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1125,
+          "player": "TEV1"
+        },
+        {
+          "turn": 12,
+          "level": 2,
+          "room": 12,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1026,
+          "player": "TEV1"
+        },
+        {
+          "turn": 13,
+          "level": 2,
+          "room": 12,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1027,
+          "player": "TEV1"
+        },
+        {
+          "turn": 14,
+          "level": 2,
+          "room": 12,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1003,
+          "player": "TEV1"
+        },
+        {
+          "turn": 15,
+          "level": 2,
+          "room": 12,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 9 \u00b7 4 entries left.",
+          "latencyMs": 965,
+          "player": "TEV1"
+        },
+        {
+          "turn": 16,
+          "level": 2,
+          "room": 8,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 5 \u00b7 5 entries left.",
+          "latencyMs": 1107,
+          "player": "TEV1"
+        },
+        {
+          "turn": 17,
+          "level": 2,
+          "room": 4,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1104,
+          "player": "TEV1"
+        },
+        {
+          "turn": 18,
+          "level": 2,
+          "room": 4,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1087,
+          "player": "TEV1"
+        },
+        {
+          "turn": 19,
+          "level": 2,
+          "room": 4,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1013,
+          "player": "TEV1"
+        },
+        {
+          "turn": 20,
+          "level": 2,
+          "room": 4,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1062,
+          "player": "TEV1"
+        },
+        {
+          "turn": 21,
+          "level": 2,
+          "room": 4,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 9 \u00b7 3 entries left.",
+          "latencyMs": 1033,
+          "player": "TEV1"
+        },
+        {
+          "turn": 22,
+          "level": 2,
+          "room": 8,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 13 \u00b7 5 entries left.",
+          "latencyMs": 1067,
+          "player": "TEV1"
+        },
+        {
+          "turn": 23,
+          "level": 2,
+          "room": 12,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1068,
+          "player": "TEV1"
+        },
+        {
+          "turn": 24,
+          "level": 2,
+          "room": 12,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1055,
+          "player": "TEV1"
+        },
+        {
+          "turn": 25,
+          "level": 2,
+          "room": 12,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1199,
+          "player": "TEV1"
+        },
+        {
+          "turn": 26,
+          "level": 2,
+          "room": 12,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1141,
+          "player": "TEV1"
+        },
+        {
+          "turn": 27,
+          "level": 2,
+          "room": 12,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 9 \u00b7 2 entries left.",
+          "latencyMs": 1045,
+          "player": "TEV1"
+        },
+        {
+          "turn": 28,
+          "level": 2,
+          "room": 8,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 5 \u00b7 4 entries left.",
+          "latencyMs": 999,
+          "player": "TEV1"
+        },
+        {
+          "turn": 29,
+          "level": 2,
+          "room": 4,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 974,
+          "player": "TEV1"
+        },
+        {
+          "turn": 30,
+          "level": 2,
+          "room": 4,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1001,
+          "player": "TEV1"
+        },
+        {
+          "turn": 31,
+          "level": 2,
+          "room": 4,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 994,
+          "player": "TEV1"
+        },
+        {
+          "turn": 32,
+          "level": 2,
+          "room": 4,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1035,
+          "player": "TEV1"
+        },
+        {
+          "turn": 33,
+          "level": 2,
+          "room": 4,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 9 \u00b7 1 entries left.",
+          "latencyMs": 939,
+          "player": "TEV1"
+        },
+        {
+          "turn": 34,
+          "level": 2,
+          "room": 8,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 13 \u00b7 4 entries left.",
+          "latencyMs": 952,
+          "player": "TEV1"
+        },
+        {
+          "turn": 35,
+          "level": 2,
+          "room": 12,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1122,
+          "player": "TEV1"
+        },
+        {
+          "turn": 36,
+          "level": 2,
+          "room": 12,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1014,
+          "player": "TEV1"
+        },
+        {
+          "turn": 37,
+          "level": 2,
+          "room": 12,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1062,
+          "player": "TEV1"
+        },
+        {
+          "turn": 38,
+          "level": 2,
+          "room": 12,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1074,
+          "player": "TEV1"
+        },
+        {
+          "turn": 39,
+          "level": 2,
+          "room": 12,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "GAME OVER \u2014 this room has no entries left.",
+          "latencyMs": 1013,
+          "player": "TEV1"
+        }
+      ],
+      "finalObservation": {
+        "level": 2,
+        "size": 4,
+        "room": 8,
+        "facing": "N",
+        "direction": 0,
+        "edges": ".#.#",
+        "entriesLeft": 0,
+        "memory": [
+          [
+            4,
+            3,
+            "#..#",
+            4
+          ],
+          [
+            8,
+            7,
+            ".#.#",
+            0
+          ],
+          [
+            12,
+            4,
+            ".###",
+            4
+          ]
+        ],
+        "previousAction": "FORWARD",
+        "previousResult": "GAME OVER \u2014 this room has no entries left."
+      }
+    },
+    {
+      "seed": 1986,
+      "level": 3,
+      "size": 6,
+      "player": "TEV1",
+      "model": "tev1:latest",
+      "initialObservation": {
+        "level": 3,
+        "size": 6,
+        "room": 35,
+        "facing": "S",
+        "direction": 2,
+        "edges": "?##.",
+        "entriesLeft": 7,
+        "memory": [
+          [
+            35,
+            1,
+            "?##.",
+            7
+          ]
+        ],
+        "previousAction": "START",
+        "previousResult": "Find the exit. Seven entries per room."
+      },
+      "exitFound": false,
+      "status": "LOST",
+      "termination": "LOST",
+      "decisions": 43,
+      "moves": 13,
+      "collisions": 15,
+      "repeatedPositions": 11,
+      "roomsExplored": 3,
+      "rejectedActions": 15,
+      "executionFailure": false,
+      "elapsedSeconds": 49.377,
+      "decisionLatencyMs": {
+        "median": 1032,
+        "max": 2727
+      },
+      "actions": [
+        {
+          "turn": 1,
+          "level": 3,
+          "room": 35,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1076,
+          "player": "TEV1"
+        },
+        {
+          "turn": 2,
+          "level": 3,
+          "room": 35,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 987,
+          "player": "TEV1"
+        },
+        {
+          "turn": 3,
+          "level": 3,
+          "room": 35,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1024,
+          "player": "TEV1"
+        },
+        {
+          "turn": 4,
+          "level": 3,
+          "room": 35,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1084,
+          "player": "TEV1"
+        },
+        {
+          "turn": 5,
+          "level": 3,
+          "room": 35,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1058,
+          "player": "TEV1"
+        },
+        {
+          "turn": 6,
+          "level": 3,
+          "room": 35,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 960,
+          "player": "TEV1"
+        },
+        {
+          "turn": 7,
+          "level": 3,
+          "room": 35,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 35 \u00b7 6 entries left.",
+          "latencyMs": 1007,
+          "player": "TEV1"
+        },
+        {
+          "turn": 8,
+          "level": 3,
+          "room": 34,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 34 \u00b7 6 entries left.",
+          "latencyMs": 1107,
+          "player": "TEV1"
+        },
+        {
+          "turn": 9,
+          "level": 3,
+          "room": 33,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1062,
+          "player": "TEV1"
+        },
+        {
+          "turn": 10,
+          "level": 3,
+          "room": 33,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1125,
+          "player": "TEV1"
+        },
+        {
+          "turn": 11,
+          "level": 3,
+          "room": 33,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1148,
+          "player": "TEV1"
+        },
+        {
+          "turn": 12,
+          "level": 3,
+          "room": 33,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1069,
+          "player": "TEV1"
+        },
+        {
+          "turn": 13,
+          "level": 3,
+          "room": 33,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 35 \u00b7 5 entries left.",
+          "latencyMs": 1012,
+          "player": "TEV1"
+        },
+        {
+          "turn": 14,
+          "level": 3,
+          "room": 34,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 36 \u00b7 6 entries left.",
+          "latencyMs": 2313,
+          "player": "TEV1"
+        },
+        {
+          "turn": 15,
+          "level": 3,
+          "room": 35,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 2727,
+          "player": "TEV1"
+        },
+        {
+          "turn": 16,
+          "level": 3,
+          "room": 35,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1081,
+          "player": "TEV1"
+        },
+        {
+          "turn": 17,
+          "level": 3,
+          "room": 35,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 2207,
+          "player": "TEV1"
+        },
+        {
+          "turn": 18,
+          "level": 3,
+          "room": 35,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 972,
+          "player": "TEV1"
+        },
+        {
+          "turn": 19,
+          "level": 3,
+          "room": 35,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 35 \u00b7 4 entries left.",
+          "latencyMs": 1072,
+          "player": "TEV1"
+        },
+        {
+          "turn": 20,
+          "level": 3,
+          "room": 34,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 34 \u00b7 5 entries left.",
+          "latencyMs": 1087,
+          "player": "TEV1"
+        },
+        {
+          "turn": 21,
+          "level": 3,
+          "room": 33,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1066,
+          "player": "TEV1"
+        },
+        {
+          "turn": 22,
+          "level": 3,
+          "room": 33,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 980,
+          "player": "TEV1"
+        },
+        {
+          "turn": 23,
+          "level": 3,
+          "room": 33,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1027,
+          "player": "TEV1"
+        },
+        {
+          "turn": 24,
+          "level": 3,
+          "room": 33,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1003,
+          "player": "TEV1"
+        },
+        {
+          "turn": 25,
+          "level": 3,
+          "room": 33,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 35 \u00b7 3 entries left.",
+          "latencyMs": 1001,
+          "player": "TEV1"
+        },
+        {
+          "turn": 26,
+          "level": 3,
+          "room": 34,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 36 \u00b7 5 entries left.",
+          "latencyMs": 1151,
+          "player": "TEV1"
+        },
+        {
+          "turn": 27,
+          "level": 3,
+          "room": 35,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1072,
+          "player": "TEV1"
+        },
+        {
+          "turn": 28,
+          "level": 3,
+          "room": 35,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1033,
+          "player": "TEV1"
+        },
+        {
+          "turn": 29,
+          "level": 3,
+          "room": 35,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 920,
+          "player": "TEV1"
+        },
+        {
+          "turn": 30,
+          "level": 3,
+          "room": 35,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 995,
+          "player": "TEV1"
+        },
+        {
+          "turn": 31,
+          "level": 3,
+          "room": 35,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 35 \u00b7 2 entries left.",
+          "latencyMs": 954,
+          "player": "TEV1"
+        },
+        {
+          "turn": 32,
+          "level": 3,
+          "room": 34,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 34 \u00b7 4 entries left.",
+          "latencyMs": 927,
+          "player": "TEV1"
+        },
+        {
+          "turn": 33,
+          "level": 3,
+          "room": 33,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 928,
+          "player": "TEV1"
+        },
+        {
+          "turn": 34,
+          "level": 3,
+          "room": 33,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 967,
+          "player": "TEV1"
+        },
+        {
+          "turn": 35,
+          "level": 3,
+          "room": 33,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1032,
+          "player": "TEV1"
+        },
+        {
+          "turn": 36,
+          "level": 3,
+          "room": 33,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 957,
+          "player": "TEV1"
+        },
+        {
+          "turn": 37,
+          "level": 3,
+          "room": 33,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 35 \u00b7 1 entries left.",
+          "latencyMs": 988,
+          "player": "TEV1"
+        },
+        {
+          "turn": 38,
+          "level": 3,
+          "room": 34,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 36 \u00b7 4 entries left.",
+          "latencyMs": 908,
+          "player": "TEV1"
+        },
+        {
+          "turn": 39,
+          "level": 3,
+          "room": 35,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1174,
+          "player": "TEV1"
+        },
+        {
+          "turn": 40,
+          "level": 3,
+          "room": 35,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1592,
+          "player": "TEV1"
+        },
+        {
+          "turn": 41,
+          "level": 3,
+          "room": 35,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 945,
+          "player": "TEV1"
+        },
+        {
+          "turn": 42,
+          "level": 3,
+          "room": 35,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1037,
+          "player": "TEV1"
+        },
+        {
+          "turn": 43,
+          "level": 3,
+          "room": 35,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "GAME OVER \u2014 this room has no entries left.",
+          "latencyMs": 968,
+          "player": "TEV1"
+        }
+      ],
+      "finalObservation": {
+        "level": 3,
+        "size": 6,
+        "room": 34,
+        "facing": "W",
+        "direction": 3,
+        "edges": "#.#.",
+        "entriesLeft": 0,
+        "memory": [
+          [
+            33,
+            3,
+            "..##",
+            4
+          ],
+          [
+            34,
+            7,
+            "#.#.",
+            0
+          ],
+          [
+            35,
+            4,
+            "###.",
+            4
+          ]
+        ],
+        "previousAction": "FORWARD",
+        "previousResult": "GAME OVER \u2014 this room has no entries left."
+      }
+    },
+    {
+      "seed": 2026,
+      "level": 1,
+      "size": 3,
+      "player": "TEV1",
+      "model": "tev1:latest",
+      "initialObservation": {
+        "level": 1,
+        "size": 3,
+        "room": 1,
+        "facing": "N",
+        "direction": 0,
+        "edges": "#.?#",
+        "entriesLeft": 7,
+        "memory": [
+          [
+            1,
+            1,
+            "#.?#",
+            7
+          ]
+        ],
+        "previousAction": "START",
+        "previousResult": "Find the exit. Seven entries per room."
+      },
+      "exitFound": false,
+      "status": "LOST",
+      "termination": "LOST",
+      "decisions": 67,
+      "moves": 13,
+      "collisions": 27,
+      "repeatedPositions": 12,
+      "roomsExplored": 2,
+      "rejectedActions": 27,
+      "executionFailure": false,
+      "elapsedSeconds": 69.997,
+      "decisionLatencyMs": {
+        "median": 987,
+        "max": 2527
+      },
+      "actions": [
+        {
+          "turn": 1,
+          "level": 1,
+          "room": 1,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 971,
+          "player": "TEV1"
+        },
+        {
+          "turn": 2,
+          "level": 1,
+          "room": 1,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 966,
+          "player": "TEV1"
+        },
+        {
+          "turn": 3,
+          "level": 1,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1029,
+          "player": "TEV1"
+        },
+        {
+          "turn": 4,
+          "level": 1,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 980,
+          "player": "TEV1"
+        },
+        {
+          "turn": 5,
+          "level": 1,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 928,
+          "player": "TEV1"
+        },
+        {
+          "turn": 6,
+          "level": 1,
+          "room": 1,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 933,
+          "player": "TEV1"
+        },
+        {
+          "turn": 7,
+          "level": 1,
+          "room": 1,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 3 \u00b7 6 entries left.",
+          "latencyMs": 1029,
+          "player": "TEV1"
+        },
+        {
+          "turn": 8,
+          "level": 1,
+          "room": 2,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 915,
+          "player": "TEV1"
+        },
+        {
+          "turn": 9,
+          "level": 1,
+          "room": 2,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 918,
+          "player": "TEV1"
+        },
+        {
+          "turn": 10,
+          "level": 1,
+          "room": 2,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 998,
+          "player": "TEV1"
+        },
+        {
+          "turn": 11,
+          "level": 1,
+          "room": 2,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 974,
+          "player": "TEV1"
+        },
+        {
+          "turn": 12,
+          "level": 1,
+          "room": 2,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 2 \u00b7 6 entries left.",
+          "latencyMs": 955,
+          "player": "TEV1"
+        },
+        {
+          "turn": 13,
+          "level": 1,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 919,
+          "player": "TEV1"
+        },
+        {
+          "turn": 14,
+          "level": 1,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 920,
+          "player": "TEV1"
+        },
+        {
+          "turn": 15,
+          "level": 1,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1060,
+          "player": "TEV1"
+        },
+        {
+          "turn": 16,
+          "level": 1,
+          "room": 1,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1018,
+          "player": "TEV1"
+        },
+        {
+          "turn": 17,
+          "level": 1,
+          "room": 1,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 3 \u00b7 5 entries left.",
+          "latencyMs": 939,
+          "player": "TEV1"
+        },
+        {
+          "turn": 18,
+          "level": 1,
+          "room": 2,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 931,
+          "player": "TEV1"
+        },
+        {
+          "turn": 19,
+          "level": 1,
+          "room": 2,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1066,
+          "player": "TEV1"
+        },
+        {
+          "turn": 20,
+          "level": 1,
+          "room": 2,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 975,
+          "player": "TEV1"
+        },
+        {
+          "turn": 21,
+          "level": 1,
+          "room": 2,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1033,
+          "player": "TEV1"
+        },
+        {
+          "turn": 22,
+          "level": 1,
+          "room": 2,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 2 \u00b7 5 entries left.",
+          "latencyMs": 974,
+          "player": "TEV1"
+        },
+        {
+          "turn": 23,
+          "level": 1,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1023,
+          "player": "TEV1"
+        },
+        {
+          "turn": 24,
+          "level": 1,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1238,
+          "player": "TEV1"
+        },
+        {
+          "turn": 25,
+          "level": 1,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1145,
+          "player": "TEV1"
+        },
+        {
+          "turn": 26,
+          "level": 1,
+          "room": 1,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1114,
+          "player": "TEV1"
+        },
+        {
+          "turn": 27,
+          "level": 1,
+          "room": 1,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 3 \u00b7 4 entries left.",
+          "latencyMs": 962,
+          "player": "TEV1"
+        },
+        {
+          "turn": 28,
+          "level": 1,
+          "room": 2,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 951,
+          "player": "TEV1"
+        },
+        {
+          "turn": 29,
+          "level": 1,
+          "room": 2,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1004,
+          "player": "TEV1"
+        },
+        {
+          "turn": 30,
+          "level": 1,
+          "room": 2,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1000,
+          "player": "TEV1"
+        },
+        {
+          "turn": 31,
+          "level": 1,
+          "room": 2,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 997,
+          "player": "TEV1"
+        },
+        {
+          "turn": 32,
+          "level": 1,
+          "room": 2,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 2 \u00b7 4 entries left.",
+          "latencyMs": 1018,
+          "player": "TEV1"
+        },
+        {
+          "turn": 33,
+          "level": 1,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 950,
+          "player": "TEV1"
+        },
+        {
+          "turn": 34,
+          "level": 1,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1005,
+          "player": "TEV1"
+        },
+        {
+          "turn": 35,
+          "level": 1,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1017,
+          "player": "TEV1"
+        },
+        {
+          "turn": 36,
+          "level": 1,
+          "room": 1,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1348,
+          "player": "TEV1"
+        },
+        {
+          "turn": 37,
+          "level": 1,
+          "room": 1,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 3 \u00b7 3 entries left.",
+          "latencyMs": 942,
+          "player": "TEV1"
+        },
+        {
+          "turn": 38,
+          "level": 1,
+          "room": 2,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1074,
+          "player": "TEV1"
+        },
+        {
+          "turn": 39,
+          "level": 1,
+          "room": 2,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 954,
+          "player": "TEV1"
+        },
+        {
+          "turn": 40,
+          "level": 1,
+          "room": 2,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 964,
+          "player": "TEV1"
+        },
+        {
+          "turn": 41,
+          "level": 1,
+          "room": 2,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1014,
+          "player": "TEV1"
+        },
+        {
+          "turn": 42,
+          "level": 1,
+          "room": 2,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 2 \u00b7 3 entries left.",
+          "latencyMs": 1012,
+          "player": "TEV1"
+        },
+        {
+          "turn": 43,
+          "level": 1,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 930,
+          "player": "TEV1"
+        },
+        {
+          "turn": 44,
+          "level": 1,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1063,
+          "player": "TEV1"
+        },
+        {
+          "turn": 45,
+          "level": 1,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 971,
+          "player": "TEV1"
+        },
+        {
+          "turn": 46,
+          "level": 1,
+          "room": 1,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1102,
+          "player": "TEV1"
+        },
+        {
+          "turn": 47,
+          "level": 1,
+          "room": 1,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 3 \u00b7 2 entries left.",
+          "latencyMs": 1038,
+          "player": "TEV1"
+        },
+        {
+          "turn": 48,
+          "level": 1,
+          "room": 2,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 942,
+          "player": "TEV1"
+        },
+        {
+          "turn": 49,
+          "level": 1,
+          "room": 2,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1025,
+          "player": "TEV1"
+        },
+        {
+          "turn": 50,
+          "level": 1,
+          "room": 2,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1014,
+          "player": "TEV1"
+        },
+        {
+          "turn": 51,
+          "level": 1,
+          "room": 2,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1753,
+          "player": "TEV1"
+        },
+        {
+          "turn": 52,
+          "level": 1,
+          "room": 2,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 2 \u00b7 2 entries left.",
+          "latencyMs": 1090,
+          "player": "TEV1"
+        },
+        {
+          "turn": 53,
+          "level": 1,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1068,
+          "player": "TEV1"
+        },
+        {
+          "turn": 54,
+          "level": 1,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 938,
+          "player": "TEV1"
+        },
+        {
+          "turn": 55,
+          "level": 1,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 956,
+          "player": "TEV1"
+        },
+        {
+          "turn": 56,
+          "level": 1,
+          "room": 1,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 947,
+          "player": "TEV1"
+        },
+        {
+          "turn": 57,
+          "level": 1,
+          "room": 1,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 3 \u00b7 1 entries left.",
+          "latencyMs": 2527,
+          "player": "TEV1"
+        },
+        {
+          "turn": 58,
+          "level": 1,
+          "room": 2,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 951,
+          "player": "TEV1"
+        },
+        {
+          "turn": 59,
+          "level": 1,
+          "room": 2,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1038,
+          "player": "TEV1"
+        },
+        {
+          "turn": 60,
+          "level": 1,
+          "room": 2,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 967,
+          "player": "TEV1"
+        },
+        {
+          "turn": 61,
+          "level": 1,
+          "room": 2,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 987,
+          "player": "TEV1"
+        },
+        {
+          "turn": 62,
+          "level": 1,
+          "room": 2,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 2 \u00b7 1 entries left.",
+          "latencyMs": 929,
+          "player": "TEV1"
+        },
+        {
+          "turn": 63,
+          "level": 1,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1060,
+          "player": "TEV1"
+        },
+        {
+          "turn": 64,
+          "level": 1,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 972,
+          "player": "TEV1"
+        },
+        {
+          "turn": 65,
+          "level": 1,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1011,
+          "player": "TEV1"
+        },
+        {
+          "turn": 66,
+          "level": 1,
+          "room": 1,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 929,
+          "player": "TEV1"
+        },
+        {
+          "turn": 67,
+          "level": 1,
+          "room": 1,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "GAME OVER \u2014 this room has no entries left.",
+          "latencyMs": 935,
+          "player": "TEV1"
+        }
+      ],
+      "finalObservation": {
+        "level": 1,
+        "size": 3,
+        "room": 2,
+        "facing": "E",
+        "direction": 1,
+        "edges": "##..",
+        "entriesLeft": 0,
+        "memory": [
+          [
+            1,
+            7,
+            "#.##",
+            1
+          ],
+          [
+            2,
+            7,
+            "##..",
+            0
+          ]
+        ],
+        "previousAction": "FORWARD",
+        "previousResult": "GAME OVER \u2014 this room has no entries left."
+      }
+    },
+    {
+      "seed": 2026,
+      "level": 2,
+      "size": 4,
+      "player": "TEV1",
+      "model": "tev1:latest",
+      "initialObservation": {
+        "level": 2,
+        "size": 4,
+        "room": 0,
+        "facing": "W",
+        "direction": 3,
+        "edges": "#?##",
+        "entriesLeft": 7,
+        "memory": [
+          [
+            0,
+            1,
+            "#?##",
+            7
+          ]
+        ],
+        "previousAction": "START",
+        "previousResult": "Find the exit. Seven entries per room."
+      },
+      "exitFound": false,
+      "status": "LOST",
+      "termination": "LOST",
+      "decisions": 65,
+      "moves": 13,
+      "collisions": 26,
+      "repeatedPositions": 12,
+      "roomsExplored": 2,
+      "rejectedActions": 26,
+      "executionFailure": false,
+      "elapsedSeconds": 64.494,
+      "decisionLatencyMs": {
+        "median": 973,
+        "max": 1384
+      },
+      "actions": [
+        {
+          "turn": 1,
+          "level": 2,
+          "room": 0,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 996,
+          "player": "TEV1"
+        },
+        {
+          "turn": 2,
+          "level": 2,
+          "room": 0,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 952,
+          "player": "TEV1"
+        },
+        {
+          "turn": 3,
+          "level": 2,
+          "room": 0,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 976,
+          "player": "TEV1"
+        },
+        {
+          "turn": 4,
+          "level": 2,
+          "room": 0,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 948,
+          "player": "TEV1"
+        },
+        {
+          "turn": 5,
+          "level": 2,
+          "room": 0,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 2 \u00b7 6 entries left.",
+          "latencyMs": 961,
+          "player": "TEV1"
+        },
+        {
+          "turn": 6,
+          "level": 2,
+          "room": 1,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1095,
+          "player": "TEV1"
+        },
+        {
+          "turn": 7,
+          "level": 2,
+          "room": 1,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 944,
+          "player": "TEV1"
+        },
+        {
+          "turn": 8,
+          "level": 2,
+          "room": 1,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 975,
+          "player": "TEV1"
+        },
+        {
+          "turn": 9,
+          "level": 2,
+          "room": 1,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1080,
+          "player": "TEV1"
+        },
+        {
+          "turn": 10,
+          "level": 2,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 1 \u00b7 6 entries left.",
+          "latencyMs": 939,
+          "player": "TEV1"
+        },
+        {
+          "turn": 11,
+          "level": 2,
+          "room": 0,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 954,
+          "player": "TEV1"
+        },
+        {
+          "turn": 12,
+          "level": 2,
+          "room": 0,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1030,
+          "player": "TEV1"
+        },
+        {
+          "turn": 13,
+          "level": 2,
+          "room": 0,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 980,
+          "player": "TEV1"
+        },
+        {
+          "turn": 14,
+          "level": 2,
+          "room": 0,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 973,
+          "player": "TEV1"
+        },
+        {
+          "turn": 15,
+          "level": 2,
+          "room": 0,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 2 \u00b7 5 entries left.",
+          "latencyMs": 943,
+          "player": "TEV1"
+        },
+        {
+          "turn": 16,
+          "level": 2,
+          "room": 1,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1011,
+          "player": "TEV1"
+        },
+        {
+          "turn": 17,
+          "level": 2,
+          "room": 1,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 990,
+          "player": "TEV1"
+        },
+        {
+          "turn": 18,
+          "level": 2,
+          "room": 1,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 947,
+          "player": "TEV1"
+        },
+        {
+          "turn": 19,
+          "level": 2,
+          "room": 1,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 968,
+          "player": "TEV1"
+        },
+        {
+          "turn": 20,
+          "level": 2,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 1 \u00b7 5 entries left.",
+          "latencyMs": 941,
+          "player": "TEV1"
+        },
+        {
+          "turn": 21,
+          "level": 2,
+          "room": 0,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1384,
+          "player": "TEV1"
+        },
+        {
+          "turn": 22,
+          "level": 2,
+          "room": 0,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1202,
+          "player": "TEV1"
+        },
+        {
+          "turn": 23,
+          "level": 2,
+          "room": 0,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 974,
+          "player": "TEV1"
+        },
+        {
+          "turn": 24,
+          "level": 2,
+          "room": 0,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 974,
+          "player": "TEV1"
+        },
+        {
+          "turn": 25,
+          "level": 2,
+          "room": 0,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 2 \u00b7 4 entries left.",
+          "latencyMs": 977,
+          "player": "TEV1"
+        },
+        {
+          "turn": 26,
+          "level": 2,
+          "room": 1,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 936,
+          "player": "TEV1"
+        },
+        {
+          "turn": 27,
+          "level": 2,
+          "room": 1,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 950,
+          "player": "TEV1"
+        },
+        {
+          "turn": 28,
+          "level": 2,
+          "room": 1,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 949,
+          "player": "TEV1"
+        },
+        {
+          "turn": 29,
+          "level": 2,
+          "room": 1,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 987,
+          "player": "TEV1"
+        },
+        {
+          "turn": 30,
+          "level": 2,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 1 \u00b7 4 entries left.",
+          "latencyMs": 909,
+          "player": "TEV1"
+        },
+        {
+          "turn": 31,
+          "level": 2,
+          "room": 0,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 913,
+          "player": "TEV1"
+        },
+        {
+          "turn": 32,
+          "level": 2,
+          "room": 0,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1012,
+          "player": "TEV1"
+        },
+        {
+          "turn": 33,
+          "level": 2,
+          "room": 0,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 965,
+          "player": "TEV1"
+        },
+        {
+          "turn": 34,
+          "level": 2,
+          "room": 0,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 992,
+          "player": "TEV1"
+        },
+        {
+          "turn": 35,
+          "level": 2,
+          "room": 0,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 2 \u00b7 3 entries left.",
+          "latencyMs": 920,
+          "player": "TEV1"
+        },
+        {
+          "turn": 36,
+          "level": 2,
+          "room": 1,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 921,
+          "player": "TEV1"
+        },
+        {
+          "turn": 37,
+          "level": 2,
+          "room": 1,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1034,
+          "player": "TEV1"
+        },
+        {
+          "turn": 38,
+          "level": 2,
+          "room": 1,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 923,
+          "player": "TEV1"
+        },
+        {
+          "turn": 39,
+          "level": 2,
+          "room": 1,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1044,
+          "player": "TEV1"
+        },
+        {
+          "turn": 40,
+          "level": 2,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 1 \u00b7 3 entries left.",
+          "latencyMs": 1010,
+          "player": "TEV1"
+        },
+        {
+          "turn": 41,
+          "level": 2,
+          "room": 0,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1046,
+          "player": "TEV1"
+        },
+        {
+          "turn": 42,
+          "level": 2,
+          "room": 0,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1041,
+          "player": "TEV1"
+        },
+        {
+          "turn": 43,
+          "level": 2,
+          "room": 0,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 931,
+          "player": "TEV1"
+        },
+        {
+          "turn": 44,
+          "level": 2,
+          "room": 0,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1040,
+          "player": "TEV1"
+        },
+        {
+          "turn": 45,
+          "level": 2,
+          "room": 0,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 2 \u00b7 2 entries left.",
+          "latencyMs": 928,
+          "player": "TEV1"
+        },
+        {
+          "turn": 46,
+          "level": 2,
+          "room": 1,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 950,
+          "player": "TEV1"
+        },
+        {
+          "turn": 47,
+          "level": 2,
+          "room": 1,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1026,
+          "player": "TEV1"
+        },
+        {
+          "turn": 48,
+          "level": 2,
+          "room": 1,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 972,
+          "player": "TEV1"
+        },
+        {
+          "turn": 49,
+          "level": 2,
+          "room": 1,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1044,
+          "player": "TEV1"
+        },
+        {
+          "turn": 50,
+          "level": 2,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 1 \u00b7 2 entries left.",
+          "latencyMs": 979,
+          "player": "TEV1"
+        },
+        {
+          "turn": 51,
+          "level": 2,
+          "room": 0,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 957,
+          "player": "TEV1"
+        },
+        {
+          "turn": 52,
+          "level": 2,
+          "room": 0,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1032,
+          "player": "TEV1"
+        },
+        {
+          "turn": 53,
+          "level": 2,
+          "room": 0,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 938,
+          "player": "TEV1"
+        },
+        {
+          "turn": 54,
+          "level": 2,
+          "room": 0,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 995,
+          "player": "TEV1"
+        },
+        {
+          "turn": 55,
+          "level": 2,
+          "room": 0,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 2 \u00b7 1 entries left.",
+          "latencyMs": 961,
+          "player": "TEV1"
+        },
+        {
+          "turn": 56,
+          "level": 2,
+          "room": 1,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 955,
+          "player": "TEV1"
+        },
+        {
+          "turn": 57,
+          "level": 2,
+          "room": 1,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 996,
+          "player": "TEV1"
+        },
+        {
+          "turn": 58,
+          "level": 2,
+          "room": 1,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 924,
+          "player": "TEV1"
+        },
+        {
+          "turn": 59,
+          "level": 2,
+          "room": 1,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1006,
+          "player": "TEV1"
+        },
+        {
+          "turn": 60,
+          "level": 2,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 1 \u00b7 1 entries left.",
+          "latencyMs": 958,
+          "player": "TEV1"
+        },
+        {
+          "turn": 61,
+          "level": 2,
+          "room": 0,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 914,
+          "player": "TEV1"
+        },
+        {
+          "turn": 62,
+          "level": 2,
+          "room": 0,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1013,
+          "player": "TEV1"
+        },
+        {
+          "turn": 63,
+          "level": 2,
+          "room": 0,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 929,
+          "player": "TEV1"
+        },
+        {
+          "turn": 64,
+          "level": 2,
+          "room": 0,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1035,
+          "player": "TEV1"
+        },
+        {
+          "turn": 65,
+          "level": 2,
+          "room": 0,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "GAME OVER \u2014 this room has no entries left.",
+          "latencyMs": 919,
+          "player": "TEV1"
+        }
+      ],
+      "finalObservation": {
+        "level": 2,
+        "size": 4,
+        "room": 1,
+        "facing": "E",
+        "direction": 1,
+        "edges": "##..",
+        "entriesLeft": 0,
+        "memory": [
+          [
+            0,
+            7,
+            "#.##",
+            1
+          ],
+          [
+            1,
+            7,
+            "##..",
+            0
+          ]
+        ],
+        "previousAction": "FORWARD",
+        "previousResult": "GAME OVER \u2014 this room has no entries left."
+      }
+    },
+    {
+      "seed": 2026,
+      "level": 3,
+      "size": 6,
+      "player": "TEV1",
+      "model": "tev1:latest",
+      "initialObservation": {
+        "level": 3,
+        "size": 6,
+        "room": 1,
+        "facing": "E",
+        "direction": 1,
+        "edges": "#.#?",
+        "entriesLeft": 7,
+        "memory": [
+          [
+            1,
+            1,
+            "#.#?",
+            7
+          ]
+        ],
+        "previousAction": "START",
+        "previousResult": "Find the exit. Seven entries per room."
+      },
+      "exitFound": false,
+      "status": "PLAYING",
+      "termination": "DECISION_LIMIT",
+      "decisions": 128,
+      "moves": 8,
+      "collisions": 60,
+      "repeatedPositions": 4,
+      "roomsExplored": 5,
+      "rejectedActions": 60,
+      "executionFailure": false,
+      "elapsedSeconds": 21.744,
+      "decisionLatencyMs": {
+        "median": 20.5,
+        "max": 1297
+      },
+      "actions": [
+        {
+          "turn": 1,
+          "level": 3,
+          "room": 1,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 3 \u00b7 6 entries left.",
+          "latencyMs": 957,
+          "player": "TEV1"
+        },
+        {
+          "turn": 2,
+          "level": 3,
+          "room": 2,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 4 \u00b7 6 entries left.",
+          "latencyMs": 1113,
+          "player": "TEV1"
+        },
+        {
+          "turn": 3,
+          "level": 3,
+          "room": 3,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 5 \u00b7 6 entries left.",
+          "latencyMs": 1041,
+          "player": "TEV1"
+        },
+        {
+          "turn": 4,
+          "level": 3,
+          "room": 4,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 6 \u00b7 6 entries left.",
+          "latencyMs": 1011,
+          "player": "TEV1"
+        },
+        {
+          "turn": 5,
+          "level": 3,
+          "room": 5,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1096,
+          "player": "TEV1"
+        },
+        {
+          "turn": 6,
+          "level": 3,
+          "room": 5,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1085,
+          "player": "TEV1"
+        },
+        {
+          "turn": 7,
+          "level": 3,
+          "room": 5,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1157,
+          "player": "TEV1"
+        },
+        {
+          "turn": 8,
+          "level": 3,
+          "room": 5,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1137,
+          "player": "TEV1"
+        },
+        {
+          "turn": 9,
+          "level": 3,
+          "room": 5,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 5 \u00b7 5 entries left.",
+          "latencyMs": 1131,
+          "player": "TEV1"
+        },
+        {
+          "turn": 10,
+          "level": 3,
+          "room": 4,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 4 \u00b7 5 entries left.",
+          "latencyMs": 1119,
+          "player": "TEV1"
+        },
+        {
+          "turn": 11,
+          "level": 3,
+          "room": 3,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 3 \u00b7 5 entries left.",
+          "latencyMs": 1131,
+          "player": "TEV1"
+        },
+        {
+          "turn": 12,
+          "level": 3,
+          "room": 2,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 2 \u00b7 6 entries left.",
+          "latencyMs": 1151,
+          "player": "TEV1"
+        },
+        {
+          "turn": 13,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1297,
+          "player": "TEV1"
+        },
+        {
+          "turn": 14,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1176,
+          "player": "TEV1"
+        },
+        {
+          "turn": 15,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1124,
+          "player": "TEV1"
+        },
+        {
+          "turn": 16,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 1142,
+          "player": "TEV1"
+        },
+        {
+          "turn": 17,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1086,
+          "player": "TEV1"
+        },
+        {
+          "turn": 18,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 32,
+          "player": "TEV1"
+        },
+        {
+          "turn": 19,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 19,
+          "player": "TEV1"
+        },
+        {
+          "turn": 20,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 15,
+          "player": "TEV1"
+        },
+        {
+          "turn": 21,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 22,
+          "player": "TEV1"
+        },
+        {
+          "turn": 22,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 19,
+          "player": "TEV1"
+        },
+        {
+          "turn": 23,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 18,
+          "player": "TEV1"
+        },
+        {
+          "turn": 24,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 19,
+          "player": "TEV1"
+        },
+        {
+          "turn": 25,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 21,
+          "player": "TEV1"
+        },
+        {
+          "turn": 26,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 18,
+          "player": "TEV1"
+        },
+        {
+          "turn": 27,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 20,
+          "player": "TEV1"
+        },
+        {
+          "turn": 28,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 15,
+          "player": "TEV1"
+        },
+        {
+          "turn": 29,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 15,
+          "player": "TEV1"
+        },
+        {
+          "turn": 30,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 18,
+          "player": "TEV1"
+        },
+        {
+          "turn": 31,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 24,
+          "player": "TEV1"
+        },
+        {
+          "turn": 32,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 17,
+          "player": "TEV1"
+        },
+        {
+          "turn": 33,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 16,
+          "player": "TEV1"
+        },
+        {
+          "turn": 34,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 19,
+          "player": "TEV1"
+        },
+        {
+          "turn": 35,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 17,
+          "player": "TEV1"
+        },
+        {
+          "turn": 36,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 17,
+          "player": "TEV1"
+        },
+        {
+          "turn": 37,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 19,
+          "player": "TEV1"
+        },
+        {
+          "turn": 38,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 16,
+          "player": "TEV1"
+        },
+        {
+          "turn": 39,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 34,
+          "player": "TEV1"
+        },
+        {
+          "turn": 40,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 29,
+          "player": "TEV1"
+        },
+        {
+          "turn": 41,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 24,
+          "player": "TEV1"
+        },
+        {
+          "turn": 42,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 34,
+          "player": "TEV1"
+        },
+        {
+          "turn": 43,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 29,
+          "player": "TEV1"
+        },
+        {
+          "turn": 44,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 20,
+          "player": "TEV1"
+        },
+        {
+          "turn": 45,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 21,
+          "player": "TEV1"
+        },
+        {
+          "turn": 46,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 22,
+          "player": "TEV1"
+        },
+        {
+          "turn": 47,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 24,
+          "player": "TEV1"
+        },
+        {
+          "turn": 48,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 22,
+          "player": "TEV1"
+        },
+        {
+          "turn": 49,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 34,
+          "player": "TEV1"
+        },
+        {
+          "turn": 50,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 32,
+          "player": "TEV1"
+        },
+        {
+          "turn": 51,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 25,
+          "player": "TEV1"
+        },
+        {
+          "turn": 52,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 37,
+          "player": "TEV1"
+        },
+        {
+          "turn": 53,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 19,
+          "player": "TEV1"
+        },
+        {
+          "turn": 54,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 17,
+          "player": "TEV1"
+        },
+        {
+          "turn": 55,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 21,
+          "player": "TEV1"
+        },
+        {
+          "turn": 56,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 18,
+          "player": "TEV1"
+        },
+        {
+          "turn": 57,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 21,
+          "player": "TEV1"
+        },
+        {
+          "turn": 58,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 18,
+          "player": "TEV1"
+        },
+        {
+          "turn": 59,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 21,
+          "player": "TEV1"
+        },
+        {
+          "turn": 60,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 21,
+          "player": "TEV1"
+        },
+        {
+          "turn": 61,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 15,
+          "player": "TEV1"
+        },
+        {
+          "turn": 62,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 15,
+          "player": "TEV1"
+        },
+        {
+          "turn": 63,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 19,
+          "player": "TEV1"
+        },
+        {
+          "turn": 64,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 20,
+          "player": "TEV1"
+        },
+        {
+          "turn": 65,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 17,
+          "player": "TEV1"
+        },
+        {
+          "turn": 66,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 21,
+          "player": "TEV1"
+        },
+        {
+          "turn": 67,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 17,
+          "player": "TEV1"
+        },
+        {
+          "turn": 68,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 15,
+          "player": "TEV1"
+        },
+        {
+          "turn": 69,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 17,
+          "player": "TEV1"
+        },
+        {
+          "turn": 70,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 23,
+          "player": "TEV1"
+        },
+        {
+          "turn": 71,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 20,
+          "player": "TEV1"
+        },
+        {
+          "turn": 72,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 14,
+          "player": "TEV1"
+        },
+        {
+          "turn": 73,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 16,
+          "player": "TEV1"
+        },
+        {
+          "turn": 74,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 20,
+          "player": "TEV1"
+        },
+        {
+          "turn": 75,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 20,
+          "player": "TEV1"
+        },
+        {
+          "turn": 76,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 20,
+          "player": "TEV1"
+        },
+        {
+          "turn": 77,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 18,
+          "player": "TEV1"
+        },
+        {
+          "turn": 78,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 18,
+          "player": "TEV1"
+        },
+        {
+          "turn": 79,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 18,
+          "player": "TEV1"
+        },
+        {
+          "turn": 80,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 18,
+          "player": "TEV1"
+        },
+        {
+          "turn": 81,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 19,
+          "player": "TEV1"
+        },
+        {
+          "turn": 82,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 18,
+          "player": "TEV1"
+        },
+        {
+          "turn": 83,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 21,
+          "player": "TEV1"
+        },
+        {
+          "turn": 84,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 16,
+          "player": "TEV1"
+        },
+        {
+          "turn": 85,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 20,
+          "player": "TEV1"
+        },
+        {
+          "turn": 86,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 18,
+          "player": "TEV1"
+        },
+        {
+          "turn": 87,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 16,
+          "player": "TEV1"
+        },
+        {
+          "turn": 88,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 18,
+          "player": "TEV1"
+        },
+        {
+          "turn": 89,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 19,
+          "player": "TEV1"
+        },
+        {
+          "turn": 90,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 28,
+          "player": "TEV1"
+        },
+        {
+          "turn": 91,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 21,
+          "player": "TEV1"
+        },
+        {
+          "turn": 92,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 17,
+          "player": "TEV1"
+        },
+        {
+          "turn": 93,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 22,
+          "player": "TEV1"
+        },
+        {
+          "turn": 94,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 22,
+          "player": "TEV1"
+        },
+        {
+          "turn": 95,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 15,
+          "player": "TEV1"
+        },
+        {
+          "turn": 96,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 17,
+          "player": "TEV1"
+        },
+        {
+          "turn": 97,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 22,
+          "player": "TEV1"
+        },
+        {
+          "turn": 98,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 21,
+          "player": "TEV1"
+        },
+        {
+          "turn": 99,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 20,
+          "player": "TEV1"
+        },
+        {
+          "turn": 100,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 15,
+          "player": "TEV1"
+        },
+        {
+          "turn": 101,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 16,
+          "player": "TEV1"
+        },
+        {
+          "turn": 102,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 19,
+          "player": "TEV1"
+        },
+        {
+          "turn": 103,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 21,
+          "player": "TEV1"
+        },
+        {
+          "turn": 104,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 21,
+          "player": "TEV1"
+        },
+        {
+          "turn": 105,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 18,
+          "player": "TEV1"
+        },
+        {
+          "turn": 106,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 27,
+          "player": "TEV1"
+        },
+        {
+          "turn": 107,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 22,
+          "player": "TEV1"
+        },
+        {
+          "turn": 108,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 16,
+          "player": "TEV1"
+        },
+        {
+          "turn": 109,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 17,
+          "player": "TEV1"
+        },
+        {
+          "turn": 110,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 19,
+          "player": "TEV1"
+        },
+        {
+          "turn": 111,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 19,
+          "player": "TEV1"
+        },
+        {
+          "turn": 112,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 18,
+          "player": "TEV1"
+        },
+        {
+          "turn": 113,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 22,
+          "player": "TEV1"
+        },
+        {
+          "turn": 114,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 25,
+          "player": "TEV1"
+        },
+        {
+          "turn": 115,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 22,
+          "player": "TEV1"
+        },
+        {
+          "turn": 116,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 17,
+          "player": "TEV1"
+        },
+        {
+          "turn": 117,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 18,
+          "player": "TEV1"
+        },
+        {
+          "turn": 118,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 21,
+          "player": "TEV1"
+        },
+        {
+          "turn": 119,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 26,
+          "player": "TEV1"
+        },
+        {
+          "turn": 120,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 17,
+          "player": "TEV1"
+        },
+        {
+          "turn": 121,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 26,
+          "player": "TEV1"
+        },
+        {
+          "turn": 122,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 27,
+          "player": "TEV1"
+        },
+        {
+          "turn": 123,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 25,
+          "player": "TEV1"
+        },
+        {
+          "turn": 124,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 23,
+          "player": "TEV1"
+        },
+        {
+          "turn": 125,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 23,
+          "player": "TEV1"
+        },
+        {
+          "turn": 126,
+          "level": 3,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 21,
+          "player": "TEV1"
+        },
+        {
+          "turn": 127,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 23,
+          "player": "TEV1"
+        },
+        {
+          "turn": 128,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 34,
+          "player": "TEV1"
+        }
+      ],
+      "finalObservation": {
+        "level": 3,
+        "size": 6,
+        "room": 1,
+        "facing": "W",
+        "direction": 3,
+        "edges": "#.##",
+        "entriesLeft": 6,
+        "memory": [
+          [
+            1,
+            2,
+            "#.##",
+            6
+          ],
+          [
+            2,
+            2,
+            "#.#.",
+            5
+          ],
+          [
+            3,
+            2,
+            "#...",
+            5
+          ],
+          [
+            4,
+            2,
+            "#.#.",
+            5
+          ],
+          [
+            5,
+            1,
+            "##..",
+            6
+          ]
+        ],
+        "previousAction": "TURN_RIGHT",
+        "previousResult": "Turned right."
+      }
+    }
+  ],
+  "localModels": [
+    {
+      "name": "tev1:latest",
+      "model": "tev1:latest",
+      "modified_at": "2026-10-13T19:17:11.060858551+02:00",
+      "size": 4361568327,
+      "digest": "4d24c6f6d61a48d9b72902f4805c5f1da53010736b834b0372377fb4bb7e53d3",
+      "details": {
+        "parent_model": "",
+        "format": "safetensors",
+        "family": "qwen3_5",
+        "families": [
+          "qwen3_5"
+        ],
+        "parameter_size": "4.2B",
+        "quantization_level": "mxfp8",
+        "runner": "mlx"
+      },
+      "capabilities": [
+        "decision"
+      ]
+    }
+  ],
+  "localOllamaVersion": {
+    "version": "0.40.2"
+  },
+  "presentationDelayMs": 0,
+  "cachePolicy": "bypass-cache",
+  "latencyDefinition": "Wall time from control observation to validated model response; excludes presentation delay and includes connector/projection overhead.",
+  "buildCaveat": "Both models used the same older runtime package. Observations.class lacks the current room-label normalization. Recorded source hashes identified the checkout, not this running binary. Retained as prior-build diagnostics; superseded for current-release comparison.",
+  "recordedCheckoutSourceSha256": {
+    "connectors/src/main/java/dev/ghost/Rules.java": "15e3a9b9b3305a35ba2777b825fbad8c0582e7a10e8cc5756f8788e0778b93f6",
+    "connectors/src/main/java/dev/ghost/Observations.java": "1e9c4e6c4e1d13ff5cb98444d1a11474568143a10956bb64cb3918e2dcbb0d66",
+    "connectors/src/main/java/dev/ghost/Baselines.java": "121a8ba79aac0bfd695256d517e0999c909df16a34d517762a289e0b43040c7a"
+  }
+}

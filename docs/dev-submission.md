@@ -40,7 +40,9 @@ I used Codex with the TPF authoring and demo-implementation skills, preserved me
 
 And the model's performance? In nine fixed seed/level cases, Tev1 escaped **zero**. Random legal movement escaped **one**. A deterministic explorer using observed-room memory escaped **all nine**.
 
-Tev1 repeatedly selected forward even when the observation described a wall. The rules rejected those moves. That is the observed failure mechanism; the experiment does not establish whether encoding, prompt wording, option-order bias or the model itself caused it. A valid action label is not evidence of useful navigation.
+Tev1 0.8B repeatedly selected forward even when the observation described a wall. The rules rejected those moves. In a fresh paired follow-up, the installed 4B variant escaped **one of nine** cases and made 102 successful moves, versus four for 0.8B. It still collided 257 times and exhausted a room in six attempts. Neither model received a route, and no maze was changed.
+
+Separate bounded probes rotated choice order and added redundant front/left/right descriptions of the same visible edges. 0.8B kept choosing forward. 4B consistently turned toward the passage with the relative descriptions. That points to observation-format sensitivity in the larger model; it does not fully explain the smaller model or establish useful full-maze exploration. The [paired report](model-comparison.md) retains the raw requests, outcomes and limitations. A valid action label is not evidence of useful navigation.
 
 ## Why Does Open Innovation Matter?
 

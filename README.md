@@ -4,7 +4,7 @@
 
 An independently implemented, MSX-inspired first-person maze built with [The Pipeline Framework](https://pipelineframework.org/). Play with the keyboard, hand control to a real local Tev1 decision model, or compare it with Random and a deterministic Explorer. Seven entries per room; three growing levels; no hidden map for the AI.
 
-![The independently drawn first-person maze](docs/screenshots/game.png)
+![The independently drawn first-person maze](docs/screenshots/turn-view.png)
 
 ## Run locally
 
@@ -18,6 +18,8 @@ ollama pull tev1:0.8b
 
 Open **http://127.0.0.1:8087**. Use **↑ / W** to walk, **← / A** and **→ / D** to turn. Play/Pause hands control to the selected automated player; Pause finishes at most the current turn. Reset restarts the selected seed. An observed-only map and entry bars help you keep your bearings.
 
+Turns rotate the room and map arrow over a short quarter turn, with a direction cue. Reduced-motion preferences keep the transition instant.
+
 The levels are 3×3, 4×4 and 6×6. Each room starts with seven entries; entering decrements its allowance and reaching zero loses. Spawning, turning and bumping into a wall consume none. Cross the exit to advance; escape the third level to win. Every admitted level is checked for a valid escape under these same rules.
 
 A second launch can reuse the package with `./scripts/run.sh --no-build`. Change the port with `GHOST_PORT=8089`. A compatible local model/endpoint can be selected with `GHOST_MODEL` and `GHOST_MODEL_URL`; the launcher writes a native TPF deployment binding through `PIPELINE_CONFIG`. The supplied host connection is for local Ollama, not hosted credential management.
@@ -27,6 +29,7 @@ A second launch can reuse the package with `./scripts/run.sh --no-build`. Change
 ```sh
 mvn -B -ntp verify
 mvn -B -ntp verify -Dghost.live=true  # Includes real Tev1 inference; Ollama must be running.
+node scripts/test-renderer.cjs      # Optional renderer/animation checks; Node.js 18+.
 
 # With the application running:
 python3 scripts/evaluate.py
@@ -40,10 +43,13 @@ Evaluation uses the same nine seed/level combinations for all players, with 128 
 | Player | Escaped | What actually happened |
 |---|---:|---|
 | Tev1 0.8B | 0 / 9 | Repeated forward attempts, mostly rejected by walls |
+| Tev1 4B | 1 / 9 | Explored more; still hit walls and repeatedly exhausted rooms |
 | Random legal movement | 1 / 9 | Occasionally escaped; also exhausted rooms or its action budget |
 | Deterministic Explorer | 9 / 9 | Used visited-room memory and depth-first exploration |
 
 These are small-sample observations, not a general model ranking. The maze and seeds were not adjusted to make Tev1 win. Full actions, latencies and paired starting observations are in [the evaluation dataset](evidence/evaluation.json); see [the report](docs/evaluation.md) for definitions and limits.
+
+The [fresh 0.8B-versus-4B investigation](docs/model-comparison.md) verifies identical starting observations, code identities and budgets, and retains every attempt. Later observations differ as the players choose different actions. Redundant front/left/right labels helped 4B in isolated probes; 0.8B still preferred FORWARD. The gameplay observation format stayed frozen for the comparison. To play the installed 4B variant, restart with `GHOST_MODEL=tev1:latest ./scripts/run.sh --no-build`; the UI displays the actual model tag.
 
 ## How it works
 

@@ -1,7 +1,7 @@
 {
   "result": "PASS",
-  "documentsDiagnostic": 3,
-  "distinctRootTracesDiagnostic": 3,
+  "documentsDiagnostic": 4,
+  "distinctRootTracesDiagnostic": 4,
   "runs": [
     {
       "file": "explorer-segment.json",
@@ -19,6 +19,15 @@
       "events": 24,
       "nestedInvocations": 0,
       "modelQueries": 0,
+      "rootLineage": "PASS"
+    },
+    {
+      "file": "tev1-4b-segment.json",
+      "traceId": "52720b3e9f3cdf6e33c5c79e565187cf",
+      "status": "completed",
+      "events": 406,
+      "nestedInvocations": 14,
+      "modelQueries": 15,
       "rootLineage": "PASS"
     },
     {

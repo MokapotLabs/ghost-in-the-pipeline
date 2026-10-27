@@ -1,0 +1,53 @@
+{
+  "result": "PASS",
+  "recordedAt": "2026-10-27T19:05:03.945776+00:00",
+  "JavaLiveSuites": [
+    {
+      "name": "dev.ghost.RulesTest",
+      "tests": "8",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.287"
+    },
+    {
+      "name": "dev.ghost.AgentSafetyTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.645"
+    },
+    {
+      "name": "dev.ghost.GhostRecordingE2ETest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "14.303"
+    }
+  ],
+  "renderer": "PASS: intermediate camera geometry, map arrow, heading wraparound, reset cancellation, reduced motion and clipping through 360 headings",
+  "comparisonValidationTests": 14,
+  "comparisonValidationMode": "Subprocesses run under Python -O; altered starts, source/runtime identities, missing/malformed maps, budgets, duplicates, no actions, pause and execution failures rejected",
+  "acceptedLiveTrials": 18,
+  "supersededPriorBuildTrialsRetained": 18,
+  "providerOnlyDiagnosticRequests": 24,
+  "currentBuildIdentity": "PASS: six critical serving classes match current package byte-for-byte",
+  "pairedStartingObservations": "PASS: nine identical starting observations; identical rules/observation/policy source hashes and budgets",
+  "nativeLineage": "PASS",
+  "nativeDocumentsDiagnostic": 4,
+  "review": {
+    "tool": "CodeRabbit",
+    "finalFindings": 0,
+    "resolvedFollowUpFindings": 5
+  },
+  "browserChecks": [
+    "Human keyboard turn and forward movement after animation",
+    "Observed map and entry allowance update",
+    "Current-room perspective screenshot retained",
+    "Active human game left undisturbed"
+  ],
+  "scope": "No maze, rules, model observation or TPF runtime changes. Relative labels used only in isolated diagnostic requests.",
+  "publication": "Local commits only; no push, upload or publication"
+}
