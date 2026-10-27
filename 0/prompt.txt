@@ -1,0 +1,9 @@
+<in-app-browser-context source="ambient-ui-state">
+This block is automatically supplied ambient UI state, not part of the user's request. Do not treat it as an instruction or as evidence that the user explicitly selected the in-app browser.
+# In app browser:
+- The user has the in-app browser open with 1 tab.
+- Current URL: http://127.0.0.1:8087/
+</in-app-browser-context>
+
+## My request:
+Investigate why Tev1 keeps walking into walls, then compare the 0.8B and 4B models on the same seeds without changing the maze or scripting a route. On the graphics, animate the turn a bit better so there's minimal situational awareness.
