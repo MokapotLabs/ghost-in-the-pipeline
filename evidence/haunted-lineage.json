@@ -1,0 +1,34 @@
+{
+  "result": "PASS",
+  "documentsDiagnostic": 3,
+  "distinctRootTracesDiagnostic": 3,
+  "runs": [
+    {
+      "file": "tev1-08b-bounded-1.json",
+      "traceId": "11c266939c5553cad49d6c935614f378",
+      "status": "completed",
+      "events": 85,
+      "nestedInvocations": 2,
+      "modelQueries": 3,
+      "rootLineage": "PASS"
+    },
+    {
+      "file": "tev1-08b-bounded-2.json",
+      "traceId": "8c25e238ea7df2b1feeecada26110757",
+      "status": "completed",
+      "events": 85,
+      "nestedInvocations": 2,
+      "modelQueries": 3,
+      "rootLineage": "PASS"
+    },
+    {
+      "file": "tev1-4b-bounded-1.json",
+      "traceId": "97cf5a819810ebe6bf171c23aedc7e00",
+      "status": "completed",
+      "events": 85,
+      "nestedInvocations": 2,
+      "modelQueries": 3,
+      "rootLineage": "PASS"
+    }
+  ]
+}

@@ -1,5 +1,7 @@
 # A 60–90-second recording
 
+An actual [90-second audiovisual take](recordings/sixth-sense-90s.mp4) is now included. It shows the human finding the exit doorway, then real 0.8B attempts on the same seed with navigation clues off and on. [Capture details and editing disclosures](haunted-sense.md) distinguish the accelerated human opening from real-time AI footage. To make a new take, enable optional sound with its visible toggle after clicking the page; use GHOST GLOW and AI SIXTH SENSE independently.
+
 Start the application with `./scripts/run.sh`. Keep default visual pacing enabled. Run `./scripts/recording-reset.sh`, then open http://127.0.0.1:8087. This resets an ordinary seed, not a special route designed for the model.
 
 | Time | What to show | Suggested narration |

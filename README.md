@@ -4,6 +4,8 @@
 
 An independently implemented, MSX-inspired first-person maze built with [The Pipeline Framework](https://pipelineframework.org/). Play with the keyboard, hand control to a real local Tev1 decision model, or compare it with Random and a deterministic Explorer. Seven entries per room; three growing levels; no hidden map for the AI.
 
+**New: a haunted sixth sense.** Optional glow and quiet synthesized tones grow stronger along corridors toward the exit. The AI can receive the same qualitative signal and visited-room readings. [Watch the 90-second audiovisual demonstration](docs/recordings/sixth-sense-90s.mp4) and read [the controlled clue-on/off experiment](docs/haunted-sense.md): escape counts did not improve in these tested cases.
+
 ![The independently drawn first-person maze and model menu](docs/screenshots/relative-game.png)
 
 ## Run locally
@@ -21,6 +23,8 @@ Open **http://127.0.0.1:8087**. Use **↑ / W** to walk, **← / A** and **→ /
 
 Turns rotate the room and map arrow over a short quarter turn, with a direction cue. Successful forward steps have a brief approach and footstep bob; collisions do not animate room entry. Reduced-motion preferences keep transitions instant.
 
+**GHOST GLOW**, **SOUND OFF/ON**, and **AI SIXTH SENSE** are independent controls. Audio starts muted and is enabled by clicking its toggle. The AI setting applies to the next Play segment. Turns and bumps never improve the proximity trend. The seven-entry rules and maze generator are unchanged.
+
 The levels are 3×3, 4×4 and 6×6. Each room starts with seven entries; entering decrements its allowance and reaching zero loses. Spawning, turning and bumping into a wall consume none. Cross the exit to advance; escape the third level to win. Every admitted level is checked for a valid escape under these same rules.
 
 A second launch can reuse the package with `./scripts/run.sh --no-build`. Change the port with `GHOST_PORT=8089`. The two native model bindings can be configured with `GHOST_MODEL` (small), `GHOST_LARGE_MODEL` (4B), and `GHOST_MODEL_URL`; the launcher writes native TPF deployment bindings through `PIPELINE_CONFIG`. The supplied host connection is for local Ollama, not hosted credential management.
@@ -37,7 +41,7 @@ python3 scripts/evaluate.py
 ./scripts/recording-reset.sh
 ```
 
-The ordinary test suite uses real TPF gameplay and observation-only baselines. The opt-in live test validates genuine decisions from both models without requiring an escape or an exact action. The [current acceptance record](evidence/relative-acceptance.json) reports **18 passing tests**, including human completion of all three levels, pause, limits, relative-observation validation and live Tev1. Core tests validate **600 seeded levels**. The original `acceptance.json` records the historical 16-test delivery.
+The ordinary test suite uses real TPF gameplay and observation-only baselines. The opt-in live test validates genuine decisions from both models without requiring an escape or an exact action. The [current acceptance record](evidence/haunted-acceptance.json) reports **21 passing Java tests**, with signal distance/trend/privacy checks, plus audio and renderer checks. Core tests validate **600 seeded levels**. `relative-acceptance.json` and `acceptance.json` retain the historical 18- and 16-test deliveries.
 
 Evaluation uses the same nine seed/level combinations for all players, with 128 decisions and 120 seconds per case. For timings without the visual pause, restart with `GHOST_PACE_MS=0 ./scripts/run.sh --no-build`, then run `GHOST_PACE_MS=0 python3 scripts/evaluate.py`. Do not interact with that single session during evaluation. The script leaves a fresh normal campaign ready afterwards.
 
@@ -66,7 +70,7 @@ See [architecture](docs/architecture.md), [execution contract](docs/execution-co
 
 ## Record and inspect
 
-The primary deliverable is the game. Follow [the 60–90-second recording sequence](docs/recording.md); [the DEV submission](docs/dev-submission.md) is a draft, with the final video and reviewed session link still to insert. No video was recorded or uploaded automatically.
+The primary deliverable is the game. The [90-second audiovisual recording](docs/recordings/sixth-sense-90s.mp4) shows human wayfinding and real 0.8B play with clues off and on. See [capture/edit details](docs/haunted-sense.md) or follow [the recording sequence](docs/recording.md) for a fresh take. [The DEV submission](docs/dev-submission.md) remains a draft requiring publication links and reviewed session material. Nothing was uploaded or published automatically.
 
 Native replay goes to `target/replay/` by default. Set `GHOST_REPLAY_PATH` to an absolute directory for a separate run. [The execution dataset](evidence/README.md) includes representative native documents and root/lineage verification:
 

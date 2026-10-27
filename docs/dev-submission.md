@@ -46,6 +46,8 @@ Separate bounded probes rotated choice order and added redundant front/left/righ
 
 I then put those clearer labels into actual gameplay and reran both models on the same nine cases, preserving the original results. 0.8B remained at **zero escapes**. 4B improved from **one to three**, and wall rejections fell from **257 to 105**. It still timed out five times and exhausted a room once. The [new action records](relative-observations.md) show the tradeoff: better local movement and more exploration, with unreliable navigation. Both models are now selectable in the game menu, and a small forward-step animation helps the human keep their bearings.
 
+The latest experiment adds an original haunted sense: a glow and quiet synthesized sound grow stronger along corridor paths toward the exit. The AI can receive the same qualitative signal and visited-room readings. It helped the human find the exit in the [90-second audiovisual recording](recordings/sixth-sense-90s.mp4), but escape counts stayed unchanged: 0.8B escaped 0/9 with clues off and on; 4B escaped 1/3 in each arm of a smaller three-case 3×3 follow-up. Those different scopes are explicit in [the report](haunted-sense.md). More information did not automatically produce better navigation.
+
 ## Why Does Open Innovation Matter?
 
 After the initial dependencies and weights are downloaded, this game and its inference run on the laptop. There is no hosted model bill or cloud account required for the default setup. I can inspect the framework, replace the model binding, read every proposed action, and rerun the comparison.

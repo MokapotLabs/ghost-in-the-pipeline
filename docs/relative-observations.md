@@ -1,5 +1,7 @@
 # Clearer observations in actual gameplay
 
+This is the preserved relative-edge experiment at revision `333d198`. The current version adds optional haunted clues; use [the current experiment](haunted-sense.md) and its separate filenames rather than overwriting these historical records. The commands below reproduce the older protocol when run at that revision.
+
 This follow-up promotes the earlier diagnostic's plain-language front/left/right labels into the real game. `relativeEdges` is appended to the existing observation, using only current observed NESW edges and orientation. The same compact memory, question instructions, criterion descriptions and finite action order remain. No unseen topology, computed route or solver action is added.
 
 Both models replay the same nine normal cases: seeds **1983, 1986 and 2026**, at levels **3×3, 4×4 and 6×6**, with **128 decisions / 120 seconds** per attempt and the existing ten-second provider timeout. Presentation pacing is zero for evaluation. Initial observations, code identities and budgets match across models; subsequent observations differ as their actions diverge.
