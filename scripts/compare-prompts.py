@@ -20,7 +20,9 @@ def non_question_source(source):
     for label in ['FORWARD','TURN_LEFT','TURN_RIGHT']:
         source,count=re.subn(r'new DecisionCriterion\(\s*"'+label+r'",\s*"(?:[^"\\]|\\.)*"\)', '<criterion '+label+'>', source)
         clues.require(count==1,'Expected one unchanged action label: '+label)
-    return re.sub(r'\s+','',source)
+    # Keep every byte inside Java string/character literals, including spaces.
+    return re.sub(r'"(?:\\.|[^"\\])*"|\'(?:\\.|[^\'\\])*\'|\s+',
+                  lambda m: '' if m.group().isspace() else m.group(), source)
 
 
 def compare(old_off, old_on, new_off, new_on):

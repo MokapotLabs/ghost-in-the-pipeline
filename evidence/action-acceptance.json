@@ -1,0 +1,58 @@
+{
+  "result": "PASS",
+  "recordedAt": "2026-10-27T22:13:00.386058+00:00",
+  "javaTests": 22,
+  "javaSuites": [
+    {
+      "name": "dev.ghost.SignalsTest",
+      "tests": 3,
+      "errors": 0,
+      "skipped": 0,
+      "failures": 0
+    },
+    {
+      "name": "dev.ghost.RulesTest",
+      "tests": 8,
+      "errors": 0,
+      "skipped": 0,
+      "failures": 0
+    },
+    {
+      "name": "dev.ghost.AgentSafetyTest",
+      "tests": 6,
+      "errors": 0,
+      "skipped": 0,
+      "failures": 0
+    },
+    {
+      "name": "dev.ghost.GhostRecordingE2ETest",
+      "tests": 5,
+      "errors": 0,
+      "skipped": 0,
+      "failures": 0
+    }
+  ],
+  "liveProvider": true,
+  "liveModels": [
+    "tev1:0.8b",
+    "tev1:latest (4B)"
+  ],
+  "namedE2E": "ghostRecordingE2ECompletesHumanCampaignThenBoundedPlayers",
+  "promptControlTests": 9,
+  "historicalClueControlTests": 7,
+  "historicalComparisonTests": 32,
+  "rendererAndMotion": "PASS",
+  "audioLifecycle": "PASS",
+  "browserControls": "action-browser-checks.json",
+  "newTrials": 24,
+  "providerOnlyProbes": 8,
+  "nativeLineage": "action-prompt-lineage.json",
+  "controls": "action-08b-prompt-comparison.json and action-4b-prompt-comparison.json verify unchanged starts, game classes, models, budgets and non-question observation source; action-build.json verifies final compiled game classes.",
+  "evaluationVersionGate": "Added after the recorded matrix. Recorded package identity was verified directly; future evaluations additionally require matching server-reported prompt metadata.",
+  "screenshot": "docs/screenshots/action-controls.png",
+  "recording": "Existing sixth-sense-90s.mp4 retained as historical pre-question-change footage; no new video claimed.",
+  "publication": "Local only; no push or upload.",
+  "featureCommit": "1a59ac4",
+  "privacyReview": "Changed source and evidence scanned; no secrets found. Screenshots contain only game UI. Raw logs, dependency caches and development sessions remain ignored.",
+  "review": "Three CodeRabbit reviews identified a serving-prompt version guard, stricter non-question source checks, and preservation of whitespace inside Java literals. All findings fixed; nine focused checks pass. Final focused re-review was rate-limited (12-minute reset), so no clean re-review verdict is claimed."
+}

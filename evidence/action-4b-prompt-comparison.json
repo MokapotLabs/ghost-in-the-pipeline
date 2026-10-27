@@ -1,0 +1,94 @@
+{
+  "result": "PASS",
+  "controls": "Same seeds, models, initial observations/readings, rules, baselines, signals and budgets. Only observation-authoring class changed among recorded game classes; fixture export shows state unchanged and question text changed.",
+  "previous": [
+    {
+      "agentClues": false,
+      "trials": 3,
+      "escapes": 1,
+      "decisions": 172,
+      "moves": 76,
+      "collisions": 33,
+      "repeatedPositions": 56,
+      "roomsExplored": 22,
+      "roomExhaustions": 1,
+      "terminationReasons": {
+        "LOST": 1,
+        "TIME_LIMIT": 1,
+        "WON": 1
+      },
+      "latencyMs": {
+        "median": 1233.0,
+        "max": 5297
+      }
+    },
+    {
+      "agentClues": true,
+      "trials": 3,
+      "escapes": 1,
+      "decisions": 146,
+      "moves": 68,
+      "collisions": 24,
+      "repeatedPositions": 48,
+      "roomsExplored": 22,
+      "roomExhaustions": 1,
+      "terminationReasons": {
+        "LOST": 1,
+        "TIME_LIMIT": 1,
+        "WON": 1
+      },
+      "latencyMs": {
+        "median": 1682.5,
+        "max": 2837
+      }
+    }
+  ],
+  "actionFocused": [
+    {
+      "agentClues": false,
+      "trials": 3,
+      "escapes": 1,
+      "decisions": 174,
+      "moves": 96,
+      "collisions": 0,
+      "repeatedPositions": 74,
+      "roomsExplored": 24,
+      "roomExhaustions": 1,
+      "terminationReasons": {
+        "LOST": 1,
+        "TIME_LIMIT": 1,
+        "WON": 1
+      },
+      "latencyMs": {
+        "median": 1445.5,
+        "max": 5438
+      }
+    },
+    {
+      "agentClues": true,
+      "trials": 3,
+      "escapes": 1,
+      "decisions": 122,
+      "moves": 68,
+      "collisions": 0,
+      "repeatedPositions": 48,
+      "roomsExplored": 22,
+      "roomExhaustions": 1,
+      "terminationReasons": {
+        "LOST": 1,
+        "TIME_LIMIT": 1,
+        "WON": 1
+      },
+      "latencyMs": {
+        "median": 1861.5,
+        "max": 3468
+      }
+    }
+  ],
+  "inputsSha256": {
+    "evidence/haunted-4b-off.json": "c95e1d7d738f77b0cfdb223938af8e1fcaec9389ddbcc1075102945ff7a4ebf8",
+    "evidence/haunted-4b-on.json": "0e4f26217384ad2cdc4057e5d343b53d77972afb73e9c25321dddee79c85a9ac",
+    "evidence/action-4b-off.json": "e3ebdeb0d1b3bcbf2f79fc6c91356250674ab1f668daee89eead9c8c44a2021f",
+    "evidence/action-4b-on.json": "d8993b25380d325c2cad44d70f67c71aa195d94fc1952a7734cf49ba70f31c58"
+  }
+}

@@ -6,7 +6,9 @@ An independently implemented, MSX-inspired first-person maze built with [The Pip
 
 **New: a haunted sixth sense.** Optional glow and quiet synthesized tones grow stronger along corridors toward the exit. The AI can receive the same qualitative signal and visited-room readings. [Watch the 90-second audiovisual demonstration](docs/recordings/sixth-sense-90s.mp4) and read [the controlled clue-on/off experiment](docs/haunted-sense.md): escape counts did not improve in these tested cases.
 
-![The independently drawn first-person maze and model menu](docs/screenshots/relative-game.png)
+**Latest:** [a simpler action-focused prompt and browser-control repair](docs/action-prompt.md). The prompt lives in the typed decision question built by `Observations.request()`; `pipeline.yaml` now points to its named constants. The model menu stops rebuilding on frame updates, selection restores movement focus, and Safari clue checkboxes have explicit sizing. Earlier results and recordings remain preserved.
+
+![The repaired controls with 4B selected](docs/screenshots/action-controls.png)
 
 ## Run locally
 
@@ -41,7 +43,7 @@ python3 scripts/evaluate.py
 ./scripts/recording-reset.sh
 ```
 
-The ordinary test suite uses real TPF gameplay and observation-only baselines. The opt-in live test validates genuine decisions from both models without requiring an escape or an exact action. The [current acceptance record](evidence/haunted-acceptance.json) reports **21 passing Java tests**, with signal distance/trend/privacy checks, plus audio and renderer checks. Core tests validate **600 seeded levels**. `relative-acceptance.json` and `acceptance.json` retain the historical 18- and 16-test deliveries.
+The ordinary test suite uses real TPF gameplay and observation-only baselines. The opt-in live test validates genuine decisions from both models without requiring an escape or an exact action. The [current acceptance record](evidence/action-acceptance.json) reports **22 passing Java tests**, with signal distance/trend/privacy checks, plus audio and renderer checks. Core tests validate **600 seeded levels**. `haunted-acceptance.json`, `relative-acceptance.json` and `acceptance.json` retain the historical 21-, 18- and 16-test deliveries.
 
 Evaluation uses the same nine seed/level combinations for all players, with 128 decisions and 120 seconds per case. For timings without the visual pause, restart with `GHOST_PACE_MS=0 ./scripts/run.sh --no-build`, then run `GHOST_PACE_MS=0 python3 scripts/evaluate.py`. Do not interact with that single session during evaluation. The script leaves a fresh normal campaign ready afterwards.
 
@@ -56,7 +58,7 @@ The preserved original compact-observation results:
 
 These are small-sample observations, not a general model ranking. The maze and seeds were not adjusted to make Tev1 win. Full actions, latencies and paired starting observations are in [the evaluation dataset](evidence/evaluation.json); see [the report](docs/evaluation.md) for definitions and limits.
 
-The [original model investigation](docs/model-comparison.md) retains every compact-observation attempt. The current game adds redundant front/left/right labels to actual gameplay; see [the follow-up comparison](docs/relative-observations.md) for both reruns on the unchanged seeds and rules. Switch between the two models directly in the menu. Later observations differ as their actions diverge.
+The current [prompt investigation](docs/action-prompt.md) preserves clue-on/off reruns for the same nine small-model cases and three 3×3 large-model cases. The [original model investigation](docs/model-comparison.md) retains every compact-observation attempt. The current game adds redundant front/left/right labels to actual gameplay; see [the follow-up comparison](docs/relative-observations.md) for both reruns on the unchanged seeds and rules. Switch between the two models directly in the menu. Later observations differ as their actions diverge.
 
 With clearer observations, **0.8B remained at 0/9 escapes** and **4B improved to 3/9**, with 276 successful moves and 105 wall rejections. Five 4B attempts still timed out. Original result files are preserved; the new action records are `evidence/relative-08b.json` and `evidence/relative-4b.json`.
 

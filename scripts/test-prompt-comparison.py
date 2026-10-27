@@ -22,6 +22,11 @@ class PromptControls(unittest.TestCase):
         changed=source.replace('out.put("room", g.room())','out.put("room", g.room()+1)')
         self.assertNotEqual(module.non_question_source(source),module.non_question_source(changed))
 
+    def test_literal_whitespace_is_not_discarded(self):
+        source=(ROOT/'connectors/src/main/java/dev/ghost/Observations.java').read_text()
+        changed=source.replace('out.put("room",','out.put("ro om",')
+        self.assertNotEqual(module.non_question_source(source),module.non_question_source(changed))
+
     def test_changed_rules_rejected_even_when_both_new_arms_match(self):
         for r in self.reports[2:]:r['runtimeClassesSha256']['dev/ghost/Rules.class']='0'*64
         with self.assertRaises(ValueError):module.compare(*self.reports)

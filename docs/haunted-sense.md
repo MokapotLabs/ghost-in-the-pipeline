@@ -1,5 +1,7 @@
 # Does a sixth sense help?
 
+This is the preserved haunted-question experiment at revision `1f263f8`. The [new action-focused question and browser fixes](action-prompt.md) have separate results. The reproduction commands below apply to this historical revision; use the follow-up instructions and fresh filenames with current code.
+
 The game now has one deterministic haunted signal, shared by the human presentation and the optional agent observation. An independent breadth-first calculation measures corridor steps to the exit room. Exact distance, exit coordinates, direction and route never enter the model input or browser frame.
 
 | Room distance, for level width `n` | Signal |

@@ -1,0 +1,550 @@
+{
+  "purpose": "Provider-only diagnosis; fixtures are actual typed requests exported from old/current application classes. No gameplay actions, retries or routes.",
+  "timeoutSeconds": 10,
+  "probes": [
+    {
+      "model": "tev1:0.8b",
+      "agentClues": false,
+      "prompt": "previous",
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 0,
+          "facing": "E",
+          "direction": 1,
+          "edges": "##.?",
+          "entriesLeft": 7,
+          "memory": [
+            [
+              0,
+              1,
+              "##.?",
+              7
+            ]
+          ],
+          "previousAction": "START",
+          "previousResult": "Find the exit. Seven entries per room.",
+          "relativeEdges": {
+            "front": "wall",
+            "left": "wall",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "criteria": {
+              "FORWARD": "Move one room in the current facing direction, or cross an exit ahead.",
+              "TURN_LEFT": "Rotate 90 degrees left; stay in the same room.",
+              "TURN_RIGHT": "Rotate 90 degrees right; stay in the same room."
+            },
+            "type": "choice",
+            "instructions": "Explore the maze and escape through an observed exit. Choose one action. Edges and memory use N,E,S,W: # wall, . passage, E exit, ? unseen. Memory rows are [room, visits, edges, entriesLeft]. Avoid walls and repeated rooms. Room numbers are row-major; north decreases the row. You cannot move backwards. A turn changes only orientation; FORWARD goes in the facing direction. Entering the same room seven times loses. Use explored memory to navigate; an exit requires moving FORWARD through it."
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.7549006205467655,
+              "TURN_LEFT": 0.07797165229205327,
+              "TURN_RIGHT": 0.16712772716118124
+            },
+            "confidence": 0.3535631947509579
+          }
+        },
+        "usage": {
+          "input_tokens": 345,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 0
+      },
+      "latencyMs": 1044
+    },
+    {
+      "model": "tev1:0.8b",
+      "agentClues": false,
+      "prompt": "action-focused-v1",
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 0,
+          "facing": "E",
+          "direction": 1,
+          "edges": "##.?",
+          "entriesLeft": 7,
+          "memory": [
+            [
+              0,
+              1,
+              "##.?",
+              7
+            ]
+          ],
+          "previousAction": "START",
+          "previousResult": "Find the exit. Seven entries per room.",
+          "relativeEdges": {
+            "front": "wall",
+            "left": "wall",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            },
+            "instructions": "Choose ONE action for this turn. Read relativeEdges: front, left, right.\nIf front is wall, choose a turn: FORWARD cannot pass a wall.\nIf front is exit, choose FORWARD.\nPrefer an open passage and avoid needless revisits or rooms with one entry left.\nmemory rows are [room, visits, NESW edges, entriesLeft].\nEdges: # wall, . passage, E exit, ? unseen. Rooms are row-major."
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.5933976951727846,
+              "TURN_LEFT": 0.12075028176547346,
+              "TURN_RIGHT": 0.28585202306174184
+            },
+            "confidence": 0.15991705334243633
+          }
+        },
+        "usage": {
+          "input_tokens": 336,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 0
+      },
+      "latencyMs": 189
+    },
+    {
+      "model": "tev1:0.8b",
+      "agentClues": true,
+      "prompt": "previous",
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 0,
+          "facing": "E",
+          "direction": 1,
+          "edges": "##.?",
+          "entriesLeft": 7,
+          "memory": [
+            [
+              0,
+              1,
+              "##.?",
+              7
+            ]
+          ],
+          "previousAction": "START",
+          "previousResult": "Find the exit. Seven entries per room.",
+          "relativeEdges": {
+            "front": "wall",
+            "left": "wall",
+            "right": "open passage"
+          },
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT",
+          "signalMemory": [
+            [
+              0,
+              "NOTICEABLE"
+            ]
+          ]
+        },
+        "questions": {
+          "action": {
+            "criteria": {
+              "FORWARD": "Move one room in the current facing direction, or cross an exit ahead.",
+              "TURN_LEFT": "Rotate 90 degrees left; stay in the same room.",
+              "TURN_RIGHT": "Rotate 90 degrees right; stay in the same room."
+            },
+            "type": "choice",
+            "instructions": "Explore the maze and escape through an observed exit. Choose one action. Edges and memory use N,E,S,W: # wall, . passage, E exit, ? unseen. Memory rows are [room, visits, edges, entriesLeft]. Avoid walls and repeated rooms. Room numbers are row-major; north decreases the row. You cannot move backwards. A turn changes only orientation; FORWARD goes in the facing direction. Entering the same room seven times loses. Use explored memory to navigate; an exit requires moving FORWARD through it. The haunted signal ranks FAINT, NOTICEABLE, STRONG, INTENSE from far to close through corridors. Compare signalMemory readings in visited rooms to explore toward stronger signals. Turns and wall bumps report NO_MOVEMENT; UNCHANGED after movement means the same coarse band. The signal gives no exit direction or route."
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.7801105317132068,
+              "TURN_LEFT": 0.07322238974418228,
+              "TURN_RIGHT": 0.14666707854261093
+            },
+            "confidence": 0.39316228274924014
+          }
+        },
+        "usage": {
+          "input_tokens": 436,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 0
+      },
+      "latencyMs": 199
+    },
+    {
+      "model": "tev1:0.8b",
+      "agentClues": true,
+      "prompt": "action-focused-v1",
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 0,
+          "facing": "E",
+          "direction": 1,
+          "edges": "##.?",
+          "entriesLeft": 7,
+          "memory": [
+            [
+              0,
+              1,
+              "##.?",
+              7
+            ]
+          ],
+          "previousAction": "START",
+          "previousResult": "Find the exit. Seven entries per room.",
+          "relativeEdges": {
+            "front": "wall",
+            "left": "wall",
+            "right": "open passage"
+          },
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT",
+          "signalMemory": [
+            [
+              0,
+              "NOTICEABLE"
+            ]
+          ]
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            },
+            "instructions": "Choose ONE action for this turn. Read relativeEdges: front, left, right.\nIf front is wall, choose a turn: FORWARD cannot pass a wall.\nIf front is exit, choose FORWARD.\nPrefer an open passage and avoid needless revisits or rooms with one entry left.\nmemory rows are [room, visits, NESW edges, entriesLeft].\nEdges: # wall, . passage, E exit, ? unseen. Rooms are row-major.\nSignal order: FAINT < NOTICEABLE < STRONG < INTENSE means closer through corridors.\nsignalMemory rows are [visited room, reading]. Prefer openings toward stronger remembered readings.\nIf a move made the signal weaker, try another opening.\nNO_MOVEMENT means a turn or bump, not progress."
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.5178669233212642,
+              "TURN_LEFT": 0.1522509967728129,
+              "TURN_RIGHT": 0.3298820799059229
+            },
+            "confidence": 0.0959576631269593
+          }
+        },
+        "usage": {
+          "input_tokens": 427,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 124
+      },
+      "latencyMs": 151
+    },
+    {
+      "model": "tev1:latest",
+      "agentClues": false,
+      "prompt": "previous",
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 0,
+          "facing": "E",
+          "direction": 1,
+          "edges": "##.?",
+          "entriesLeft": 7,
+          "memory": [
+            [
+              0,
+              1,
+              "##.?",
+              7
+            ]
+          ],
+          "previousAction": "START",
+          "previousResult": "Find the exit. Seven entries per room.",
+          "relativeEdges": {
+            "front": "wall",
+            "left": "wall",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "criteria": {
+              "FORWARD": "Move one room in the current facing direction, or cross an exit ahead.",
+              "TURN_LEFT": "Rotate 90 degrees left; stay in the same room.",
+              "TURN_RIGHT": "Rotate 90 degrees right; stay in the same room."
+            },
+            "type": "choice",
+            "instructions": "Explore the maze and escape through an observed exit. Choose one action. Edges and memory use N,E,S,W: # wall, . passage, E exit, ? unseen. Memory rows are [room, visits, edges, entriesLeft]. Avoid walls and repeated rooms. Room numbers are row-major; north decreases the row. You cannot move backwards. A turn changes only orientation; FORWARD goes in the facing direction. Entering the same room seven times loses. Use explored memory to navigate; an exit requires moving FORWARD through it."
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "TURN_RIGHT",
+            "probabilities": {
+              "FORWARD": 0.33149896042409155,
+              "TURN_LEFT": 0.12195165230972886,
+              "TURN_RIGHT": 0.5465493872661796
+            },
+            "confidence": 0.13271717980827158
+          }
+        },
+        "usage": {
+          "input_tokens": 345,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 0
+      },
+      "latencyMs": 4041
+    },
+    {
+      "model": "tev1:latest",
+      "agentClues": false,
+      "prompt": "action-focused-v1",
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 0,
+          "facing": "E",
+          "direction": 1,
+          "edges": "##.?",
+          "entriesLeft": 7,
+          "memory": [
+            [
+              0,
+              1,
+              "##.?",
+              7
+            ]
+          ],
+          "previousAction": "START",
+          "previousResult": "Find the exit. Seven entries per room.",
+          "relativeEdges": {
+            "front": "wall",
+            "left": "wall",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            },
+            "instructions": "Choose ONE action for this turn. Read relativeEdges: front, left, right.\nIf front is wall, choose a turn: FORWARD cannot pass a wall.\nIf front is exit, choose FORWARD.\nPrefer an open passage and avoid needless revisits or rooms with one entry left.\nmemory rows are [room, visits, NESW edges, entriesLeft].\nEdges: # wall, . passage, E exit, ? unseen. Rooms are row-major."
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "TURN_RIGHT",
+            "probabilities": {
+              "FORWARD": 0.07532668174426627,
+              "TURN_LEFT": 0.007006472826377138,
+              "TURN_RIGHT": 0.9176668454293565
+            },
+            "confidence": 0.719287568256261
+          }
+        },
+        "usage": {
+          "input_tokens": 336,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 0
+      },
+      "latencyMs": 1099
+    },
+    {
+      "model": "tev1:latest",
+      "agentClues": true,
+      "prompt": "previous",
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 0,
+          "facing": "E",
+          "direction": 1,
+          "edges": "##.?",
+          "entriesLeft": 7,
+          "memory": [
+            [
+              0,
+              1,
+              "##.?",
+              7
+            ]
+          ],
+          "previousAction": "START",
+          "previousResult": "Find the exit. Seven entries per room.",
+          "relativeEdges": {
+            "front": "wall",
+            "left": "wall",
+            "right": "open passage"
+          },
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT",
+          "signalMemory": [
+            [
+              0,
+              "NOTICEABLE"
+            ]
+          ]
+        },
+        "questions": {
+          "action": {
+            "criteria": {
+              "FORWARD": "Move one room in the current facing direction, or cross an exit ahead.",
+              "TURN_LEFT": "Rotate 90 degrees left; stay in the same room.",
+              "TURN_RIGHT": "Rotate 90 degrees right; stay in the same room."
+            },
+            "type": "choice",
+            "instructions": "Explore the maze and escape through an observed exit. Choose one action. Edges and memory use N,E,S,W: # wall, . passage, E exit, ? unseen. Memory rows are [room, visits, edges, entriesLeft]. Avoid walls and repeated rooms. Room numbers are row-major; north decreases the row. You cannot move backwards. A turn changes only orientation; FORWARD goes in the facing direction. Entering the same room seven times loses. Use explored memory to navigate; an exit requires moving FORWARD through it. The haunted signal ranks FAINT, NOTICEABLE, STRONG, INTENSE from far to close through corridors. Compare signalMemory readings in visited rooms to explore toward stronger signals. Turns and wall bumps report NO_MOVEMENT; UNCHANGED after movement means the same coarse band. The signal gives no exit direction or route."
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "TURN_RIGHT",
+            "probabilities": {
+              "FORWARD": 0.320401109026613,
+              "TURN_LEFT": 0.1513467673652992,
+              "TURN_RIGHT": 0.5282521236080877
+            },
+            "confidence": 0.1010790373283742
+          }
+        },
+        "usage": {
+          "input_tokens": 436,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 0
+      },
+      "latencyMs": 1412
+    },
+    {
+      "model": "tev1:latest",
+      "agentClues": true,
+      "prompt": "action-focused-v1",
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 0,
+          "facing": "E",
+          "direction": 1,
+          "edges": "##.?",
+          "entriesLeft": 7,
+          "memory": [
+            [
+              0,
+              1,
+              "##.?",
+              7
+            ]
+          ],
+          "previousAction": "START",
+          "previousResult": "Find the exit. Seven entries per room.",
+          "relativeEdges": {
+            "front": "wall",
+            "left": "wall",
+            "right": "open passage"
+          },
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT",
+          "signalMemory": [
+            [
+              0,
+              "NOTICEABLE"
+            ]
+          ]
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            },
+            "instructions": "Choose ONE action for this turn. Read relativeEdges: front, left, right.\nIf front is wall, choose a turn: FORWARD cannot pass a wall.\nIf front is exit, choose FORWARD.\nPrefer an open passage and avoid needless revisits or rooms with one entry left.\nmemory rows are [room, visits, NESW edges, entriesLeft].\nEdges: # wall, . passage, E exit, ? unseen. Rooms are row-major.\nSignal order: FAINT < NOTICEABLE < STRONG < INTENSE means closer through corridors.\nsignalMemory rows are [visited room, reading]. Prefer openings toward stronger remembered readings.\nIf a move made the signal weaker, try another opening.\nNO_MOVEMENT means a turn or bump, not progress."
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "TURN_RIGHT",
+            "probabilities": {
+              "FORWARD": 0.05960197621208529,
+              "TURN_LEFT": 0.008066250332124415,
+              "TURN_RIGHT": 0.9323317734557903
+            },
+            "confidence": 0.7521539909856827
+          }
+        },
+        "usage": {
+          "input_tokens": 427,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 124
+      },
+      "latencyMs": 991
+    }
+  ]
+}
