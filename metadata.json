@@ -1,0 +1,53 @@
+{
+  "cli_version": "0.12.2",
+  "checkpoint_id": "01M5ZRG300YX8FCVX7WFKPAZMT",
+  "strategy": "manual-commit",
+  "branch": "codex/ghost-playable-demo",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "NOTICE.md",
+    "app/src/main/resources/META-INF/resources/game.js",
+    "app/src/main/resources/META-INF/resources/index.html",
+    "app/src/main/resources/META-INF/resources/portal.png",
+    "app/src/main/resources/META-INF/resources/style.css",
+    "app/src/test/java/dev/ghost/AgentSafetyTest.java",
+    "connectors/src/main/java/dev/ghost/Observations.java",
+    "scripts/compare-clues.py",
+    "scripts/compare-prompts.py",
+    "scripts/evaluate.py",
+    "scripts/test-browser-controls.cjs",
+    "scripts/test-prompt-comparison.py",
+    "scripts/test-renderer.cjs"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 54094,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 8998272,
+    "output_tokens": 36047,
+    "api_call_count": 45,
+    "subagent_tokens_complete": true
+  },
+  "redaction": {
+    "replacements": 50570,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 9,
+      "credentialed_uri": 0,
+      "entropy": 58267,
+      "key_context": 0,
+      "provider_token": 0,
+      "shell_stdin": 0
+    }
+  }
+}
