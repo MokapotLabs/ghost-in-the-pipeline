@@ -82,6 +82,11 @@ types:
     fields:
       - [run, "RunState"]
       - [result, "<tpf.decision.DecisionResult>"]
+  LargeModelTurn:
+    java: dev.ghost.LargeModelTurn
+    fields:
+      - [run, "RunState"]
+      - [request, "<tpf.decision.DecisionRequest>"]
   ActionTurn:
     java: dev.ghost.ActionTurn
     fields:
@@ -97,6 +102,7 @@ types:
     java: dev.ghost.NextTurn
     variants:
       model: ModelTurn
+      large: LargeModelTurn
       action: ActionTurn
       done: RunResult
   Continuation:
@@ -111,6 +117,13 @@ connectors:
     version: 1
     config:
       model: tev1:0.8b
+      baseUrl: http://localhost:11434
+      connection: local-ollama
+  model4b:
+    provider: decision.query.jev
+    version: 1
+    config:
+      model: tev1:latest
       baseUrl: http://localhost:11434
       connection: local-ollama
   game:
@@ -146,6 +159,18 @@ pipelines:
         output: Chosen
         cardinality: ONE_TO_ONE
         java: { input: dev.ghost.ModelTurn, output: dev.ghost.Chosen }
+        config:
+          request: request
+          completion: { field: result, run: run }
+      - name: Ask Tev1 4B
+        kind: query
+        using: model4b
+        operation: decide
+        operationVersion: 1
+        input: LargeModelTurn
+        output: Chosen
+        cardinality: ONE_TO_ONE
+        java: { input: dev.ghost.LargeModelTurn, output: dev.ghost.Chosen }
         config:
           request: request
           completion: { field: result, run: run }

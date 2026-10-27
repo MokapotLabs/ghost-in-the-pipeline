@@ -20,6 +20,18 @@ public final class Observations {
     out.put("facing", List.of("N", "E", "S", "W").get(g.direction()));
     out.put("direction", g.direction());
     out.put("edges", current.edges());
+    var relative = new LinkedHashMap<String, String>();
+    for (int i = 0; i < 3; i++) {
+      char edge = current.edges().charAt((g.direction() + List.of(0, 3, 1).get(i)) % 4);
+      relative.put(
+          List.of("front", "left", "right").get(i),
+          switch (edge) {
+            case '#' -> "wall";
+            case '.' -> "open passage";
+            case 'E' -> "exit";
+            default -> "unseen";
+          });
+    }
     out.put("entriesLeft", g.remaining().get(g.room()));
     out.put(
         "memory",
@@ -33,6 +45,7 @@ public final class Observations {
         g.message().startsWith("Room ")
             ? "Entered a room; " + g.remaining().get(g.room()) + " entries left."
             : g.message());
+    out.put("relativeEdges", relative);
     return out;
   }
 

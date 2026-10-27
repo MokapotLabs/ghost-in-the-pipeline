@@ -9,6 +9,7 @@ from pathlib import Path
 import os,json
 s=Path('app/src/main/resources/pipeline.yaml').read_text()
 s=s.replace('model: tev1:0.8b','model: '+json.dumps(os.getenv('GHOST_MODEL','tev1:0.8b')))
+s=s.replace('model: tev1:latest','model: '+json.dumps(os.getenv('GHOST_LARGE_MODEL','tev1:latest')))
 s=s.replace('baseUrl: http://localhost:11434','baseUrl: '+json.dumps(os.getenv('GHOST_MODEL_URL','http://localhost:11434')))
 Path('.work/runtime-pipeline.yaml').write_text(s)
 PY

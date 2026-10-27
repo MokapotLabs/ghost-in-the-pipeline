@@ -3,6 +3,7 @@ const $ = (id) => document.getElementById(id),
   canvas = $("maze"),
   ctx = canvas.getContext("2d"),
   map = $("map").getContext("2d");
+const isAI = (player) => player === "TEV1" || player === "TEV1_4B";
 let frame = null,
   busy = false,
   lastKey = "",
@@ -52,7 +53,13 @@ function line(x1, y1, x2, y2, color, width = 1) {
 }
 // Render only this room. A continuous camera yaw connects the same 90° rule turns.
 // Near-plane clipping keeps walls stable while the camera passes a corner.
-function draw(o, yaw = (o.direction * Math.PI) / 2, turnLabel = "") {
+function draw(
+  o,
+  yaw = (o.direction * Math.PI) / 2,
+  turnLabel = "",
+  advance = 0,
+  bob = 0,
+) {
   const W = 960,
     H = 600,
     focal = 200,
@@ -61,7 +68,11 @@ function draw(o, yaw = (o.direction * Math.PI) / 2, turnLabel = "") {
   ctx.fillRect(0, 0, W, H);
   const cos = Math.cos(yaw),
     sin = Math.sin(yaw);
-  const camera = ([x, y, z]) => [x * cos - z * sin, y, x * sin + z * cos];
+  const camera = ([x, y, z]) => [
+    x * cos - z * sin,
+    y + bob,
+    x * sin + z * cos - advance,
+  ];
   function clip(points) {
     const result = [];
     for (let i = 0; i < points.length; i++) {
@@ -210,12 +221,19 @@ function renderFrame(previous, current) {
     previous.level === current.level &&
     previous.observation.room === o.room &&
     previous.observation.direction !== o.direction;
-  if (!turning || reducedMotion.matches || cameraYaw === null) {
+  const stepping =
+    previous &&
+    previous.generation === current.generation &&
+    previous.level === current.level &&
+    previous.observation.room !== o.room &&
+    current.latestAction === "FORWARD" &&
+    current.status === "PLAYING";
+  if ((!turning && !stepping) || reducedMotion.matches || cameraYaw === null) {
     cameraYaw = target;
     draw(o);
     return;
   }
-  const startYaw = cameraYaw;
+  const startYaw = stepping ? target : cameraYaw;
   let delta = Math.atan2(
     Math.sin(target - startYaw),
     Math.cos(target - startYaw),
@@ -224,19 +242,29 @@ function renderFrame(previous, current) {
   if (current.latestAction === "TURN_RIGHT" && delta < 0) delta += 2 * Math.PI;
   if (current.latestAction === "TURN_LEFT" && delta > 0) delta -= 2 * Math.PI;
   const from = previous.observation.facing,
-    label =
-      from +
-      "  →  " +
-      o.facing +
-      (current.latestAction === "TURN_LEFT"
-        ? "   /   TURNING LEFT"
-        : "   /   TURNING RIGHT");
+    label = stepping
+      ? "ENTERING ROOM " + String(o.room + 1).padStart(2, "0")
+      : from +
+        "  →  " +
+        o.facing +
+        (current.latestAction === "TURN_LEFT"
+          ? "   /   TURNING LEFT"
+          : "   /   TURNING RIGHT");
   const started = performance.now();
   function tick(now) {
-    const t = reducedMotion.matches ? 1 : Math.min(1, (now - started) / 280);
+    const t = reducedMotion.matches
+      ? 1
+      : Math.min(1, (now - started) / (stepping ? 220 : 280));
     const eased = t * t * (3 - 2 * t);
     cameraYaw = startYaw + delta * eased;
-    draw(o, cameraYaw, t < 1 ? label : "");
+    // A small approach and footstep bob stay entirely inside the committed room.
+    draw(
+      o,
+      cameraYaw,
+      t < 1 ? label : "",
+      stepping ? -0.22 * (1 - eased) : 0,
+      stepping ? Math.sin(Math.PI * t) * 0.014 : 0,
+    );
     if (t < 1) turnFrame = requestAnimationFrame(tick);
     else cameraYaw = target;
   }
@@ -314,7 +342,12 @@ function update(f) {
   const previous = frame;
   const previousCollisions = frame ? frame.collisions : 0;
   frame = f;
-  $("player").options[0].textContent = "AI · " + f.model;
+  for (const option of $("player").options) {
+    if (f.models?.[option.value])
+      option.textContent =
+        (option.value === "TEV1_4B" ? "TEV1-4B · " : "AI · ") +
+        f.models[option.value];
+  }
   const o = f.observation,
     k = f.generation + ":" + f.revision;
   if (lastKey !== k) {
@@ -334,8 +367,9 @@ function update(f) {
     lastKey = k;
   }
   $("mode").textContent = f.active
-    ? f.player === "TEV1"
-      ? f.model.toUpperCase() + " AT THE KEYS"
+    ? isAI(f.player)
+      ? (f.player === "TEV1_4B" ? "TEV1 4B" : f.model.toUpperCase()) +
+        " AT THE KEYS"
       : f.player + " AT THE KEYS"
     : "HUMAN AT THE KEYS";
   $("level").textContent =
@@ -357,27 +391,26 @@ function update(f) {
   $("entries").style.filter = o.entriesLeft <= 2 ? "hue-rotate(170deg)" : "";
   for (let id of ["moves", "explored", "repeats"])
     $(id).textContent = String(f[id]).padStart(2, "0");
-  $("decision-label").textContent =
-    f.player === "TEV1"
-      ? "AI · " + (f.model || "tev1:0.8b")
-      : f.player === "HUMAN"
-        ? "NEXT MOVE IS YOURS"
-        : f.player + " · BASELINE";
+  $("decision-label").textContent = isAI(f.player)
+    ? (f.player === "TEV1_4B" ? "AI · 4B · " : "AI · ") +
+      (f.model || "tev1:0.8b")
+    : f.player === "HUMAN"
+      ? "NEXT MOVE IS YOURS"
+      : f.player + " · BASELINE";
   $("decision-action").textContent =
     f.latestAction === "START"
       ? "MAKE A LITTLE HISTORY."
       : f.latestAction.replaceAll("_", " ");
-  $("latency").textContent =
-    f.player === "TEV1"
-      ? f.latencyMs.toLocaleString() + " ms · decision " + f.decisions
-      : "↑ Forward   ← → Turn";
-  if (f.player === "TEV1" && f.decisions === 0) {
+  $("latency").textContent = isAI(f.player)
+    ? f.latencyMs.toLocaleString() + " ms · decision " + f.decisions
+    : "↑ Forward   ← → Turn";
+  if (isAI(f.player) && f.decisions === 0) {
     $("decision-action").textContent = f.active
       ? "CHOOSING FIRST ACTION…"
       : "NO DECISION";
     $("latency").textContent = "—";
   }
-  $("thinking").hidden = !(f.active && f.player === "TEV1");
+  $("thinking").hidden = !(f.active && isAI(f.player));
   $("pause").disabled = !f.active || f.pausing;
   $("pause").textContent = f.pausing ? "PAUSING…" : "Ⅱ PAUSE";
   $("play").disabled = f.active || f.status !== "PLAYING";
@@ -410,7 +443,7 @@ function update(f) {
     if (lastCompleted !== id) {
       lastCompleted = id;
       recentResults.push({
-        player: f.player,
+        player: f.player === "TEV1_4B" ? "TEV1 4B" : f.player,
         reason: f.reason.startsWith("PROVIDER_")
           ? "AI TURN FAILED"
           : {

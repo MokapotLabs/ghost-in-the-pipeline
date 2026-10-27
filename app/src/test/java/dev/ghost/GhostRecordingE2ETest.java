@@ -149,20 +149,29 @@ class GhostRecordingE2ETest {
   @Test
   @EnabledIfSystemProperty(named = "ghost.live", matches = "true")
   void realTev1ProposesValidatedActionsWithoutRequiringEscape() throws Exception {
-    reset(2026, 1, true);
-    play("TEV1", 3, 40000);
-    waitForPlayer();
-    assertFalse(session.history().isEmpty());
-    assertTrue(
-        session.history().stream()
-            .allMatch(
-                a ->
-                    a.player().equals("TEV1") && Rules.ACTIONS.contains(a.action())
-                        || a.action().equals("START")));
-    assertTrue(
-        session.history().stream().anyMatch(a -> a.player().equals("TEV1") && a.latencyMs() > 0));
-    assertFalse(
-        session.frame().get("reason").toString().startsWith("PROVIDER_"),
-        session.frame().toString());
+    for (String player : List.of("TEV1", "TEV1_4B")) {
+      reset(2026, 1, true);
+      play(player, 3, 40000);
+      waitForPlayer();
+      assertFalse(session.history().isEmpty());
+      assertTrue(
+          session.history().stream()
+              .allMatch(
+                  a ->
+                      a.player().equals(player) && Rules.ACTIONS.contains(a.action())
+                          || a.action().equals("START")));
+      assertTrue(
+          session.history().stream().anyMatch(a -> a.player().equals(player) && a.latencyMs() > 0));
+      assertTrue(session.latest().decisions() > 0 && session.latest().decisions() <= 3);
+      given()
+          .get("/api/game")
+          .then()
+          .body(
+              "model",
+              org.hamcrest.Matchers.is(player.equals("TEV1") ? "tev1:0.8b" : "tev1:latest"));
+      assertFalse(
+          session.frame().get("reason").toString().startsWith("PROVIDER_"),
+          session.frame().toString());
+    }
   }
 }

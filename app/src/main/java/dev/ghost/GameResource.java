@@ -26,7 +26,8 @@ public class GameResource {
   @GET
   public Map<String, Object> view() {
     var f = new LinkedHashMap<>(session.frame());
-    f.put("model", settings.model());
+    f.put("model", settings.model(f.getOrDefault("player", "TEV1").toString()));
+    f.put("models", settings.models());
     return f;
   }
 
@@ -57,7 +58,7 @@ public class GameResource {
   public Map<String, Object> play(Play p) {
     if (p == null
         || p.player() == null
-        || !List.of("TEV1", "RANDOM", "EXPLORER").contains(p.player()))
+        || !List.of("TEV1", "TEV1_4B", "RANDOM", "EXPLORER").contains(p.player()))
       throw new BadRequestException("Unknown player");
     int limit = p.maxDecisions() == null ? 128 : p.maxDecisions();
     long millis = p.durationMs() == null ? 120000 : p.durationMs();

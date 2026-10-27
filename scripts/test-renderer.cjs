@@ -100,8 +100,38 @@ assert(
 );
 step(280);
 // Every heading clips safely, including looking exactly into corners.
+run(`var walkStart = {...before, status:'PLAYING',observation:{...observation,direction:2,facing:'S'}};
+     var arrived = {...walkStart,latestAction:'FORWARD',observation:{...walkStart.observation,room:3,edges:'...#',memory:[[0,1,'##.#',7],[3,1,'...#',6]]}};
+     renderFrame(null,walkStart); renderFrame(walkStart,arrived);`);
+assert.equal(callbacks.size, 1, "successful forward movement animates");
+coordinates = [];
+step(110);
+assert(
+  labels.some((x) => x.includes("ENTERING ROOM 04")),
+  "step cue uses the committed room",
+);
+assert.equal(run("cameraYaw"), Math.PI, "a step preserves orientation");
+const middleStep = JSON.stringify(coordinates);
+coordinates = [];
+step(220);
+assert.notEqual(
+  JSON.stringify(coordinates),
+  middleStep,
+  "approach geometry settles at room center",
+);
+assert.equal(callbacks.size, 0);
+run(`renderFrame(walkStart,{...walkStart,latestAction:'FORWARD'})`);
+assert.equal(
+  callbacks.size,
+  0,
+  "a blocked forward action never animates entry",
+);
+media.matches = true;
+run("renderFrame(walkStart,arrived)");
+assert.equal(callbacks.size, 0, "reduced motion also disables step animation");
+media.matches = false;
 for (let degrees = 0; degrees < 360; degrees++)
   run(`draw(observation,${(degrees * Math.PI) / 180})`);
 console.log(
-  "PASS: continuous turn geometry, compass, wraparound, reset, reduced motion, and 360 clipped headings",
+  "PASS: turns, steps, compass, wraparound, reset, reduced motion, collisions, and 360 clipped headings",
 );

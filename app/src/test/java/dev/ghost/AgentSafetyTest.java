@@ -9,6 +9,34 @@ import org.pipelineframework.connector.decision.*;
 
 class AgentSafetyTest {
   @Test
+  void relativeDirectionsUseOnlyObservedEdgesAndTurnWithThePlayer() {
+    GameState g = Rules.newGame(1983, 1, 1);
+    var v = Observations.view(g);
+    assertEquals(
+        Map.of("front", "wall", "left", "wall", "right", "open passage"), v.get("relativeEdges"));
+    assertEquals(
+        List.of("front", "left", "right"),
+        new ArrayList<>(((Map<?, ?>) v.get("relativeEdges")).keySet()));
+    g = Rules.act(g, "TURN_RIGHT");
+    assertEquals(
+        "open passage", ((Map<?, ?>) Observations.view(g).get("relativeEdges")).get("front"));
+    assertEquals(1, g.memory().size());
+    assertEquals(7, g.remaining().get(g.room()));
+  }
+
+  @Test
+  void bothModelBranchesCarryExactlyTheSameObservationAndHonorBounds() {
+    GameState g = Rules.newGame(1983, 1, 1);
+    RunState small = Runs.create(g, "test", 0, "TEV1", "", 128, 120000);
+    RunState large = Runs.create(g, "test", 0, "TEV1_4B", "", 128, 120000);
+    var a = (NextTurn.Model) new ChooseTurn().process(small).await().indefinitely();
+    var b = (NextTurn.Large) new ChooseTurn().process(large).await().indefinitely();
+    assertEquals(a.value().request(), b.value().request());
+    var stopped = Runs.create(g, "test", 0, "TEV1_4B", "", 0, 120000);
+    assertInstanceOf(NextTurn.Done.class, new ChooseTurn().process(stopped).await().indefinitely());
+  }
+
+  @Test
   void rejectsModelActionsOutsideTheFiniteVocabulary() {
     RunState r = Runs.create(Rules.newGame(1983, 1, 1), "test", 0, "TEV1", "", 128, 120000);
     DecisionAnswer a =

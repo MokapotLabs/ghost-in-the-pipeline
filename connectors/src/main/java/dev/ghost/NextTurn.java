@@ -9,6 +9,12 @@ public sealed interface NextTurn {
     }
   }
 
+  record Large(LargeModelTurn value) implements NextTurn {
+    public String discriminator() {
+      return "large";
+    }
+  }
+
   record Action(ActionTurn value) implements NextTurn {
     public String discriminator() {
       return "action";
