@@ -1,0 +1,30 @@
+Show me the exact prompt, observation and raw Tev1 response for a turn where it ignores an open corridor, and one where it walks into a wall. Don’t change anything yet.
+
+---
+
+Capture raw requests and responses, then rerun seed 1983, level 3 with 0.8B and clues off. Keep the prompt, maze and rules unchanged, preserve the old results, and show me the actual payloads for both failures.
+
+---
+
+Ok, let's not care about raw responses, let's trust those as they have been tested on other projects. Do you have any ideas that could improve the model behaviour? Wouldn't this prompt work better?
+
+```
+Choose ONE action from: [FORWARD, LEFT, RIGHT].
+
+[INPUT STATE]
+relativeEdges: front={front_edge}, left={left_edge}, right={right_edge}
+current_room_visits: {visits}
+entries_left: {entriesLeft}
+
+[RULES] (Execute top-to-bottom. Stop at the first matching rule):
+1. If front == 'E', choose FORWARD.
+2. If front == '.' and left == '#' and right == '#', choose FORWARD.
+3. If front == '#', choose LEFT if left == '.' else RIGHT.
+4. If front == '.' and current_room_visits > 1, choose LEFT if left == '.' else RIGHT.
+5. Default action: choose FORWARD.
+
+```
+
+---
+
+ok do that
