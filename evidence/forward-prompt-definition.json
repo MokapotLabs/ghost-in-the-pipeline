@@ -1,0 +1,66 @@
+{
+  "promptVersion" : "forward-first-v2",
+  "off" : {
+    "state" : {
+      "level" : 1,
+      "size" : 3,
+      "room" : 0,
+      "facing" : "E",
+      "direction" : 1,
+      "edges" : "##.?",
+      "entriesLeft" : 7,
+      "memory" : [ [ 0, 1, "##.?", 7 ] ],
+      "previousAction" : "START",
+      "previousResult" : "Find the exit. Seven entries per room.",
+      "relativeEdges" : {
+        "front" : "wall",
+        "left" : "wall",
+        "right" : "open passage"
+      }
+    },
+    "questions" : {
+      "action" : {
+        "type" : "choice",
+        "criteria" : {
+          "FORWARD" : "Move ahead. Appropriate only when front is open passage or exit.",
+          "TURN_LEFT" : "Turn left in place. Appropriate for an opening on the left.",
+          "TURN_RIGHT" : "Turn right in place. Appropriate for an opening on the right."
+        },
+        "instructions" : "Choose ONE action for this turn. Read relativeEdges: front, left, right.\nIf front is wall, choose a turn: FORWARD cannot pass a wall.\nIf front is exit, choose FORWARD.\nIf front is open passage, choose FORWARD. Do not keep turning when the corridor ahead is open.\nPrefer an open passage and avoid needless revisits or rooms with one entry left.\nmemory rows are [room, visits, NESW edges, entriesLeft].\nEdges: # wall, . passage, E exit, ? unseen. Rooms are row-major."
+      }
+    }
+  },
+  "on" : {
+    "state" : {
+      "level" : 1,
+      "size" : 3,
+      "room" : 0,
+      "facing" : "E",
+      "direction" : 1,
+      "edges" : "##.?",
+      "entriesLeft" : 7,
+      "memory" : [ [ 0, 1, "##.?", 7 ] ],
+      "previousAction" : "START",
+      "previousResult" : "Find the exit. Seven entries per room.",
+      "relativeEdges" : {
+        "front" : "wall",
+        "left" : "wall",
+        "right" : "open passage"
+      },
+      "signal" : "NOTICEABLE",
+      "signalTrend" : "NO_MOVEMENT",
+      "signalMemory" : [ [ 0, "NOTICEABLE" ] ]
+    },
+    "questions" : {
+      "action" : {
+        "type" : "choice",
+        "criteria" : {
+          "FORWARD" : "Move ahead. Appropriate only when front is open passage or exit.",
+          "TURN_LEFT" : "Turn left in place. Appropriate for an opening on the left.",
+          "TURN_RIGHT" : "Turn right in place. Appropriate for an opening on the right."
+        },
+        "instructions" : "Choose ONE action for this turn. Read relativeEdges: front, left, right.\nIf front is wall, choose a turn: FORWARD cannot pass a wall.\nIf front is exit, choose FORWARD.\nIf front is open passage, choose FORWARD. Do not keep turning when the corridor ahead is open.\nPrefer an open passage and avoid needless revisits or rooms with one entry left.\nmemory rows are [room, visits, NESW edges, entriesLeft].\nEdges: # wall, . passage, E exit, ? unseen. Rooms are row-major.\nSignal order: FAINT < NOTICEABLE < STRONG < INTENSE means closer through corridors.\nsignalMemory rows are [visited room, reading]. Prefer openings toward stronger remembered readings.\nIf a move made the signal weaker, try another opening.\nNO_MOVEMENT means a turn or bump, not progress."
+      }
+    }
+  }
+}

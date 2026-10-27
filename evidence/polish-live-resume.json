@@ -1,0 +1,344 @@
+{
+  "scope": "Separate manual UI Play/Pause/resume check; actual 4B decisions, not part of comparison matrix. Pause was visibly requested at seven committed decisions and finishes at most the pending turn.",
+  "result": "PASS",
+  "frameAfterPause": {
+    "ready": true,
+    "generation": "858ff578-8769-4cf4-b915-487819836bb2",
+    "segment": "c7b621f8-6033-461b-88d5-dc60b8fcd1b3",
+    "seed": 1983,
+    "revision": 16,
+    "observation": {
+      "level": 1,
+      "size": 3,
+      "room": 6,
+      "facing": "N",
+      "direction": 0,
+      "edges": "#.##",
+      "entriesLeft": 6,
+      "memory": [
+        [
+          0,
+          1,
+          "##.#",
+          7
+        ],
+        [
+          1,
+          1,
+          "#..#",
+          6
+        ],
+        [
+          2,
+          1,
+          "##..",
+          6
+        ],
+        [
+          3,
+          1,
+          "..##",
+          6
+        ],
+        [
+          4,
+          1,
+          ".##.",
+          6
+        ],
+        [
+          5,
+          1,
+          ".E.#",
+          6
+        ],
+        [
+          6,
+          1,
+          "#.##",
+          6
+        ],
+        [
+          7,
+          1,
+          "#.#.",
+          6
+        ],
+        [
+          8,
+          1,
+          ".##.",
+          6
+        ]
+      ],
+      "previousAction": "TURN_RIGHT",
+      "previousResult": "Turned right.",
+      "relativeEdges": {
+        "front": "wall",
+        "left": "wall",
+        "right": "open passage"
+      }
+    },
+    "navigation": {
+      "signal": "STRONG",
+      "signalTrend": "NO_MOVEMENT",
+      "level": 1,
+      "room": 6,
+      "readings": [
+        {
+          "room": 0,
+          "signal": "NOTICEABLE"
+        },
+        {
+          "room": 1,
+          "signal": "STRONG"
+        },
+        {
+          "room": 2,
+          "signal": "INTENSE"
+        },
+        {
+          "room": 3,
+          "signal": "NOTICEABLE"
+        },
+        {
+          "room": 4,
+          "signal": "STRONG"
+        },
+        {
+          "room": 5,
+          "signal": "INTENSE"
+        },
+        {
+          "room": 6,
+          "signal": "STRONG"
+        },
+        {
+          "room": 7,
+          "signal": "STRONG"
+        },
+        {
+          "room": 8,
+          "signal": "INTENSE"
+        }
+      ]
+    },
+    "agentClues": true,
+    "level": 1,
+    "status": "PLAYING",
+    "message": "Turned right.",
+    "active": false,
+    "pausing": false,
+    "reason": "PAUSED",
+    "player": "TEV1_4B",
+    "moves": 8,
+    "actions": 15,
+    "collisions": 0,
+    "repeats": 0,
+    "explored": 9,
+    "exitsFound": 0,
+    "decisions": 7,
+    "latestAction": "TURN_RIGHT",
+    "latencyMs": 1942,
+    "model": "tev1:latest",
+    "models": {
+      "TEV1_4B": "tev1:latest",
+      "TEV1": "tev1:0.8b"
+    },
+    "decisionPrompt": "forward-first-v2"
+  },
+  "actions": [
+    {
+      "turn": 1,
+      "level": 1,
+      "room": 0,
+      "direction": 1,
+      "action": "START",
+      "result": "Find the exit. Seven entries per room.",
+      "latencyMs": 0,
+      "player": "HUMAN",
+      "signal": "NOTICEABLE",
+      "signalTrend": "NO_MOVEMENT"
+    },
+    {
+      "turn": 1,
+      "level": 1,
+      "room": 0,
+      "direction": 1,
+      "action": "TURN_RIGHT",
+      "result": "Turned right.",
+      "latencyMs": 1833,
+      "player": "TEV1_4B",
+      "signal": "NOTICEABLE",
+      "signalTrend": "NO_MOVEMENT"
+    },
+    {
+      "turn": 2,
+      "level": 1,
+      "room": 0,
+      "direction": 2,
+      "action": "FORWARD",
+      "result": "Room 4 \u00b7 6 entries left.",
+      "latencyMs": 129,
+      "player": "TEV1_4B",
+      "signal": "NOTICEABLE",
+      "signalTrend": "NO_MOVEMENT"
+    },
+    {
+      "turn": 3,
+      "level": 1,
+      "room": 3,
+      "direction": 2,
+      "action": "TURN_LEFT",
+      "result": "Turned left.",
+      "latencyMs": 1521,
+      "player": "TEV1_4B",
+      "signal": "NOTICEABLE",
+      "signalTrend": "UNCHANGED"
+    },
+    {
+      "turn": 4,
+      "level": 1,
+      "room": 3,
+      "direction": 1,
+      "action": "FORWARD",
+      "result": "Room 5 \u00b7 6 entries left.",
+      "latencyMs": 1509,
+      "player": "TEV1_4B",
+      "signal": "NOTICEABLE",
+      "signalTrend": "NO_MOVEMENT"
+    },
+    {
+      "turn": 5,
+      "level": 1,
+      "room": 4,
+      "direction": 1,
+      "action": "TURN_LEFT",
+      "result": "Turned left.",
+      "latencyMs": 1725,
+      "player": "TEV1_4B",
+      "signal": "STRONG",
+      "signalTrend": "GETTING_STRONGER"
+    },
+    {
+      "turn": 6,
+      "level": 1,
+      "room": 4,
+      "direction": 0,
+      "action": "FORWARD",
+      "result": "Room 2 \u00b7 6 entries left.",
+      "latencyMs": 1610,
+      "player": "TEV1_4B",
+      "signal": "STRONG",
+      "signalTrend": "NO_MOVEMENT"
+    },
+    {
+      "turn": 7,
+      "level": 1,
+      "room": 1,
+      "direction": 0,
+      "action": "TURN_RIGHT",
+      "result": "Turned right.",
+      "latencyMs": 1708,
+      "player": "TEV1_4B",
+      "signal": "STRONG",
+      "signalTrend": "UNCHANGED"
+    },
+    {
+      "turn": 8,
+      "level": 1,
+      "room": 1,
+      "direction": 1,
+      "action": "FORWARD",
+      "result": "Room 3 \u00b7 6 entries left.",
+      "latencyMs": 1745,
+      "player": "TEV1_4B",
+      "signal": "STRONG",
+      "signalTrend": "NO_MOVEMENT"
+    },
+    {
+      "turn": 1,
+      "level": 1,
+      "room": 2,
+      "direction": 1,
+      "action": "TURN_RIGHT",
+      "result": "Turned right.",
+      "latencyMs": 1932,
+      "player": "TEV1_4B",
+      "signal": "INTENSE",
+      "signalTrend": "GETTING_STRONGER"
+    },
+    {
+      "turn": 2,
+      "level": 1,
+      "room": 2,
+      "direction": 2,
+      "action": "FORWARD",
+      "result": "Room 6 \u00b7 6 entries left.",
+      "latencyMs": 1808,
+      "player": "TEV1_4B",
+      "signal": "INTENSE",
+      "signalTrend": "NO_MOVEMENT"
+    },
+    {
+      "turn": 3,
+      "level": 1,
+      "room": 5,
+      "direction": 2,
+      "action": "FORWARD",
+      "result": "Room 9 \u00b7 6 entries left.",
+      "latencyMs": 1771,
+      "player": "TEV1_4B",
+      "signal": "INTENSE",
+      "signalTrend": "UNCHANGED"
+    },
+    {
+      "turn": 4,
+      "level": 1,
+      "room": 8,
+      "direction": 2,
+      "action": "TURN_RIGHT",
+      "result": "Turned right.",
+      "latencyMs": 1855,
+      "player": "TEV1_4B",
+      "signal": "INTENSE",
+      "signalTrend": "UNCHANGED"
+    },
+    {
+      "turn": 5,
+      "level": 1,
+      "room": 8,
+      "direction": 3,
+      "action": "FORWARD",
+      "result": "Room 8 \u00b7 6 entries left.",
+      "latencyMs": 1812,
+      "player": "TEV1_4B",
+      "signal": "INTENSE",
+      "signalTrend": "NO_MOVEMENT"
+    },
+    {
+      "turn": 6,
+      "level": 1,
+      "room": 7,
+      "direction": 3,
+      "action": "FORWARD",
+      "result": "Room 7 \u00b7 6 entries left.",
+      "latencyMs": 1924,
+      "player": "TEV1_4B",
+      "signal": "STRONG",
+      "signalTrend": "GETTING_WEAKER"
+    },
+    {
+      "turn": 7,
+      "level": 1,
+      "room": 6,
+      "direction": 3,
+      "action": "TURN_RIGHT",
+      "result": "Turned right.",
+      "latencyMs": 1942,
+      "player": "TEV1_4B",
+      "signal": "STRONG",
+      "signalTrend": "UNCHANGED"
+    }
+  ]
+}

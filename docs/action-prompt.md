@@ -1,5 +1,7 @@
 # The prompt, the spinning ghost, and the picker
 
+This preserves the action-focused-v1 delivery at revision `95386fe`. The [forward-first follow-up](forward-and-polish.md) retains a new instruction and UI polish with separate results. Use that follow-up for current reproduction commands.
+
 This follow-up changes the decision question and fixes browser controls. It preserves the maze, seven-entry rules, observed information, finite action order, model weights and budgets. Earlier compact, relative-edge and haunted-clue results remain in their original files.
 
 ## Where the prompt actually lives

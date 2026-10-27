@@ -1,0 +1,94 @@
+{
+  "result": "PASS",
+  "controls": "Same seeds, models, initial observations/readings, rules, baselines, signals and budgets. Only observation-authoring class changed among recorded game classes; fixture export shows state unchanged and question text changed.",
+  "previous": [
+    {
+      "agentClues": false,
+      "trials": 3,
+      "escapes": 1,
+      "decisions": 174,
+      "moves": 96,
+      "collisions": 0,
+      "repeatedPositions": 74,
+      "roomsExplored": 24,
+      "roomExhaustions": 1,
+      "terminationReasons": {
+        "LOST": 1,
+        "TIME_LIMIT": 1,
+        "WON": 1
+      },
+      "latencyMs": {
+        "median": 1445.5,
+        "max": 5438
+      }
+    },
+    {
+      "agentClues": true,
+      "trials": 3,
+      "escapes": 1,
+      "decisions": 122,
+      "moves": 68,
+      "collisions": 0,
+      "repeatedPositions": 48,
+      "roomsExplored": 22,
+      "roomExhaustions": 1,
+      "terminationReasons": {
+        "LOST": 1,
+        "TIME_LIMIT": 1,
+        "WON": 1
+      },
+      "latencyMs": {
+        "median": 1861.5,
+        "max": 3468
+      }
+    }
+  ],
+  "actionFocused": [
+    {
+      "agentClues": false,
+      "trials": 3,
+      "escapes": 1,
+      "decisions": 148,
+      "moves": 82,
+      "collisions": 0,
+      "repeatedPositions": 62,
+      "roomsExplored": 22,
+      "roomExhaustions": 1,
+      "terminationReasons": {
+        "LOST": 1,
+        "TIME_LIMIT": 1,
+        "WON": 1
+      },
+      "latencyMs": {
+        "median": 1400.5,
+        "max": 4409
+      }
+    },
+    {
+      "agentClues": true,
+      "trials": 3,
+      "escapes": 1,
+      "decisions": 122,
+      "moves": 68,
+      "collisions": 0,
+      "repeatedPositions": 48,
+      "roomsExplored": 22,
+      "roomExhaustions": 1,
+      "terminationReasons": {
+        "LOST": 1,
+        "TIME_LIMIT": 1,
+        "WON": 1
+      },
+      "latencyMs": {
+        "median": 1824.5,
+        "max": 7969
+      }
+    }
+  ],
+  "inputsSha256": {
+    "evidence/action-4b-off.json": "e3ebdeb0d1b3bcbf2f79fc6c91356250674ab1f668daee89eead9c8c44a2021f",
+    "evidence/action-4b-on.json": "d8993b25380d325c2cad44d70f67c71aa195d94fc1952a7734cf49ba70f31c58",
+    "evidence/forward-4b-off.json": "f4f675686e85d87f9257dcad189a1273eba61391f22f5a62a141965d1dfb1036",
+    "evidence/forward-4b-on.json": "59b406cbd7a5c7be5ccfe3eeb88ca9dab37d62517d72354fae67600a38720544"
+  }
+}

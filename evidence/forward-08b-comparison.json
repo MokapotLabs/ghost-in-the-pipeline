@@ -1,0 +1,83 @@
+{
+  "result": "PASS",
+  "controls": "Identical seeds, initial observations/readings, model identities, compiled game classes and budgets; clue availability is the experimental switch.",
+  "players": [
+    "TEV1"
+  ],
+  "levels": [
+    1,
+    2,
+    3
+  ],
+  "seeds": [
+    1983,
+    1986,
+    2026
+  ],
+  "models": [
+    {
+      "name": "tev1:0.8b",
+      "model": "tev1:0.8b",
+      "modified_at": "2026-10-27T17:49:53.890682345+01:00",
+      "size": 1524372929,
+      "digest": "b661d56508169d2b6c4cab5a047409f50bd9694a215bc232469d44291f4bdbf1",
+      "details": {
+        "parent_model": "",
+        "format": "safetensors",
+        "family": "qwen3_5",
+        "families": [
+          "qwen3_5"
+        ],
+        "parameter_size": "752M",
+        "quantization_level": "BF16",
+        "runner": "mlx"
+      },
+      "capabilities": [
+        "decision"
+      ]
+    }
+  ],
+  "arms": [
+    {
+      "agentClues": false,
+      "trials": 9,
+      "escapes": 0,
+      "decisions": 1152,
+      "moves": 4,
+      "collisions": 1022,
+      "repeatedPositions": 0,
+      "roomsExplored": 13,
+      "roomExhaustions": 0,
+      "terminationReasons": {
+        "DECISION_LIMIT": 9
+      },
+      "latencyMs": {
+        "median": 9.0,
+        "max": 1186
+      }
+    },
+    {
+      "agentClues": true,
+      "trials": 9,
+      "escapes": 0,
+      "decisions": 1152,
+      "moves": 10,
+      "collisions": 1038,
+      "repeatedPositions": 2,
+      "roomsExplored": 17,
+      "roomExhaustions": 0,
+      "terminationReasons": {
+        "DECISION_LIMIT": 9
+      },
+      "latencyMs": {
+        "median": 9.0,
+        "max": 933
+      }
+    }
+  ],
+  "limits": "One attempt per case/arm. Timings are local and warm; deadline cancellation can omit one pending inference from committed action totals.",
+  "inputs": [
+    "evidence/forward-08b-off.json",
+    "evidence/forward-08b-on.json"
+  ]
+}

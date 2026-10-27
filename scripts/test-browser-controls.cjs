@@ -339,7 +339,14 @@ async function run() {
         0,
         "Enter while editing a control must not reset the game",
       );
-      await page.locator("#reset").click();
+      await page.locator("#help-open").focus();
+      await page.keyboard.press("Enter");
+      await page.locator("#help[open]").waitFor();
+      assert.equal(resets, 0, "Help Enter must not reset a terminal game");
+      await page.keyboard.press("Escape");
+      await page.locator("#help:not([open])").waitFor({ state: "attached" });
+      await page.locator("#reset").focus();
+      await page.keyboard.press("Enter");
       await page.locator("#overlay[hidden]").waitFor({ state: "attached" });
       assert.equal(resets, 1);
       assert.equal(

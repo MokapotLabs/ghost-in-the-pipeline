@@ -6,9 +6,9 @@ An independently implemented, MSX-inspired first-person maze built with [The Pip
 
 **New: a haunted sixth sense.** Optional glow and quiet synthesized tones grow stronger along corridors toward the exit. The AI can receive the same qualitative signal and visited-room readings. [Watch the 90-second audiovisual demonstration](docs/recordings/sixth-sense-90s.mp4) and read [the controlled clue-on/off experiment](docs/haunted-sense.md): escape counts did not improve in these tested cases.
 
-**Latest:** [a simpler action-focused prompt and browser-control repair](docs/action-prompt.md). The prompt lives in the typed decision question built by `Observations.request()`; `pipeline.yaml` now points to its named constants. The model menu stops rebuilding on frame updates, selection restores movement focus, and Safari clue checkboxes have explicit sizing. Earlier results and recordings remain preserved.
+**Latest:** [compact game UI and forward-first prompt results](docs/forward-and-polish.md). The hero and slogans are removed; the supplied portal PNG is used for branding and favicon. Instructions live in Help. The model receives an explicit instruction to walk when the corridor ahead is open; earlier results remain preserved.
 
-![The repaired controls with 4B selected](docs/screenshots/action-controls.png)
+![The game at 1280×720](docs/screenshots/polished-game-1280.png)
 
 ## Run locally
 
@@ -21,11 +21,11 @@ ollama pull tev1:latest  # Optional 4B menu choice; recorded installation is 4.2
 ./scripts/run.sh
 ```
 
-Open **http://127.0.0.1:8087**. Use **↑ / W** to walk, **← / A** and **→ / D** to turn. Choose **AI · tev1:0.8b**, **TEV1-4B**, Explorer or Random in the menu, then Play. Pause finishes at most the current turn. Reset restarts the selected seed. An observed-only map and entry bars help you keep your bearings.
+Open **http://127.0.0.1:8087**. Use **↑ / W** to walk, **← / A** and **→ / D** to turn. Choose **tev1:0.8b**, **tev1:latest · 4B**, Explorer or Random in the menu, then Play. Pause finishes at most the current turn. Reset restarts the selected seed. An observed-only map and entry bars help you keep your bearings.
 
 Turns rotate the room and map arrow over a short quarter turn, with a direction cue. Successful forward steps have a brief approach and footstep bob; collisions do not animate room entry. Reduced-motion preferences keep transitions instant.
 
-**GHOST GLOW**, **SOUND OFF/ON**, and **AI SIXTH SENSE** are independent controls. Audio starts muted and is enabled by clicking its toggle. The AI setting applies to the next Play segment. Turns and bumps never improve the proximity trend. The seven-entry rules and maze generator are unchanged.
+**GLOW**, **SOUND OFF/ON**, and **AI CLUES** are independent controls. Audio starts muted and is enabled by clicking its toggle. The AI setting applies to the next Play segment. Turns and bumps never improve the proximity trend. The seven-entry rules and maze generator are unchanged.
 
 The levels are 3×3, 4×4 and 6×6. Each room starts with seven entries; entering decrements its allowance and reaching zero loses. Spawning, turning and bumping into a wall consume none. Cross the exit to advance; escape the third level to win. Every admitted level is checked for a valid escape under these same rules.
 
@@ -43,7 +43,7 @@ python3 scripts/evaluate.py
 ./scripts/recording-reset.sh
 ```
 
-The ordinary test suite uses real TPF gameplay and observation-only baselines. The opt-in live test validates genuine decisions from both models without requiring an escape or an exact action. The [current acceptance record](evidence/action-acceptance.json) reports **22 passing Java tests**, with signal distance/trend/privacy checks, plus audio and renderer checks. Core tests validate **600 seeded levels**. `haunted-acceptance.json`, `relative-acceptance.json` and `acceptance.json` retain the historical 21-, 18- and 16-test deliveries.
+The ordinary test suite uses real TPF gameplay and observation-only baselines. The opt-in live test validates genuine decisions from both models without requiring an escape or an exact action. The [current acceptance record](evidence/polish-acceptance.json) reports **22 passing Java tests**, with signal distance/trend/privacy checks, plus audio and renderer checks. Core tests validate **600 seeded levels**. `haunted-acceptance.json`, `relative-acceptance.json` and `acceptance.json` retain the historical 21-, 18- and 16-test deliveries.
 
 Evaluation uses the same nine seed/level combinations for all players, with 128 decisions and 120 seconds per case. For timings without the visual pause, restart with `GHOST_PACE_MS=0 ./scripts/run.sh --no-build`, then run `GHOST_PACE_MS=0 python3 scripts/evaluate.py`. Do not interact with that single session during evaluation. The script leaves a fresh normal campaign ready afterwards.
 

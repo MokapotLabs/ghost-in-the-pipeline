@@ -553,6 +553,7 @@ document.addEventListener("keydown", (e) => {
     )
   )
     return;
+  if (e.key === "Enter" && e.target.closest("button, a, input")) return;
   if (e.key === "Enter" && frame && frame.status !== "PLAYING") {
     e.preventDefault();
     reset();
