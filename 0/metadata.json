@@ -1,0 +1,61 @@
+{
+  "cli_version": "0.12.2",
+  "checkpoint_id": "01M5Z8CJNQK2PR9K5RBJYJGK3C",
+  "session_id": "01a17e2b-ff39-76b1-bf13-8682399e184e",
+  "strategy": "manual-commit",
+  "created_at": "2026-10-27T18:01:33.899486Z",
+  "branch": "codex/ghost-playable-demo",
+  "checkpoints_count": 1,
+  "files_touched": [
+    ".gitignore",
+    "app/pom.xml",
+    "app/src/main/java/dev/ghost/GameResource.java",
+    "app/src/main/java/dev/ghost/LocalConnection.java",
+    "app/src/main/resources/META-INF/resources/game.js",
+    "app/src/main/resources/META-INF/resources/style.css",
+    "app/src/test/java/dev/ghost/GhostRecordingE2ETest.java",
+    "connectors/pom.xml",
+    "connectors/src/main/java/dev/ghost/ActionLog.java",
+    "connectors/src/main/java/dev/ghost/ActionTurn.java",
+    "connectors/src/main/java/dev/ghost/Chosen.java",
+    "connectors/src/main/java/dev/ghost/ModelTurn.java",
+    "connectors/src/main/java/dev/ghost/Observations.java",
+    "connectors/src/main/java/dev/ghost/RoomMemory.java",
+    "connectors/src/main/java/dev/ghost/RunResult.java",
+    "connectors/src/main/java/dev/ghost/Session.java",
+    "docs/evaluation.md",
+    "evidence/evaluation.json",
+    "evidence/fixtures.json",
+    "pom.xml",
+    "scripts/evaluate.py",
+    "scripts/recording-reset.sh",
+    "scripts/run.sh"
+  ],
+  "agent": "Codex",
+  "model": "gpt-6.1-sol",
+  "turn_id": "00d63e999730",
+  "checkpoint_transcript_start": 792,
+  "transcript_lines_at_start": 792,
+  "compact_transcript_start": 102,
+  "token_usage": {
+    "input_tokens": 28262,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 12675456,
+    "output_tokens": 53114,
+    "api_call_count": 33
+  },
+  "redaction": {
+    "replacements": 6014,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 9,
+      "credentialed_uri": 0,
+      "entropy": 8869,
+      "key_context": 0,
+      "provider_token": 0,
+      "shell_stdin": 0
+    }
+  }
+}
