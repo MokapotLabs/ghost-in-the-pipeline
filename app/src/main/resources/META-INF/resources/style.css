@@ -661,3 +661,72 @@ footer a {
     grid-column: 1/-1;
   }
 }
+
+/* Optional haunted illumination: slow, low contrast, never a strobe. */
+.clue-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 24px;
+  padding: 10px 20px;
+  border-top: 1px solid var(--line);
+  color: var(--mint);
+  font: 10px var(--mono);
+  letter-spacing: 0.06em;
+}
+.clue-controls label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+}
+.clue-controls input {
+  width: 15px;
+  height: 15px;
+  padding: 0;
+  margin: 0;
+  accent-color: #a4ffe0;
+}
+.clue-controls button {
+  padding: 7px 10px;
+  font-size: 10px;
+}
+.viewport[data-haunting="FAINT"] {
+  --haunt-alpha: 0.06;
+}
+.viewport[data-haunting="NOTICEABLE"] {
+  --haunt-alpha: 0.1;
+}
+.viewport[data-haunting="STRONG"] {
+  --haunt-alpha: 0.16;
+}
+.viewport[data-haunting="INTENSE"] {
+  --haunt-alpha: 0.23;
+}
+.viewport[data-haunting]:not([data-haunting=""])::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  animation: haunted-breath 4s ease-in-out infinite;
+}
+.viewport.exit-seen {
+  outline: 1px solid #c0ffe0;
+  outline-offset: -2px;
+}
+@keyframes haunted-breath {
+  0%,
+  100% {
+    box-shadow: inset 0 0 24px rgba(125, 255, 210, var(--haunt-alpha));
+  }
+  50% {
+    box-shadow: inset 0 0 42px rgba(125, 255, 210, var(--haunt-alpha));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .viewport[data-haunting]:not([data-haunting=""])::before {
+    animation: none;
+    box-shadow: inset 0 0 25px rgba(125, 255, 210, var(--haunt-alpha));
+  }
+}

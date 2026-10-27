@@ -32,6 +32,10 @@ class GhostRecordingE2ETest {
   }
 
   private void play(String player, int limit, long millis) {
+    play(player, limit, millis, false);
+  }
+
+  private void play(String player, int limit, long millis, boolean clues) {
     given()
         .contentType("application/json")
         .body(
@@ -43,7 +47,9 @@ class GhostRecordingE2ETest {
                 "maxDecisions",
                 limit,
                 "durationMs",
-                millis))
+                millis,
+                "agentClues",
+                clues))
         .post("/api/game/play")
         .then()
         .statusCode(200);
@@ -151,7 +157,7 @@ class GhostRecordingE2ETest {
   void realTev1ProposesValidatedActionsWithoutRequiringEscape() throws Exception {
     for (String player : List.of("TEV1", "TEV1_4B")) {
       reset(2026, 1, true);
-      play(player, 3, 40000);
+      play(player, 3, 40000, true);
       waitForPlayer();
       assertFalse(session.history().isEmpty());
       assertTrue(

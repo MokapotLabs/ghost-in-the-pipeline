@@ -24,13 +24,28 @@ public class Session {
 
   public synchronized RunState admit(
       String player, String action, long revision, int limit, long millis) {
+    return admit(player, action, revision, limit, millis, latest != null && latest.agentClues());
+  }
+
+  public synchronized RunState admit(
+      String player, String action, long revision, int limit, long millis, boolean agentClues) {
     if (latest == null) throw new IllegalArgumentException("Start a game first");
     if (!owner.isEmpty()) throw new IllegalStateException("A player already owns this turn");
     if (revision != latest.revision())
       throw new IllegalStateException("Stale revision; refresh the game");
     if (!latest.game().status().equals("PLAYING"))
       throw new IllegalStateException("Start a new game");
-    latest = Runs.create(latest.game(), generation, revision, player, action, limit, millis);
+    latest =
+        Runs.create(
+            latest.game(),
+            generation,
+            revision,
+            player,
+            action,
+            limit,
+            millis,
+            latest.navigation(),
+            agentClues);
     owner = latest.segment();
     paused = false;
     reason = "PLAYING";
@@ -92,6 +107,8 @@ public class Session {
     f.put("seed", g.seed());
     f.put("revision", latest.revision());
     f.put("observation", Observations.view(g));
+    f.put("navigation", latest.navigation());
+    f.put("agentClues", latest.agentClues());
     f.put("level", g.level());
     f.put("status", g.status());
     f.put("message", g.message());

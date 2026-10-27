@@ -8,4 +8,6 @@ public record ActionLog(
     String action,
     String result,
     long latencyMs,
-    String player) {}
+    String player,
+    String signal,
+    String signalTrend) {}

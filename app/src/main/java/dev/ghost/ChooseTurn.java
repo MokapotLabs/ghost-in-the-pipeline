@@ -14,9 +14,11 @@ public class ChooseTurn implements ReactiveService<RunState, NextTurn> {
     String end = Runs.endReason(r);
     if (!end.isEmpty()) return new NextTurn.Done(new RunResult(r, end));
     if (r.player().equals("TEV1"))
-      return new NextTurn.Model(new ModelTurn(r, Observations.request(r.game())));
+      return new NextTurn.Model(
+          new ModelTurn(r, Observations.request(r.game(), r.navigation(), r.agentClues())));
     if (r.player().equals("TEV1_4B"))
-      return new NextTurn.Large(new LargeModelTurn(r, Observations.request(r.game())));
+      return new NextTurn.Large(
+          new LargeModelTurn(r, Observations.request(r.game(), r.navigation(), r.agentClues())));
     String action =
         r.player().equals("HUMAN")
             ? r.action()

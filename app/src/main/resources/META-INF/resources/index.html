@@ -61,7 +61,7 @@
               <span id="facing">N ↑</span><span id="room">ROOM 01</span>
             </div>
             <div class="view-bottom">
-              <span id="signal">SIGNAL STABLE</span
+              <span id="signal">LINK ONLINE</span
               ><span id="status">FIND THE EXIT</span>
             </div>
             <div id="overlay" hidden>
@@ -105,6 +105,20 @@
               ><span id="latency">↑ Forward &nbsp; ← → Turn</span>
             </div>
           </aside>
+        </div>
+        <div class="clue-controls" role="group" aria-label="Navigation clues">
+          <label
+            ><input id="visual-clues" type="checkbox" checked /> GHOST
+            GLOW</label
+          >
+          <button id="audio-toggle" class="quiet" aria-pressed="false">
+            SOUND OFF
+          </button>
+          <label
+            title="Give the selected AI the same qualitative signal and its visited-room readings"
+            ><input id="agent-clues" type="checkbox" checked /> AI SIXTH
+            SENSE</label
+          >
         </div>
         <div class="message-bar">
           <span>›</span>
@@ -160,6 +174,7 @@
         ><span>ORIGINAL CODE & VISUALS · APACHE-2.0</span>
       </footer>
     </main>
+    <script src="sound.js"></script>
     <script src="game.js"></script>
   </body>
 </html>

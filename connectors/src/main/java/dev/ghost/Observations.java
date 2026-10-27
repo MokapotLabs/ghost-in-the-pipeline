@@ -50,9 +50,25 @@ public final class Observations {
   }
 
   public static DecisionRequest request(GameState g) {
+    return request(g, null, false);
+  }
+
+  public static Map<String, Object> view(GameState g, NavigationSignal navigation, boolean clues) {
+    var out = new LinkedHashMap<>(view(g));
+    if (clues) {
+      out.put("signal", navigation.signal());
+      out.put("signalTrend", navigation.signalTrend());
+      out.put(
+          "signalMemory",
+          navigation.readings().stream().map(r -> List.of(r.room(), r.signal())).toList());
+    }
+    return out;
+  }
+
+  public static DecisionRequest request(GameState g, NavigationSignal navigation, boolean clues) {
     try {
       return new DecisionRequest(
-          JSON.writeValueAsString(view(g)),
+          JSON.writeValueAsString(view(g, navigation, clues)),
           List.of(
               new DecisionQuestion(
                   "action",
@@ -63,7 +79,15 @@ public final class Observations {
                       + " Room numbers are row-major; north decreases the row. You cannot move"
                       + " backwards. A turn changes only orientation; FORWARD goes in the facing"
                       + " direction. Entering the same room seven times loses. Use explored memory"
-                      + " to navigate; an exit requires moving FORWARD through it.",
+                      + " to navigate; an exit requires moving FORWARD through it."
+                      + (clues
+                          ? " The haunted signal ranks FAINT, NOTICEABLE, STRONG, INTENSE from far"
+                                + " to close through corridors. Compare signalMemory readings in"
+                                + " visited rooms to explore toward stronger signals. Turns and"
+                                + " wall bumps report NO_MOVEMENT; UNCHANGED after movement means"
+                                + " the same coarse band. The signal gives no exit direction or"
+                                + " route."
+                          : ""),
                   List.of(
                       new DecisionCriterion(
                           "FORWARD",

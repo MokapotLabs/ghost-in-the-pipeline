@@ -53,6 +53,8 @@ types:
       - [result, "string"]
       - [latencyMs, "int64"]
       - [player, "string"]
+      - [signal, "string"]
+      - [signalTrend, "string"]
   RunState:
     java: dev.ghost.RunState
     fields:
@@ -72,6 +74,22 @@ types:
         repeated: "int32"
       - name: log
         repeated: "ActionLog"
+      - [navigation, "NavigationSignal"]
+      - [agentClues, "bool"]
+  SignalReading:
+    java: dev.ghost.SignalReading
+    fields:
+      - [room, "int32"]
+      - [signal, "string"]
+  NavigationSignal:
+    java: dev.ghost.NavigationSignal
+    fields:
+      - [signal, "string"]
+      - [signalTrend, "string"]
+      - [level, "int32"]
+      - [room, "int32"]
+      - name: readings
+        repeated: "SignalReading"
   ModelTurn:
     java: dev.ghost.ModelTurn
     fields:

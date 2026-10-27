@@ -16,7 +16,9 @@ public record RunState(
     long decisionStarted,
     String stopReason,
     List<Integer> stack,
-    List<ActionLog> log) {
+    List<ActionLog> log,
+    NavigationSignal navigation,
+    boolean agentClues) {
   public RunState {
     stack = List.copyOf(stack);
     log = List.copyOf(log);

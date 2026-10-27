@@ -21,7 +21,8 @@ public class GameResource {
 
   public record Action(String action, long revision) {}
 
-  public record Play(String player, long revision, Integer maxDecisions, Long durationMs) {}
+  public record Play(
+      String player, long revision, Integer maxDecisions, Long durationMs, Boolean agentClues) {}
 
   @GET
   public Map<String, Object> view() {
@@ -64,7 +65,14 @@ public class GameResource {
     long millis = p.durationMs() == null ? 120000 : p.durationMs();
     if (limit < 1 || limit > 128 || millis < 1 || millis > 120000)
       throw new BadRequestException("Budget exceeds demo bounds");
-    RunState r = admit(p.player(), "", p.revision(), limit, millis);
+    RunState r;
+    try {
+      r =
+          session.admit(
+              p.player(), "", p.revision(), limit, millis, Boolean.TRUE.equals(p.agentClues()));
+    } catch (IllegalArgumentException | IllegalStateException e) {
+      throw new ClientErrorException(e.getMessage(), 409);
+    }
     execute(r).subscribe().with(done -> {}, error -> {});
     return view();
   }

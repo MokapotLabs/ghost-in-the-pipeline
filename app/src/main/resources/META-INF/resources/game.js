@@ -9,6 +9,8 @@ let frame = null,
   lastKey = "",
   recentResults = [],
   lastCompleted = "";
+let visualCluesEnabled = true;
+let lastCollisionFlash = -Infinity;
 const esc = (s) =>
   String(s).replace(
     /[&<>"']/g,
@@ -207,6 +209,43 @@ function draw(
     565,
   );
   drawMap(o, yaw);
+  drawSignal();
+}
+function drawSignal() {
+  const signal = frame?.navigation?.signal;
+  if (!visualCluesEnabled || !signal) return;
+  const bands = ["FAINT", "NOTICEABLE", "STRONG", "INTENSE"],
+    strength = bands.indexOf(signal) + 1;
+  if (!strength) return;
+  const glow = ctx.createRadialGradient(480, 300, 210, 480, 300, 560);
+  glow.addColorStop(0, "#78ffe000");
+  glow.addColorStop(
+    1,
+    ["#78ffe014", "#78ffe024", "#78ffe03b", "#a8ffe058"][strength - 1],
+  );
+  ctx.fillStyle = glow;
+  ctx.fillRect(0, 0, 960, 600);
+  ctx.fillStyle = "#05101cdd";
+  ctx.fillRect(338, 23, 284, 54);
+  for (let i = 0; i < 4; i++) {
+    ctx.fillStyle = i < strength ? "#adffe5" : "#334447";
+    ctx.fillRect(356 + i * 15, 57 - i * 5, 9, 8 + i * 5);
+  }
+  ctx.fillStyle = "#b3ffe4";
+  ctx.font = "bold 15px monospace";
+  ctx.textAlign = "left";
+  ctx.fillText(signal, 430, 47);
+  ctx.font = "10px monospace";
+  ctx.fillText(
+    {
+      GETTING_STRONGER: "WARMER ↑",
+      GETTING_WEAKER: "COLDER ↓",
+      UNCHANGED: "SAME SIGNAL",
+      NO_MOVEMENT: "LISTEN TO THE MAZE",
+    }[frame.navigation.signalTrend] || "",
+    430,
+    65,
+  );
 }
 let turnFrame = 0,
   cameraYaw = null;
@@ -342,6 +381,15 @@ function update(f) {
   const previous = frame;
   const previousCollisions = frame ? frame.collisions : 0;
   frame = f;
+  ghostAudio.update(f);
+  const viewport = canvas.parentElement;
+  viewport.dataset.haunting = visualCluesEnabled
+    ? f.navigation?.signal || ""
+    : "";
+  const exitSeen = f.observation.memory.some((r) => r[2].includes("E"));
+  viewport.classList.toggle("exit-seen", visualCluesEnabled && exitSeen);
+  $("agent-clues").disabled = f.active;
+  if (f.active && isAI(f.player)) $("agent-clues").checked = f.agentClues;
   for (const option of $("player").options) {
     if (f.models?.[option.value])
       option.textContent =
@@ -354,11 +402,13 @@ function update(f) {
     renderFrame(previous, f);
     if (
       f.collisions > previousCollisions &&
+      performance.now() - lastCollisionFlash >= 1000 &&
       !matchMedia("(prefers-reduced-motion: reduce)").matches
     ) {
+      lastCollisionFlash = performance.now();
       canvas.animate(
         [
-          { filter: "brightness(1.4) hue-rotate(35deg)" },
+          { filter: "brightness(1.12) hue-rotate(12deg)" },
           { filter: "brightness(1)" },
         ],
         { duration: 140 },
@@ -479,6 +529,8 @@ function update(f) {
   }
 }
 async function reset() {
+  ghostAudio.reset();
+  ghostAudio.unlock().catch(audioFailure);
   busy = true;
   try {
     update(
@@ -497,6 +549,7 @@ async function reset() {
 async function action(a) {
   if (!frame || frame.active || busy || frame.status !== "PLAYING") return;
   busy = true;
+  ghostAudio.unlock().catch(audioFailure);
   try {
     update(await api("/actions", { action: a, revision: frame.revision }));
   } catch (e) {
@@ -506,6 +559,39 @@ async function action(a) {
     if (frame) update(frame);
   }
 }
+const ghostAudio = new GhostAudio();
+function audioFailure() {
+  ghostAudio.setEnabled(false);
+  $("audio-toggle").textContent = "SOUND UNAVAILABLE";
+  $("audio-toggle").setAttribute("aria-pressed", "false");
+}
+$("visual-clues").onchange = () => {
+  visualCluesEnabled = $("visual-clues").checked;
+  if (frame) {
+    canvas.parentElement.dataset.haunting = visualCluesEnabled
+      ? frame.navigation?.signal || ""
+      : "";
+    canvas.parentElement.classList.toggle(
+      "exit-seen",
+      visualCluesEnabled &&
+        frame.observation.memory.some((r) => r[2].includes("E")),
+    );
+    cancelAnimationFrame(turnFrame);
+    cameraYaw = (frame.observation.direction * Math.PI) / 2;
+    draw(frame.observation);
+  }
+};
+$("audio-toggle").onclick = async () => {
+  try {
+    await ghostAudio.setEnabled(!ghostAudio.enabled);
+    $("audio-toggle").textContent = ghostAudio.enabled
+      ? "SOUND ON · QUIET"
+      : "SOUND OFF";
+    $("audio-toggle").setAttribute("aria-pressed", String(ghostAudio.enabled));
+  } catch (_) {
+    audioFailure();
+  }
+};
 document
   .querySelectorAll("[data-action]")
   .forEach((b) => (b.onclick = () => action(b.dataset.action)));
@@ -536,11 +622,13 @@ document.addEventListener("keydown", (e) => {
 $("reset").onclick = reset;
 $("overlay-reset").onclick = reset;
 $("play").onclick = async () => {
+  ghostAudio.unlock().catch(audioFailure);
   try {
     update(
       await api("/play", {
         player: $("player").value,
         revision: frame.revision,
+        agentClues: $("agent-clues").checked,
       }),
     );
   } catch (e) {
@@ -565,12 +653,21 @@ $("scanlines").onclick = () => {
     if (f.ready) update(f);
     else await reset();
     const events = new EventSource("/api/game/events");
+    window.addEventListener("pagehide", () => {
+      events.close();
+      ghostAudio.destroy();
+      cancelAnimationFrame(turnFrame);
+    });
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) ghostAudio.suspend();
+      else ghostAudio.unlock().catch(audioFailure);
+    });
     events.onmessage = (e) => update(JSON.parse(e.data));
     events.onerror = () => {
       $("signal").textContent = "RECONNECTING";
     };
     events.onopen = () => {
-      $("signal").textContent = "SIGNAL STABLE";
+      $("signal").textContent = "LINK ONLINE";
     };
   } catch (e) {
     $("message").textContent =

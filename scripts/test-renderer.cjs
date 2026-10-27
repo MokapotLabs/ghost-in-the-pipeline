@@ -42,7 +42,7 @@ const source = fs.readFileSync(
   "utf8",
 );
 vm.runInContext(
-  source.slice(0, source.indexOf("document\n  .querySelectorAll")),
+  source.slice(0, source.indexOf("const ghostAudio =")),
   sandbox,
 );
 const run = (expression) => vm.runInContext(expression, sandbox);
@@ -132,6 +132,14 @@ assert.equal(callbacks.size, 0, "reduced motion also disables step animation");
 media.matches = false;
 for (let degrees = 0; degrees < 360; degrees++)
   run(`draw(observation,${(degrees * Math.PI) / 180})`);
+const observedBefore = run('JSON.stringify(observation)');
+labels = [];
+run(`frame={navigation:{signal:'INTENSE',signalTrend:'NO_MOVEMENT'}}; visualCluesEnabled=true; draw(observation);`);
+assert(labels.includes('INTENSE'), 'visual HUD uses the canonical signal');
+labels = [];
+run('visualCluesEnabled=false; draw(observation)');
+assert(!labels.includes('INTENSE'), 'visual clues can be independently disabled');
+assert.equal(run('JSON.stringify(observation)'), observedBefore, 'presentation does not mutate observations');
 console.log(
   "PASS: turns, steps, compass, wraparound, reset, reduced motion, collisions, and 360 clipped headings",
 );

@@ -13,6 +13,20 @@ public final class Runs {
       String action,
       int limit,
       long millis) {
+    return create(
+        g, generation, revision, player, action, limit, millis, Signals.initial(g), false);
+  }
+
+  public static RunState create(
+      GameState g,
+      String generation,
+      long revision,
+      String player,
+      String action,
+      int limit,
+      long millis,
+      NavigationSignal navigation,
+      boolean agentClues) {
     long now = System.nanoTime();
     return new RunState(
         g,
@@ -28,7 +42,9 @@ public final class Runs {
         now,
         "",
         List.of(g.room()),
-        List.of());
+        List.of(),
+        navigation,
+        agentClues);
   }
 
   public static RunState control(RunState r, long now, String reason) {
@@ -46,7 +62,9 @@ public final class Runs {
         now,
         reason,
         r.stack(),
-        r.log());
+        r.log(),
+        r.navigation(),
+        r.agentClues());
   }
 
   public static String endReason(RunState r) {
@@ -70,7 +88,9 @@ public final class Runs {
             t.action(),
             g.message(),
             t.latencyMs(),
-            r.player()));
+            r.player(),
+            r.navigation().signal(),
+            r.navigation().signalTrend()));
     return new RunState(
         g,
         r.generation(),
@@ -85,6 +105,8 @@ public final class Runs {
         r.decisionStarted(),
         "",
         Baselines.advanceStack(r, g),
-        log);
+        log,
+        Signals.update(r.navigation(), g),
+        r.agentClues());
   }
 }
