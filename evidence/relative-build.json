@@ -1,0 +1,24 @@
+{
+  "verifiedAt": "2026-10-27T19:50:58.333777+00:00",
+  "result": "PASS",
+  "servingPackages": [
+    ".work/runtime-relative",
+    ".work/runtime-relative-ui"
+  ],
+  "runtimeClassesSha256": {
+    "dev/ghost/DecodeChoice.class": "83119beca4ad319b7eab74a9b6afd797a6d5a1f1bd6f7e16d25420dfd2b50671",
+    "dev/ghost/Rules.class": "4623dbf66d0f8d69ffb7b18e108de260197fdab922207c49b56d09720469749e",
+    "dev/ghost/Observations.class": "4481e2bcad622e34f3669b19b85b028a098223454f9773a526c8f0612db95607",
+    "dev/ghost/Baselines.class": "8c647d01a1e3589ad36c3032aab1141a00a2279f4a32bd0a2ab4626f0ad8e400",
+    "dev/ghost/Runs.class": "4de9c4e55fc83bdf791ef418e7a8e3ee6c3072fb421ebb6ac4a5f3c266a62e1c",
+    "dev/ghost/Session.class": "da3ca8c848a7a17ca98c8d3dc3a485d3b83f1b4d12772cba42c04cb8393005d8"
+  },
+  "verification": "Both owned Java processes launched from immutable copies. Six critical compiled classes match the current Maven package byte-for-byte. Rules.java and Baselines.java source identities match the original compact-observation comparison. Only model observation encoding and typed model binding selection changed application semantics.",
+  "priorResultFilesPreserved": [
+    "evidence/evaluation.json",
+    "evidence/model-comparison.json",
+    "evidence/comparison-08b-compact.json",
+    "evidence/comparison-4b-compact.json"
+  ],
+  "observationChange": "Append front/left/right labels derived from current observed NESW edges; instructions, criteria, seed set, entry rules and budgets unchanged."
+}

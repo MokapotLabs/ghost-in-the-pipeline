@@ -12,9 +12,12 @@ REPO = Path(__file__).resolve().parents[1]
 
 
 class ComparisonValidation(unittest.TestCase):
+    small_report = 'comparison-08b-compact.json'
+    large_report = 'comparison-4b-compact.json'
+
     def run_pair(self, mutate=None, mutate_small=None):
-        small = json.loads((REPO / 'evidence/comparison-08b-compact.json').read_text())
-        large = json.loads((REPO / 'evidence/comparison-4b-compact.json').read_text())
+        small = json.loads((REPO / 'evidence' / self.small_report).read_text())
+        large = json.loads((REPO / 'evidence' / self.large_report).read_text())
         if mutate:
             mutate(large)
         if mutate_small:
@@ -77,6 +80,21 @@ class ComparisonValidation(unittest.TestCase):
 
     def test_interrupted_trial_rejected(self):
         self.assert_rejected(lambda r: r['trials'][0].update(termination='PAUSED'))
+
+    def test_wrong_model_player_role_rejected(self):
+        self.assert_rejected(lambda r: r['trials'][0].update(player='TEV1_4B' if r['protocol'] == 'ghost-paired-v1' else 'TEV1'))
+
+
+class RelativeComparisonValidation(ComparisonValidation):
+    small_report = 'relative-08b.json'
+    large_report = 'relative-4b.json'
+
+    def test_mixed_observation_protocols_rejected(self):
+        self.assert_rejected(lambda r: r.update(protocol='ghost-paired-v1'))
+
+    def test_relative_labels_required(self):
+        remove = lambda r: r['trials'][0]['initialObservation'].pop('relativeEdges')
+        self.assert_rejected(remove, remove)
 
 
 if __name__ == '__main__':

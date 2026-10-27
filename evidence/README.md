@@ -2,7 +2,9 @@
 
 This directory contains the compact, shareable game execution evidence, not the development transcript.
 
-- `acceptance.json`: final 16-test live verification, named E2E, seeded-solvability and dependency-hash checks.
+The current relative-observation experiment has separate `relative-08b.json` and `relative-4b.json` action records, `relative-model-comparison.json`, `relative-controls.json` (cross-encoding checks and original-file hashes), `relative-build.json`, `relative-acceptance.json` and `relative-lineage.json`. `replay-relative/` contains unmodified complete bounded provider samples for both native model branches. The original compact-observation files below remain unchanged. Evaluation's default output is now `evaluation-relative.json`, avoiding accidental replacement of `evaluation.json`.
+
+- `acceptance.json`: historical 16-test delivery, named E2E, seeded-solvability and dependency-hash checks. The current 18-test run and 32 comparison checks are in `relative-acceptance.json`.
 - `fixtures.json`: reproducible seeds, level sizes, bounds and expected human/integration results.
 - `evaluation.json`: all 27 final paired trials, actual action records, decision latency and model identity/digest. No route was supplied to Tev1 or either baseline.
 - `comparison-08b-compact.json`, `comparison-4b-compact.json`: 18 fresh model trials on the same nine cases, with all actions, observations, identities and source hashes. The original compact gameplay input was unchanged.

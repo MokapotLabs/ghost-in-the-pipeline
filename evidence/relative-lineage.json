@@ -1,0 +1,25 @@
+{
+  "result": "PASS",
+  "documentsDiagnostic": 2,
+  "distinctRootTracesDiagnostic": 2,
+  "runs": [
+    {
+      "file": "tev1-08b-segment.json",
+      "traceId": "5389a036f67eb1c4c6e26026a296742f",
+      "status": "completed",
+      "events": 85,
+      "nestedInvocations": 2,
+      "modelQueries": 3,
+      "rootLineage": "PASS"
+    },
+    {
+      "file": "tev1-4b-segment.json",
+      "traceId": "997b7e040c26065caf3b30017115f05a",
+      "status": "completed",
+      "events": 85,
+      "nestedInvocations": 2,
+      "modelQueries": 3,
+      "rootLineage": "PASS"
+    }
+  ]
+}

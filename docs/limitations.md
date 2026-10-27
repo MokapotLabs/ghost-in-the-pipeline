@@ -4,6 +4,8 @@ This is a local nostalgic engineering demo. Tev1's measured navigation is poor; 
 
 The [model follow-up](model-comparison.md) found 0/9 escapes for 0.8B and 1/9 for 4B with unchanged inputs. Relative-edge labels helped 4B on two diagnostic observations; this was not tested as a full campaign policy or substituted into the comparison. The root cause of 0.8B's persistent forward preference is not fully isolated. The installed variants also differ in quantization, and warm timings are not an isolated hardware benchmark.
 
+The subsequent [actual-gameplay experiment](relative-observations.md) uses those relative labels in both models' inputs. 0.8B still escaped 0/9 cases; 4B escaped 3/9, with five timeouts and one entry-exhaustion loss. The original results remain available. Improved local collision avoidance does not imply reliable navigation. Time-limit records describe committed actions; cancellation can leave an in-flight Query without an action or complete native lifecycle.
+
 The perspective is a stylized view of the current room. An open doorway fades into unknown space; it does not render hidden neighboring topology. There is no emulator, numeric score, sound system, backward move, full-map reveal, network multiplayer or training system. The historical generator and progression beyond three levels are intentionally replaced.
 
 The application has one in-memory local session and no authentication, persistence or recovery across restart. It binds to loopback. Do not use it as a public multi-user service. Model settings are trusted deployment inputs; the supplied host connection is for local Ollama and uses its placeholder bearer value. Hosted credentials are outside this demo.

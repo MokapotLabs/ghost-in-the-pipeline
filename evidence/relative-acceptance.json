@@ -1,0 +1,81 @@
+{
+  "result": "PASS",
+  "recordedAt": "2026-10-27T20:06:35.669649+00:00",
+  "javaLiveSuites": [
+    {
+      "name": "dev.ghost.RulesTest",
+      "tests": "8",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.262"
+    },
+    {
+      "name": "dev.ghost.AgentSafetyTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.187"
+    },
+    {
+      "name": "dev.ghost.GhostRecordingE2ETest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "20.446"
+    }
+  ],
+  "JavaTests": 18,
+  "comparisonValidationTests": 32,
+  "validationModes": "Both saved observation protocols; subprocess validators run under Python -O",
+  "renderer": "PASS: continuous turns and forward approach/bob; blocked entry, reduced motion, cancellation, map orientation and 360 clipped headings",
+  "acceptedRelativeLiveTrials": 18,
+  "modelResults": [
+    {
+      "model": "tev1:0.8b",
+      "escapes": 0,
+      "trials": 9,
+      "moves": 4,
+      "collisions": 1148,
+      "terminations": {
+        "DECISION_LIMIT": 9
+      }
+    },
+    {
+      "model": "tev1:latest",
+      "escapes": 3,
+      "trials": 9,
+      "moves": 276,
+      "collisions": 105,
+      "terminations": {
+        "LOST": 1,
+        "TIME_LIMIT": 5,
+        "WON": 3
+      }
+    }
+  ],
+  "mazeAndRules": "Unchanged source and compiled Rules identity; 600 seeded levels remain validated",
+  "crossEncodingControls": "PASS: same initial facts after removing relative labels, same model digests and budgets",
+  "originalResultFiles": "Unchanged hashes; retained as historical evidence",
+  "compiledServingIdentities": "PASS: evaluation and UI packages match current compiled game classes",
+  "nativeLineage": "PASS",
+  "nativeDocumentsDiagnostic": 2,
+  "executionTopology": "One root per external admission; exactly one native model branch per turn; shared reducer and publication path",
+  "browserChecks": [
+    "Tev1 4B option visible and selectable with actual configured tag",
+    "Current human game and controls preserved after test interactions",
+    "Screenshots saved without viewport override"
+  ],
+  "review": {
+    "tool": "CodeRabbit",
+    "sourceFindingsAddressed": [
+      "Require correct player identity for each observation protocol",
+      "Allow valid early terminal outcome in bounded live test"
+    ],
+    "documentationFollowUp": "Current 18-test artifact linked explicitly; original acceptance.json labelled historical"
+  },
+  "frameworkChanges": false,
+  "publication": "Local commits only; no push, upload or publication"
+}

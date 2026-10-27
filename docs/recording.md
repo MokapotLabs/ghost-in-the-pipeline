@@ -13,6 +13,6 @@ Start the application with `./scripts/run.sh`. Keep default visual pacing enable
 
 The failed AI attempt is part of the story. Do not substitute Explorer footage for Tev1, imply a scripted route is autonomous, hide the player label, or claim that model confidence measures maze competence. If inference differs on a later run, describe what the recording actually shows.
 
-For a 4B comparison take, restart with `GHOST_MODEL=tev1:latest ./scripts/run.sh --no-build` and keep its model tag visible. Use the same ordinary seed and show the actual result. The [paired investigation](model-comparison.md) includes both models' full attempts; do not promise an escape in a live recording. Let the animated quarter turns and map arrow establish orientation before moving again.
+For a 4B comparison take, select **TEV1-4B** in the menu and keep its model tag visible. Use the same ordinary seed and show the actual result. The [current paired investigation](relative-observations.md) records 3/9 escapes for 4B and 0/9 for 0.8B; do not promise an escape in a live recording. Let the animated quarter turns, map arrow and short forward steps establish orientation.
 
 Use normal screen-recording software manually. There is no video-recording machinery or hosted deployment. Screenshots are in `docs/screenshots/`; action records and native replay examples accompany the evaluation dataset.

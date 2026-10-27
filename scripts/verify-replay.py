@@ -21,7 +21,7 @@ def inspect(path):
   assert event['traceId']==root['traceId'],f'{path}: recursive turn changed root trace'
   assert event['spanId'] in ends,f'{path}: nested invocation has no terminal event'
   assert root['startTime']<=event['startTime']<=ends[event['spanId']]['endTime']<=terminal['endTime'],f'{path}: nested invocation outlived root'
- model=sum(e['event']=='success' and e['step']=='ProcessAskTev1' for e in events)
+ model=sum(e['event']=='success' and e['step'] in ('ProcessAskTev1','ProcessAskTev14b') for e in events)
  return {'file':path.name,'traceId':root['traceId'],'status':j['status'],'events':len(events),'nestedInvocations':len(nested),'modelQueries':model,'rootLineage':'PASS'}
 def main():
  p=argparse.ArgumentParser(description=__doc__);p.add_argument('directory',type=Path);p.add_argument('--out',type=Path);a=p.parse_args();files=sorted(a.directory.glob('*.json'));assert files,'No native replay documents found';results=[inspect(f) for f in files];summary={'result':'PASS','documentsDiagnostic':len(results),'distinctRootTracesDiagnostic':len({r['traceId'] for r in results}),'runs':results};s=json.dumps(summary,indent=2)+'\n';print(s)

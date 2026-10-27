@@ -4,7 +4,7 @@
 
 An independently implemented, MSX-inspired first-person maze built with [The Pipeline Framework](https://pipelineframework.org/). Play with the keyboard, hand control to a real local Tev1 decision model, or compare it with Random and a deterministic Explorer. Seven entries per room; three growing levels; no hidden map for the AI.
 
-![The independently drawn first-person maze](docs/screenshots/turn-view.png)
+![The independently drawn first-person maze and model menu](docs/screenshots/relative-game.png)
 
 ## Run locally
 
@@ -12,17 +12,18 @@ Requirements: Java 21+, Maven 3.9+, Python 3 for the helper scripts, and Ollama 
 
 ```sh
 ollama pull tev1:0.8b
+ollama pull tev1:latest  # Optional 4B menu choice; recorded installation is 4.2B / mxfp8.
 # Start Ollama if it is not already running.
 ./scripts/run.sh
 ```
 
-Open **http://127.0.0.1:8087**. Use **↑ / W** to walk, **← / A** and **→ / D** to turn. Play/Pause hands control to the selected automated player; Pause finishes at most the current turn. Reset restarts the selected seed. An observed-only map and entry bars help you keep your bearings.
+Open **http://127.0.0.1:8087**. Use **↑ / W** to walk, **← / A** and **→ / D** to turn. Choose **AI · tev1:0.8b**, **TEV1-4B**, Explorer or Random in the menu, then Play. Pause finishes at most the current turn. Reset restarts the selected seed. An observed-only map and entry bars help you keep your bearings.
 
-Turns rotate the room and map arrow over a short quarter turn, with a direction cue. Reduced-motion preferences keep the transition instant.
+Turns rotate the room and map arrow over a short quarter turn, with a direction cue. Successful forward steps have a brief approach and footstep bob; collisions do not animate room entry. Reduced-motion preferences keep transitions instant.
 
 The levels are 3×3, 4×4 and 6×6. Each room starts with seven entries; entering decrements its allowance and reaching zero loses. Spawning, turning and bumping into a wall consume none. Cross the exit to advance; escape the third level to win. Every admitted level is checked for a valid escape under these same rules.
 
-A second launch can reuse the package with `./scripts/run.sh --no-build`. Change the port with `GHOST_PORT=8089`. A compatible local model/endpoint can be selected with `GHOST_MODEL` and `GHOST_MODEL_URL`; the launcher writes a native TPF deployment binding through `PIPELINE_CONFIG`. The supplied host connection is for local Ollama, not hosted credential management.
+A second launch can reuse the package with `./scripts/run.sh --no-build`. Change the port with `GHOST_PORT=8089`. The two native model bindings can be configured with `GHOST_MODEL` (small), `GHOST_LARGE_MODEL` (4B), and `GHOST_MODEL_URL`; the launcher writes native TPF deployment bindings through `PIPELINE_CONFIG`. The supplied host connection is for local Ollama, not hosted credential management.
 
 ## Test and compare
 
@@ -36,9 +37,11 @@ python3 scripts/evaluate.py
 ./scripts/recording-reset.sh
 ```
 
-The ordinary test suite uses real TPF gameplay and observation-only baselines. The opt-in live test validates genuine model decisions without requiring an escape or an exact action. The completed delivery run passed **16 tests**, including human completion of all three levels, pause, limits, action validation and live Tev1. Core tests validate **600 seeded levels**.
+The ordinary test suite uses real TPF gameplay and observation-only baselines. The opt-in live test validates genuine decisions from both models without requiring an escape or an exact action. The [current acceptance record](evidence/relative-acceptance.json) reports **18 passing tests**, including human completion of all three levels, pause, limits, relative-observation validation and live Tev1. Core tests validate **600 seeded levels**. The original `acceptance.json` records the historical 16-test delivery.
 
 Evaluation uses the same nine seed/level combinations for all players, with 128 decisions and 120 seconds per case. For timings without the visual pause, restart with `GHOST_PACE_MS=0 ./scripts/run.sh --no-build`, then run `GHOST_PACE_MS=0 python3 scripts/evaluate.py`. Do not interact with that single session during evaluation. The script leaves a fresh normal campaign ready afterwards.
+
+The preserved original compact-observation results:
 
 | Player | Escaped | What actually happened |
 |---|---:|---|
@@ -49,13 +52,15 @@ Evaluation uses the same nine seed/level combinations for all players, with 128 
 
 These are small-sample observations, not a general model ranking. The maze and seeds were not adjusted to make Tev1 win. Full actions, latencies and paired starting observations are in [the evaluation dataset](evidence/evaluation.json); see [the report](docs/evaluation.md) for definitions and limits.
 
-The [fresh 0.8B-versus-4B investigation](docs/model-comparison.md) verifies identical starting observations, code identities and budgets, and retains every attempt. Later observations differ as the players choose different actions. Redundant front/left/right labels helped 4B in isolated probes; 0.8B still preferred FORWARD. The gameplay observation format stayed frozen for the comparison. To play the installed 4B variant, restart with `GHOST_MODEL=tev1:latest ./scripts/run.sh --no-build`; the UI displays the actual model tag.
+The [original model investigation](docs/model-comparison.md) retains every compact-observation attempt. The current game adds redundant front/left/right labels to actual gameplay; see [the follow-up comparison](docs/relative-observations.md) for both reruns on the unchanged seeds and rules. Switch between the two models directly in the menu. Later observations differ as their actions diverge.
+
+With clearer observations, **0.8B remained at 0/9 escapes** and **4B improved to 3/9**, with 276 successful moves and 105 wall rejections. Five 4B attempts still timed out. Original result files are preserved; the new action records are `evidence/relative-08b.json` and `evidence/relative-4b.json`.
 
 ## How it works
 
 One bounded TPF execution owns each automated Play segment. Typed recursive composition makes the next turn; a native Decision Query asks Tev1 for one action; the same reducer used by human play validates it. A native Command publishes the frame. The model has no state-write authority.
 
-The model receives visited rooms, observed walls/passages/exits, entry allowances, orientation and the prior result. It does not receive unseen topology, the maze seed, the validation witness or a computed route. Explorer uses those same observations, not the solver.
+The model receives visited rooms, observed walls/passages/exits, entry allowances, orientation and the prior result. Front/left/right labels express the same visible edges in plain language. It does not receive unseen topology, the maze seed, the validation witness or a computed route. Explorer uses those same observations, not the solver.
 
 See [architecture](docs/architecture.md), [execution contract](docs/execution-contract.md), and [bounded qualification](docs/qualification.md). Published TPF snapshot binaries are pinned by timestamp; [dependency identities and SHA-256 values](evidence/dependencies.json) record what was exercised. No TPF runtime changes were made. MCP was unnecessary and is omitted.
 

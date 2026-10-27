@@ -1,5 +1,7 @@
 # Why the ghost walks into walls
 
+This is the preserved compact-observation experiment. The current game now uses the clearer relative labels and offers both models in its menu; [the follow-up](relative-observations.md) reports the new 0/9 and 3/9 escape outcomes. The reproduction commands below apply to the compact-observation revision `b3de6ec`; use the follow-up instructions for current code and separate result filenames.
+
 The collision loop is real model behavior. The Ollama response selects `FORWARD`; the TPF adapter preserves that selection; `DecodeChoice` validates its vocabulary; the shared reducer rejects movement into the wall. No fallback, solver action, state-write permission or automatic retry is involved. TPF result caching is bypassed.
 
 ## Fresh paired gameplay

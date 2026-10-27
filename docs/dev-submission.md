@@ -44,6 +44,8 @@ Tev1 0.8B repeatedly selected forward even when the observation described a wall
 
 Separate bounded probes rotated choice order and added redundant front/left/right descriptions of the same visible edges. 0.8B kept choosing forward. 4B consistently turned toward the passage with the relative descriptions. That points to observation-format sensitivity in the larger model; it does not fully explain the smaller model or establish useful full-maze exploration. The [paired report](model-comparison.md) retains the raw requests, outcomes and limitations. A valid action label is not evidence of useful navigation.
 
+I then put those clearer labels into actual gameplay and reran both models on the same nine cases, preserving the original results. 0.8B remained at **zero escapes**. 4B improved from **one to three**, and wall rejections fell from **257 to 105**. It still timed out five times and exhausted a room once. The [new action records](relative-observations.md) show the tradeoff: better local movement and more exploration, with unreliable navigation. Both models are now selectable in the game menu, and a small forward-step animation helps the human keep their bearings.
+
 ## Why Does Open Innovation Matter?
 
 After the initial dependencies and weights are downloaded, this game and its inference run on the laptop. There is no hosted model bill or cloud account required for the default setup. I can inspect the framework, replace the model binding, read every proposed action, and rerun the comparison.
