@@ -391,10 +391,13 @@ function update(f) {
   $("agent-clues").disabled = f.active;
   if (f.active && isAI(f.player)) $("agent-clues").checked = f.agentClues;
   for (const option of $("player").options) {
-    if (f.models?.[option.value])
-      option.textContent =
+    if (f.models?.[option.value]) {
+      const label =
         (option.value === "TEV1_4B" ? "TEV1-4B · " : "AI · ") +
         f.models[option.value];
+      // Replacing option text while a native menu is open can dismiss/rebuild it in WebKit.
+      if (option.textContent !== label) option.textContent = label;
+    }
   }
   const o = f.observation,
     k = f.generation + ":" + f.revision;
@@ -464,7 +467,7 @@ function update(f) {
   $("pause").disabled = !f.active || f.pausing;
   $("pause").textContent = f.pausing ? "PAUSING…" : "Ⅱ PAUSE";
   $("play").disabled = f.active || f.status !== "PLAYING";
-  $("player").disabled = f.active;
+  if ($("player").disabled !== f.active) $("player").disabled = f.active;
   document
     .querySelectorAll("[data-action]")
     .forEach((b) => (b.disabled = f.active || busy || f.status !== "PLAYING"));
@@ -597,12 +600,17 @@ document
   .forEach((b) => (b.onclick = () => action(b.dataset.action)));
 document.addEventListener("keydown", (e) => {
   if (e.ctrlKey || e.metaKey || e.altKey) return;
+  if (
+    e.target.closest(
+      'select, textarea, input:not([type="checkbox"]):not([type="radio"]), [contenteditable="true"]',
+    )
+  )
+    return;
   if (e.key === "Enter" && frame && frame.status !== "PLAYING") {
     e.preventDefault();
     reset();
     return;
   }
-  if (["INPUT", "SELECT", "TEXTAREA"].includes(e.target.tagName)) return;
   let a = {
     ArrowUp: "FORWARD",
     w: "FORWARD",
@@ -620,6 +628,7 @@ document.addEventListener("keydown", (e) => {
   }
 });
 $("reset").onclick = reset;
+$("player").onchange = () => canvas.focus({ preventScroll: true });
 $("overlay-reset").onclick = reset;
 $("play").onclick = async () => {
   ghostAudio.unlock().catch(audioFailure);

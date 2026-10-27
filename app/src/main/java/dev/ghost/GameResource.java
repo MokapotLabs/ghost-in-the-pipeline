@@ -29,6 +29,7 @@ public class GameResource {
     var f = new LinkedHashMap<>(session.frame());
     f.put("model", settings.model(f.getOrDefault("player", "TEV1").toString()));
     f.put("models", settings.models());
+    f.put("decisionPrompt", Observations.PROMPT_VERSION);
     return f;
   }
 

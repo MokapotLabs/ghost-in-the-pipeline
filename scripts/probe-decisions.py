@@ -1,22 +1,21 @@
 #!/usr/bin/env python3
 """Bounded diagnostic requests, separate from gameplay. Never applies an action."""
-import argparse, datetime, json, re, time, urllib.request
+import argparse, datetime, json, time, urllib.request
 from pathlib import Path
 
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument('--out', default='evidence/decision-diagnostics.json')
+    p.add_argument('--out', default='evidence/decision-diagnostics-reproduction.json')
     args = p.parse_args()
     repo = Path(__file__).resolve().parents[1]
-    source = (repo / 'connectors/src/main/java/dev/ghost/Observations.java').read_text()
-    chunk = source.split('DecisionQuestionType.CHOICE,')[1].split('List.of(')[0]
-    instructions = ''.join(json.loads(s) for s in re.findall(r'"(?:[^"\\]|\\.)*"', chunk))
-    descriptions = {
-        'FORWARD': 'Move one room in the current facing direction, or cross an exit ahead.',
-        'TURN_LEFT': 'Rotate 90 degrees left; stay in the same room.',
-        'TURN_RIGHT': 'Rotate 90 degrees right; stay in the same room.',
-    }
+    # This historical protocol reproduces its recorded prompt, never parses Java source.
+    # New action-focused old/new probes live in diagnose-action-prompt.py.
+    reference = json.loads((repo / 'evidence/decision-diagnostics.json').read_text())['probes'][0]['request']['questions']['action']
+    instructions = reference['instructions']
+    descriptions = reference['criteria']
+    if not instructions.strip():
+        raise ValueError('Missing historical prompt')
     saved_trial = json.loads((repo / 'evidence/evaluation.json').read_text())['trials'][0]
     observation = saved_trial['initialObservation']
     # The second fixture is the real post-collision observation from the saved trial.

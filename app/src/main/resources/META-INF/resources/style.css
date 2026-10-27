@@ -434,7 +434,7 @@ select {
   font: 8px var(--mono);
   color: var(--muted);
 }
-input {
+input:not([type="checkbox"]):not([type="radio"]) {
   width: 75px;
   background: #161c25;
   border: 1px solid var(--line);
@@ -681,11 +681,46 @@ footer a {
   cursor: pointer;
 }
 .clue-controls input {
-  width: 15px;
-  height: 15px;
+  -webkit-appearance: none;
+  appearance: none;
+  display: inline-grid;
+  place-content: center;
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  min-height: 16px;
   padding: 0;
   margin: 0;
   accent-color: #a4ffe0;
+  border: 1px solid #608c86;
+  border-radius: 2px;
+  background: #101b22;
+  cursor: pointer;
+}
+.clue-controls input:checked {
+  background: var(--mint);
+  border-color: var(--mint);
+}
+.clue-controls input::after {
+  content: "";
+  width: 8px;
+  height: 4px;
+  border-left: 2px solid #0b1817;
+  border-bottom: 2px solid #0b1817;
+  transform: translateY(-1px) rotate(-45deg);
+  opacity: 0;
+}
+.clue-controls input:checked::after {
+  opacity: 1;
+}
+.clue-controls input:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+#maze:focus-visible {
+  outline: 2px solid var(--pink);
+  outline-offset: -3px;
 }
 .clue-controls button {
   padding: 7px 10px;

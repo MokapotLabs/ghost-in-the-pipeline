@@ -7,6 +7,25 @@ import org.pipelineframework.connector.decision.*;
 /** The only projection eligible for model input and the browser view. */
 public final class Observations {
   private static final ObjectMapper JSON = new ObjectMapper();
+  public static final String PROMPT_VERSION = "action-focused-v1";
+  public static final String ACTION_PROMPT =
+      """
+      Choose ONE action for this turn. Read relativeEdges: front, left, right.
+      If front is wall, choose a turn: FORWARD cannot pass a wall.
+      If front is exit, choose FORWARD.
+      Prefer an open passage and avoid needless revisits or rooms with one entry left.
+      memory rows are [room, visits, NESW edges, entriesLeft].
+      Edges: # wall, . passage, E exit, ? unseen. Rooms are row-major.
+      """
+          .strip();
+  public static final String CLUE_PROMPT =
+      """
+      Signal order: FAINT < NOTICEABLE < STRONG < INTENSE means closer through corridors.
+      signalMemory rows are [visited room, reading]. Prefer openings toward stronger remembered readings.
+      If a move made the signal weaker, try another opening.
+      NO_MOVEMENT means a turn or bump, not progress.
+      """
+          .strip();
 
   private Observations() {}
 
@@ -73,29 +92,17 @@ public final class Observations {
               new DecisionQuestion(
                   "action",
                   DecisionQuestionType.CHOICE,
-                  "Explore the maze and escape through an observed exit. Choose one action. Edges"
-                      + " and memory use N,E,S,W: # wall, . passage, E exit, ? unseen. Memory rows"
-                      + " are [room, visits, edges, entriesLeft]. Avoid walls and repeated rooms."
-                      + " Room numbers are row-major; north decreases the row. You cannot move"
-                      + " backwards. A turn changes only orientation; FORWARD goes in the facing"
-                      + " direction. Entering the same room seven times loses. Use explored memory"
-                      + " to navigate; an exit requires moving FORWARD through it."
-                      + (clues
-                          ? " The haunted signal ranks FAINT, NOTICEABLE, STRONG, INTENSE from far"
-                                + " to close through corridors. Compare signalMemory readings in"
-                                + " visited rooms to explore toward stronger signals. Turns and"
-                                + " wall bumps report NO_MOVEMENT; UNCHANGED after movement means"
-                                + " the same coarse band. The signal gives no exit direction or"
-                                + " route."
-                          : ""),
+                  ACTION_PROMPT + (clues ? "\n" + CLUE_PROMPT : ""),
                   List.of(
                       new DecisionCriterion(
                           "FORWARD",
-                          "Move one room in the current facing direction, or cross an exit ahead."),
+                          "Move ahead. Appropriate only when front is open passage or exit."),
                       new DecisionCriterion(
-                          "TURN_LEFT", "Rotate 90 degrees left; stay in the same room."),
+                          "TURN_LEFT",
+                          "Turn left in place. Appropriate for an opening on the left."),
                       new DecisionCriterion(
-                          "TURN_RIGHT", "Rotate 90 degrees right; stay in the same room.")))));
+                          "TURN_RIGHT",
+                          "Turn right in place. Appropriate for an opening on the right.")))));
     } catch (Exception e) {
       throw new IllegalStateException(e);
     }

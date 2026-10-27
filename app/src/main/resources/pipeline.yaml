@@ -169,6 +169,9 @@ pipelines:
         cardinality: ONE_TO_ONE
         java: { input: dev.ghost.RunState, output: dev.ghost.NextTurn }
       - name: Ask Tev1
+        # The prompt is question.instructions inside the typed DecisionRequest below.
+        # Authority: dev.ghost.Observations.ACTION_PROMPT and optional CLUE_PROMPT.
+        # ChooseTurn supplies the same question/criteria to both model bindings.
         kind: query
         using: model
         operation: decide
@@ -181,6 +184,7 @@ pipelines:
           request: request
           completion: { field: result, run: run }
       - name: Ask Tev1 4B
+        # Same action-focused typed prompt as Ask Tev1; only the model binding differs.
         kind: query
         using: model4b
         operation: decide

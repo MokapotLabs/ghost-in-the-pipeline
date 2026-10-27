@@ -81,7 +81,11 @@ class GhostRecordingE2ETest {
     assertEquals("WON", session.latest().game().status());
     assertTrue(session.latest().decisions() <= 128);
     given().get("/").then().statusCode(200);
-    given().get("/api/game").then().statusCode(200);
+    given()
+        .get("/api/game")
+        .then()
+        .statusCode(200)
+        .body("decisionPrompt", org.hamcrest.Matchers.equalTo(Observations.PROMPT_VERSION));
   }
 
   @Test

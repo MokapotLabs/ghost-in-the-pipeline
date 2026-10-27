@@ -9,6 +9,41 @@ import org.pipelineframework.connector.decision.*;
 
 class AgentSafetyTest {
   @Test
+  void actionPromptIsNonemptyExplicitAndExportedAsTheActualTypedRequest() throws Exception {
+    var json = new com.fasterxml.jackson.databind.ObjectMapper();
+    var game = Rules.newGame(1983, 1, 1);
+    var output = new LinkedHashMap<String, Object>();
+    output.put("promptVersion", Observations.PROMPT_VERSION);
+    for (boolean clues : List.of(false, true)) {
+      var request = Observations.request(game, Signals.initial(game), clues);
+      var question = request.questions().getFirst();
+      assertTrue(question.instructions().contains("front is wall"));
+      assertTrue(question.instructions().contains("FORWARD cannot pass a wall"));
+      assertEquals(clues, question.instructions().contains("Signal order:"));
+      var criteria = new LinkedHashMap<String, String>();
+      question.criteria().forEach(c -> criteria.put(c.label(), c.description()));
+      output.put(
+          clues ? "on" : "off",
+          Map.of(
+              "state",
+              json.readTree(request.stateJson()),
+              "questions",
+              Map.of(
+                  "action",
+                  Map.of(
+                      "type",
+                      "choice",
+                      "instructions",
+                      question.instructions(),
+                      "criteria",
+                      criteria))));
+    }
+    java.nio.file.Files.createDirectories(java.nio.file.Path.of("target"));
+    json.writerWithDefaultPrettyPrinter()
+        .writeValue(java.nio.file.Path.of("target/decision-prompts.json").toFile(), output);
+  }
+
+  @Test
   void relativeDirectionsUseOnlyObservedEdgesAndTurnWithThePlayer() {
     GameState g = Rules.newGame(1983, 1, 1);
     var v = Observations.view(g);
