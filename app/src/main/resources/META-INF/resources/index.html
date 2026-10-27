@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Ghost in the Pipeline</title>
+    <link rel="icon" href="ghost.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="/" aria-label="Ghost in the Pipeline home"
+        ><svg viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M5 28V12h3V6h5V3h8v3h5v6h2v16l-5-4-4 4-5-4-4 4z" />
+          <path class="eyes" d="M11 12h4v5h-4zm9 0h4v5h-4z" /></svg
+        ><span>GHOST<span class="brand-sub">IN THE PIPELINE</span></span></a
+      >
+      <div class="edition">
+        <span class="live-dot"></span> 1980s SOUL · 2026 MACHINE
+      </div>
+      <button id="scanlines" class="quiet" aria-pressed="true">CRT ON</button>
+    </header>
+    <main>
+      <section class="intro">
+        <div>
+          <p class="eyebrow">AN MSX-INSPIRED EXPLORATION EXPERIMENT</p>
+          <h1>
+            Some ghosts<br />never find the exit<span class="blink">_</span>
+          </h1>
+          <p class="subhead">
+            A maze from the 1980s. A human at the keys.<br />A tiny AI trying to
+            find its way out.
+          </p>
+        </div>
+        <div class="mission">
+          <span class="micro">THE RULE IS SIMPLE</span
+          ><strong>7 ENTRIES.<br />THEN YOU’RE A GHOST.</strong>
+          <p>
+            Find the exit. Remember the rooms.<br />Don’t wear out your welcome.
+          </p>
+        </div>
+      </section>
+      <section class="machine" aria-label="Maze game">
+        <div class="machine-top">
+          <div>
+            <span class="live-dot"></span
+            ><span id="mode">HUMAN AT THE KEYS</span>
+          </div>
+          <span id="level">LEVEL 01 / 03</span
+          ><span id="dimensions">3 × 3 ROOMS</span>
+        </div>
+        <div class="play-area">
+          <div class="viewport">
+            <canvas
+              id="maze"
+              width="960"
+              height="600"
+              aria-label="First-person maze view"
+            ></canvas>
+            <div class="view-top">
+              <span id="facing">N ↑</span><span id="room">ROOM 01</span>
+            </div>
+            <div class="view-bottom">
+              <span id="signal">SIGNAL STABLE</span
+              ><span id="status">FIND THE EXIT</span>
+            </div>
+            <div id="overlay" hidden>
+              <span class="eyebrow" id="overlay-kicker"></span>
+              <h2 id="overlay-title"></h2>
+              <p id="overlay-copy"></p>
+              <button id="overlay-reset" class="primary">
+                ENTER THE MAZE AGAIN ↵
+              </button>
+            </div>
+          </div>
+          <aside>
+            <div class="side-heading">
+              <span class="micro">YOUR FOOTPRINT</span
+              ><span class="micro magenta">LIVE</span>
+            </div>
+            <canvas
+              id="map"
+              width="216"
+              height="216"
+              aria-label="Map of observed rooms only"
+            ></canvas>
+            <div class="legend">
+              <i></i> Explored memory <span>?</span> Unseen
+            </div>
+            <div class="entry-box">
+              <span class="micro">THIS ROOM · ENTRIES LEFT</span>
+              <div id="entries" class="entry-dots"></div>
+              <p id="entry-caption">Seven chances. Make them count.</p>
+            </div>
+            <div class="numbers">
+              <div><strong id="moves">00</strong><span>MOVES</span></div>
+              <div>
+                <strong id="explored">01</strong><span>ROOMS SEEN</span>
+              </div>
+              <div><strong id="repeats">00</strong><span>REVISITS</span></div>
+            </div>
+            <div class="decision">
+              <span class="micro" id="decision-label">NEXT MOVE IS YOURS</span
+              ><strong id="decision-action">MAKE A LITTLE HISTORY.</strong
+              ><span id="latency">↑ Forward &nbsp; ← → Turn</span>
+            </div>
+          </aside>
+        </div>
+        <div class="message-bar">
+          <span>›</span>
+          <p id="message" role="status" aria-live="polite">
+            Find the exit. Seven entries per room.
+          </p>
+          <span id="thinking" hidden>DECIDING<span class="blink">…</span></span>
+        </div>
+        <div class="control-panel">
+          <div class="movement" aria-label="Movement controls">
+            <button data-action="TURN_LEFT" aria-label="Turn left">←</button
+            ><button data-action="FORWARD" aria-label="Move forward">↑</button
+            ><button data-action="TURN_RIGHT" aria-label="Turn right">→</button
+            ><span>ARROWS / W A D</span>
+          </div>
+          <div class="player-controls">
+            <select id="player" aria-label="Choose automated player">
+              <option value="TEV1">TEV1 · 0.8B AI</option>
+              <option value="EXPLORER">EXPLORER · DETERMINISTIC</option>
+              <option value="RANDOM">RANDOM · BASELINE</option></select
+            ><button id="play" class="primary">▶ LET THE GHOST PLAY</button
+            ><button id="pause" class="quiet" disabled>Ⅱ PAUSE</button>
+          </div>
+        </div>
+      </section>
+      <div class="under-game">
+        <div>
+          <span class="micro">SAME MAZE. SAME RULES. DIFFERENT MINDS.</span>
+          <p>
+            The AI sees the openings and memories you see. Every move answers to
+            the same game rules.
+          </p>
+        </div>
+        <div class="seed-control">
+          <label for="seed">MAZE SEED</label
+          ><input
+            id="seed"
+            type="number"
+            value="1983"
+            aria-label="Maze seed"
+          /><button id="reset" class="quiet">↻ NEW RUN</button>
+        </div>
+      </div>
+      <section id="run-result" hidden aria-label="Run result"></section>
+      <footer>
+        <span>BUILT WITH THE PIPELINE FRAMEWORK</span
+        ><a
+          href="https://github.com/antor44/3dmaze"
+          target="_blank"
+          rel="noreferrer"
+          >INSPIRED BY 3D MAZE PRO ↗</a
+        ><span>ORIGINAL CODE & VISUALS · APACHE-2.0</span>
+      </footer>
+    </main>
+    <script src="game.js"></script>
+  </body>
+</html>
