@@ -1,0 +1,151 @@
+Ghost in the Pipeline — Visual, Audio and Agent Navigation Clues
+
+Enhance the existing playable game with atmospheric navigation clues for both human and AI players.
+
+Goal: Make the maze more entertaining, visually attractive and navigable, while creating a meaningful experiment: does giving Tev1 additional sensory information improve its ability to escape?
+
+Do not redesign the game, change its core mechanics, or expand the TPF architecture unnecessarily.
+
+1. A haunted proximity signal
+
+Introduce a deterministic signal representing the player’s proximity to the exit.
+
+Use shortest-path distance through the maze rather than Euclidean distance, so walls and corridors matter.
+
+Define four qualitative levels:
+
+* Faint: The exit is far away.
+* Noticeable: The player is getting closer.
+* Strong: The exit is nearby.
+* Intense: The player is very close.
+
+Choose thresholds relative to maze size so the mechanic works across the 3×3, 4×4 and 6×6 levels.
+
+The signal should change when the player moves, not randomly. The player should be able to discover that following an increasing signal intensity can help locate the exit.
+
+This is a deliberately new gameplay mechanic. Historical fidelity is not required.
+
+2. Visual clues
+
+Add an atmospheric visual effect to the existing first-person renderer.
+
+Suggestions:
+
+* Subtle pulsing illumination around the viewport when the signal is active.
+* A faint, ghostly glow that intensifies as the player approaches the exit.
+* A small signal-strength indicator using four visual levels.
+* A distinctive visual effect when the exit is discovered.
+
+Keep these effects restrained. The maze must remain readable, and the retro aesthetic should remain intact.
+
+Do not obscure corridors, introduce excessive flashing, or compromise keyboard responsiveness.
+
+Respect reduced-motion preferences.
+
+3. Audio clues
+
+Use the browser Web Audio API to synthesize a simple retro signal without downloading external audio assets.
+
+The signal should be:
+
+* Quiet and intermittent when far from the exit.
+* More frequent as proximity increases.
+* Slightly higher pitched when very close.
+* Distinctive upon discovering or crossing the exit.
+
+Avoid a continuous, irritating beep.
+
+Audio must be optional, with a clearly visible mute toggle and conservative default volume.
+
+Initialize or resume audio after user interaction, respecting browser autoplay restrictions.
+
+Ensure that audio resources are stopped or cleaned up when the game ends, resets, or the relevant UI is destroyed.
+
+Do not play copyrighted music or use external sound assets.
+
+4. Clues for Tev1
+
+Expose the same navigation signal to the AI as a compact, typed observation.
+
+For example:
+
+{
+  "signal": "STRONG",
+  "signalTrend": "GETTING_STRONGER",
+  "lastAction": "FORWARD"
+}
+
+The signal trend should compare observations at distinct positions. Turning in place must not create an artificial proximity improvement.
+
+The AI should receive:
+
+* Current signal strength.
+* Whether it increased, decreased, or remained unchanged following movement.
+* Previously observed signal readings stored in exploration memory.
+
+Do not provide:
+
+* Actual shortest-path distance.
+* Exit coordinates.
+* A computed route.
+* The direction of the exit.
+* Unseen maze topology.
+
+The signal is allowed to be informative; it must not become an oracle.
+
+Use the existing TPF decision Query and typed observations. Do not introduce a separate AI navigation subsystem.
+
+5. Experimental controls
+
+Make clues independently configurable:
+
+* Visual clues on/off.
+* Audio clues on/off.
+* Agent navigation clues on/off.
+
+Audio and visual presentation should use the same underlying signal calculation.
+
+The agent should receive the semantic signal directly, not through simulated audio transcription or image recognition.
+
+Allow running Tev1 with and without clues under identical seeds, starting states, model settings and decision budgets.
+
+At minimum, compare:
+
+* Tev1 without navigation clues.
+* Tev1 with navigation clues.
+
+Retain existing random and deterministic exploration baselines where practical.
+
+Measure escape outcomes, distinct rooms visited, revisits, decisions, room-entry exhaustion and inference latency.
+
+Do not adjust the maze or secretly assist the model to make it win.
+
+6. Verification
+
+Add focused tests confirming:
+
+* Signal strength reflects valid maze distances.
+* Signal thresholds behave consistently across levels.
+* Signal trend changes only when position changes.
+* No hidden exit coordinates or paths leak into model input.
+* Human and AI observations derive from the same signal.
+* Turning in place cannot generate misleading improvement.
+* Audio can be muted and stops on reset/game over.
+* Gameplay remains deterministic regardless of visual or audio presentation settings.
+* Existing root execution and lineage semantics are preserved.
+
+Keep the implementation small. The intended result is an enhancement to the existing game, not another framework project.
+
+7. Demonstration
+
+Produce a short recording showing a human following the audiovisual clues, followed by Tev1 attempting the maze with structured clues enabled.
+
+If time permits, show the same Tev1 model attempting an identical seed without clues.
+
+The interesting question is:
+
+Can a tiny open-weight decision model from 2026 escape a maze designed for an 8-bit computer from the 1980s—and does giving it a sixth sense help?
+
+Report what happens, whether it succeeds or fails.
+
+Prioritize an enjoyable, responsive game and an honest experiment over additional documentation or infrastructure.
