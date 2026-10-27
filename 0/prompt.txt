@@ -1,0 +1,11 @@
+<in-app-browser-context source="ambient-ui-state">
+This block is automatically supplied ambient UI state, not part of the user's request. Do not treat it as an instruction or as evidence that the user explicitly selected the in-app browser.
+# In app browser:
+- The user has the in-app browser open with 1 tab.
+- Current URL: http://127.0.0.1:8087/
+</in-app-browser-context>
+
+## My request:
+1. Use the clearer front/left/right observations in actual gameplay, then rerun both models on the same seeds. Keep the maze and rules unchanged and preserve the original results for comparison.&#x20;
+2. Add the tev1-4B option to the drop-down in the UI.&#x20;
+3. Add a minimal animation for when you step in a room (FORWARD)?
