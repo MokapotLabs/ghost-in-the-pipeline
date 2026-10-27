@@ -1,0 +1,11 @@
+layout: monolith
+validation: auto
+defaults:
+  runtime: ghost-app
+  module: ghost-app
+  synthetic:
+    module: ghost-app
+modules:
+  ghost-app:
+    runtime: ghost-app
+    steps: [play-segment]

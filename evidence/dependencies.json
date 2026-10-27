@@ -1,0 +1,117 @@
+{
+  "tpfFamily": "26.10.1-SNAPSHOT",
+  "artifacts": [
+    {
+      "group": "org.pipelineframework",
+      "artifact": "decision-query-connector",
+      "baseVersion": "26.10.1-SNAPSHOT",
+      "resolvedVersion": "26.10.1-20261027.110129-21",
+      "sha256": "0b899f4f00ab2c8a99fda46cbf451546dac46aaf3cc8d52bfb3708b35e4e3a90",
+      "sourceUrl": "https://central.sonatype.com/repository/maven-snapshots/org/pipelineframework/decision-query-connector/26.10.1-SNAPSHOT/decision-query-connector-26.10.1-20261027.110129-21-sources.jar"
+    },
+    {
+      "group": "org.pipelineframework",
+      "artifact": "decision-query-jev-connector",
+      "baseVersion": "26.10.1-SNAPSHOT",
+      "resolvedVersion": "26.10.1-20261027.110129-21",
+      "sha256": "79eb9bd84bdcfb2b550d4b01e10a79364f94067d0c79356030532e4e8ad9479f",
+      "sourceUrl": "https://central.sonatype.com/repository/maven-snapshots/org/pipelineframework/decision-query-jev-connector/26.10.1-SNAPSHOT/decision-query-jev-connector-26.10.1-20261027.110129-21-sources.jar"
+    },
+    {
+      "group": "org.pipelineframework",
+      "artifact": "pipelineframework",
+      "baseVersion": "26.10.1-SNAPSHOT",
+      "resolvedVersion": "26.10.1-20261027.142733-32",
+      "sha256": "665f3287727642416a5840c667639660e05d93c024be92963e80a01c6d67c0fd",
+      "sourceUrl": "https://central.sonatype.com/repository/maven-snapshots/org/pipelineframework/pipelineframework/26.10.1-SNAPSHOT/pipelineframework-26.10.1-20261027.142733-32-sources.jar"
+    },
+    {
+      "group": "org.pipelineframework",
+      "artifact": "pipelineframework-api",
+      "baseVersion": "26.10.1-SNAPSHOT",
+      "resolvedVersion": "26.10.1-20261026.143159-18",
+      "sha256": "52687c5e7adaf2f65fbc8023a1a77b0787bac31fa8e22ab0417fb92f1093f224",
+      "sourceUrl": "https://central.sonatype.com/repository/maven-snapshots/org/pipelineframework/pipelineframework-api/26.10.1-SNAPSHOT/pipelineframework-api-26.10.1-20261026.143159-18-sources.jar"
+    },
+    {
+      "group": "org.pipelineframework",
+      "artifact": "pipelineframework-dsl",
+      "baseVersion": "26.10.1-SNAPSHOT",
+      "resolvedVersion": "26.10.1-20261026.143159-18",
+      "sha256": "8009a592f5ab6f33240fd44fc2ffcddb97b9845117b3fbfb014f9e017cd51823",
+      "sourceUrl": "https://central.sonatype.com/repository/maven-snapshots/org/pipelineframework/pipelineframework-dsl/26.10.1-SNAPSHOT/pipelineframework-dsl-26.10.1-20261026.143159-18-sources.jar"
+    },
+    {
+      "group": "org.pipelineframework",
+      "artifact": "pipelineframework-runtime-api",
+      "baseVersion": "26.10.1-SNAPSHOT",
+      "resolvedVersion": "26.10.1-20261026.143159-18",
+      "sha256": "f04637d67f3703877c79e878a845c3402b84abb5f830cf381a2760a06c5c971a",
+      "sourceUrl": "https://central.sonatype.com/repository/maven-snapshots/org/pipelineframework/pipelineframework-runtime-api/26.10.1-SNAPSHOT/pipelineframework-runtime-api-26.10.1-20261026.143159-18-sources.jar"
+    },
+    {
+      "group": "org.pipelineframework",
+      "artifact": "pipelineframework-runtime-core",
+      "baseVersion": "26.10.1-SNAPSHOT",
+      "resolvedVersion": "26.10.1-20261026.143159-18",
+      "sha256": "eaf74e75999635de23469127f9162c082d1d6e1e39a45d50814c751f5e8880c4",
+      "sourceUrl": "https://central.sonatype.com/repository/maven-snapshots/org/pipelineframework/pipelineframework-runtime-core/26.10.1-SNAPSHOT/pipelineframework-runtime-core-26.10.1-20261026.143159-18-sources.jar"
+    },
+    {
+      "group": "org.pipelineframework",
+      "artifact": "pipelineframework-runtime-protocol",
+      "baseVersion": "26.10.1-SNAPSHOT",
+      "resolvedVersion": "26.10.1-20261026.143159-18",
+      "sha256": "5777ec9e6df967a4cc09a2ff7813b103372a9facf9678569fa1e505b29575681",
+      "sourceUrl": "https://central.sonatype.com/repository/maven-snapshots/org/pipelineframework/pipelineframework-runtime-protocol/26.10.1-SNAPSHOT/pipelineframework-runtime-protocol-26.10.1-20261026.143159-18-sources.jar"
+    },
+    {
+      "group": "org.pipelineframework",
+      "artifact": "pipelineframework-runtime-serialization",
+      "baseVersion": "26.10.1-SNAPSHOT",
+      "resolvedVersion": "26.10.1-20261026.143159-18",
+      "sha256": "4b40f579f21931fb0ace6a832349734ab376a8215915d7e86c0999fb0ff74424",
+      "sourceUrl": "https://central.sonatype.com/repository/maven-snapshots/org/pipelineframework/pipelineframework-runtime-serialization/26.10.1-SNAPSHOT/pipelineframework-runtime-serialization-26.10.1-20261026.143159-18-sources.jar"
+    },
+    {
+      "group": "org.pipelineframework",
+      "artifact": "pipelineframework-runtime-spi",
+      "baseVersion": "26.10.1-SNAPSHOT",
+      "resolvedVersion": "26.10.1-20261026.143159-18",
+      "sha256": "36460aeab41d16d5f3b5c8db9798ab10defdc455d88b268761eceb7b0efe77a7",
+      "sourceUrl": "https://central.sonatype.com/repository/maven-snapshots/org/pipelineframework/pipelineframework-runtime-spi/26.10.1-SNAPSHOT/pipelineframework-runtime-spi-26.10.1-20261026.143159-18-sources.jar"
+    },
+    {
+      "group": "org.pipelineframework",
+      "artifact": "pipelineframework-semantic-model",
+      "baseVersion": "26.10.1-SNAPSHOT",
+      "resolvedVersion": "26.10.1-20261026.143159-18",
+      "sha256": "89cdf7e08f2d3bbe7920e7168c2ebaf7c977533e9a17356308c46d372fa9e2de",
+      "sourceUrl": "https://central.sonatype.com/repository/maven-snapshots/org/pipelineframework/pipelineframework-semantic-model/26.10.1-SNAPSHOT/pipelineframework-semantic-model-26.10.1-20261026.143159-18-sources.jar"
+    },
+    {
+      "group": "org.pipelineframework",
+      "artifact": "tpf-release-resolver",
+      "baseVersion": "26.10.1-SNAPSHOT",
+      "resolvedVersion": "26.10.1-20261009.194941-6",
+      "sha256": "79f881e303250f8ee4a5e7ae8136b582e514c2a0926543ebaef7375bb3a31a44",
+      "sourceUrl": "https://central.sonatype.com/repository/maven-snapshots/org/pipelineframework/tpf-release-resolver/26.10.1-SNAPSHOT/tpf-release-resolver-26.10.1-20261009.194941-6-sources.jar"
+    },
+    {
+      "group": "org.pipelineframework",
+      "artifact": "pipelineframework-compiler",
+      "baseVersion": "26.10.1-SNAPSHOT",
+      "resolvedVersion": "26.10.1-20261026.143220-22",
+      "sha256": "3f6de1f977cc3c5716a03e0571d0ca271f73f874b4d5226835328c2a38cf6969",
+      "sourceUrl": "https://central.sonatype.com/repository/maven-snapshots/org/pipelineframework/pipelineframework-compiler/26.10.1-SNAPSHOT/pipelineframework-compiler-26.10.1-20261026.143220-22-sources.jar"
+    },
+    {
+      "group": "org.pipelineframework",
+      "artifact": "connector-maven-plugin",
+      "baseVersion": "26.10.1-SNAPSHOT",
+      "resolvedVersion": "26.10.1-20261027.110129-21",
+      "sha256": "59d41b40245c8c2f5c03619a1086bb2988729db2ec1789e51f89c1a93ae76d1c",
+      "sourceUrl": "https://central.sonatype.com/repository/maven-snapshots/org/pipelineframework/connector-maven-plugin/26.10.1-SNAPSHOT/connector-maven-plugin-26.10.1-20261027.110129-21-sources.jar"
+    }
+  ]
+}
