@@ -31,3 +31,7 @@ Run `python3 scripts/verify-replay.py evidence/replay` to inspect the final nati
 The raw test/evaluation exporter directories also contain interrupted/budget-watchdog traces. The final samples are representative completed executions, not a claim that every interrupted export has a complete lifecycle. Full automated results are recorded in acceptance; no failed model escape was removed from the comparison.
 
 Synthetic game data only. Raw console logs, source caches, account diagnostics, unrelated installed-model information, credentials and development-session exports are excluded. Nothing was uploaded automatically.
+
+## Hosted Jev follow-up
+
+`jev-off.json` and `jev-on.json` retain all 18 fixed-seed attempts with the unchanged ordered prompt. `jev-comparison.json` reports 8/9 and 9/9 escapes, zero wall collisions, and one native provider-validation failure; it is explicitly incomplete because of that failure. `jev-build.json`, `jev-acceptance.json`, `jev-lineage.json` and `replay-jev/` record verification. `jev-live-ui-final.json` is a separate real Play/Pause check, not a matrix trial. The screenshot is `docs/screenshots/jev-game-1280.png`. See [the report](../docs/jev-experiment.md) for controls, alias limitations and the identical shared action sequences.

@@ -1,0 +1,120 @@
+{
+  "scope": "Separate live UI verification, not an evaluation trial",
+  "result": "PASS",
+  "frame": {
+    "ready": true,
+    "generation": "50ccb805-de60-41b8-a73c-422f12931365",
+    "segment": "ce8e63a8-de28-4311-9e23-dad9cd3487e5",
+    "seed": 1983,
+    "revision": 3,
+    "observation": {
+      "level": 1,
+      "size": 3,
+      "room": 3,
+      "facing": "S",
+      "direction": 2,
+      "edges": "..##",
+      "entriesLeft": 6,
+      "current_room_visits": 1,
+      "memory": [
+        [
+          0,
+          1,
+          "##.#",
+          7
+        ],
+        [
+          3,
+          1,
+          "..##",
+          6
+        ]
+      ],
+      "previousAction": "FORWARD",
+      "previousResult": "Entered a room; 6 entries left.",
+      "relativeEdges": {
+        "front": "wall",
+        "left": "open passage",
+        "right": "wall"
+      }
+    },
+    "navigation": {
+      "signal": "NOTICEABLE",
+      "signalTrend": "UNCHANGED",
+      "level": 1,
+      "room": 3,
+      "readings": [
+        {
+          "room": 0,
+          "signal": "NOTICEABLE"
+        },
+        {
+          "room": 3,
+          "signal": "NOTICEABLE"
+        }
+      ]
+    },
+    "agentClues": true,
+    "level": 1,
+    "status": "PLAYING",
+    "message": "Room 4 · 6 entries left.",
+    "active": false,
+    "pausing": false,
+    "reason": "PAUSED",
+    "player": "JEV",
+    "moves": 1,
+    "actions": 2,
+    "collisions": 0,
+    "repeats": 0,
+    "explored": 2,
+    "exitsFound": 0,
+    "decisions": 2,
+    "latestAction": "FORWARD",
+    "latencyMs": 463,
+    "model": "~typesafe/jev-latest",
+    "models": {
+      "JEV": "~typesafe/jev-latest",
+      "TEV1": "tev1:0.8b",
+      "TEV1_4B": "tev1:latest"
+    },
+    "decisionPrompt": "ordered-policy-v3"
+  },
+  "history": [
+    {
+      "turn": 1,
+      "level": 1,
+      "room": 0,
+      "direction": 1,
+      "action": "START",
+      "result": "Find the exit. Seven entries per room.",
+      "latencyMs": 0,
+      "player": "HUMAN",
+      "signal": "NOTICEABLE",
+      "signalTrend": "NO_MOVEMENT"
+    },
+    {
+      "turn": 1,
+      "level": 1,
+      "room": 0,
+      "direction": 1,
+      "action": "TURN_RIGHT",
+      "result": "Turned right.",
+      "latencyMs": 1005,
+      "player": "JEV",
+      "signal": "NOTICEABLE",
+      "signalTrend": "NO_MOVEMENT"
+    },
+    {
+      "turn": 2,
+      "level": 1,
+      "room": 0,
+      "direction": 2,
+      "action": "FORWARD",
+      "result": "Room 4 · 6 entries left.",
+      "latencyMs": 463,
+      "player": "JEV",
+      "signal": "NOTICEABLE",
+      "signalTrend": "NO_MOVEMENT"
+    }
+  ]
+}

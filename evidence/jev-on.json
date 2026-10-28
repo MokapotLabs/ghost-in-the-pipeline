@@ -1,0 +1,5421 @@
+{
+  "protocol": "ghost-ordered-policy-v3",
+  "decisionPrompt": "ordered-policy-v3",
+  "recordedAt": "2026-10-28T11:56:48.355362+00:00",
+  "seeds": [
+    1983,
+    1986,
+    2026
+  ],
+  "levels": [
+    1,
+    2,
+    3
+  ],
+  "agentClues": true,
+  "players": [
+    "JEV"
+  ],
+  "maxDecisions": 128,
+  "durationMs": 120000,
+  "information": "local visible edges plus persistent observed-room memory; no full map or witness",
+  "trials": [
+    {
+      "seed": 1983,
+      "level": 1,
+      "size": 3,
+      "player": "JEV",
+      "model": "~typesafe/jev-latest",
+      "initialObservation": {
+        "level": 1,
+        "size": 3,
+        "room": 0,
+        "facing": "E",
+        "direction": 1,
+        "edges": "##.?",
+        "entriesLeft": 7,
+        "current_room_visits": 1,
+        "memory": [
+          [
+            0,
+            1,
+            "##.?",
+            7
+          ]
+        ],
+        "previousAction": "START",
+        "previousResult": "Find the exit. Seven entries per room.",
+        "relativeEdges": {
+          "front": "wall",
+          "left": "wall",
+          "right": "open passage"
+        }
+      },
+      "initialNavigation": {
+        "signal": "NOTICEABLE",
+        "signalTrend": "NO_MOVEMENT",
+        "level": 1,
+        "room": 0,
+        "readings": [
+          {
+            "room": 0,
+            "signal": "NOTICEABLE"
+          }
+        ]
+      },
+      "exitFound": true,
+      "status": "WON",
+      "termination": "WON",
+      "decisions": 12,
+      "moves": 6,
+      "collisions": 0,
+      "repeatedPositions": 0,
+      "roomsExplored": 6,
+      "rejectedActions": 0,
+      "executionFailure": false,
+      "elapsedSeconds": 6.537,
+      "decisionLatencyMs": {
+        "median": 518.0,
+        "max": 779
+      },
+      "actions": [
+        {
+          "turn": 1,
+          "level": 1,
+          "room": 0,
+          "direction": 1,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 779,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 2,
+          "level": 1,
+          "room": 0,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 4 \u00b7 6 entries left.",
+          "latencyMs": 445,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 3,
+          "level": 1,
+          "room": 3,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 468,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 4,
+          "level": 1,
+          "room": 3,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 5 \u00b7 6 entries left.",
+          "latencyMs": 527,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 5,
+          "level": 1,
+          "room": 4,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 522,
+          "player": "JEV",
+          "signal": "STRONG",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 6,
+          "level": 1,
+          "room": 4,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 2 \u00b7 6 entries left.",
+          "latencyMs": 525,
+          "player": "JEV",
+          "signal": "STRONG",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 7,
+          "level": 1,
+          "room": 1,
+          "direction": 0,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 514,
+          "player": "JEV",
+          "signal": "STRONG",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 8,
+          "level": 1,
+          "room": 1,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 3 \u00b7 6 entries left.",
+          "latencyMs": 615,
+          "player": "JEV",
+          "signal": "STRONG",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 9,
+          "level": 1,
+          "room": 2,
+          "direction": 1,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 457,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 10,
+          "level": 1,
+          "room": 2,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 6 \u00b7 6 entries left.",
+          "latencyMs": 563,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 11,
+          "level": 1,
+          "room": 5,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 473,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 12,
+          "level": 1,
+          "room": 5,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "ESCAPED \u2014 the ghost is free.",
+          "latencyMs": 513,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "NO_MOVEMENT"
+        }
+      ],
+      "finalObservation": {
+        "level": 1,
+        "size": 3,
+        "room": 5,
+        "facing": "E",
+        "direction": 1,
+        "edges": ".E.#",
+        "entriesLeft": 6,
+        "current_room_visits": 1,
+        "memory": [
+          [
+            0,
+            1,
+            "##.#",
+            7
+          ],
+          [
+            1,
+            1,
+            "#..#",
+            6
+          ],
+          [
+            2,
+            1,
+            "##..",
+            6
+          ],
+          [
+            3,
+            1,
+            "..##",
+            6
+          ],
+          [
+            4,
+            1,
+            ".##.",
+            6
+          ],
+          [
+            5,
+            1,
+            ".E.#",
+            6
+          ]
+        ],
+        "previousAction": "FORWARD",
+        "previousResult": "ESCAPED \u2014 the ghost is free.",
+        "relativeEdges": {
+          "front": "exit",
+          "left": "open passage",
+          "right": "open passage"
+        }
+      },
+      "finalNavigation": {
+        "signal": "INTENSE",
+        "signalTrend": "NO_MOVEMENT",
+        "level": 1,
+        "room": 5,
+        "readings": [
+          {
+            "room": 0,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 1,
+            "signal": "STRONG"
+          },
+          {
+            "room": 2,
+            "signal": "INTENSE"
+          },
+          {
+            "room": 3,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 4,
+            "signal": "STRONG"
+          },
+          {
+            "room": 5,
+            "signal": "INTENSE"
+          }
+        ]
+      },
+      "agentClues": true
+    },
+    {
+      "seed": 1983,
+      "level": 2,
+      "size": 4,
+      "player": "JEV",
+      "model": "~typesafe/jev-latest",
+      "initialObservation": {
+        "level": 2,
+        "size": 4,
+        "room": 6,
+        "facing": "E",
+        "direction": 1,
+        "edges": ".##?",
+        "entriesLeft": 7,
+        "current_room_visits": 1,
+        "memory": [
+          [
+            6,
+            1,
+            ".##?",
+            7
+          ]
+        ],
+        "previousAction": "START",
+        "previousResult": "Find the exit. Seven entries per room.",
+        "relativeEdges": {
+          "front": "wall",
+          "left": "open passage",
+          "right": "wall"
+        }
+      },
+      "initialNavigation": {
+        "signal": "FAINT",
+        "signalTrend": "NO_MOVEMENT",
+        "level": 2,
+        "room": 6,
+        "readings": [
+          {
+            "room": 6,
+            "signal": "FAINT"
+          }
+        ]
+      },
+      "exitFound": true,
+      "status": "WON",
+      "termination": "WON",
+      "decisions": 32,
+      "moves": 20,
+      "collisions": 0,
+      "repeatedPositions": 4,
+      "roomsExplored": 16,
+      "rejectedActions": 0,
+      "executionFailure": false,
+      "elapsedSeconds": 18.825,
+      "decisionLatencyMs": {
+        "median": 517.5,
+        "max": 2193
+      },
+      "actions": [
+        {
+          "turn": 1,
+          "level": 2,
+          "room": 6,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 460,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 2,
+          "level": 2,
+          "room": 6,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 3 \u00b7 6 entries left.",
+          "latencyMs": 466,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 3,
+          "level": 2,
+          "room": 2,
+          "direction": 0,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 515,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 4,
+          "level": 2,
+          "room": 2,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 4 \u00b7 6 entries left.",
+          "latencyMs": 522,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 5,
+          "level": 2,
+          "room": 3,
+          "direction": 1,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 524,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 6,
+          "level": 2,
+          "room": 3,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 8 \u00b7 6 entries left.",
+          "latencyMs": 2193,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 7,
+          "level": 2,
+          "room": 7,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 12 \u00b7 6 entries left.",
+          "latencyMs": 538,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 8,
+          "level": 2,
+          "room": 11,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 16 \u00b7 6 entries left.",
+          "latencyMs": 477,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 9,
+          "level": 2,
+          "room": 15,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 545,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 10,
+          "level": 2,
+          "room": 15,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 15 \u00b7 6 entries left.",
+          "latencyMs": 505,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 11,
+          "level": 2,
+          "room": 14,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 14 \u00b7 6 entries left.",
+          "latencyMs": 618,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "GETTING_WEAKER"
+        },
+        {
+          "turn": 12,
+          "level": 2,
+          "room": 13,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 13 \u00b7 6 entries left.",
+          "latencyMs": 441,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 13,
+          "level": 2,
+          "room": 12,
+          "direction": 3,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 576,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 14,
+          "level": 2,
+          "room": 12,
+          "direction": 0,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 477,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 15,
+          "level": 2,
+          "room": 12,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 14 \u00b7 5 entries left.",
+          "latencyMs": 449,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 16,
+          "level": 2,
+          "room": 13,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 15 \u00b7 5 entries left.",
+          "latencyMs": 494,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 17,
+          "level": 2,
+          "room": 14,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 16 \u00b7 5 entries left.",
+          "latencyMs": 507,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 18,
+          "level": 2,
+          "room": 15,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 526,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 19,
+          "level": 2,
+          "room": 15,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 12 \u00b7 5 entries left.",
+          "latencyMs": 601,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 20,
+          "level": 2,
+          "room": 11,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 462,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 21,
+          "level": 2,
+          "room": 11,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 11 \u00b7 6 entries left.",
+          "latencyMs": 516,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 22,
+          "level": 2,
+          "room": 10,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 10 \u00b7 6 entries left.",
+          "latencyMs": 506,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 23,
+          "level": 2,
+          "room": 9,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 9 \u00b7 6 entries left.",
+          "latencyMs": 527,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 24,
+          "level": 2,
+          "room": 8,
+          "direction": 3,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 514,
+          "player": "JEV",
+          "signal": "STRONG",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 25,
+          "level": 2,
+          "room": 8,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 5 \u00b7 6 entries left.",
+          "latencyMs": 526,
+          "player": "JEV",
+          "signal": "STRONG",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 26,
+          "level": 2,
+          "room": 4,
+          "direction": 0,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 521,
+          "player": "JEV",
+          "signal": "STRONG",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 27,
+          "level": 2,
+          "room": 4,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 6 \u00b7 6 entries left.",
+          "latencyMs": 519,
+          "player": "JEV",
+          "signal": "STRONG",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 28,
+          "level": 2,
+          "room": 5,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 523,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 29,
+          "level": 2,
+          "room": 5,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 2 \u00b7 6 entries left.",
+          "latencyMs": 529,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 30,
+          "level": 2,
+          "room": 1,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 515,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 31,
+          "level": 2,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 1 \u00b7 6 entries left.",
+          "latencyMs": 1062,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 32,
+          "level": 2,
+          "room": 0,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "ESCAPED \u2014 the ghost is free.",
+          "latencyMs": 503,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "UNCHANGED"
+        }
+      ],
+      "finalObservation": {
+        "level": 2,
+        "size": 4,
+        "room": 0,
+        "facing": "W",
+        "direction": 3,
+        "edges": "#.#E",
+        "entriesLeft": 6,
+        "current_room_visits": 1,
+        "memory": [
+          [
+            0,
+            1,
+            "#.#E",
+            6
+          ],
+          [
+            1,
+            1,
+            "##..",
+            6
+          ],
+          [
+            2,
+            1,
+            "#..#",
+            6
+          ],
+          [
+            3,
+            1,
+            "##..",
+            6
+          ],
+          [
+            4,
+            1,
+            "#..#",
+            6
+          ],
+          [
+            5,
+            1,
+            ".##.",
+            6
+          ],
+          [
+            6,
+            1,
+            ".###",
+            7
+          ],
+          [
+            7,
+            1,
+            ".#.#",
+            6
+          ],
+          [
+            8,
+            1,
+            "..##",
+            6
+          ],
+          [
+            9,
+            1,
+            "#.#.",
+            6
+          ],
+          [
+            10,
+            1,
+            "#.#.",
+            6
+          ],
+          [
+            11,
+            2,
+            ".#..",
+            5
+          ],
+          [
+            12,
+            1,
+            "#.##",
+            6
+          ],
+          [
+            13,
+            2,
+            "#.#.",
+            5
+          ],
+          [
+            14,
+            2,
+            "#.#.",
+            5
+          ],
+          [
+            15,
+            2,
+            ".##.",
+            5
+          ]
+        ],
+        "previousAction": "FORWARD",
+        "previousResult": "ESCAPED \u2014 the ghost is free.",
+        "relativeEdges": {
+          "front": "exit",
+          "left": "wall",
+          "right": "wall"
+        }
+      },
+      "finalNavigation": {
+        "signal": "INTENSE",
+        "signalTrend": "NO_MOVEMENT",
+        "level": 2,
+        "room": 0,
+        "readings": [
+          {
+            "room": 0,
+            "signal": "INTENSE"
+          },
+          {
+            "room": 1,
+            "signal": "INTENSE"
+          },
+          {
+            "room": 2,
+            "signal": "FAINT"
+          },
+          {
+            "room": 3,
+            "signal": "FAINT"
+          },
+          {
+            "room": 4,
+            "signal": "STRONG"
+          },
+          {
+            "room": 5,
+            "signal": "INTENSE"
+          },
+          {
+            "room": 6,
+            "signal": "FAINT"
+          },
+          {
+            "room": 7,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 8,
+            "signal": "STRONG"
+          },
+          {
+            "room": 9,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 10,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 11,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 12,
+            "signal": "FAINT"
+          },
+          {
+            "room": 13,
+            "signal": "FAINT"
+          },
+          {
+            "room": 14,
+            "signal": "FAINT"
+          },
+          {
+            "room": 15,
+            "signal": "NOTICEABLE"
+          }
+        ]
+      },
+      "agentClues": true
+    },
+    {
+      "seed": 1983,
+      "level": 3,
+      "size": 6,
+      "player": "JEV",
+      "model": "~typesafe/jev-latest",
+      "initialObservation": {
+        "level": 3,
+        "size": 6,
+        "room": 0,
+        "facing": "N",
+        "direction": 0,
+        "edges": "#.?#",
+        "entriesLeft": 7,
+        "current_room_visits": 1,
+        "memory": [
+          [
+            0,
+            1,
+            "#.?#",
+            7
+          ]
+        ],
+        "previousAction": "START",
+        "previousResult": "Find the exit. Seven entries per room.",
+        "relativeEdges": {
+          "front": "wall",
+          "left": "wall",
+          "right": "open passage"
+        }
+      },
+      "initialNavigation": {
+        "signal": "FAINT",
+        "signalTrend": "NO_MOVEMENT",
+        "level": 3,
+        "room": 0,
+        "readings": [
+          {
+            "room": 0,
+            "signal": "FAINT"
+          }
+        ]
+      },
+      "exitFound": true,
+      "status": "WON",
+      "termination": "WON",
+      "decisions": 28,
+      "moves": 16,
+      "collisions": 0,
+      "repeatedPositions": 0,
+      "roomsExplored": 16,
+      "rejectedActions": 0,
+      "executionFailure": false,
+      "elapsedSeconds": 15.707,
+      "decisionLatencyMs": {
+        "median": 514.5,
+        "max": 1647
+      },
+      "actions": [
+        {
+          "turn": 1,
+          "level": 3,
+          "room": 0,
+          "direction": 0,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 510,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 2,
+          "level": 3,
+          "room": 0,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 2 \u00b7 6 entries left.",
+          "latencyMs": 1647,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 3,
+          "level": 3,
+          "room": 1,
+          "direction": 1,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 443,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 4,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 8 \u00b7 6 entries left.",
+          "latencyMs": 469,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 5,
+          "level": 3,
+          "room": 7,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 504,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 6,
+          "level": 3,
+          "room": 7,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 7 \u00b7 6 entries left.",
+          "latencyMs": 522,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 7,
+          "level": 3,
+          "room": 6,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 629,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 8,
+          "level": 3,
+          "room": 6,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 13 \u00b7 6 entries left.",
+          "latencyMs": 461,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 9,
+          "level": 3,
+          "room": 12,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 19 \u00b7 6 entries left.",
+          "latencyMs": 481,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 10,
+          "level": 3,
+          "room": 18,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 25 \u00b7 6 entries left.",
+          "latencyMs": 515,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 11,
+          "level": 3,
+          "room": 24,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 524,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 12,
+          "level": 3,
+          "room": 24,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 26 \u00b7 6 entries left.",
+          "latencyMs": 513,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 13,
+          "level": 3,
+          "room": 25,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 520,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 14,
+          "level": 3,
+          "room": 25,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 20 \u00b7 6 entries left.",
+          "latencyMs": 525,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 15,
+          "level": 3,
+          "room": 19,
+          "direction": 0,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 519,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 16,
+          "level": 3,
+          "room": 19,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 21 \u00b7 6 entries left.",
+          "latencyMs": 522,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 17,
+          "level": 3,
+          "room": 20,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 22 \u00b7 6 entries left.",
+          "latencyMs": 534,
+          "player": "JEV",
+          "signal": "STRONG",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 18,
+          "level": 3,
+          "room": 21,
+          "direction": 1,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 519,
+          "player": "JEV",
+          "signal": "STRONG",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 19,
+          "level": 3,
+          "room": 21,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 28 \u00b7 6 entries left.",
+          "latencyMs": 514,
+          "player": "JEV",
+          "signal": "STRONG",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 20,
+          "level": 3,
+          "room": 27,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 571,
+          "player": "JEV",
+          "signal": "STRONG",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 21,
+          "level": 3,
+          "room": 27,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 27 \u00b7 6 entries left.",
+          "latencyMs": 507,
+          "player": "JEV",
+          "signal": "STRONG",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 22,
+          "level": 3,
+          "room": 26,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 509,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 23,
+          "level": 3,
+          "room": 26,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 33 \u00b7 6 entries left.",
+          "latencyMs": 507,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 24,
+          "level": 3,
+          "room": 32,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 513,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 25,
+          "level": 3,
+          "room": 32,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 34 \u00b7 6 entries left.",
+          "latencyMs": 610,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 26,
+          "level": 3,
+          "room": 33,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 35 \u00b7 6 entries left.",
+          "latencyMs": 490,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 27,
+          "level": 3,
+          "room": 34,
+          "direction": 1,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 466,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 28,
+          "level": 3,
+          "room": 34,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "ESCAPED \u2014 the ghost is free.",
+          "latencyMs": 523,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "NO_MOVEMENT"
+        }
+      ],
+      "finalObservation": {
+        "level": 3,
+        "size": 6,
+        "room": 34,
+        "facing": "S",
+        "direction": 2,
+        "edges": "#.E.",
+        "entriesLeft": 6,
+        "current_room_visits": 1,
+        "memory": [
+          [
+            0,
+            1,
+            "#.##",
+            7
+          ],
+          [
+            1,
+            1,
+            "##..",
+            6
+          ],
+          [
+            6,
+            1,
+            "#..#",
+            6
+          ],
+          [
+            7,
+            1,
+            ".##.",
+            6
+          ],
+          [
+            12,
+            1,
+            ".#.#",
+            6
+          ],
+          [
+            18,
+            1,
+            ".#.#",
+            6
+          ],
+          [
+            19,
+            1,
+            "#..#",
+            6
+          ],
+          [
+            20,
+            1,
+            "#.#.",
+            6
+          ],
+          [
+            21,
+            1,
+            "##..",
+            6
+          ],
+          [
+            24,
+            1,
+            "..##",
+            6
+          ],
+          [
+            25,
+            1,
+            ".##.",
+            6
+          ],
+          [
+            26,
+            1,
+            "#..#",
+            6
+          ],
+          [
+            27,
+            1,
+            ".##.",
+            6
+          ],
+          [
+            32,
+            1,
+            "..#.",
+            6
+          ],
+          [
+            33,
+            1,
+            "#.#.",
+            6
+          ],
+          [
+            34,
+            1,
+            "#.E.",
+            6
+          ]
+        ],
+        "previousAction": "FORWARD",
+        "previousResult": "ESCAPED \u2014 the ghost is free.",
+        "relativeEdges": {
+          "front": "exit",
+          "left": "open passage",
+          "right": "open passage"
+        }
+      },
+      "finalNavigation": {
+        "signal": "INTENSE",
+        "signalTrend": "NO_MOVEMENT",
+        "level": 3,
+        "room": 34,
+        "readings": [
+          {
+            "room": 0,
+            "signal": "FAINT"
+          },
+          {
+            "room": 1,
+            "signal": "FAINT"
+          },
+          {
+            "room": 6,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 7,
+            "signal": "FAINT"
+          },
+          {
+            "room": 12,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 18,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 19,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 20,
+            "signal": "STRONG"
+          },
+          {
+            "room": 21,
+            "signal": "STRONG"
+          },
+          {
+            "room": 24,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 25,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 26,
+            "signal": "INTENSE"
+          },
+          {
+            "room": 27,
+            "signal": "STRONG"
+          },
+          {
+            "room": 32,
+            "signal": "INTENSE"
+          },
+          {
+            "room": 33,
+            "signal": "INTENSE"
+          },
+          {
+            "room": 34,
+            "signal": "INTENSE"
+          }
+        ]
+      },
+      "agentClues": true
+    },
+    {
+      "seed": 1986,
+      "level": 1,
+      "size": 3,
+      "player": "JEV",
+      "model": "~typesafe/jev-latest",
+      "initialObservation": {
+        "level": 1,
+        "size": 3,
+        "room": 0,
+        "facing": "N",
+        "direction": 0,
+        "edges": "##?#",
+        "entriesLeft": 7,
+        "current_room_visits": 1,
+        "memory": [
+          [
+            0,
+            1,
+            "##?#",
+            7
+          ]
+        ],
+        "previousAction": "START",
+        "previousResult": "Find the exit. Seven entries per room.",
+        "relativeEdges": {
+          "front": "wall",
+          "left": "wall",
+          "right": "wall"
+        }
+      },
+      "initialNavigation": {
+        "signal": "NOTICEABLE",
+        "signalTrend": "NO_MOVEMENT",
+        "level": 1,
+        "room": 0,
+        "readings": [
+          {
+            "room": 0,
+            "signal": "NOTICEABLE"
+          }
+        ]
+      },
+      "exitFound": true,
+      "status": "WON",
+      "termination": "WON",
+      "decisions": 11,
+      "moves": 7,
+      "collisions": 0,
+      "repeatedPositions": 0,
+      "roomsExplored": 7,
+      "rejectedActions": 0,
+      "executionFailure": false,
+      "elapsedSeconds": 6.85,
+      "decisionLatencyMs": {
+        "median": 514,
+        "max": 1575
+      },
+      "actions": [
+        {
+          "turn": 1,
+          "level": 1,
+          "room": 0,
+          "direction": 0,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 449,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 2,
+          "level": 1,
+          "room": 0,
+          "direction": 1,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 522,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 3,
+          "level": 1,
+          "room": 0,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 4 \u00b7 6 entries left.",
+          "latencyMs": 535,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 4,
+          "level": 1,
+          "room": 3,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 7 \u00b7 6 entries left.",
+          "latencyMs": 514,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 5,
+          "level": 1,
+          "room": 6,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 611,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 6,
+          "level": 1,
+          "room": 6,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 8 \u00b7 6 entries left.",
+          "latencyMs": 512,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 7,
+          "level": 1,
+          "room": 7,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 9 \u00b7 6 entries left.",
+          "latencyMs": 504,
+          "player": "JEV",
+          "signal": "STRONG",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 8,
+          "level": 1,
+          "room": 8,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 454,
+          "player": "JEV",
+          "signal": "STRONG",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 9,
+          "level": 1,
+          "room": 8,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 6 \u00b7 6 entries left.",
+          "latencyMs": 525,
+          "player": "JEV",
+          "signal": "STRONG",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 10,
+          "level": 1,
+          "room": 5,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 3 \u00b7 6 entries left.",
+          "latencyMs": 1575,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 11,
+          "level": 1,
+          "room": 2,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "ESCAPED \u2014 the ghost is free.",
+          "latencyMs": 514,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "UNCHANGED"
+        }
+      ],
+      "finalObservation": {
+        "level": 1,
+        "size": 3,
+        "room": 2,
+        "facing": "N",
+        "direction": 0,
+        "edges": "E#..",
+        "entriesLeft": 6,
+        "current_room_visits": 1,
+        "memory": [
+          [
+            0,
+            1,
+            "##.#",
+            7
+          ],
+          [
+            2,
+            1,
+            "E#..",
+            6
+          ],
+          [
+            3,
+            1,
+            ".#.#",
+            6
+          ],
+          [
+            5,
+            1,
+            ".#.#",
+            6
+          ],
+          [
+            6,
+            1,
+            "..##",
+            6
+          ],
+          [
+            7,
+            1,
+            "#.#.",
+            6
+          ],
+          [
+            8,
+            1,
+            ".##.",
+            6
+          ]
+        ],
+        "previousAction": "FORWARD",
+        "previousResult": "ESCAPED \u2014 the ghost is free.",
+        "relativeEdges": {
+          "front": "exit",
+          "left": "open passage",
+          "right": "wall"
+        }
+      },
+      "finalNavigation": {
+        "signal": "INTENSE",
+        "signalTrend": "NO_MOVEMENT",
+        "level": 1,
+        "room": 2,
+        "readings": [
+          {
+            "room": 0,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 2,
+            "signal": "INTENSE"
+          },
+          {
+            "room": 3,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 5,
+            "signal": "INTENSE"
+          },
+          {
+            "room": 6,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 7,
+            "signal": "STRONG"
+          },
+          {
+            "room": 8,
+            "signal": "STRONG"
+          }
+        ]
+      },
+      "agentClues": true
+    },
+    {
+      "seed": 1986,
+      "level": 2,
+      "size": 4,
+      "player": "JEV",
+      "model": "~typesafe/jev-latest",
+      "initialObservation": {
+        "level": 2,
+        "size": 4,
+        "room": 12,
+        "facing": "E",
+        "direction": 1,
+        "edges": ".##?",
+        "entriesLeft": 7,
+        "current_room_visits": 1,
+        "memory": [
+          [
+            12,
+            1,
+            ".##?",
+            7
+          ]
+        ],
+        "previousAction": "START",
+        "previousResult": "Find the exit. Seven entries per room.",
+        "relativeEdges": {
+          "front": "wall",
+          "left": "open passage",
+          "right": "wall"
+        }
+      },
+      "initialNavigation": {
+        "signal": "NOTICEABLE",
+        "signalTrend": "NO_MOVEMENT",
+        "level": 2,
+        "room": 12,
+        "readings": [
+          {
+            "room": 12,
+            "signal": "NOTICEABLE"
+          }
+        ]
+      },
+      "exitFound": true,
+      "status": "WON",
+      "termination": "WON",
+      "decisions": 13,
+      "moves": 8,
+      "collisions": 0,
+      "repeatedPositions": 0,
+      "roomsExplored": 8,
+      "rejectedActions": 0,
+      "executionFailure": false,
+      "elapsedSeconds": 6.776,
+      "decisionLatencyMs": {
+        "median": 513,
+        "max": 592
+      },
+      "actions": [
+        {
+          "turn": 1,
+          "level": 2,
+          "room": 12,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 461,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 2,
+          "level": 2,
+          "room": 12,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 9 \u00b7 6 entries left.",
+          "latencyMs": 462,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 3,
+          "level": 2,
+          "room": 8,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 5 \u00b7 6 entries left.",
+          "latencyMs": 521,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 4,
+          "level": 2,
+          "room": 4,
+          "direction": 0,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 569,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 5,
+          "level": 2,
+          "room": 4,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 6 \u00b7 6 entries left.",
+          "latencyMs": 480,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 6,
+          "level": 2,
+          "room": 5,
+          "direction": 1,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 513,
+          "player": "JEV",
+          "signal": "STRONG",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 7,
+          "level": 2,
+          "room": 5,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 10 \u00b7 6 entries left.",
+          "latencyMs": 555,
+          "player": "JEV",
+          "signal": "STRONG",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 8,
+          "level": 2,
+          "room": 9,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 14 \u00b7 6 entries left.",
+          "latencyMs": 592,
+          "player": "JEV",
+          "signal": "STRONG",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 9,
+          "level": 2,
+          "room": 13,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 503,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 10,
+          "level": 2,
+          "room": 13,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 15 \u00b7 6 entries left.",
+          "latencyMs": 463,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 11,
+          "level": 2,
+          "room": 14,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 16 \u00b7 6 entries left.",
+          "latencyMs": 501,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 12,
+          "level": 2,
+          "room": 15,
+          "direction": 1,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 516,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 13,
+          "level": 2,
+          "room": 15,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "ESCAPED \u2014 the ghost is free.",
+          "latencyMs": 520,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "NO_MOVEMENT"
+        }
+      ],
+      "finalObservation": {
+        "level": 2,
+        "size": 4,
+        "room": 15,
+        "facing": "S",
+        "direction": 2,
+        "edges": ".#E.",
+        "entriesLeft": 6,
+        "current_room_visits": 1,
+        "memory": [
+          [
+            4,
+            1,
+            "#..#",
+            6
+          ],
+          [
+            5,
+            1,
+            "##..",
+            6
+          ],
+          [
+            8,
+            1,
+            ".#.#",
+            6
+          ],
+          [
+            9,
+            1,
+            ".#.#",
+            6
+          ],
+          [
+            12,
+            1,
+            ".###",
+            7
+          ],
+          [
+            13,
+            1,
+            "..##",
+            6
+          ],
+          [
+            14,
+            1,
+            "..#.",
+            6
+          ],
+          [
+            15,
+            1,
+            ".#E.",
+            6
+          ]
+        ],
+        "previousAction": "FORWARD",
+        "previousResult": "ESCAPED \u2014 the ghost is free.",
+        "relativeEdges": {
+          "front": "exit",
+          "left": "wall",
+          "right": "open passage"
+        }
+      },
+      "finalNavigation": {
+        "signal": "INTENSE",
+        "signalTrend": "NO_MOVEMENT",
+        "level": 2,
+        "room": 15,
+        "readings": [
+          {
+            "room": 4,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 5,
+            "signal": "STRONG"
+          },
+          {
+            "room": 8,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 9,
+            "signal": "STRONG"
+          },
+          {
+            "room": 12,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 13,
+            "signal": "INTENSE"
+          },
+          {
+            "room": 14,
+            "signal": "INTENSE"
+          },
+          {
+            "room": 15,
+            "signal": "INTENSE"
+          }
+        ]
+      },
+      "agentClues": true
+    },
+    {
+      "seed": 1986,
+      "level": 3,
+      "size": 6,
+      "player": "JEV",
+      "model": "~typesafe/jev-latest",
+      "initialObservation": {
+        "level": 3,
+        "size": 6,
+        "room": 35,
+        "facing": "S",
+        "direction": 2,
+        "edges": "?##.",
+        "entriesLeft": 7,
+        "current_room_visits": 1,
+        "memory": [
+          [
+            35,
+            1,
+            "?##.",
+            7
+          ]
+        ],
+        "previousAction": "START",
+        "previousResult": "Find the exit. Seven entries per room.",
+        "relativeEdges": {
+          "front": "wall",
+          "left": "wall",
+          "right": "open passage"
+        }
+      },
+      "initialNavigation": {
+        "signal": "FAINT",
+        "signalTrend": "NO_MOVEMENT",
+        "level": 3,
+        "room": 35,
+        "readings": [
+          {
+            "room": 35,
+            "signal": "FAINT"
+          }
+        ]
+      },
+      "exitFound": true,
+      "status": "WON",
+      "termination": "WON",
+      "decisions": 55,
+      "moves": 34,
+      "collisions": 0,
+      "repeatedPositions": 6,
+      "roomsExplored": 28,
+      "rejectedActions": 0,
+      "executionFailure": false,
+      "elapsedSeconds": 31.419,
+      "decisionLatencyMs": {
+        "median": 520,
+        "max": 1571
+      },
+      "actions": [
+        {
+          "turn": 1,
+          "level": 3,
+          "room": 35,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 442,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 2,
+          "level": 3,
+          "room": 35,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 35 \u00b7 6 entries left.",
+          "latencyMs": 512,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 3,
+          "level": 3,
+          "room": 34,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 34 \u00b7 6 entries left.",
+          "latencyMs": 520,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 4,
+          "level": 3,
+          "room": 33,
+          "direction": 3,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 635,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 5,
+          "level": 3,
+          "room": 33,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 28 \u00b7 6 entries left.",
+          "latencyMs": 484,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 6,
+          "level": 3,
+          "room": 27,
+          "direction": 0,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 446,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 7,
+          "level": 3,
+          "room": 27,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 29 \u00b7 6 entries left.",
+          "latencyMs": 522,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 8,
+          "level": 3,
+          "room": 28,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 30 \u00b7 6 entries left.",
+          "latencyMs": 522,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 9,
+          "level": 3,
+          "room": 29,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 523,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 10,
+          "level": 3,
+          "room": 29,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 24 \u00b7 6 entries left.",
+          "latencyMs": 519,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 11,
+          "level": 3,
+          "room": 23,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 18 \u00b7 6 entries left.",
+          "latencyMs": 525,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 12,
+          "level": 3,
+          "room": 17,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 12 \u00b7 6 entries left.",
+          "latencyMs": 518,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 13,
+          "level": 3,
+          "room": 11,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 6 \u00b7 6 entries left.",
+          "latencyMs": 520,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 14,
+          "level": 3,
+          "room": 5,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 522,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 15,
+          "level": 3,
+          "room": 5,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 5 \u00b7 6 entries left.",
+          "latencyMs": 521,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 16,
+          "level": 3,
+          "room": 4,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 4 \u00b7 6 entries left.",
+          "latencyMs": 525,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 17,
+          "level": 3,
+          "room": 3,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 3 \u00b7 6 entries left.",
+          "latencyMs": 518,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 18,
+          "level": 3,
+          "room": 2,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 532,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 19,
+          "level": 3,
+          "room": 2,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 9 \u00b7 6 entries left.",
+          "latencyMs": 513,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 20,
+          "level": 3,
+          "room": 8,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 15 \u00b7 6 entries left.",
+          "latencyMs": 622,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 21,
+          "level": 3,
+          "room": 14,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 468,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "GETTING_WEAKER"
+        },
+        {
+          "turn": 22,
+          "level": 3,
+          "room": 14,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 14 \u00b7 6 entries left.",
+          "latencyMs": 475,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 23,
+          "level": 3,
+          "room": 13,
+          "direction": 3,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 525,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 24,
+          "level": 3,
+          "room": 13,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 8 \u00b7 6 entries left.",
+          "latencyMs": 1571,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 25,
+          "level": 3,
+          "room": 7,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 2 \u00b7 6 entries left.",
+          "latencyMs": 527,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 26,
+          "level": 3,
+          "room": 1,
+          "direction": 0,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 517,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 27,
+          "level": 3,
+          "room": 1,
+          "direction": 1,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 611,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 28,
+          "level": 3,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 8 \u00b7 5 entries left.",
+          "latencyMs": 460,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 29,
+          "level": 3,
+          "room": 7,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 14 \u00b7 5 entries left.",
+          "latencyMs": 485,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 30,
+          "level": 3,
+          "room": 13,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 524,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 31,
+          "level": 3,
+          "room": 13,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 15 \u00b7 5 entries left.",
+          "latencyMs": 564,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 32,
+          "level": 3,
+          "room": 14,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 487,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 33,
+          "level": 3,
+          "room": 14,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 9 \u00b7 5 entries left.",
+          "latencyMs": 532,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 34,
+          "level": 3,
+          "room": 8,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 3 \u00b7 5 entries left.",
+          "latencyMs": 613,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 35,
+          "level": 3,
+          "room": 2,
+          "direction": 0,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 1041,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 36,
+          "level": 3,
+          "room": 2,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 4 \u00b7 5 entries left.",
+          "latencyMs": 588,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 37,
+          "level": 3,
+          "room": 3,
+          "direction": 1,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 448,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 38,
+          "level": 3,
+          "room": 3,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 10 \u00b7 6 entries left.",
+          "latencyMs": 455,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 39,
+          "level": 3,
+          "room": 9,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 520,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 40,
+          "level": 3,
+          "room": 9,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 11 \u00b7 6 entries left.",
+          "latencyMs": 1124,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 41,
+          "level": 3,
+          "room": 10,
+          "direction": 1,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 463,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 42,
+          "level": 3,
+          "room": 10,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 17 \u00b7 6 entries left.",
+          "latencyMs": 553,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 43,
+          "level": 3,
+          "room": 16,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 453,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 44,
+          "level": 3,
+          "room": 16,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 16 \u00b7 6 entries left.",
+          "latencyMs": 516,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 45,
+          "level": 3,
+          "room": 15,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 510,
+          "player": "JEV",
+          "signal": "STRONG",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 46,
+          "level": 3,
+          "room": 15,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 22 \u00b7 6 entries left.",
+          "latencyMs": 528,
+          "player": "JEV",
+          "signal": "STRONG",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 47,
+          "level": 3,
+          "room": 21,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 544,
+          "player": "JEV",
+          "signal": "STRONG",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 48,
+          "level": 3,
+          "room": 21,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 21 \u00b7 6 entries left.",
+          "latencyMs": 508,
+          "player": "JEV",
+          "signal": "STRONG",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 49,
+          "level": 3,
+          "room": 20,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 611,
+          "player": "JEV",
+          "signal": "STRONG",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 50,
+          "level": 3,
+          "room": 20,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 27 \u00b7 6 entries left.",
+          "latencyMs": 505,
+          "player": "JEV",
+          "signal": "STRONG",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 51,
+          "level": 3,
+          "room": 26,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 33 \u00b7 6 entries left.",
+          "latencyMs": 1080,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 52,
+          "level": 3,
+          "room": 32,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 553,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 53,
+          "level": 3,
+          "room": 32,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 32 \u00b7 6 entries left.",
+          "latencyMs": 490,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 54,
+          "level": 3,
+          "room": 31,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 31 \u00b7 6 entries left.",
+          "latencyMs": 461,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 55,
+          "level": 3,
+          "room": 30,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "ESCAPED \u2014 the ghost is free.",
+          "latencyMs": 473,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "UNCHANGED"
+        }
+      ],
+      "finalObservation": {
+        "level": 3,
+        "size": 6,
+        "room": 30,
+        "facing": "W",
+        "direction": 3,
+        "edges": "..#E",
+        "entriesLeft": 6,
+        "current_room_visits": 1,
+        "memory": [
+          [
+            1,
+            1,
+            "##.#",
+            6
+          ],
+          [
+            2,
+            2,
+            "#..#",
+            5
+          ],
+          [
+            3,
+            2,
+            "#...",
+            5
+          ],
+          [
+            4,
+            1,
+            "#.#.",
+            6
+          ],
+          [
+            5,
+            1,
+            "##..",
+            6
+          ],
+          [
+            7,
+            2,
+            ".#.#",
+            5
+          ],
+          [
+            8,
+            2,
+            ".#.#",
+            5
+          ],
+          [
+            9,
+            1,
+            "..##",
+            6
+          ],
+          [
+            10,
+            1,
+            "##..",
+            6
+          ],
+          [
+            11,
+            1,
+            ".#.#",
+            6
+          ],
+          [
+            13,
+            2,
+            "..##",
+            5
+          ],
+          [
+            14,
+            2,
+            ".##.",
+            5
+          ],
+          [
+            15,
+            1,
+            "#..#",
+            6
+          ],
+          [
+            16,
+            1,
+            ".##.",
+            6
+          ],
+          [
+            17,
+            1,
+            ".#.#",
+            6
+          ],
+          [
+            20,
+            1,
+            "#..#",
+            6
+          ],
+          [
+            21,
+            1,
+            ".##.",
+            6
+          ],
+          [
+            23,
+            1,
+            ".#.#",
+            6
+          ],
+          [
+            26,
+            1,
+            ".#.#",
+            6
+          ],
+          [
+            27,
+            1,
+            "#..#",
+            6
+          ],
+          [
+            28,
+            1,
+            "..#.",
+            6
+          ],
+          [
+            29,
+            1,
+            ".##.",
+            6
+          ],
+          [
+            30,
+            1,
+            "..#E",
+            6
+          ],
+          [
+            31,
+            1,
+            "..#.",
+            6
+          ],
+          [
+            32,
+            1,
+            ".##.",
+            6
+          ],
+          [
+            33,
+            1,
+            "..##",
+            6
+          ],
+          [
+            34,
+            1,
+            "#.#.",
+            6
+          ],
+          [
+            35,
+            1,
+            "###.",
+            7
+          ]
+        ],
+        "previousAction": "FORWARD",
+        "previousResult": "ESCAPED \u2014 the ghost is free.",
+        "relativeEdges": {
+          "front": "exit",
+          "left": "wall",
+          "right": "open passage"
+        }
+      },
+      "finalNavigation": {
+        "signal": "INTENSE",
+        "signalTrend": "NO_MOVEMENT",
+        "level": 3,
+        "room": 30,
+        "readings": [
+          {
+            "room": 1,
+            "signal": "FAINT"
+          },
+          {
+            "room": 2,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 3,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 4,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 5,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 7,
+            "signal": "FAINT"
+          },
+          {
+            "room": 8,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 9,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 10,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 11,
+            "signal": "FAINT"
+          },
+          {
+            "room": 13,
+            "signal": "FAINT"
+          },
+          {
+            "room": 14,
+            "signal": "FAINT"
+          },
+          {
+            "room": 15,
+            "signal": "STRONG"
+          },
+          {
+            "room": 16,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 17,
+            "signal": "FAINT"
+          },
+          {
+            "room": 20,
+            "signal": "STRONG"
+          },
+          {
+            "room": 21,
+            "signal": "STRONG"
+          },
+          {
+            "room": 23,
+            "signal": "FAINT"
+          },
+          {
+            "room": 26,
+            "signal": "INTENSE"
+          },
+          {
+            "room": 27,
+            "signal": "FAINT"
+          },
+          {
+            "room": 28,
+            "signal": "FAINT"
+          },
+          {
+            "room": 29,
+            "signal": "FAINT"
+          },
+          {
+            "room": 30,
+            "signal": "INTENSE"
+          },
+          {
+            "room": 31,
+            "signal": "INTENSE"
+          },
+          {
+            "room": 32,
+            "signal": "INTENSE"
+          },
+          {
+            "room": 33,
+            "signal": "FAINT"
+          },
+          {
+            "room": 34,
+            "signal": "FAINT"
+          },
+          {
+            "room": 35,
+            "signal": "FAINT"
+          }
+        ]
+      },
+      "agentClues": true
+    },
+    {
+      "seed": 2026,
+      "level": 1,
+      "size": 3,
+      "player": "JEV",
+      "model": "~typesafe/jev-latest",
+      "initialObservation": {
+        "level": 1,
+        "size": 3,
+        "room": 1,
+        "facing": "N",
+        "direction": 0,
+        "edges": "#.?#",
+        "entriesLeft": 7,
+        "current_room_visits": 1,
+        "memory": [
+          [
+            1,
+            1,
+            "#.?#",
+            7
+          ]
+        ],
+        "previousAction": "START",
+        "previousResult": "Find the exit. Seven entries per room.",
+        "relativeEdges": {
+          "front": "wall",
+          "left": "wall",
+          "right": "open passage"
+        }
+      },
+      "initialNavigation": {
+        "signal": "FAINT",
+        "signalTrend": "NO_MOVEMENT",
+        "level": 1,
+        "room": 1,
+        "readings": [
+          {
+            "room": 1,
+            "signal": "FAINT"
+          }
+        ]
+      },
+      "exitFound": true,
+      "status": "WON",
+      "termination": "WON",
+      "decisions": 19,
+      "moves": 10,
+      "collisions": 0,
+      "repeatedPositions": 1,
+      "roomsExplored": 9,
+      "rejectedActions": 0,
+      "executionFailure": false,
+      "elapsedSeconds": 10.017,
+      "decisionLatencyMs": {
+        "median": 520,
+        "max": 608
+      },
+      "actions": [
+        {
+          "turn": 1,
+          "level": 1,
+          "room": 1,
+          "direction": 0,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 467,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 2,
+          "level": 1,
+          "room": 1,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 3 \u00b7 6 entries left.",
+          "latencyMs": 521,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 3,
+          "level": 1,
+          "room": 2,
+          "direction": 1,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 519,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 4,
+          "level": 1,
+          "room": 2,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 6 \u00b7 6 entries left.",
+          "latencyMs": 534,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 5,
+          "level": 1,
+          "room": 5,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 9 \u00b7 6 entries left.",
+          "latencyMs": 519,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 6,
+          "level": 1,
+          "room": 8,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 517,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 7,
+          "level": 1,
+          "room": 8,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 8 \u00b7 6 entries left.",
+          "latencyMs": 513,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 8,
+          "level": 1,
+          "room": 7,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 7 \u00b7 6 entries left.",
+          "latencyMs": 524,
+          "player": "JEV",
+          "signal": "STRONG",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 9,
+          "level": 1,
+          "room": 6,
+          "direction": 3,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 608,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "GETTING_WEAKER"
+        },
+        {
+          "turn": 10,
+          "level": 1,
+          "room": 6,
+          "direction": 0,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 460,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 11,
+          "level": 1,
+          "room": 6,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 8 \u00b7 5 entries left.",
+          "latencyMs": 495,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 12,
+          "level": 1,
+          "room": 7,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 522,
+          "player": "JEV",
+          "signal": "STRONG",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 13,
+          "level": 1,
+          "room": 7,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 5 \u00b7 6 entries left.",
+          "latencyMs": 518,
+          "player": "JEV",
+          "signal": "STRONG",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 14,
+          "level": 1,
+          "room": 4,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 529,
+          "player": "JEV",
+          "signal": "STRONG",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 15,
+          "level": 1,
+          "room": 4,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 4 \u00b7 6 entries left.",
+          "latencyMs": 517,
+          "player": "JEV",
+          "signal": "STRONG",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 16,
+          "level": 1,
+          "room": 3,
+          "direction": 3,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 520,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 17,
+          "level": 1,
+          "room": 3,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 1 \u00b7 6 entries left.",
+          "latencyMs": 521,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 18,
+          "level": 1,
+          "room": 0,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 523,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 19,
+          "level": 1,
+          "room": 0,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "ESCAPED \u2014 the ghost is free.",
+          "latencyMs": 521,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "NO_MOVEMENT"
+        }
+      ],
+      "finalObservation": {
+        "level": 1,
+        "size": 3,
+        "room": 0,
+        "facing": "W",
+        "direction": 3,
+        "edges": "##.E",
+        "entriesLeft": 6,
+        "current_room_visits": 1,
+        "memory": [
+          [
+            0,
+            1,
+            "##.E",
+            6
+          ],
+          [
+            1,
+            1,
+            "#.##",
+            7
+          ],
+          [
+            2,
+            1,
+            "##..",
+            6
+          ],
+          [
+            3,
+            1,
+            "..##",
+            6
+          ],
+          [
+            4,
+            1,
+            "##..",
+            6
+          ],
+          [
+            5,
+            1,
+            ".#.#",
+            6
+          ],
+          [
+            6,
+            1,
+            "#.##",
+            6
+          ],
+          [
+            7,
+            2,
+            "..#.",
+            5
+          ],
+          [
+            8,
+            1,
+            ".##.",
+            6
+          ]
+        ],
+        "previousAction": "FORWARD",
+        "previousResult": "ESCAPED \u2014 the ghost is free.",
+        "relativeEdges": {
+          "front": "exit",
+          "left": "open passage",
+          "right": "wall"
+        }
+      },
+      "finalNavigation": {
+        "signal": "INTENSE",
+        "signalTrend": "NO_MOVEMENT",
+        "level": 1,
+        "room": 0,
+        "readings": [
+          {
+            "room": 0,
+            "signal": "INTENSE"
+          },
+          {
+            "room": 1,
+            "signal": "FAINT"
+          },
+          {
+            "room": 2,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 3,
+            "signal": "INTENSE"
+          },
+          {
+            "room": 4,
+            "signal": "STRONG"
+          },
+          {
+            "room": 5,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 6,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 7,
+            "signal": "STRONG"
+          },
+          {
+            "room": 8,
+            "signal": "NOTICEABLE"
+          }
+        ]
+      },
+      "agentClues": true
+    },
+    {
+      "seed": 2026,
+      "level": 2,
+      "size": 4,
+      "player": "JEV",
+      "model": "~typesafe/jev-latest",
+      "initialObservation": {
+        "level": 2,
+        "size": 4,
+        "room": 0,
+        "facing": "W",
+        "direction": 3,
+        "edges": "#?##",
+        "entriesLeft": 7,
+        "current_room_visits": 1,
+        "memory": [
+          [
+            0,
+            1,
+            "#?##",
+            7
+          ]
+        ],
+        "previousAction": "START",
+        "previousResult": "Find the exit. Seven entries per room.",
+        "relativeEdges": {
+          "front": "wall",
+          "left": "wall",
+          "right": "wall"
+        }
+      },
+      "initialNavigation": {
+        "signal": "FAINT",
+        "signalTrend": "NO_MOVEMENT",
+        "level": 2,
+        "room": 0,
+        "readings": [
+          {
+            "room": 0,
+            "signal": "FAINT"
+          }
+        ]
+      },
+      "exitFound": true,
+      "status": "WON",
+      "termination": "WON",
+      "decisions": 27,
+      "moves": 14,
+      "collisions": 0,
+      "repeatedPositions": 0,
+      "roomsExplored": 14,
+      "rejectedActions": 0,
+      "executionFailure": false,
+      "elapsedSeconds": 13.581,
+      "decisionLatencyMs": {
+        "median": 509,
+        "max": 651
+      },
+      "actions": [
+        {
+          "turn": 1,
+          "level": 2,
+          "room": 0,
+          "direction": 3,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 447,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 2,
+          "level": 2,
+          "room": 0,
+          "direction": 0,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 488,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 3,
+          "level": 2,
+          "room": 0,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 2 \u00b7 6 entries left.",
+          "latencyMs": 498,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 4,
+          "level": 2,
+          "room": 1,
+          "direction": 1,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 530,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 5,
+          "level": 2,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 6 \u00b7 6 entries left.",
+          "latencyMs": 511,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 6,
+          "level": 2,
+          "room": 5,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 527,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 7,
+          "level": 2,
+          "room": 5,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 7 \u00b7 6 entries left.",
+          "latencyMs": 515,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 8,
+          "level": 2,
+          "room": 6,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 426,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 9,
+          "level": 2,
+          "room": 6,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 3 \u00b7 6 entries left.",
+          "latencyMs": 454,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 10,
+          "level": 2,
+          "room": 2,
+          "direction": 0,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 440,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 11,
+          "level": 2,
+          "room": 2,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 4 \u00b7 6 entries left.",
+          "latencyMs": 447,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 12,
+          "level": 2,
+          "room": 3,
+          "direction": 1,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 509,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 13,
+          "level": 2,
+          "room": 3,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 8 \u00b7 6 entries left.",
+          "latencyMs": 651,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 14,
+          "level": 2,
+          "room": 7,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 12 \u00b7 6 entries left.",
+          "latencyMs": 466,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 15,
+          "level": 2,
+          "room": 11,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 16 \u00b7 6 entries left.",
+          "latencyMs": 489,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 16,
+          "level": 2,
+          "room": 15,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 516,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 17,
+          "level": 2,
+          "room": 15,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 15 \u00b7 6 entries left.",
+          "latencyMs": 498,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 18,
+          "level": 2,
+          "room": 14,
+          "direction": 3,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 515,
+          "player": "JEV",
+          "signal": "STRONG",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 19,
+          "level": 2,
+          "room": 14,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 11 \u00b7 6 entries left.",
+          "latencyMs": 513,
+          "player": "JEV",
+          "signal": "STRONG",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 20,
+          "level": 2,
+          "room": 10,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 466,
+          "player": "JEV",
+          "signal": "STRONG",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 21,
+          "level": 2,
+          "room": 10,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 10 \u00b7 6 entries left.",
+          "latencyMs": 456,
+          "player": "JEV",
+          "signal": "STRONG",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 22,
+          "level": 2,
+          "room": 9,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 465,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 23,
+          "level": 2,
+          "room": 9,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 14 \u00b7 6 entries left.",
+          "latencyMs": 521,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 24,
+          "level": 2,
+          "room": 13,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 520,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 25,
+          "level": 2,
+          "room": 13,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 13 \u00b7 6 entries left.",
+          "latencyMs": 521,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 26,
+          "level": 2,
+          "room": 12,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 519,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 27,
+          "level": 2,
+          "room": 12,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "ESCAPED \u2014 the ghost is free.",
+          "latencyMs": 523,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "NO_MOVEMENT"
+        }
+      ],
+      "finalObservation": {
+        "level": 2,
+        "size": 4,
+        "room": 12,
+        "facing": "S",
+        "direction": 2,
+        "edges": "..E#",
+        "entriesLeft": 6,
+        "current_room_visits": 1,
+        "memory": [
+          [
+            0,
+            1,
+            "#.##",
+            7
+          ],
+          [
+            1,
+            1,
+            "##..",
+            6
+          ],
+          [
+            2,
+            1,
+            "#..#",
+            6
+          ],
+          [
+            3,
+            1,
+            "##..",
+            6
+          ],
+          [
+            5,
+            1,
+            "..##",
+            6
+          ],
+          [
+            6,
+            1,
+            ".##.",
+            6
+          ],
+          [
+            7,
+            1,
+            ".#.#",
+            6
+          ],
+          [
+            9,
+            1,
+            "#..#",
+            6
+          ],
+          [
+            10,
+            1,
+            "##..",
+            6
+          ],
+          [
+            11,
+            1,
+            ".#.#",
+            6
+          ],
+          [
+            12,
+            1,
+            "..E#",
+            6
+          ],
+          [
+            13,
+            1,
+            ".##.",
+            6
+          ],
+          [
+            14,
+            1,
+            "..##",
+            6
+          ],
+          [
+            15,
+            1,
+            ".##.",
+            6
+          ]
+        ],
+        "previousAction": "FORWARD",
+        "previousResult": "ESCAPED \u2014 the ghost is free.",
+        "relativeEdges": {
+          "front": "exit",
+          "left": "open passage",
+          "right": "wall"
+        }
+      },
+      "finalNavigation": {
+        "signal": "INTENSE",
+        "signalTrend": "NO_MOVEMENT",
+        "level": 2,
+        "room": 12,
+        "readings": [
+          {
+            "room": 0,
+            "signal": "FAINT"
+          },
+          {
+            "room": 1,
+            "signal": "FAINT"
+          },
+          {
+            "room": 2,
+            "signal": "FAINT"
+          },
+          {
+            "room": 3,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 5,
+            "signal": "FAINT"
+          },
+          {
+            "room": 6,
+            "signal": "FAINT"
+          },
+          {
+            "room": 7,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 9,
+            "signal": "INTENSE"
+          },
+          {
+            "room": 10,
+            "signal": "STRONG"
+          },
+          {
+            "room": 11,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 12,
+            "signal": "INTENSE"
+          },
+          {
+            "room": 13,
+            "signal": "INTENSE"
+          },
+          {
+            "room": 14,
+            "signal": "STRONG"
+          },
+          {
+            "room": 15,
+            "signal": "NOTICEABLE"
+          }
+        ]
+      },
+      "agentClues": true
+    },
+    {
+      "seed": 2026,
+      "level": 3,
+      "size": 6,
+      "player": "JEV",
+      "model": "~typesafe/jev-latest",
+      "initialObservation": {
+        "level": 3,
+        "size": 6,
+        "room": 1,
+        "facing": "E",
+        "direction": 1,
+        "edges": "#.#?",
+        "entriesLeft": 7,
+        "current_room_visits": 1,
+        "memory": [
+          [
+            1,
+            1,
+            "#.#?",
+            7
+          ]
+        ],
+        "previousAction": "START",
+        "previousResult": "Find the exit. Seven entries per room.",
+        "relativeEdges": {
+          "front": "open passage",
+          "left": "wall",
+          "right": "wall"
+        }
+      },
+      "initialNavigation": {
+        "signal": "FAINT",
+        "signalTrend": "NO_MOVEMENT",
+        "level": 3,
+        "room": 1,
+        "readings": [
+          {
+            "room": 1,
+            "signal": "FAINT"
+          }
+        ]
+      },
+      "exitFound": true,
+      "status": "WON",
+      "termination": "WON",
+      "decisions": 68,
+      "moves": 40,
+      "collisions": 0,
+      "repeatedPositions": 6,
+      "roomsExplored": 34,
+      "rejectedActions": 0,
+      "executionFailure": false,
+      "elapsedSeconds": 35.658,
+      "decisionLatencyMs": {
+        "median": 520.0,
+        "max": 624
+      },
+      "actions": [
+        {
+          "turn": 1,
+          "level": 3,
+          "room": 1,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 3 \u00b7 6 entries left.",
+          "latencyMs": 504,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 2,
+          "level": 3,
+          "room": 2,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 4 \u00b7 6 entries left.",
+          "latencyMs": 454,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 3,
+          "level": 3,
+          "room": 3,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 5 \u00b7 6 entries left.",
+          "latencyMs": 568,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 4,
+          "level": 3,
+          "room": 4,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 6 \u00b7 6 entries left.",
+          "latencyMs": 501,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 5,
+          "level": 3,
+          "room": 5,
+          "direction": 1,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 513,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 6,
+          "level": 3,
+          "room": 5,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 12 \u00b7 6 entries left.",
+          "latencyMs": 506,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 7,
+          "level": 3,
+          "room": 11,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 18 \u00b7 6 entries left.",
+          "latencyMs": 521,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 8,
+          "level": 3,
+          "room": 17,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 520,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 9,
+          "level": 3,
+          "room": 17,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 17 \u00b7 6 entries left.",
+          "latencyMs": 521,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 10,
+          "level": 3,
+          "room": 16,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 518,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 11,
+          "level": 3,
+          "room": 16,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 23 \u00b7 6 entries left.",
+          "latencyMs": 524,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 12,
+          "level": 3,
+          "room": 22,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 29 \u00b7 6 entries left.",
+          "latencyMs": 525,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 13,
+          "level": 3,
+          "room": 28,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 576,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 14,
+          "level": 3,
+          "room": 28,
+          "direction": 3,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 468,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 15,
+          "level": 3,
+          "room": 28,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 23 \u00b7 5 entries left.",
+          "latencyMs": 620,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 16,
+          "level": 3,
+          "room": 22,
+          "direction": 0,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 509,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 17,
+          "level": 3,
+          "room": 22,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 24 \u00b7 6 entries left.",
+          "latencyMs": 474,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 18,
+          "level": 3,
+          "room": 23,
+          "direction": 1,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 484,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 19,
+          "level": 3,
+          "room": 23,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 30 \u00b7 6 entries left.",
+          "latencyMs": 520,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 20,
+          "level": 3,
+          "room": 29,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 36 \u00b7 6 entries left.",
+          "latencyMs": 523,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 21,
+          "level": 3,
+          "room": 35,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 554,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 22,
+          "level": 3,
+          "room": 35,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 35 \u00b7 6 entries left.",
+          "latencyMs": 487,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 23,
+          "level": 3,
+          "room": 34,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 34 \u00b7 6 entries left.",
+          "latencyMs": 624,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 24,
+          "level": 3,
+          "room": 33,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 33 \u00b7 6 entries left.",
+          "latencyMs": 513,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 25,
+          "level": 3,
+          "room": 32,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 32 \u00b7 6 entries left.",
+          "latencyMs": 459,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 26,
+          "level": 3,
+          "room": 31,
+          "direction": 3,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 490,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 27,
+          "level": 3,
+          "room": 31,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 26 \u00b7 6 entries left.",
+          "latencyMs": 578,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 28,
+          "level": 3,
+          "room": 25,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 464,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 29,
+          "level": 3,
+          "room": 25,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 25 \u00b7 6 entries left.",
+          "latencyMs": 526,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 30,
+          "level": 3,
+          "room": 24,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 516,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 31,
+          "level": 3,
+          "room": 24,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 31 \u00b7 6 entries left.",
+          "latencyMs": 524,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 32,
+          "level": 3,
+          "room": 30,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 521,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 33,
+          "level": 3,
+          "room": 30,
+          "direction": 3,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 519,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 34,
+          "level": 3,
+          "room": 30,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 25 \u00b7 5 entries left.",
+          "latencyMs": 519,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 35,
+          "level": 3,
+          "room": 24,
+          "direction": 0,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 525,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 36,
+          "level": 3,
+          "room": 24,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 26 \u00b7 5 entries left.",
+          "latencyMs": 517,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 37,
+          "level": 3,
+          "room": 25,
+          "direction": 1,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 522,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 38,
+          "level": 3,
+          "room": 25,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 32 \u00b7 5 entries left.",
+          "latencyMs": 523,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 39,
+          "level": 3,
+          "room": 31,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 524,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 40,
+          "level": 3,
+          "room": 31,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 33 \u00b7 5 entries left.",
+          "latencyMs": 550,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 41,
+          "level": 3,
+          "room": 32,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 574,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 42,
+          "level": 3,
+          "room": 32,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 27 \u00b7 6 entries left.",
+          "latencyMs": 451,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 43,
+          "level": 3,
+          "room": 26,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 21 \u00b7 6 entries left.",
+          "latencyMs": 505,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 44,
+          "level": 3,
+          "room": 20,
+          "direction": 0,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 571,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "GETTING_WEAKER"
+        },
+        {
+          "turn": 45,
+          "level": 3,
+          "room": 20,
+          "direction": 1,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 509,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 46,
+          "level": 3,
+          "room": 20,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 27 \u00b7 5 entries left.",
+          "latencyMs": 508,
+          "player": "JEV",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 47,
+          "level": 3,
+          "room": 26,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 498,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 48,
+          "level": 3,
+          "room": 26,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 28 \u00b7 6 entries left.",
+          "latencyMs": 526,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 49,
+          "level": 3,
+          "room": 27,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 609,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 50,
+          "level": 3,
+          "room": 27,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 22 \u00b7 6 entries left.",
+          "latencyMs": 468,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 51,
+          "level": 3,
+          "room": 21,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 16 \u00b7 6 entries left.",
+          "latencyMs": 522,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 52,
+          "level": 3,
+          "room": 15,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 533,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 53,
+          "level": 3,
+          "room": 15,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 15 \u00b7 6 entries left.",
+          "latencyMs": 470,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 54,
+          "level": 3,
+          "room": 14,
+          "direction": 3,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 521,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 55,
+          "level": 3,
+          "room": 14,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 9 \u00b7 6 entries left.",
+          "latencyMs": 522,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 56,
+          "level": 3,
+          "room": 8,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 533,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 57,
+          "level": 3,
+          "room": 8,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 8 \u00b7 6 entries left.",
+          "latencyMs": 514,
+          "player": "JEV",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 58,
+          "level": 3,
+          "room": 7,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 515,
+          "player": "JEV",
+          "signal": "STRONG",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 59,
+          "level": 3,
+          "room": 7,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 14 \u00b7 6 entries left.",
+          "latencyMs": 526,
+          "player": "JEV",
+          "signal": "STRONG",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 60,
+          "level": 3,
+          "room": 13,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 20 \u00b7 6 entries left.",
+          "latencyMs": 521,
+          "player": "JEV",
+          "signal": "STRONG",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 61,
+          "level": 3,
+          "room": 19,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 515,
+          "player": "JEV",
+          "signal": "STRONG",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 62,
+          "level": 3,
+          "room": 19,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 19 \u00b7 6 entries left.",
+          "latencyMs": 524,
+          "player": "JEV",
+          "signal": "STRONG",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 63,
+          "level": 3,
+          "room": 18,
+          "direction": 3,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 512,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 64,
+          "level": 3,
+          "room": 18,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 13 \u00b7 6 entries left.",
+          "latencyMs": 517,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 65,
+          "level": 3,
+          "room": 12,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 7 \u00b7 6 entries left.",
+          "latencyMs": 514,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 66,
+          "level": 3,
+          "room": 6,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 1 \u00b7 6 entries left.",
+          "latencyMs": 527,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 67,
+          "level": 3,
+          "room": 0,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 519,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 68,
+          "level": 3,
+          "room": 0,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "ESCAPED \u2014 the ghost is free.",
+          "latencyMs": 526,
+          "player": "JEV",
+          "signal": "INTENSE",
+          "signalTrend": "NO_MOVEMENT"
+        }
+      ],
+      "finalObservation": {
+        "level": 3,
+        "size": 6,
+        "room": 0,
+        "facing": "W",
+        "direction": 3,
+        "edges": "##.E",
+        "entriesLeft": 6,
+        "current_room_visits": 1,
+        "memory": [
+          [
+            0,
+            1,
+            "##.E",
+            6
+          ],
+          [
+            1,
+            1,
+            "#.#?",
+            7
+          ],
+          [
+            2,
+            1,
+            "#.#.",
+            6
+          ],
+          [
+            3,
+            1,
+            "#...",
+            6
+          ],
+          [
+            4,
+            1,
+            "#.#.",
+            6
+          ],
+          [
+            5,
+            1,
+            "##..",
+            6
+          ],
+          [
+            6,
+            1,
+            ".#.#",
+            6
+          ],
+          [
+            7,
+            1,
+            "#..#",
+            6
+          ],
+          [
+            8,
+            1,
+            "##..",
+            6
+          ],
+          [
+            11,
+            1,
+            ".#.#",
+            6
+          ],
+          [
+            12,
+            1,
+            ".#.#",
+            6
+          ],
+          [
+            13,
+            1,
+            ".#.#",
+            6
+          ],
+          [
+            14,
+            1,
+            "..##",
+            6
+          ],
+          [
+            15,
+            1,
+            "##..",
+            6
+          ],
+          [
+            16,
+            1,
+            "#..#",
+            6
+          ],
+          [
+            17,
+            1,
+            ".##.",
+            6
+          ],
+          [
+            18,
+            1,
+            "..##",
+            6
+          ],
+          [
+            19,
+            1,
+            ".##.",
+            6
+          ],
+          [
+            20,
+            1,
+            "##.#",
+            6
+          ],
+          [
+            21,
+            1,
+            ".#.#",
+            6
+          ],
+          [
+            22,
+            2,
+            "...#",
+            5
+          ],
+          [
+            23,
+            1,
+            "##..",
+            6
+          ],
+          [
+            24,
+            2,
+            "#..#",
+            5
+          ],
+          [
+            25,
+            2,
+            "##..",
+            5
+          ],
+          [
+            26,
+            2,
+            "...#",
+            5
+          ],
+          [
+            27,
+            1,
+            ".##.",
+            6
+          ],
+          [
+            28,
+            1,
+            ".###",
+            6
+          ],
+          [
+            29,
+            1,
+            ".#.#",
+            6
+          ],
+          [
+            30,
+            1,
+            ".###",
+            6
+          ],
+          [
+            31,
+            2,
+            "..##",
+            5
+          ],
+          [
+            32,
+            2,
+            "..#.",
+            5
+          ],
+          [
+            33,
+            1,
+            "#.#.",
+            6
+          ],
+          [
+            34,
+            1,
+            "#.#.",
+            6
+          ],
+          [
+            35,
+            1,
+            ".##.",
+            6
+          ]
+        ],
+        "previousAction": "FORWARD",
+        "previousResult": "ESCAPED \u2014 the ghost is free.",
+        "relativeEdges": {
+          "front": "exit",
+          "left": "open passage",
+          "right": "wall"
+        }
+      },
+      "finalNavigation": {
+        "signal": "INTENSE",
+        "signalTrend": "NO_MOVEMENT",
+        "level": 3,
+        "room": 0,
+        "readings": [
+          {
+            "room": 0,
+            "signal": "INTENSE"
+          },
+          {
+            "room": 1,
+            "signal": "FAINT"
+          },
+          {
+            "room": 2,
+            "signal": "FAINT"
+          },
+          {
+            "room": 3,
+            "signal": "FAINT"
+          },
+          {
+            "room": 4,
+            "signal": "FAINT"
+          },
+          {
+            "room": 5,
+            "signal": "FAINT"
+          },
+          {
+            "room": 6,
+            "signal": "INTENSE"
+          },
+          {
+            "room": 7,
+            "signal": "STRONG"
+          },
+          {
+            "room": 8,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 11,
+            "signal": "FAINT"
+          },
+          {
+            "room": 12,
+            "signal": "INTENSE"
+          },
+          {
+            "room": 13,
+            "signal": "STRONG"
+          },
+          {
+            "room": 14,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 15,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 16,
+            "signal": "FAINT"
+          },
+          {
+            "room": 17,
+            "signal": "FAINT"
+          },
+          {
+            "room": 18,
+            "signal": "INTENSE"
+          },
+          {
+            "room": 19,
+            "signal": "STRONG"
+          },
+          {
+            "room": 20,
+            "signal": "FAINT"
+          },
+          {
+            "room": 21,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 22,
+            "signal": "FAINT"
+          },
+          {
+            "room": 23,
+            "signal": "FAINT"
+          },
+          {
+            "room": 24,
+            "signal": "FAINT"
+          },
+          {
+            "room": 25,
+            "signal": "FAINT"
+          },
+          {
+            "room": 26,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 27,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 28,
+            "signal": "FAINT"
+          },
+          {
+            "room": 29,
+            "signal": "FAINT"
+          },
+          {
+            "room": 30,
+            "signal": "FAINT"
+          },
+          {
+            "room": 31,
+            "signal": "FAINT"
+          },
+          {
+            "room": 32,
+            "signal": "FAINT"
+          },
+          {
+            "room": 33,
+            "signal": "FAINT"
+          },
+          {
+            "room": 34,
+            "signal": "FAINT"
+          },
+          {
+            "room": 35,
+            "signal": "FAINT"
+          }
+        ]
+      },
+      "agentClues": true
+    }
+  ],
+  "sourceSha256": {
+    "connectors/src/main/java/dev/ghost/Rules.java": "15e3a9b9b3305a35ba2777b825fbad8c0582e7a10e8cc5756f8788e0778b93f6",
+    "connectors/src/main/java/dev/ghost/Observations.java": "6e5398bf1b9ecb3617267294f68823ec09658fbecdfdff7c3083234acdfb37a8",
+    "connectors/src/main/java/dev/ghost/Baselines.java": "121a8ba79aac0bfd695256d517e0999c909df16a34d517762a289e0b43040c7a",
+    "connectors/src/main/java/dev/ghost/Signals.java": "c27f1f0774c7810ec281466b991312e702272de8bda908daef040001703cf893"
+  },
+  "sourceIdentityScope": "Local checkout files; these do not prove which binary the server loaded.",
+  "runtimeClassesSha256": {
+    "dev/ghost/DecodeChoice.class": "83119beca4ad319b7eab74a9b6afd797a6d5a1f1bd6f7e16d25420dfd2b50671",
+    "dev/ghost/ChooseTurn.class": "8981a671097541f023d713e11f78ef265ebba7c5345783f2cd8b441db489e455",
+    "dev/ghost/Rules.class": "4623dbf66d0f8d69ffb7b18e108de260197fdab922207c49b56d09720469749e",
+    "dev/ghost/Observations.class": "2e67c877f030e11da3c420b090870a1151c24d1f91575fcfcb249a7070077ef8",
+    "dev/ghost/Baselines.class": "8c647d01a1e3589ad36c3032aab1141a00a2279f4a32bd0a2ab4626f0ad8e400",
+    "dev/ghost/Runs.class": "b60b8ac6eb8f466f9d0b97fab627d814e8f74a593547dc38519c195f02635271",
+    "dev/ghost/Session.class": "960ae0ac64ced013b2ad5815cd398d6da86bad0723036ee6de60413cc3067955",
+    "dev/ghost/Signals.class": "9f71d1b3f90e90d06af2f139c3009fd7150e293d1ef1285be0e2611a51c55451",
+    "dev/ghost/NavigationSignal.class": "5daf36cb2860c7befff0b2b9777bb955b51ccd769d709f7f952ecf6fccc31d1b",
+    "dev/ghost/SignalReading.class": "1d95316d3396f30a07c74da6eaa65b8b8f0ab5cfc832a91f5492d0f863387f88",
+    "dev/ghost/ActionLog.class": "bd990b5e309ee22895b07aa2a14000dac37078781466612e95aea7ddf7ecd3ba",
+    "dev/ghost/RunState.class": "8da339799dda073036e2da2d21254cedf46bdcac704ed186e61502ceda2b6e2e"
+  },
+  "runtimeIdentityScope": "Caller-supplied serving package; verify server process command points to this immutable package before evaluating.",
+  "localModels": [],
+  "localOllamaVersion": {
+    "version": "0.40.2"
+  },
+  "hostedModels": [
+    {
+      "name": "~typesafe/jev-latest",
+      "provider": "decision.query.jev",
+      "identityScope": "Configured hosted alias; underlying checkpoint is not pinned or disclosed by the game API."
+    }
+  ],
+  "presentationDelayMs": 0,
+  "cachePolicy": "bypass-cache",
+  "latencyDefinition": "Wall time from control observation to validated model response; excludes presentation delay and includes connector/projection overhead."
+}

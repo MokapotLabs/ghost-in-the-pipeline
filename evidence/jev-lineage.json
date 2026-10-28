@@ -1,0 +1,34 @@
+{
+  "result": "PASS",
+  "documentsDiagnostic": 3,
+  "distinctRootTracesDiagnostic": 3,
+  "runs": [
+    {
+      "file": "bounded-jev.json",
+      "traceId": "bea3395f5e5022e28921409156121c33",
+      "status": "completed",
+      "events": 88,
+      "nestedInvocations": 2,
+      "modelQueries": 3,
+      "rootLineage": "PASS"
+    },
+    {
+      "file": "escape-jev.json",
+      "traceId": "593c9e11883779ed564f9038d69e00d9",
+      "status": "completed",
+      "events": 1973,
+      "nestedInvocations": 67,
+      "modelQueries": 68,
+      "rootLineage": "PASS"
+    },
+    {
+      "file": "rejected-provider.json",
+      "traceId": "97f1340d11bcb1f9c815b12c4b569c80",
+      "status": "failed",
+      "events": 637,
+      "nestedInvocations": 25,
+      "modelQueries": 25,
+      "rootLineage": "PASS"
+    }
+  ]
+}

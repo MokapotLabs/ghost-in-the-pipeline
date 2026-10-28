@@ -1,0 +1,35 @@
+{
+  "result": "PASS",
+  "baselineCommit": "d681cec",
+  "runtime": ".work/runtime-jev",
+  "sourceRulesObservationsBaselinesSignals": "Byte-identical to ordered-policy Tev1 evaluation",
+  "changedTrackedRuntimeClasses": [
+    "dev/ghost/ChooseTurn.class"
+  ],
+  "adaptation": "One nominal Jev branch uses the existing native Query and shared DecodeChoice/ApplyAction, within the existing recursive root. No framework or dependency changes.",
+  "unchangedTrackedRuntimeClasses": [
+    "dev/ghost/DecodeChoice.class",
+    "dev/ghost/Rules.class",
+    "dev/ghost/Observations.class",
+    "dev/ghost/Baselines.class",
+    "dev/ghost/Runs.class",
+    "dev/ghost/Session.class",
+    "dev/ghost/Signals.class",
+    "dev/ghost/NavigationSignal.class",
+    "dev/ghost/SignalReading.class",
+    "dev/ghost/ActionLog.class",
+    "dev/ghost/RunState.class"
+  ],
+  "pipelineSha256": "10e1b84d072c5c03d593ebd2594f8dbcd8487ba47b3b00584bf1cdb8939706ee",
+  "promptSha256": "6e5398bf1b9ecb3617267294f68823ec09658fbecdfdff7c3083234acdfb37a8",
+  "configuredModel": "~typesafe/jev-latest",
+  "baseUrl": "https://openrouter.ai/api/v1",
+  "connection": "openrouter-primary",
+  "credential": "host environment only; excluded from documents and browser",
+  "modelIdentityLimit": "Hosted alias: actual provider checkpoint and weights not pinned by this app",
+  "archives": {
+    "app/ghost-app-1.0.0.jar": "d332b7a5a445151756d9242aee0b9b4fea29a46a5aa13129580c974921d0544b",
+    "lib/main/org.pipelineframework.decision-query-jev-connector-26.10.1-SNAPSHOT.jar": "79eb9bd84bdcfb2b550d4b01e10a79364f94067d0c79356030532e4e8ad9479f",
+    "lib/main/dev.ghost.ghost-connectors-1.0.0.jar": "82efb2e6b3dd88f0a213679cf5533524014513d8e9910bd390e649ff9a1aea98"
+  }
+}
