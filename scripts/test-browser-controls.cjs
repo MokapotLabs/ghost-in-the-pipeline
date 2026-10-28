@@ -43,7 +43,7 @@ function fresh() {
     latestAction: "START",
     latencyMs: 0,
     model: "tev1:0.8b",
-    models: { TEV1: "tev1:0.8b", TEV1_4B: "tev1:latest" },
+    models: { TEV1: "tev1:0.8b", TEV1_4B: "tev1:latest", JEV: "~typesafe/jev-latest" },
   };
 }
 const server = http.createServer(async (req, res) => {
@@ -241,7 +241,7 @@ async function run() {
         0,
         "idle frame stream must not rebuild the native picker",
       );
-      for (const player of ["TEV1_4B", "EXPLORER", "RANDOM", "TEV1"]) {
+      for (const player of ["TEV1_4B", "JEV", "EXPLORER", "RANDOM", "TEV1"]) {
         await page.locator("#player").selectOption(player);
         assert.equal(await page.locator("#player").inputValue(), player);
         assert.equal(
@@ -293,14 +293,14 @@ async function run() {
         () => document.querySelector("#status").textContent === "PAUSING",
       );
       await page.locator("#player:enabled").waitFor();
-      await page.locator("#player").selectOption("TEV1_4B");
+      await page.locator("#player").selectOption("JEV");
       await page.locator("#play").click();
       await page.locator("#player:disabled").waitFor();
       frame.decisions = 3;
       frame.latencyMs = 1850;
       frame.latestAction = "FORWARD";
       await page.waitForTimeout(250);
-      assert.equal(await page.locator("#mode").innerText(), "tev1:latest");
+      assert.equal(await page.locator("#mode").innerText(), "~typesafe/jev-latest");
       assert.equal(await page.locator("#status").innerText(), "RUNNING");
       assert.match(
         await page.locator("#latency").innerText(),
@@ -360,7 +360,7 @@ async function run() {
         result: "PASS",
         checks: [
           "no picker mutations during frame updates",
-          "all four choices commit",
+          "all five choices commit",
           "movement focus restored",
           "checkbox keys work",
           "seed editing isolated",

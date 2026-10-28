@@ -3,7 +3,7 @@ const $ = (id) => document.getElementById(id),
   canvas = $("maze"),
   ctx = canvas.getContext("2d"),
   map = $("map").getContext("2d");
-const isAI = (player) => player === "TEV1" || player === "TEV1_4B";
+const isAI = (player) => ["TEV1", "TEV1_4B", "JEV"].includes(player);
 let frame = null,
   busy = false,
   lastKey = "";

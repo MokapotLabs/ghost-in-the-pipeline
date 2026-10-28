@@ -27,6 +27,7 @@ replay_pid*
 .work/
 .DS_Store
 .env
+.env.local
 evidence/raw/
 
 __pycache__/

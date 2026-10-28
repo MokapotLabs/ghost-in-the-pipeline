@@ -4,6 +4,7 @@ import argparse,json,time,urllib.request,statistics,datetime,os,hashlib,zipfile
 from pathlib import Path
 
 PROMPT_VERSION = "ordered-policy-v3"
+MODEL_PLAYERS = {'TEV1', 'TEV1_4B', 'JEV'}
 
 def verify_prompt(view):
  if view.get("decisionPrompt") != PROMPT_VERSION:
@@ -11,7 +12,7 @@ def verify_prompt(view):
  return view["decisionPrompt"]
 
 def main():
- p=argparse.ArgumentParser(description=__doc__);p.add_argument('--url',default='http://127.0.0.1:8087');p.add_argument('--out',default='evidence/evaluation-policy.json');p.add_argument('--players',nargs='+',choices=['TEV1','TEV1_4B','RANDOM','EXPLORER'],default=['TEV1','RANDOM','EXPLORER']);p.add_argument('--runtime',type=Path,help='Quarkus package actually serving this URL; records compiled class hashes separately from checkout sources');p.add_argument('--agent-clues',choices=['on','off'],default='off');p.add_argument('--levels',nargs='+',type=int,choices=[1,2,3],default=[1,2,3]);args=p.parse_args()
+ p=argparse.ArgumentParser(description=__doc__);p.add_argument('--url',default='http://127.0.0.1:8087');p.add_argument('--out',default='evidence/evaluation-policy.json');p.add_argument('--players',nargs='+',choices=['TEV1','TEV1_4B','JEV','RANDOM','EXPLORER'],default=['TEV1','RANDOM','EXPLORER']);p.add_argument('--runtime',type=Path,help='Quarkus package actually serving this URL; records compiled class hashes separately from checkout sources');p.add_argument('--agent-clues',choices=['on','off'],default='off');p.add_argument('--levels',nargs='+',type=int,choices=[1,2,3],default=[1,2,3]);args=p.parse_args()
  def call(path='',body=None):
   req=urllib.request.Request(args.url+'/api/game'+path,data=None if body is None else json.dumps(body).encode(),headers={'Content-Type':'application/json'})
   with urllib.request.urlopen(req,timeout=20) as r:return json.load(r)
@@ -34,12 +35,14 @@ def main():
   if set(report['runtimeClassesSha256'])!=set(classes):raise ValueError('Runtime package missing expected game classes')
   report['runtimeIdentityScope']='Caller-supplied serving package; verify server process command points to this immutable package before evaluating.'
  try:
-  view=call(); configured_models=[view.get('models',{}).get(player,view.get('model')) for player in args.players if player.startswith('TEV1')]
+  view=call(); configured_models=[view.get('models',{}).get(player,view.get('model')) for player in args.players if player in MODEL_PLAYERS]
   with urllib.request.urlopen('http://localhost:11434/api/tags',timeout=3) as r:report['localModels']=[m for m in json.load(r)['models'] if m['name'] in configured_models]
  except OSError:report['localModels']=[]
  try:
   with urllib.request.urlopen('http://localhost:11434/api/version',timeout=3) as r:report['localOllamaVersion']=json.load(r)
  except OSError:report['localOllamaVersion']=None
+ if 'JEV' in args.players:
+  report['hostedModels']=[{'name':view['models']['JEV'],'provider':'decision.query.jev','identityScope':'Configured hosted alias; underlying checkpoint is not pinned or disclosed by the game API.'}]
  report['presentationDelayMs']=int(os.getenv('GHOST_PACE_MS','160'))
  report['cachePolicy']='bypass-cache'
  report['latencyDefinition']='Wall time from control observation to validated model response; excludes presentation delay and includes connector/projection overhead.'
@@ -56,8 +59,8 @@ def main():
      if not f['active']:break
      if time.monotonic()-start>130:raise RuntimeError('Application exceeded its outer time bound')
      time.sleep(.1)
-    history=[e for e in call('/history') if e['action']!='START'];lat=[e['latencyMs'] for e in history] if player.startswith('TEV1') else []
-    trial={'seed':seed,'level':level,'size':[3,4,6][level-1],'player':player,'model':f['model'] if player.startswith('TEV1') else None,'initialObservation':initial,'initialNavigation':initial_navigation,'exitFound':f['exitsFound']>0,'status':f['status'],'termination':f['reason'],'decisions':f['decisions'],'moves':f['moves'],'collisions':f['collisions'],'repeatedPositions':f['repeats'],'roomsExplored':f['explored'],'rejectedActions':f['collisions']+sum(e['action'] not in ('FORWARD','TURN_LEFT','TURN_RIGHT') for e in history),'executionFailure':f['reason'].startswith('PROVIDER_'),'elapsedSeconds':round(time.monotonic()-start,3),'decisionLatencyMs':{'median':statistics.median(lat) if lat else None,'max':max(lat) if lat else None},'actions':history,'finalObservation':f['observation'],'finalNavigation':f.get('navigation'),'agentClues':f.get('agentClues')}
+    history=[e for e in call('/history') if e['action']!='START'];lat=[e['latencyMs'] for e in history] if player in MODEL_PLAYERS else []
+    trial={'seed':seed,'level':level,'size':[3,4,6][level-1],'player':player,'model':f['model'] if player in MODEL_PLAYERS else None,'initialObservation':initial,'initialNavigation':initial_navigation,'exitFound':f['exitsFound']>0,'status':f['status'],'termination':f['reason'],'decisions':f['decisions'],'moves':f['moves'],'collisions':f['collisions'],'repeatedPositions':f['repeats'],'roomsExplored':f['explored'],'rejectedActions':f['collisions']+sum(e['action'] not in ('FORWARD','TURN_LEFT','TURN_RIGHT') for e in history),'executionFailure':f['reason'].startswith('PROVIDER_'),'elapsedSeconds':round(time.monotonic()-start,3),'decisionLatencyMs':{'median':statistics.median(lat) if lat else None,'max':max(lat) if lat else None},'actions':history,'finalObservation':f['observation'],'finalNavigation':f.get('navigation'),'agentClues':f.get('agentClues')}
     report['trials'].append(trial);out.write_text(json.dumps(report,indent=2)+'\n')
     print(f'{seed}/{level} {player:8} {f["reason"]:20} {f["decisions"]:3} decisions {f["moves"]:3} moves {f["explored"]:2} rooms',flush=True)
  for player in report['players']:

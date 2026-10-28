@@ -20,7 +20,8 @@ public class ModelSettings {
 
   public Map<String, String> models() {
     if (labels == null)
-      labels = Map.of("TEV1", readModel("model"), "TEV1_4B", readModel("model4b"));
+      labels = Map.of("TEV1", readModel("model"), "TEV1_4B", readModel("model4b"),
+          "JEV", readModel("ai-player-model-jev"));
     return labels;
   }
 

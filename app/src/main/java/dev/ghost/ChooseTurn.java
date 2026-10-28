@@ -19,6 +19,9 @@ public class ChooseTurn implements ReactiveService<RunState, NextTurn> {
     if (r.player().equals("TEV1_4B"))
       return new NextTurn.Large(
           new LargeModelTurn(r, Observations.request(r.game(), r.navigation(), r.agentClues())));
+    if (r.player().equals("JEV"))
+      return new NextTurn.Jev(
+          new JevModelTurn(r, Observations.request(r.game(), r.navigation(), r.agentClues())));
     String action =
         r.player().equals("HUMAN")
             ? r.action()

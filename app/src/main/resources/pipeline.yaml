@@ -105,6 +105,11 @@ types:
     fields:
       - [run, "RunState"]
       - [request, "<tpf.decision.DecisionRequest>"]
+  JevModelTurn:
+    java: dev.ghost.JevModelTurn
+    fields:
+      - [run, "RunState"]
+      - [request, "<tpf.decision.DecisionRequest>"]
   ActionTurn:
     java: dev.ghost.ActionTurn
     fields:
@@ -121,6 +126,7 @@ types:
     variants:
       model: ModelTurn
       large: LargeModelTurn
+      jev: JevModelTurn
       action: ActionTurn
       done: RunResult
   Continuation:
@@ -144,6 +150,13 @@ connectors:
       model: tev1:latest
       baseUrl: http://localhost:11434
       connection: local-ollama
+  ai-player-model-jev:
+    provider: decision.query.jev
+    version: 1
+    config:
+      model: ~typesafe/jev-latest
+      baseUrl: https://openrouter.ai/api/v1
+      connection: openrouter-primary
   game:
     provider: ghost.session
     version: 1
@@ -193,6 +206,19 @@ pipelines:
         output: Chosen
         cardinality: ONE_TO_ONE
         java: { input: dev.ghost.LargeModelTurn, output: dev.ghost.Chosen }
+        config:
+          request: request
+          completion: { field: result, run: run }
+      - name: Ask Jev
+        # Identical typed request; only the host connection and model binding differ.
+        kind: query
+        using: ai-player-model-jev
+        operation: decide
+        operationVersion: 1
+        input: JevModelTurn
+        output: Chosen
+        cardinality: ONE_TO_ONE
+        java: { input: dev.ghost.JevModelTurn, output: dev.ghost.Chosen }
         config:
           request: request
           completion: { field: result, run: run }

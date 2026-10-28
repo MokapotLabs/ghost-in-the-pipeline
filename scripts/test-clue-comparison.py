@@ -29,5 +29,25 @@ class ClueControls(unittest.TestCase):
     def test_matching_missing_control_rejected(self):
         self.off.pop('cachePolicy');self.on.pop('cachePolicy')
         with self.assertRaises(ValueError):module.compare(self.off,self.on)
+    def test_provider_failures_require_explicit_diagnostic_mode(self):
+        failed=self.off['trials'][0]
+        failed.update(executionFailure=True,termination='PROVIDER_OR_PIPELINE_FAILURE: Test',status='PLAYING',exitFound=False)
+        with self.assertRaises(ValueError):module.compare(self.off,self.on)
+        result=module.compare(self.off,self.on,allow_provider_failures=True)
+        self.assertEqual('INCOMPLETE_PROVIDER_FAILURE',result['result'])
+        self.assertEqual(1,result['arms'][0]['providerFailures'])
+        self.assertEqual(9,result['arms'][0]['trials'])
+        self.on['durationMs']=100000
+        with self.assertRaises(ValueError):module.compare(self.off,self.on,allow_provider_failures=True)
+    def test_hosted_identity_must_match_both_arms_and_trial_labels(self):
+        for report in [self.off,self.on]:
+            report['players']=['JEV'];report['localModels']=[]
+            report['hostedModels']=[{'name':'test-hosted-alias','provider':'decision.query.jev'}]
+            for trial in report['trials']:trial.update(player='JEV',model='test-hosted-alias')
+        self.assertEqual('PASS',module.compare(self.off,self.on)['result'])
+        self.on['localOllamaVersion']=None
+        self.assertEqual('PASS',module.compare(self.off,self.on)['result'])
+        self.on['trials'][0]['model']='different'
+        with self.assertRaises(ValueError):module.compare(self.off,self.on)
 
 if __name__=='__main__':unittest.main()

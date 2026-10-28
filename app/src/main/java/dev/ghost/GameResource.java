@@ -60,7 +60,7 @@ public class GameResource {
   public Map<String, Object> play(Play p) {
     if (p == null
         || p.player() == null
-        || !List.of("TEV1", "TEV1_4B", "RANDOM", "EXPLORER").contains(p.player()))
+        || !List.of("TEV1", "TEV1_4B", "JEV", "RANDOM", "EXPLORER").contains(p.player()))
       throw new BadRequestException("Unknown player");
     int limit = p.maxDecisions() == null ? 128 : p.maxDecisions();
     long millis = p.durationMs() == null ? 120000 : p.durationMs();

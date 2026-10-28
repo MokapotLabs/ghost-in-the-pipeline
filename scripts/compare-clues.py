@@ -9,13 +9,14 @@ def require(condition, message):
         raise ValueError(message)
 
 
-def compare(off, on):
+def compare(off, on, *, allow_provider_failures=False):
     require(off['protocol'] == on['protocol'] and off['protocol'] in ['ghost-haunted-v1','ghost-action-prompt-v1','ghost-forward-prompt-v2','ghost-ordered-policy-v3'], 'Wrong experiment protocol')
     versions={'ghost-action-prompt-v1':'action-focused-v1','ghost-forward-prompt-v2':'forward-first-v2','ghost-ordered-policy-v3':'ordered-policy-v3'}
     if off['protocol'] in versions:
         require(off.get('decisionPrompt')==on.get('decisionPrompt')==versions[off['protocol']],'Wrong decision prompt')
     require(off['agentClues'] is False and on['agentClues'] is True, 'Expected off/on arms')
-    require(len(off['players'])==1 and off['players'][0] in ['TEV1','TEV1_4B'], 'Compare one genuine model policy at a time')
+    require(len(off['players'])==1 and off['players'][0] in ['TEV1','TEV1_4B','JEV'], 'Compare one genuine model policy at a time')
+    model_identity='hostedModels' if off['players']==['JEV'] else 'localModels'
     expected_hashes={
         'sourceSha256':{'connectors/src/main/java/dev/ghost/'+name+'.java' for name in ['Rules','Observations','Baselines','Signals']},
         'runtimeClassesSha256':{'dev/ghost/'+name+'.class' for name in ['Rules','Observations','Baselines','DecodeChoice','Runs','Session','Signals','NavigationSignal','SignalReading','ActionLog','RunState','ChooseTurn']}}
@@ -23,20 +24,26 @@ def compare(off, on):
         for field,keys in expected_hashes.items():
             values=report.get(field,{})
             require(set(values)==keys and all(isinstance(v,str) and re.fullmatch('[0-9a-f]{64}',v) for v in values.values()), 'Incomplete or invalid build identity: '+field)
-    for key in ['seeds','levels','players','maxDecisions','durationMs','localModels','localOllamaVersion','sourceSha256','runtimeClassesSha256','presentationDelayMs','cachePolicy']:
+    controls=['seeds','levels','players','maxDecisions','durationMs','sourceSha256','runtimeClassesSha256','presentationDelayMs','cachePolicy']
+    if model_identity=='localModels':controls+=['localModels','localOllamaVersion']
+    for key in controls:
         require(key in off and key in on, 'Missing control: ' + key)
         require(off[key] == on[key], 'Control differs: ' + key)
+    require(off.get(model_identity)==on.get(model_identity),'Model identity differs')
     require(off['maxDecisions']==128 and off['durationMs']==120000 and off['presentationDelayMs']==0, 'Budgets or presentation pacing changed')
-    require(bool(off.get('localModels')) and bool(off.get('runtimeClassesSha256')), 'Missing model/build identity')
+    require(bool(off.get(model_identity)) and bool(off.get('runtimeClassesSha256')), 'Missing model/build identity')
     cases={(s,l,p) for s in off['seeds'] for l in off['levels'] for p in off['players']}
     summaries=[]
     for enabled, report in [(False, off),(True,on)]:
         require(len(report['trials'])==len(cases), 'Missing or duplicate trials')
         keyed={(t['seed'],t['level'],t['player']):t for t in report['trials']}
         require(set(keyed)==cases,'Different cases')
-        require(all(t['agentClues'] is enabled and not t['executionFailure'] for t in report['trials']), 'Wrong clue mode or provider failure')
-        require(all(t['termination'] in ['WON','LOST','DECISION_LIMIT','TIME_LIMIT'] for t in report['trials']), 'Interrupted attempt')
-        require(all(0<t['decisions']<=128 and len(t['actions'])==t['decisions'] for t in report['trials']), 'Missing actual decisions or excessive budget')
+        require(all(t['agentClues'] is enabled for t in report['trials']), 'Wrong clue mode')
+        require(allow_provider_failures or not any(t['executionFailure'] for t in report['trials']), 'Provider failure; use explicit diagnostic mode to retain it in the summary')
+        require(all(t['termination'] in ['WON','LOST','DECISION_LIMIT','TIME_LIMIT'] or (t['executionFailure'] and t['termination'].startswith('PROVIDER_')) for t in report['trials']), 'Interrupted attempt')
+        require(all(0<=t['decisions']<=128 and (t['decisions']>0 or t['executionFailure']) and len(t['actions'])==t['decisions'] for t in report['trials']), 'Missing actual decisions or excessive budget')
+        if model_identity=='hostedModels':
+            require(len(report[model_identity])==1 and all(t['model']==report[model_identity][0]['name'] for t in report['trials']),'Hosted model label differs from configured identity')
         if not enabled: first=keyed
         else:
             for key in cases:
@@ -47,16 +54,19 @@ def compare(off, on):
         summaries.append({'agentClues':enabled,'trials':len(cases),'escapes':sum(t['exitFound'] for t in report['trials']),
                           **{key:sum(t[key] for t in report['trials']) for key in ['decisions','moves','collisions','repeatedPositions','roomsExplored']},
                           'roomExhaustions':sum(t['status']=='LOST' for t in report['trials']),
+                          'providerFailures':sum(t['executionFailure'] for t in report['trials']),
                           'terminationReasons':{reason:sum(t['termination']==reason for t in report['trials']) for reason in sorted({t['termination'] for t in report['trials']})},
-                          'latencyMs':{'median':statistics.median(lat),'max':max(lat)}})
-    return {'result':'PASS','controls':'Identical seeds, initial observations/readings, model identities, compiled game classes and budgets; clue availability is the experimental switch.',
-            'players':off['players'],'levels':off['levels'],'seeds':off['seeds'],'models':off['localModels'],'arms':summaries,
-            'limits':'One attempt per case/arm. Timings are local and warm; deadline cancellation can omit one pending inference from committed action totals.'}
+                          'latencyMs':{'median':statistics.median(lat) if lat else None,'max':max(lat) if lat else None}})
+    failed=any(t['executionFailure'] for report in [off,on] for t in report['trials'])
+    return {'result':'INCOMPLETE_PROVIDER_FAILURE' if failed else 'PASS','controlsResult':'PASS','controls':'Identical seeds, initial observations/readings, configured model identities, compiled game classes and budgets; clue availability is the experimental switch.',
+            'players':off['players'],'levels':off['levels'],'seeds':off['seeds'],'models':off[model_identity],'arms':summaries,
+            'limits':'One attempt per case/arm. Timings include provider/network overhead; deadline cancellation can omit one pending inference from committed totals. Hosted aliases do not pin an underlying checkpoint.'}
 
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('off',type=Path);p.add_argument('on',type=Path);p.add_argument('--out',type=Path,required=True);a=p.parse_args()
-    result=compare(json.loads(a.off.read_text()),json.loads(a.on.read_text()))
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('off',type=Path);p.add_argument('on',type=Path);p.add_argument('--out',type=Path,required=True);p.add_argument('--allow-provider-failures',action='store_true',help='Diagnostic summary only; preserves failures and marks the experiment incomplete');a=p.parse_args()
+    if a.out.exists():raise ValueError('Choose a fresh output path; earlier results are preserved')
+    result=compare(json.loads(a.off.read_text()),json.loads(a.on.read_text()),allow_provider_failures=a.allow_provider_failures)
     result['inputs']=[str(a.off),str(a.on)];a.out.write_text(json.dumps(result,indent=2)+'\n')
     for arm in result['arms']:print('clues',arm['agentClues'],arm['escapes'],'/',arm['trials'],'escapes;',arm['moves'],'moves;',arm['collisions'],'wall collisions')
 

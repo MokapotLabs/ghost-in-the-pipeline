@@ -88,6 +88,11 @@ class AgentSafetyTest {
     var a = (NextTurn.Model) new ChooseTurn().process(small).await().indefinitely();
     var b = (NextTurn.Large) new ChooseTurn().process(large).await().indefinitely();
     assertEquals(a.value().request(), b.value().request());
+    RunState hosted = Runs.create(g, "test", 0, "JEV", "", 128, 120000);
+    var c = (NextTurn.Jev) new ChooseTurn().process(hosted).await().indefinitely();
+    assertEquals(a.value().request(), c.value().request());
+    var stoppedJev = Runs.create(g, "test", 0, "JEV", "", 0, 120000);
+    assertInstanceOf(NextTurn.Done.class, new ChooseTurn().process(stoppedJev).await().indefinitely());
     var stopped = Runs.create(g, "test", 0, "TEV1_4B", "", 0, 120000);
     assertInstanceOf(NextTurn.Done.class, new ChooseTurn().process(stopped).await().indefinitely());
   }

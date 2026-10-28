@@ -21,6 +21,12 @@ public sealed interface NextTurn {
     }
   }
 
+  record Jev(JevModelTurn value) implements NextTurn {
+    public String discriminator() {
+      return "jev";
+    }
+  }
+
   record Done(RunResult value) implements NextTurn {
     public String discriminator() {
       return "done";

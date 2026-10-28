@@ -152,8 +152,22 @@ class GhostRecordingE2ETest {
                 .readAllBytes());
     assertTrue(contract.contains("Next turn"));
     assertTrue(contract.contains("Ask Tev1"));
+    assertTrue(contract.contains("Ask Jev"));
     assertTrue(contract.contains("Publish frame"));
     assertTrue(contract.contains("play"));
+  }
+
+  @Test
+  @EnabledIfSystemProperty(named = "ghost.jev.live", matches = "true")
+  void realHostedJevUsesSharedRulesAndBoundedPipeline() throws Exception {
+    reset(1983, 1, true);
+    play("JEV", 3, 40000, true);
+    waitForPlayer();
+    assertTrue(session.latest().decisions() > 0 && session.latest().decisions() <= 3);
+    assertTrue(session.history().stream().anyMatch(a -> a.player().equals("JEV") && a.latencyMs() > 0));
+    assertTrue(session.history().stream().allMatch(a -> Rules.ACTIONS.contains(a.action()) || a.action().equals("START")));
+    assertFalse(session.frame().get("reason").toString().startsWith("PROVIDER_"));
+    given().get("/api/game").then().body("model", org.hamcrest.Matchers.is("~typesafe/jev-latest"));
   }
 
   @Test
