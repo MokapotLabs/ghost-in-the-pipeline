@@ -29,5 +29,7 @@ replay_pid*
 .env
 .env.local
 evidence/raw/
+# Diagnostic request/response captures stay local.
+/evidence/captured-*/
 
 __pycache__/
