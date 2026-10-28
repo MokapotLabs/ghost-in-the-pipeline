@@ -1,0 +1,128 @@
+Show me the exact prompt, observation and raw Tev1 response for a turn where it ignores an open corridor, and one where it walks into a wall. Don’t change anything yet.
+
+---
+
+Capture raw requests and responses, then rerun seed 1983, level 3 with 0.8B and clues off. Keep the prompt, maze and rules unchanged, preserve the old results, and show me the actual payloads for both failures.
+
+---
+
+Ok, let's not care about raw responses, let's trust those as they have been tested on other projects. Do you have any ideas that could improve the model behaviour? Wouldn't this prompt work better?
+
+```
+Choose ONE action from: [FORWARD, LEFT, RIGHT].
+
+[INPUT STATE]
+relativeEdges: front={front_edge}, left={left_edge}, right={right_edge}
+current_room_visits: {visits}
+entries_left: {entriesLeft}
+
+[RULES] (Execute top-to-bottom. Stop at the first matching rule):
+1. If front == 'E', choose FORWARD.
+2. If front == '.' and left == '#' and right == '#', choose FORWARD.
+3. If front == '#', choose LEFT if left == '.' else RIGHT.
+4. If front == '.' and current_room_visits > 1, choose LEFT if left == '.' else RIGHT.
+5. Default action: choose FORWARD.
+
+```
+
+---
+
+ok do that
+
+---
+
+At this point I'd try with Jev. You can use OPENROUTER_API_KEY (load it from `.env.local`)&#x20;
+
+
+
+You can use a model binding along these lines:
+
+
+```yaml
+
+connectors:
+  ai-player-model-jev:
+    provider: decision.query.jev
+    version: 1
+    config:
+      model: ~typesafe/jev-latest
+      baseUrl: https://openrouter.ai/api/v1
+      connection: openrouter-primary
+```
+
+
+
+Then resolve the connections through something like this:
+```java
+package com.mokapotlabs.assistantlocal.connection;
+
+import dev.langchain4j.model.openai.OpenAiStreamingChatModel;
+import jakarta.enterprise.context.ApplicationScoped;
+import java.net.http.HttpClient;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
+import java.util.function.Supplier;
+import org.pipelineframework.connector.*;
+import org.pipelineframework.connector.decision.jev.AuthenticatedJevConnection;
+import org.pipelineframework.connector.llm.langchain4j.AuthenticatedOpenAiCompatibleReactiveConnection;
+
+/** Host-owned credentials for local Ollama and optional OpenRouter model bindings. */
+@ApplicationScoped
+public class AiConnectionResolver implements ConnectionResolver {
+    private static final HttpClient CLIENT =
+            HttpClient.newBuilder().followRedirects(HttpClient.Redirect.NEVER).build();
+    private final Supplier<Optional<String>> apiKeySupplier;
+
+    public AiConnectionResolver() {
+        this(() -> Optional.ofNullable(System.getenv("OPENROUTER_API_KEY")));
+    }
+
+    public AiConnectionResolver(Supplier<Optional<String>> apiKeySupplier) {
+        this.apiKeySupplier = Objects.requireNonNull(apiKeySupplier);
+    }
+
+    @Override
+    public <C extends ResolvedConnection> CompletionStage<C> resolve(ConnectionResolutionRequest<C> request) {
+        try {
+            String reference = request.reference().value();
+            boolean remote = reference.equals("openrouter-primary");
+            if (!remote && !reference.equals("ollama") && !reference.equals("ollama-decision")) {
+                throw new ConnectionResolutionException("Unsupported AI connection reference: " + reference);
+            }
+            String key = remote
+                    ? apiKeySupplier
+                            .get()
+                            .map(String::trim)
+                            .filter(value -> !value.isEmpty())
+                            .orElseThrow(() -> new ConnectionResolutionException(
+                                    ConnectionResolutionException.Kind.AUTHENTICATION_REQUIRED,
+                                    "OpenRouter credentials are unavailable in the application host"))
+                    : "ollama";
+            if ((remote || reference.equals("ollama-decision"))
+                    && request.connectionType() == AuthenticatedJevConnection.class) {
+                return CompletableFuture.completedStage(
+                        request.connectionType().cast(AuthenticatedJevConnection.bearer(CLIENT, key)));
+            }
+            if ((!remote && !reference.equals("ollama"))
+                    || request.connectionType() != AuthenticatedOpenAiCompatibleReactiveConnection.class) {
+                throw new ConnectionResolutionException("Unsupported AI connection type for " + reference);
+            }
+            var connection = new AuthenticatedOpenAiCompatibleReactiveConnection(configuration -> {
+                var builder = OpenAiStreamingChatModel.builder()
+                        .baseUrl(configuration.baseUrl())
+                        .modelName(configuration.modelName())
+                        .apiKey(key)
+                        .timeout(configuration.timeout())
+                        .strictJsonSchema(configuration.strictJsonSchema());
+                if (!remote) builder.reasoningEffort("none");
+                return builder.build();
+            });
+            return CompletableFuture.completedStage(request.connectionType().cast(connection));
+        } catch (RuntimeException failure) {
+            return CompletableFuture.failedStage(failure);
+        }
+    }
+}
+```
