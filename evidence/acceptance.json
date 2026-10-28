@@ -1,0 +1,134 @@
+{
+  "result": "PASS",
+  "recordedAt": "2026-10-27T17:46:20.289060+00:00",
+  "automatedTests": [
+    {
+      "name": "dev.ghost.RulesTest",
+      "tests": "8",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.279"
+    },
+    {
+      "name": "dev.ghost.AgentSafetyTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.1"
+    },
+    {
+      "name": "dev.ghost.GhostRecordingE2ETest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "8.236"
+    }
+  ],
+  "seededLevelsValidated": 600,
+  "liveProvider": "Ollama decision.query.jev / tev1:0.8b",
+  "namedE2E": "Human campaign victory, real bounded Tev1 segment when ghost.live=true, then observation-only Explorer",
+  "dependencyHashes": "PASS",
+  "comparisonCases": 27,
+  "pairedInitialObservations": "identical in every case",
+  "nativeReplay": "Original representative completed-run documents; file counts diagnostic, lineage verified separately",
+  "publication": "Not pushed or published; raw development sessions excluded",
+  "checks": [
+    {
+      "suite": "dev.ghost.RulesTest",
+      "name": "explorerUsesObservationAndEscapesAllEvaluationCases",
+      "status": "PASS"
+    },
+    {
+      "suite": "dev.ghost.RulesTest",
+      "name": "levelTransitionsAndFinalVictory",
+      "status": "PASS"
+    },
+    {
+      "suite": "dev.ghost.RulesTest",
+      "name": "validMovementConsumesTargetAllowanceAndSeventhEntryLoses",
+      "status": "PASS"
+    },
+    {
+      "suite": "dev.ghost.RulesTest",
+      "name": "hostProtectsOwnershipPauseDuplicateAndReset",
+      "status": "PASS"
+    },
+    {
+      "suite": "dev.ghost.RulesTest",
+      "name": "unknownActionsCannotChangePositionAndListsAreImmutable",
+      "status": "PASS"
+    },
+    {
+      "suite": "dev.ghost.RulesTest",
+      "name": "seededGenerationIsDeterministicConnectedAndSolvableWithinSevenEntries",
+      "status": "PASS"
+    },
+    {
+      "suite": "dev.ghost.RulesTest",
+      "name": "observationHasOnlyDiscoveredMemoryAndRetainsAnObservedExit",
+      "status": "PASS"
+    },
+    {
+      "suite": "dev.ghost.RulesTest",
+      "name": "turnsAndCollisionsDoNotConsumeEntriesAndTransitionsAreDeterministic",
+      "status": "PASS"
+    },
+    {
+      "suite": "dev.ghost.AgentSafetyTest",
+      "name": "rejectsModelActionsOutsideTheFiniteVocabulary",
+      "status": "PASS"
+    },
+    {
+      "suite": "dev.ghost.AgentSafetyTest",
+      "name": "observedExitAndVisitsArePresentButUnseenTopologyNeverEntersModelState",
+      "status": "PASS"
+    },
+    {
+      "suite": "dev.ghost.AgentSafetyTest",
+      "name": "budgetAndPauseAreTypedBaseCasesBeforeAnyInference",
+      "status": "PASS"
+    },
+    {
+      "suite": "dev.ghost.GhostRecordingE2ETest",
+      "name": "pauseStopsAfterAtMostOneInFlightDecision",
+      "status": "PASS"
+    },
+    {
+      "suite": "dev.ghost.GhostRecordingE2ETest",
+      "name": "realTev1ProposesValidatedActionsWithoutRequiringEscape",
+      "status": "PASS"
+    },
+    {
+      "suite": "dev.ghost.GhostRecordingE2ETest",
+      "name": "canonicalMetadataContainsOneRecursiveRootAndNativeQueriesAndCommand",
+      "status": "PASS"
+    },
+    {
+      "suite": "dev.ghost.GhostRecordingE2ETest",
+      "name": "ghostRecordingE2ECompletesHumanCampaignThenBoundedPlayers",
+      "status": "PASS"
+    },
+    {
+      "suite": "dev.ghost.GhostRecordingE2ETest",
+      "name": "validatesActionsOwnershipAndBounds",
+      "status": "PASS"
+    }
+  ],
+  "review": {
+    "tool": "CodeRabbit",
+    "followUpFindings": 0,
+    "applicationFindingsResolved": 5,
+    "outsideScopeToolingFindings": 2
+  },
+  "browserChecks": [
+    "Human keyboard turn and forward movement",
+    "Observed map and entry allowance update",
+    "Real AI Play and Pause return to human ownership",
+    "Desktop and narrow layouts",
+    "Actual screenshots saved"
+  ],
+  "packagedLauncher": "PASS: native deployment binding and three real Tev1 decisions"
+}

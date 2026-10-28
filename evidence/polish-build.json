@@ -1,0 +1,25 @@
+{
+  "result": "PASS",
+  "promptVersion": "forward-first-v2",
+  "compiledGameClassesSha256": {
+    "dev/ghost/DecodeChoice.class": "83119beca4ad319b7eab74a9b6afd797a6d5a1f1bd6f7e16d25420dfd2b50671",
+    "dev/ghost/ChooseTurn.class": "5ef43cbaa3ac00e34e1964dd4530339509fa4317f4006b3406ff725aa5c5c0db",
+    "dev/ghost/Rules.class": "4623dbf66d0f8d69ffb7b18e108de260197fdab922207c49b56d09720469749e",
+    "dev/ghost/Observations.class": "b5f439781f6f694bbb389787dc2a7966f3a5e1a42a192504ea78801016966847",
+    "dev/ghost/Baselines.class": "8c647d01a1e3589ad36c3032aab1141a00a2279f4a32bd0a2ab4626f0ad8e400",
+    "dev/ghost/Runs.class": "b60b8ac6eb8f466f9d0b97fab627d814e8f74a593547dc38519c195f02635271",
+    "dev/ghost/Session.class": "960ae0ac64ced013b2ad5815cd398d6da86bad0723036ee6de60413cc3067955",
+    "dev/ghost/Signals.class": "9f71d1b3f90e90d06af2f139c3009fd7150e293d1ef1285be0e2611a51c55451",
+    "dev/ghost/NavigationSignal.class": "5daf36cb2860c7befff0b2b9777bb955b51ccd769d709f7f952ecf6fccc31d1b",
+    "dev/ghost/SignalReading.class": "1d95316d3396f30a07c74da6eaa65b8b8f0ab5cfc832a91f5492d0f863387f88",
+    "dev/ghost/ActionLog.class": "bd990b5e309ee22895b07aa2a14000dac37078781466612e95aea7ddf7ecd3ba",
+    "dev/ghost/RunState.class": "8da339799dda073036e2da2d21254cedf46bdcac704ed186e61502ceda2b6e2e"
+  },
+  "pipelineUnchangedSince": "95386fe",
+  "pipelineSha256": "baa1d9028b1e10b2f7fcedb5e6d0c57bb2831ae8256880db0280589a4b4cfb52",
+  "portalPngSha256": "a87250d14e096ce98453d51b415d4af884cc3bda087ca0bcfb2f93c2e9fdc9d0",
+  "portalSource": "User supplied Portal ne\u00f3n en corredor retrofuturista.png; bytes unchanged, renamed portal.png",
+  "evaluationPackage": ".work/runtime-forward-evaluation",
+  "deliveryPackage": ".work/runtime-polished-ready",
+  "assetsMatchServingPackage": true
+}

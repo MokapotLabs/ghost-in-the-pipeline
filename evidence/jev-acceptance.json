@@ -1,0 +1,118 @@
+{
+  "recordedAt": "2026-10-28T12:04:25.458139+00:00",
+  "result": "PASS_WITH_DOCUMENTED_PROVIDER_FAILURE",
+  "featureCommit": "7fc3809",
+  "promptVersion": "ordered-policy-v3",
+  "javaTestsDiscovered": 28,
+  "javaTestsPassed": 27,
+  "javaTestsSkipped": 1,
+  "skipReason": "Local Tev1 opt-in integration was not enabled in the hosted Jev test build; previous local live results are preserved.",
+  "javaSuites": [
+    {
+      "name": "dev.ghost.SignalsTest",
+      "tests": 3,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0
+    },
+    {
+      "name": "dev.ghost.RulesTest",
+      "tests": 8,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0
+    },
+    {
+      "name": "dev.ghost.LocalConnectionTest",
+      "tests": 4,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0
+    },
+    {
+      "name": "dev.ghost.AgentSafetyTest",
+      "tests": 7,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0
+    },
+    {
+      "name": "dev.ghost.GhostRecordingE2ETest",
+      "tests": 6,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 1
+    }
+  ],
+  "liveProvider": "~typesafe/jev-latest via decision.query.jev/OpenRouter",
+  "namedE2E": "ghostRecordingE2ECompletesHumanCampaignThenBoundedPlayers",
+  "hostedIntegrationTest": "realHostedJevUsesSharedRulesAndBoundedPipeline",
+  "pythonChecks": {
+    "policy": 6,
+    "promptControls": 10,
+    "clueControls": 9,
+    "historicalComparison": 32,
+    "dotenv": 3
+  },
+  "rendererAndAudio": "PASS",
+  "browserEngines": [
+    "WebKit 26.5",
+    "Chromium 151"
+  ],
+  "liveUi": "jev-live-ui-final.json",
+  "launcherDotenvLiveDecision": "PASS",
+  "fullMazeTrials": 18,
+  "sharedModelControls": [
+    {
+      "arm": "off",
+      "previousPlayer": "TEV1",
+      "cases": 9,
+      "controls": "PASS"
+    },
+    {
+      "arm": "off",
+      "previousPlayer": "TEV1_4B",
+      "cases": 3,
+      "controls": "PASS"
+    },
+    {
+      "arm": "on",
+      "previousPlayer": "TEV1",
+      "cases": 9,
+      "controls": "PASS"
+    },
+    {
+      "arm": "on",
+      "previousPlayer": "TEV1_4B",
+      "cases": 3,
+      "controls": "PASS"
+    }
+  ],
+  "providerFailures": [
+    {
+      "seed": 1986,
+      "level": 3,
+      "agentClues": false,
+      "committedDecisions": 25,
+      "cause": "Decision Query validation: provider probabilities do not sum to one for action",
+      "responseApplied": false,
+      "retry": false
+    }
+  ],
+  "clueComparison": "INCOMPLETE_PROVIDER_FAILURE; controls PASS; all shared committed action prefixes identical",
+  "nativeLineage": "jev-lineage.json",
+  "build": "jev-build.json",
+  "credentialReview": "PASS: actual host credential absent from selected source, result files, native samples and logs. .env.local is Git-ignored.",
+  "review": [
+    {
+      "finding": "Local Ollama inventory should not constrain hosted-only clue comparisons",
+      "disposition": "Fixed and tested."
+    },
+    {
+      "finding": "Change OpenRouter base URL from /api/v1 to /api",
+      "disposition": "Rejected as incorrect for the exact pinned connector: its endpoint method removes trailing /v1 and appends /alpha/decisions. Supplied /api/v1 successfully exercised in live integration, UI and matrix trials. Changing to /api would select /api/v1/systemone instead."
+    }
+  ],
+  "uiTestRepair": "First browser smoke closed immediately upon seeing the reset label, cancelling its outstanding reset request. Preserved initial UI record; final smoke awaits the full reset response and confirms active=false. No game change.",
+  "publication": "Local commits only; no push or publication."
+}

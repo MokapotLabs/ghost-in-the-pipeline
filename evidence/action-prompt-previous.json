@@ -1,0 +1,65 @@
+{
+  "off" : {
+    "state" : {
+      "level" : 1,
+      "size" : 3,
+      "room" : 0,
+      "facing" : "E",
+      "direction" : 1,
+      "edges" : "##.?",
+      "entriesLeft" : 7,
+      "memory" : [ [ 0, 1, "##.?", 7 ] ],
+      "previousAction" : "START",
+      "previousResult" : "Find the exit. Seven entries per room.",
+      "relativeEdges" : {
+        "front" : "wall",
+        "left" : "wall",
+        "right" : "open passage"
+      }
+    },
+    "questions" : {
+      "action" : {
+        "criteria" : {
+          "FORWARD" : "Move one room in the current facing direction, or cross an exit ahead.",
+          "TURN_LEFT" : "Rotate 90 degrees left; stay in the same room.",
+          "TURN_RIGHT" : "Rotate 90 degrees right; stay in the same room."
+        },
+        "type" : "choice",
+        "instructions" : "Explore the maze and escape through an observed exit. Choose one action. Edges and memory use N,E,S,W: # wall, . passage, E exit, ? unseen. Memory rows are [room, visits, edges, entriesLeft]. Avoid walls and repeated rooms. Room numbers are row-major; north decreases the row. You cannot move backwards. A turn changes only orientation; FORWARD goes in the facing direction. Entering the same room seven times loses. Use explored memory to navigate; an exit requires moving FORWARD through it."
+      }
+    }
+  },
+  "on" : {
+    "state" : {
+      "level" : 1,
+      "size" : 3,
+      "room" : 0,
+      "facing" : "E",
+      "direction" : 1,
+      "edges" : "##.?",
+      "entriesLeft" : 7,
+      "memory" : [ [ 0, 1, "##.?", 7 ] ],
+      "previousAction" : "START",
+      "previousResult" : "Find the exit. Seven entries per room.",
+      "relativeEdges" : {
+        "front" : "wall",
+        "left" : "wall",
+        "right" : "open passage"
+      },
+      "signal" : "NOTICEABLE",
+      "signalTrend" : "NO_MOVEMENT",
+      "signalMemory" : [ [ 0, "NOTICEABLE" ] ]
+    },
+    "questions" : {
+      "action" : {
+        "criteria" : {
+          "FORWARD" : "Move one room in the current facing direction, or cross an exit ahead.",
+          "TURN_LEFT" : "Rotate 90 degrees left; stay in the same room.",
+          "TURN_RIGHT" : "Rotate 90 degrees right; stay in the same room."
+        },
+        "type" : "choice",
+        "instructions" : "Explore the maze and escape through an observed exit. Choose one action. Edges and memory use N,E,S,W: # wall, . passage, E exit, ? unseen. Memory rows are [room, visits, edges, entriesLeft]. Avoid walls and repeated rooms. Room numbers are row-major; north decreases the row. You cannot move backwards. A turn changes only orientation; FORWARD goes in the facing direction. Entering the same room seven times loses. Use explored memory to navigate; an exit requires moving FORWARD through it. The haunted signal ranks FAINT, NOTICEABLE, STRONG, INTENSE from far to close through corridors. Compare signalMemory readings in visited rooms to explore toward stronger signals. Turns and wall bumps report NO_MOVEMENT; UNCHANGED after movement means the same coarse band. The signal gives no exit direction or route."
+      }
+    }
+  }
+}

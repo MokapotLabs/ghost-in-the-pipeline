@@ -1,0 +1,2305 @@
+{
+  "protocol": "ghost-haunted-v1",
+  "recordedAt": "2026-10-27T21:05:37.222203+00:00",
+  "seeds": [
+    1983,
+    1986,
+    2026
+  ],
+  "levels": [
+    1
+  ],
+  "agentClues": true,
+  "players": [
+    "TEV1_4B"
+  ],
+  "maxDecisions": 128,
+  "durationMs": 120000,
+  "information": "local visible edges plus persistent observed-room memory; no full map or witness",
+  "trials": [
+    {
+      "seed": 1983,
+      "level": 1,
+      "size": 3,
+      "player": "TEV1_4B",
+      "model": "tev1:latest",
+      "initialObservation": {
+        "level": 1,
+        "size": 3,
+        "room": 0,
+        "facing": "E",
+        "direction": 1,
+        "edges": "##.?",
+        "entriesLeft": 7,
+        "memory": [
+          [
+            0,
+            1,
+            "##.?",
+            7
+          ]
+        ],
+        "previousAction": "START",
+        "previousResult": "Find the exit. Seven entries per room.",
+        "relativeEdges": {
+          "front": "wall",
+          "left": "wall",
+          "right": "open passage"
+        }
+      },
+      "initialNavigation": {
+        "signal": "NOTICEABLE",
+        "signalTrend": "NO_MOVEMENT",
+        "level": 1,
+        "room": 0,
+        "readings": [
+          {
+            "room": 0,
+            "signal": "NOTICEABLE"
+          }
+        ]
+      },
+      "exitFound": false,
+      "status": "PLAYING",
+      "termination": "TIME_LIMIT",
+      "decisions": 66,
+      "moves": 30,
+      "collisions": 11,
+      "repeatedPositions": 22,
+      "roomsExplored": 9,
+      "rejectedActions": 11,
+      "executionFailure": false,
+      "elapsedSeconds": 120.229,
+      "decisionLatencyMs": {
+        "median": 1787.5,
+        "max": 2625
+      },
+      "actions": [
+        {
+          "turn": 1,
+          "level": 1,
+          "room": 0,
+          "direction": 1,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 1396,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 2,
+          "level": 1,
+          "room": 0,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 4 \u00b7 6 entries left.",
+          "latencyMs": 1499,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 3,
+          "level": 1,
+          "room": 3,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 2353,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 4,
+          "level": 1,
+          "room": 3,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 5 \u00b7 6 entries left.",
+          "latencyMs": 2235,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 5,
+          "level": 1,
+          "room": 4,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1622,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 6,
+          "level": 1,
+          "room": 4,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 2 \u00b7 6 entries left.",
+          "latencyMs": 1542,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 7,
+          "level": 1,
+          "room": 1,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 2099,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 8,
+          "level": 1,
+          "room": 1,
+          "direction": 0,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 1681,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 9,
+          "level": 1,
+          "room": 1,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 3 \u00b7 6 entries left.",
+          "latencyMs": 1512,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 10,
+          "level": 1,
+          "room": 2,
+          "direction": 1,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 1675,
+          "player": "TEV1_4B",
+          "signal": "INTENSE",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 11,
+          "level": 1,
+          "room": 2,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 6 \u00b7 6 entries left.",
+          "latencyMs": 1708,
+          "player": "TEV1_4B",
+          "signal": "INTENSE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 12,
+          "level": 1,
+          "room": 5,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 9 \u00b7 6 entries left.",
+          "latencyMs": 1555,
+          "player": "TEV1_4B",
+          "signal": "INTENSE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 13,
+          "level": 1,
+          "room": 8,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 2488,
+          "player": "TEV1_4B",
+          "signal": "INTENSE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 14,
+          "level": 1,
+          "room": 8,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 1644,
+          "player": "TEV1_4B",
+          "signal": "INTENSE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 15,
+          "level": 1,
+          "room": 8,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 8 \u00b7 6 entries left.",
+          "latencyMs": 1708,
+          "player": "TEV1_4B",
+          "signal": "INTENSE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 16,
+          "level": 1,
+          "room": 7,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 7 \u00b7 6 entries left.",
+          "latencyMs": 1804,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "GETTING_WEAKER"
+        },
+        {
+          "turn": 17,
+          "level": 1,
+          "room": 6,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1767,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 18,
+          "level": 1,
+          "room": 6,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1805,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 19,
+          "level": 1,
+          "room": 6,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1756,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 20,
+          "level": 1,
+          "room": 6,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1808,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 21,
+          "level": 1,
+          "room": 6,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 8 \u00b7 5 entries left.",
+          "latencyMs": 1783,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 22,
+          "level": 1,
+          "room": 7,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 9 \u00b7 5 entries left.",
+          "latencyMs": 1819,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 23,
+          "level": 1,
+          "room": 8,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1756,
+          "player": "TEV1_4B",
+          "signal": "INTENSE",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 24,
+          "level": 1,
+          "room": 8,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 6 \u00b7 5 entries left.",
+          "latencyMs": 1813,
+          "player": "TEV1_4B",
+          "signal": "INTENSE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 25,
+          "level": 1,
+          "room": 5,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 3 \u00b7 5 entries left.",
+          "latencyMs": 1741,
+          "player": "TEV1_4B",
+          "signal": "INTENSE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 26,
+          "level": 1,
+          "room": 2,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1834,
+          "player": "TEV1_4B",
+          "signal": "INTENSE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 27,
+          "level": 1,
+          "room": 2,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 2 \u00b7 5 entries left.",
+          "latencyMs": 1745,
+          "player": "TEV1_4B",
+          "signal": "INTENSE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 28,
+          "level": 1,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1834,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "GETTING_WEAKER"
+        },
+        {
+          "turn": 29,
+          "level": 1,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 5 \u00b7 5 entries left.",
+          "latencyMs": 1737,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 30,
+          "level": 1,
+          "room": 4,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1839,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 31,
+          "level": 1,
+          "room": 4,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 1752,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 32,
+          "level": 1,
+          "room": 4,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 4 \u00b7 5 entries left.",
+          "latencyMs": 1734,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 33,
+          "level": 1,
+          "room": 3,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1792,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "GETTING_WEAKER"
+        },
+        {
+          "turn": 34,
+          "level": 1,
+          "room": 3,
+          "direction": 3,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 1757,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 35,
+          "level": 1,
+          "room": 3,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 1 \u00b7 6 entries left.",
+          "latencyMs": 1835,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 36,
+          "level": 1,
+          "room": 0,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1800,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 37,
+          "level": 1,
+          "room": 0,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1731,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 38,
+          "level": 1,
+          "room": 0,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 4 \u00b7 4 entries left.",
+          "latencyMs": 1863,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 39,
+          "level": 1,
+          "room": 3,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1829,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 40,
+          "level": 1,
+          "room": 3,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 5 \u00b7 4 entries left.",
+          "latencyMs": 1894,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 41,
+          "level": 1,
+          "room": 4,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1800,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 42,
+          "level": 1,
+          "room": 4,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 2 \u00b7 4 entries left.",
+          "latencyMs": 1783,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 43,
+          "level": 1,
+          "room": 1,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1772,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 44,
+          "level": 1,
+          "room": 1,
+          "direction": 0,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 1741,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 45,
+          "level": 1,
+          "room": 1,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 3 \u00b7 4 entries left.",
+          "latencyMs": 1838,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 46,
+          "level": 1,
+          "room": 2,
+          "direction": 1,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 1848,
+          "player": "TEV1_4B",
+          "signal": "INTENSE",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 47,
+          "level": 1,
+          "room": 2,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 6 \u00b7 4 entries left.",
+          "latencyMs": 1767,
+          "player": "TEV1_4B",
+          "signal": "INTENSE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 48,
+          "level": 1,
+          "room": 5,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 9 \u00b7 4 entries left.",
+          "latencyMs": 1908,
+          "player": "TEV1_4B",
+          "signal": "INTENSE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 49,
+          "level": 1,
+          "room": 8,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1758,
+          "player": "TEV1_4B",
+          "signal": "INTENSE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 50,
+          "level": 1,
+          "room": 8,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 1878,
+          "player": "TEV1_4B",
+          "signal": "INTENSE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 51,
+          "level": 1,
+          "room": 8,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 8 \u00b7 4 entries left.",
+          "latencyMs": 1884,
+          "player": "TEV1_4B",
+          "signal": "INTENSE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 52,
+          "level": 1,
+          "room": 7,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 7 \u00b7 5 entries left.",
+          "latencyMs": 1933,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "GETTING_WEAKER"
+        },
+        {
+          "turn": 53,
+          "level": 1,
+          "room": 6,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1759,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 54,
+          "level": 1,
+          "room": 6,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1768,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 55,
+          "level": 1,
+          "room": 6,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1811,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 56,
+          "level": 1,
+          "room": 6,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1827,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 57,
+          "level": 1,
+          "room": 6,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 8 \u00b7 3 entries left.",
+          "latencyMs": 1766,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 58,
+          "level": 1,
+          "room": 7,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 9 \u00b7 3 entries left.",
+          "latencyMs": 1894,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 59,
+          "level": 1,
+          "room": 8,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1854,
+          "player": "TEV1_4B",
+          "signal": "INTENSE",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 60,
+          "level": 1,
+          "room": 8,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 6 \u00b7 3 entries left.",
+          "latencyMs": 1780,
+          "player": "TEV1_4B",
+          "signal": "INTENSE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 61,
+          "level": 1,
+          "room": 5,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 3 \u00b7 3 entries left.",
+          "latencyMs": 1842,
+          "player": "TEV1_4B",
+          "signal": "INTENSE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 62,
+          "level": 1,
+          "room": 2,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1751,
+          "player": "TEV1_4B",
+          "signal": "INTENSE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 63,
+          "level": 1,
+          "room": 2,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 2 \u00b7 3 entries left.",
+          "latencyMs": 1763,
+          "player": "TEV1_4B",
+          "signal": "INTENSE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 64,
+          "level": 1,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 2625,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "GETTING_WEAKER"
+        },
+        {
+          "turn": 65,
+          "level": 1,
+          "room": 1,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 5 \u00b7 3 entries left.",
+          "latencyMs": 1844,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 66,
+          "level": 1,
+          "room": 4,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1855,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "UNCHANGED"
+        }
+      ],
+      "finalObservation": {
+        "level": 1,
+        "size": 3,
+        "room": 4,
+        "facing": "S",
+        "direction": 2,
+        "edges": ".##.",
+        "entriesLeft": 3,
+        "memory": [
+          [
+            0,
+            2,
+            "##.#",
+            6
+          ],
+          [
+            1,
+            4,
+            "#..#",
+            3
+          ],
+          [
+            2,
+            4,
+            "##..",
+            3
+          ],
+          [
+            3,
+            3,
+            "..##",
+            4
+          ],
+          [
+            4,
+            4,
+            ".##.",
+            3
+          ],
+          [
+            5,
+            4,
+            ".E.#",
+            3
+          ],
+          [
+            6,
+            2,
+            "#.##",
+            5
+          ],
+          [
+            7,
+            4,
+            "#.#.",
+            3
+          ],
+          [
+            8,
+            4,
+            ".##.",
+            3
+          ]
+        ],
+        "previousAction": "FORWARD",
+        "previousResult": "BUMP \u2014 a wall. Try turning.",
+        "relativeEdges": {
+          "front": "wall",
+          "left": "wall",
+          "right": "open passage"
+        }
+      },
+      "finalNavigation": {
+        "signal": "STRONG",
+        "signalTrend": "NO_MOVEMENT",
+        "level": 1,
+        "room": 4,
+        "readings": [
+          {
+            "room": 0,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 1,
+            "signal": "STRONG"
+          },
+          {
+            "room": 2,
+            "signal": "INTENSE"
+          },
+          {
+            "room": 3,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 4,
+            "signal": "STRONG"
+          },
+          {
+            "room": 5,
+            "signal": "INTENSE"
+          },
+          {
+            "room": 6,
+            "signal": "STRONG"
+          },
+          {
+            "room": 7,
+            "signal": "STRONG"
+          },
+          {
+            "room": 8,
+            "signal": "INTENSE"
+          }
+        ]
+      },
+      "agentClues": true
+    },
+    {
+      "seed": 1986,
+      "level": 1,
+      "size": 3,
+      "player": "TEV1_4B",
+      "model": "tev1:latest",
+      "initialObservation": {
+        "level": 1,
+        "size": 3,
+        "room": 0,
+        "facing": "N",
+        "direction": 0,
+        "edges": "##?#",
+        "entriesLeft": 7,
+        "memory": [
+          [
+            0,
+            1,
+            "##?#",
+            7
+          ]
+        ],
+        "previousAction": "START",
+        "previousResult": "Find the exit. Seven entries per room.",
+        "relativeEdges": {
+          "front": "wall",
+          "left": "wall",
+          "right": "wall"
+        }
+      },
+      "initialNavigation": {
+        "signal": "NOTICEABLE",
+        "signalTrend": "NO_MOVEMENT",
+        "level": 1,
+        "room": 0,
+        "readings": [
+          {
+            "room": 0,
+            "signal": "NOTICEABLE"
+          }
+        ]
+      },
+      "exitFound": true,
+      "status": "WON",
+      "termination": "WON",
+      "decisions": 12,
+      "moves": 7,
+      "collisions": 1,
+      "repeatedPositions": 0,
+      "roomsExplored": 7,
+      "rejectedActions": 1,
+      "executionFailure": false,
+      "elapsedSeconds": 18.491,
+      "decisionLatencyMs": {
+        "median": 1520.5,
+        "max": 1794
+      },
+      "actions": [
+        {
+          "turn": 1,
+          "level": 1,
+          "room": 0,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1429,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 2,
+          "level": 1,
+          "room": 0,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1457,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 3,
+          "level": 1,
+          "room": 0,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1446,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 4,
+          "level": 1,
+          "room": 0,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 4 \u00b7 6 entries left.",
+          "latencyMs": 1332,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 5,
+          "level": 1,
+          "room": 3,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 7 \u00b7 6 entries left.",
+          "latencyMs": 1527,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 6,
+          "level": 1,
+          "room": 6,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1514,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 7,
+          "level": 1,
+          "room": 6,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 8 \u00b7 6 entries left.",
+          "latencyMs": 1445,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 8,
+          "level": 1,
+          "room": 7,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 9 \u00b7 6 entries left.",
+          "latencyMs": 1586,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 9,
+          "level": 1,
+          "room": 8,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1534,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 10,
+          "level": 1,
+          "room": 8,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 6 \u00b7 6 entries left.",
+          "latencyMs": 1569,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 11,
+          "level": 1,
+          "room": 5,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 3 \u00b7 6 entries left.",
+          "latencyMs": 1637,
+          "player": "TEV1_4B",
+          "signal": "INTENSE",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 12,
+          "level": 1,
+          "room": 2,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "ESCAPED \u2014 the ghost is free.",
+          "latencyMs": 1794,
+          "player": "TEV1_4B",
+          "signal": "INTENSE",
+          "signalTrend": "UNCHANGED"
+        }
+      ],
+      "finalObservation": {
+        "level": 1,
+        "size": 3,
+        "room": 2,
+        "facing": "N",
+        "direction": 0,
+        "edges": "E#..",
+        "entriesLeft": 6,
+        "memory": [
+          [
+            0,
+            1,
+            "##.#",
+            7
+          ],
+          [
+            2,
+            1,
+            "E#..",
+            6
+          ],
+          [
+            3,
+            1,
+            ".#.#",
+            6
+          ],
+          [
+            5,
+            1,
+            ".#.#",
+            6
+          ],
+          [
+            6,
+            1,
+            "..##",
+            6
+          ],
+          [
+            7,
+            1,
+            "#.#.",
+            6
+          ],
+          [
+            8,
+            1,
+            ".##.",
+            6
+          ]
+        ],
+        "previousAction": "FORWARD",
+        "previousResult": "ESCAPED \u2014 the ghost is free.",
+        "relativeEdges": {
+          "front": "exit",
+          "left": "open passage",
+          "right": "wall"
+        }
+      },
+      "finalNavigation": {
+        "signal": "INTENSE",
+        "signalTrend": "NO_MOVEMENT",
+        "level": 1,
+        "room": 2,
+        "readings": [
+          {
+            "room": 0,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 2,
+            "signal": "INTENSE"
+          },
+          {
+            "room": 3,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 5,
+            "signal": "INTENSE"
+          },
+          {
+            "room": 6,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 7,
+            "signal": "STRONG"
+          },
+          {
+            "room": 8,
+            "signal": "STRONG"
+          }
+        ]
+      },
+      "agentClues": true
+    },
+    {
+      "seed": 2026,
+      "level": 1,
+      "size": 3,
+      "player": "TEV1_4B",
+      "model": "tev1:latest",
+      "initialObservation": {
+        "level": 1,
+        "size": 3,
+        "room": 1,
+        "facing": "N",
+        "direction": 0,
+        "edges": "#.?#",
+        "entriesLeft": 7,
+        "memory": [
+          [
+            1,
+            1,
+            "#.?#",
+            7
+          ]
+        ],
+        "previousAction": "START",
+        "previousResult": "Find the exit. Seven entries per room.",
+        "relativeEdges": {
+          "front": "wall",
+          "left": "wall",
+          "right": "open passage"
+        }
+      },
+      "initialNavigation": {
+        "signal": "FAINT",
+        "signalTrend": "NO_MOVEMENT",
+        "level": 1,
+        "room": 1,
+        "readings": [
+          {
+            "room": 1,
+            "signal": "FAINT"
+          }
+        ]
+      },
+      "exitFound": false,
+      "status": "LOST",
+      "termination": "LOST",
+      "decisions": 68,
+      "moves": 31,
+      "collisions": 12,
+      "repeatedPositions": 26,
+      "roomsExplored": 6,
+      "rejectedActions": 12,
+      "executionFailure": false,
+      "elapsedSeconds": 111.659,
+      "decisionLatencyMs": {
+        "median": 1600.5,
+        "max": 2837
+      },
+      "actions": [
+        {
+          "turn": 1,
+          "level": 1,
+          "room": 1,
+          "direction": 0,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 1417,
+          "player": "TEV1_4B",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 2,
+          "level": 1,
+          "room": 1,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 3 \u00b7 6 entries left.",
+          "latencyMs": 2147,
+          "player": "TEV1_4B",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 3,
+          "level": 1,
+          "room": 2,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1453,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 4,
+          "level": 1,
+          "room": 2,
+          "direction": 1,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 1314,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 5,
+          "level": 1,
+          "room": 2,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 6 \u00b7 6 entries left.",
+          "latencyMs": 1334,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 6,
+          "level": 1,
+          "room": 5,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 9 \u00b7 6 entries left.",
+          "latencyMs": 1425,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 7,
+          "level": 1,
+          "room": 8,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1516,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 8,
+          "level": 1,
+          "room": 8,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 2077,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 9,
+          "level": 1,
+          "room": 8,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 8 \u00b7 6 entries left.",
+          "latencyMs": 1439,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 10,
+          "level": 1,
+          "room": 7,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 7 \u00b7 6 entries left.",
+          "latencyMs": 1534,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 11,
+          "level": 1,
+          "room": 6,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1537,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "GETTING_WEAKER"
+        },
+        {
+          "turn": 12,
+          "level": 1,
+          "room": 6,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1629,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 13,
+          "level": 1,
+          "room": 6,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1547,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 14,
+          "level": 1,
+          "room": 6,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1659,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 15,
+          "level": 1,
+          "room": 6,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 8 \u00b7 5 entries left.",
+          "latencyMs": 1570,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 16,
+          "level": 1,
+          "room": 7,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 9 \u00b7 5 entries left.",
+          "latencyMs": 1617,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 17,
+          "level": 1,
+          "room": 8,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1540,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "GETTING_WEAKER"
+        },
+        {
+          "turn": 18,
+          "level": 1,
+          "room": 8,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 6 \u00b7 5 entries left.",
+          "latencyMs": 1551,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 19,
+          "level": 1,
+          "room": 5,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 3 \u00b7 5 entries left.",
+          "latencyMs": 1616,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 20,
+          "level": 1,
+          "room": 2,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1631,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 21,
+          "level": 1,
+          "room": 2,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 2 \u00b7 6 entries left.",
+          "latencyMs": 1604,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 22,
+          "level": 1,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1618,
+          "player": "TEV1_4B",
+          "signal": "FAINT",
+          "signalTrend": "GETTING_WEAKER"
+        },
+        {
+          "turn": 23,
+          "level": 1,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1529,
+          "player": "TEV1_4B",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 24,
+          "level": 1,
+          "room": 1,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1528,
+          "player": "TEV1_4B",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 25,
+          "level": 1,
+          "room": 1,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 3 \u00b7 4 entries left.",
+          "latencyMs": 1655,
+          "player": "TEV1_4B",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 26,
+          "level": 1,
+          "room": 2,
+          "direction": 1,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 1613,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 27,
+          "level": 1,
+          "room": 2,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 6 \u00b7 4 entries left.",
+          "latencyMs": 1769,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 28,
+          "level": 1,
+          "room": 5,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 9 \u00b7 4 entries left.",
+          "latencyMs": 1685,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 29,
+          "level": 1,
+          "room": 8,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1566,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 30,
+          "level": 1,
+          "room": 8,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 1573,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 31,
+          "level": 1,
+          "room": 8,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 8 \u00b7 4 entries left.",
+          "latencyMs": 1760,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 32,
+          "level": 1,
+          "room": 7,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 7 \u00b7 5 entries left.",
+          "latencyMs": 1893,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 33,
+          "level": 1,
+          "room": 6,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1740,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "GETTING_WEAKER"
+        },
+        {
+          "turn": 34,
+          "level": 1,
+          "room": 6,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1684,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 35,
+          "level": 1,
+          "room": 6,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1649,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 36,
+          "level": 1,
+          "room": 6,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 2837,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 37,
+          "level": 1,
+          "room": 6,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 8 \u00b7 3 entries left.",
+          "latencyMs": 2062,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 38,
+          "level": 1,
+          "room": 7,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 9 \u00b7 3 entries left.",
+          "latencyMs": 1717,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 39,
+          "level": 1,
+          "room": 8,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1752,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "GETTING_WEAKER"
+        },
+        {
+          "turn": 40,
+          "level": 1,
+          "room": 8,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 6 \u00b7 3 entries left.",
+          "latencyMs": 1715,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 41,
+          "level": 1,
+          "room": 5,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 3 \u00b7 3 entries left.",
+          "latencyMs": 1562,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 42,
+          "level": 1,
+          "room": 2,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1699,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 43,
+          "level": 1,
+          "room": 2,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 2 \u00b7 5 entries left.",
+          "latencyMs": 1622,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 44,
+          "level": 1,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1775,
+          "player": "TEV1_4B",
+          "signal": "FAINT",
+          "signalTrend": "GETTING_WEAKER"
+        },
+        {
+          "turn": 45,
+          "level": 1,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1649,
+          "player": "TEV1_4B",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 46,
+          "level": 1,
+          "room": 1,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1621,
+          "player": "TEV1_4B",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 47,
+          "level": 1,
+          "room": 1,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 3 \u00b7 2 entries left.",
+          "latencyMs": 1544,
+          "player": "TEV1_4B",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 48,
+          "level": 1,
+          "room": 2,
+          "direction": 1,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 1545,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 49,
+          "level": 1,
+          "room": 2,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 6 \u00b7 2 entries left.",
+          "latencyMs": 1534,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 50,
+          "level": 1,
+          "room": 5,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "Room 9 \u00b7 2 entries left.",
+          "latencyMs": 1537,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 51,
+          "level": 1,
+          "room": 8,
+          "direction": 2,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1669,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 52,
+          "level": 1,
+          "room": 8,
+          "direction": 2,
+          "action": "TURN_RIGHT",
+          "result": "Turned right.",
+          "latencyMs": 1530,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 53,
+          "level": 1,
+          "room": 8,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 8 \u00b7 2 entries left.",
+          "latencyMs": 1531,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 54,
+          "level": 1,
+          "room": 7,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 7 \u00b7 4 entries left.",
+          "latencyMs": 1642,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 55,
+          "level": 1,
+          "room": 6,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1524,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "GETTING_WEAKER"
+        },
+        {
+          "turn": 56,
+          "level": 1,
+          "room": 6,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1654,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 57,
+          "level": 1,
+          "room": 6,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1645,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 58,
+          "level": 1,
+          "room": 6,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 8 \u00b7 1 entries left.",
+          "latencyMs": 1557,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 59,
+          "level": 1,
+          "room": 7,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "Room 9 \u00b7 1 entries left.",
+          "latencyMs": 1538,
+          "player": "TEV1_4B",
+          "signal": "STRONG",
+          "signalTrend": "GETTING_STRONGER"
+        },
+        {
+          "turn": 60,
+          "level": 1,
+          "room": 8,
+          "direction": 1,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1579,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "GETTING_WEAKER"
+        },
+        {
+          "turn": 61,
+          "level": 1,
+          "room": 8,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 6 \u00b7 1 entries left.",
+          "latencyMs": 1607,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 62,
+          "level": 1,
+          "room": 5,
+          "direction": 0,
+          "action": "FORWARD",
+          "result": "Room 3 \u00b7 1 entries left.",
+          "latencyMs": 1520,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 63,
+          "level": 1,
+          "room": 2,
+          "direction": 0,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1631,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "UNCHANGED"
+        },
+        {
+          "turn": 64,
+          "level": 1,
+          "room": 2,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "Room 2 \u00b7 4 entries left.",
+          "latencyMs": 1539,
+          "player": "TEV1_4B",
+          "signal": "NOTICEABLE",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 65,
+          "level": 1,
+          "room": 1,
+          "direction": 3,
+          "action": "FORWARD",
+          "result": "BUMP \u2014 a wall. Try turning.",
+          "latencyMs": 1583,
+          "player": "TEV1_4B",
+          "signal": "FAINT",
+          "signalTrend": "GETTING_WEAKER"
+        },
+        {
+          "turn": 66,
+          "level": 1,
+          "room": 1,
+          "direction": 3,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1556,
+          "player": "TEV1_4B",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 67,
+          "level": 1,
+          "room": 1,
+          "direction": 2,
+          "action": "TURN_LEFT",
+          "result": "Turned left.",
+          "latencyMs": 1597,
+          "player": "TEV1_4B",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        },
+        {
+          "turn": 68,
+          "level": 1,
+          "room": 1,
+          "direction": 1,
+          "action": "FORWARD",
+          "result": "GAME OVER \u2014 this room has no entries left.",
+          "latencyMs": 1533,
+          "player": "TEV1_4B",
+          "signal": "FAINT",
+          "signalTrend": "NO_MOVEMENT"
+        }
+      ],
+      "finalObservation": {
+        "level": 1,
+        "size": 3,
+        "room": 2,
+        "facing": "E",
+        "direction": 1,
+        "edges": "##..",
+        "entriesLeft": 0,
+        "memory": [
+          [
+            1,
+            4,
+            "#.##",
+            4
+          ],
+          [
+            2,
+            7,
+            "##..",
+            0
+          ],
+          [
+            5,
+            6,
+            ".#.#",
+            1
+          ],
+          [
+            6,
+            3,
+            "#.##",
+            4
+          ],
+          [
+            7,
+            6,
+            "..#.",
+            1
+          ],
+          [
+            8,
+            6,
+            ".##.",
+            1
+          ]
+        ],
+        "previousAction": "FORWARD",
+        "previousResult": "GAME OVER \u2014 this room has no entries left.",
+        "relativeEdges": {
+          "front": "wall",
+          "left": "wall",
+          "right": "open passage"
+        }
+      },
+      "finalNavigation": {
+        "signal": "NOTICEABLE",
+        "signalTrend": "GETTING_STRONGER",
+        "level": 1,
+        "room": 2,
+        "readings": [
+          {
+            "room": 1,
+            "signal": "FAINT"
+          },
+          {
+            "room": 2,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 5,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 6,
+            "signal": "NOTICEABLE"
+          },
+          {
+            "room": 7,
+            "signal": "STRONG"
+          },
+          {
+            "room": 8,
+            "signal": "NOTICEABLE"
+          }
+        ]
+      },
+      "agentClues": true
+    }
+  ],
+  "sourceSha256": {
+    "connectors/src/main/java/dev/ghost/Rules.java": "15e3a9b9b3305a35ba2777b825fbad8c0582e7a10e8cc5756f8788e0778b93f6",
+    "connectors/src/main/java/dev/ghost/Observations.java": "959766823f48a68c19104c8794b8efa0ad5f99eb4d06638b12b215d5b73ea9b6",
+    "connectors/src/main/java/dev/ghost/Baselines.java": "121a8ba79aac0bfd695256d517e0999c909df16a34d517762a289e0b43040c7a",
+    "connectors/src/main/java/dev/ghost/Signals.java": "c27f1f0774c7810ec281466b991312e702272de8bda908daef040001703cf893"
+  },
+  "sourceIdentityScope": "Local checkout files; these do not prove which binary the server loaded.",
+  "runtimeClassesSha256": {
+    "dev/ghost/DecodeChoice.class": "83119beca4ad319b7eab74a9b6afd797a6d5a1f1bd6f7e16d25420dfd2b50671",
+    "dev/ghost/ChooseTurn.class": "5ef43cbaa3ac00e34e1964dd4530339509fa4317f4006b3406ff725aa5c5c0db",
+    "dev/ghost/Rules.class": "4623dbf66d0f8d69ffb7b18e108de260197fdab922207c49b56d09720469749e",
+    "dev/ghost/Observations.class": "ac6774d1453cc44037d2264307ed42d5d8371756d0cef3a081b054802ae13cde",
+    "dev/ghost/Baselines.class": "8c647d01a1e3589ad36c3032aab1141a00a2279f4a32bd0a2ab4626f0ad8e400",
+    "dev/ghost/Runs.class": "b60b8ac6eb8f466f9d0b97fab627d814e8f74a593547dc38519c195f02635271",
+    "dev/ghost/Session.class": "960ae0ac64ced013b2ad5815cd398d6da86bad0723036ee6de60413cc3067955",
+    "dev/ghost/Signals.class": "9f71d1b3f90e90d06af2f139c3009fd7150e293d1ef1285be0e2611a51c55451",
+    "dev/ghost/NavigationSignal.class": "5daf36cb2860c7befff0b2b9777bb955b51ccd769d709f7f952ecf6fccc31d1b",
+    "dev/ghost/SignalReading.class": "1d95316d3396f30a07c74da6eaa65b8b8f0ab5cfc832a91f5492d0f863387f88",
+    "dev/ghost/ActionLog.class": "bd990b5e309ee22895b07aa2a14000dac37078781466612e95aea7ddf7ecd3ba",
+    "dev/ghost/RunState.class": "8da339799dda073036e2da2d21254cedf46bdcac704ed186e61502ceda2b6e2e"
+  },
+  "runtimeIdentityScope": "Caller-supplied serving package; verify server process command points to this immutable package before evaluating.",
+  "localModels": [
+    {
+      "name": "tev1:latest",
+      "model": "tev1:latest",
+      "modified_at": "2026-10-13T19:17:11.060858551+02:00",
+      "size": 4361568327,
+      "digest": "4d24c6f6d61a48d9b72902f4805c5f1da53010736b834b0372377fb4bb7e53d3",
+      "details": {
+        "parent_model": "",
+        "format": "safetensors",
+        "family": "qwen3_5",
+        "families": [
+          "qwen3_5"
+        ],
+        "parameter_size": "4.2B",
+        "quantization_level": "mxfp8",
+        "runner": "mlx"
+      },
+      "capabilities": [
+        "decision"
+      ]
+    }
+  ],
+  "localOllamaVersion": {
+    "version": "0.40.2"
+  },
+  "presentationDelayMs": 0,
+  "cachePolicy": "bypass-cache",
+  "latencyDefinition": "Wall time from control observation to validated model response; excludes presentation delay and includes connector/projection overhead."
+}

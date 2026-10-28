@@ -1,0 +1,36 @@
+{
+  "result": "PASS",
+  "scope": "Disposable UI-only fixture; not inference evidence",
+  "results": [
+    {
+      "engine": "WebKit",
+      "version": "26.5",
+      "result": "PASS",
+      "checks": [
+        "no picker mutations during frame updates",
+        "all four choices commit",
+        "movement focus restored",
+        "checkbox keys work",
+        "seed editing isolated",
+        "pause returns control",
+        "16px checkbox appearance",
+        "editable Enter isolated"
+      ]
+    },
+    {
+      "engine": "Chromium",
+      "version": "151.0.7922.34",
+      "result": "PASS",
+      "checks": [
+        "no picker mutations during frame updates",
+        "all four choices commit",
+        "movement focus restored",
+        "checkbox keys work",
+        "seed editing isolated",
+        "pause returns control",
+        "16px checkbox appearance",
+        "editable Enter isolated"
+      ]
+    }
+  ]
+}

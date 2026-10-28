@@ -1,0 +1,275 @@
+version: 3
+appName: Ghost in the Pipeline
+basePackage: dev.ghost
+transport: LOCAL
+platform: COMPUTE
+contract: { input: RunState, output: RunResult }
+
+types:
+  Maze:
+    java: dev.ghost.Maze
+    fields:
+      - [size, "int32"]
+      - name: walls
+        repeated: "int32"
+      - [exitRoom, "int32"]
+      - [exitDirection, "int32"]
+  RoomMemory:
+    java: dev.ghost.RoomMemory
+    fields:
+      - [room, "int32"]
+      - [visits, "int32"]
+      - [edges, "string"]
+  GameState:
+    java: dev.ghost.GameState
+    fields:
+      - [seed, "int64"]
+      - [level, "int32"]
+      - [lastLevel, "int32"]
+      - [maze, "Maze"]
+      - [room, "int32"]
+      - [direction, "int32"]
+      - name: remaining
+        repeated: "int32"
+      - name: memory
+        repeated: "RoomMemory"
+      - [status, "string"]
+      - [moves, "int32"]
+      - [actions, "int32"]
+      - [collisions, "int32"]
+      - [repeats, "int32"]
+      - [explored, "int32"]
+      - [exitsFound, "int32"]
+      - [lastAction, "string"]
+      - [message, "string"]
+  ActionLog:
+    java: dev.ghost.ActionLog
+    fields:
+      - [turn, "int32"]
+      - [level, "int32"]
+      - [room, "int32"]
+      - [direction, "int32"]
+      - [action, "string"]
+      - [result, "string"]
+      - [latencyMs, "int64"]
+      - [player, "string"]
+      - [signal, "string"]
+      - [signalTrend, "string"]
+  RunState:
+    java: dev.ghost.RunState
+    fields:
+      - [game, "GameState"]
+      - [generation, "string"]
+      - [segment, "string"]
+      - [revision, "int64"]
+      - [player, "string"]
+      - [action, "string"]
+      - [decisions, "int32"]
+      - [maxDecisions, "int32"]
+      - [deadline, "int64"]
+      - [observedAt, "int64"]
+      - [decisionStarted, "int64"]
+      - [stopReason, "string"]
+      - name: stack
+        repeated: "int32"
+      - name: log
+        repeated: "ActionLog"
+      - [navigation, "NavigationSignal"]
+      - [agentClues, "bool"]
+  SignalReading:
+    java: dev.ghost.SignalReading
+    fields:
+      - [room, "int32"]
+      - [signal, "string"]
+  NavigationSignal:
+    java: dev.ghost.NavigationSignal
+    fields:
+      - [signal, "string"]
+      - [signalTrend, "string"]
+      - [level, "int32"]
+      - [room, "int32"]
+      - name: readings
+        repeated: "SignalReading"
+  ModelTurn:
+    java: dev.ghost.ModelTurn
+    fields:
+      - [run, "RunState"]
+      - [request, "<tpf.decision.DecisionRequest>"]
+  Chosen:
+    java: dev.ghost.Chosen
+    fields:
+      - [run, "RunState"]
+      - [result, "<tpf.decision.DecisionResult>"]
+  LargeModelTurn:
+    java: dev.ghost.LargeModelTurn
+    fields:
+      - [run, "RunState"]
+      - [request, "<tpf.decision.DecisionRequest>"]
+  JevModelTurn:
+    java: dev.ghost.JevModelTurn
+    fields:
+      - [run, "RunState"]
+      - [request, "<tpf.decision.DecisionRequest>"]
+  ActionTurn:
+    java: dev.ghost.ActionTurn
+    fields:
+      - [run, "RunState"]
+      - [action, "string"]
+      - [latencyMs, "int64"]
+  RunResult:
+    java: dev.ghost.RunResult
+    fields:
+      - [run, "RunState"]
+      - [reason, "string"]
+  NextTurn:
+    java: dev.ghost.NextTurn
+    variants:
+      model: ModelTurn
+      large: LargeModelTurn
+      jev: JevModelTurn
+      action: ActionTurn
+      done: RunResult
+  Continuation:
+    java: dev.ghost.Continuation
+    variants:
+      again: RunState
+      done: RunResult
+
+connectors:
+  model:
+    provider: decision.query.jev
+    version: 1
+    config:
+      model: tev1:0.8b
+      baseUrl: http://localhost:11434
+      connection: local-ollama
+  model4b:
+    provider: decision.query.jev
+    version: 1
+    config:
+      model: tev1:latest
+      baseUrl: http://localhost:11434
+      connection: local-ollama
+  ai-player-model-jev:
+    provider: decision.query.jev
+    version: 1
+    config:
+      model: ~typesafe/jev-latest
+      baseUrl: https://openrouter.ai/api/v1
+      connection: openrouter-primary
+  game:
+    provider: ghost.session
+    version: 1
+
+pipelines:
+  play:
+    input: RunState
+    output: RunResult
+    steps:
+      - name: Observe control and time
+        kind: query
+        using: game
+        operation: control
+        operationVersion: 1
+        input: RunState
+        output: RunState
+        cardinality: ONE_TO_ONE
+        java: { input: dev.ghost.RunState, output: dev.ghost.RunState }
+      - name: Choose turn branch
+        service: dev.ghost.ChooseTurn
+        input: RunState
+        output: NextTurn
+        cardinality: ONE_TO_ONE
+        java: { input: dev.ghost.RunState, output: dev.ghost.NextTurn }
+      - name: Ask Tev1
+        # The prompt is question.instructions inside the typed DecisionRequest below.
+        # Authority: dev.ghost.Observations.ACTION_PROMPT and optional CLUE_PROMPT.
+        # ChooseTurn supplies the same question/criteria to both model bindings.
+        kind: query
+        using: model
+        operation: decide
+        operationVersion: 1
+        input: ModelTurn
+        output: Chosen
+        cardinality: ONE_TO_ONE
+        java: { input: dev.ghost.ModelTurn, output: dev.ghost.Chosen }
+        config:
+          request: request
+          completion: { field: result, run: run }
+      - name: Ask Tev1 4B
+        # Same action-focused typed prompt as Ask Tev1; only the model binding differs.
+        kind: query
+        using: model4b
+        operation: decide
+        operationVersion: 1
+        input: LargeModelTurn
+        output: Chosen
+        cardinality: ONE_TO_ONE
+        java: { input: dev.ghost.LargeModelTurn, output: dev.ghost.Chosen }
+        config:
+          request: request
+          completion: { field: result, run: run }
+      - name: Ask Jev
+        # Identical typed request; only the host connection and model binding differ.
+        kind: query
+        using: ai-player-model-jev
+        operation: decide
+        operationVersion: 1
+        input: JevModelTurn
+        output: Chosen
+        cardinality: ONE_TO_ONE
+        java: { input: dev.ghost.JevModelTurn, output: dev.ghost.Chosen }
+        config:
+          request: request
+          completion: { field: result, run: run }
+      - name: Validate model choice
+        service: dev.ghost.DecodeChoice
+        input: Chosen
+        output: ActionTurn
+        cardinality: ONE_TO_ONE
+        java: { input: dev.ghost.Chosen, output: dev.ghost.ActionTurn }
+      - name: Shared action
+        service: dev.ghost.ApplyAction
+        input: ActionTurn
+        output: RunState
+        cardinality: ONE_TO_ONE
+        java: { input: dev.ghost.ActionTurn, output: dev.ghost.RunState }
+      - name: Publish frame
+        kind: command
+        using: game
+        operation: publish
+        operationVersion: 1
+        commandIdGenerator: dev.ghost.FrameCommandId
+        duplicatePolicy: RETURN_RECORDED
+        input: RunState
+        output: RunState
+        cardinality: ONE_TO_ONE
+        java: { input: dev.ghost.RunState, output: dev.ghost.RunState }
+      - name: Continue or finish
+        service: dev.ghost.ContinuePlay
+        input: RunState
+        output: Continuation
+        cardinality: ONE_TO_ONE
+        java: { input: dev.ghost.RunState, output: dev.ghost.Continuation }
+      - name: Next turn
+        pipeline: play
+        input: RunState
+        output: RunResult
+        cardinality: ONE_TO_ONE
+        java: { input: dev.ghost.RunState, output: dev.ghost.RunResult }
+      - name: Finish play
+        service: dev.ghost.FinishPlay
+        input: RunResult
+        output: RunResult
+        cardinality: ONE_TO_ONE
+        java: { input: dev.ghost.RunResult, output: dev.ghost.RunResult }
+        terminal: true
+
+steps:
+  - name: Play segment
+    pipeline: play
+    input: RunState
+    output: RunResult
+    cardinality: ONE_TO_ONE
+    java: { input: dev.ghost.RunState, output: dev.ghost.RunResult }
+    terminal: true

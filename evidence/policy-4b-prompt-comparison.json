@@ -1,0 +1,94 @@
+{
+  "result": "PASS",
+  "controls": "Same seeds, models, existing starting facts/readings, rules, baselines, signals and budgets. Observation source differs only in question and, for ordered policy, the checked current_room_visits alias of observed memory.",
+  "previous": [
+    {
+      "agentClues": false,
+      "trials": 3,
+      "escapes": 1,
+      "decisions": 148,
+      "moves": 82,
+      "collisions": 0,
+      "repeatedPositions": 62,
+      "roomsExplored": 22,
+      "roomExhaustions": 1,
+      "terminationReasons": {
+        "LOST": 1,
+        "TIME_LIMIT": 1,
+        "WON": 1
+      },
+      "latencyMs": {
+        "median": 1400.5,
+        "max": 4409
+      }
+    },
+    {
+      "agentClues": true,
+      "trials": 3,
+      "escapes": 1,
+      "decisions": 122,
+      "moves": 68,
+      "collisions": 0,
+      "repeatedPositions": 48,
+      "roomsExplored": 22,
+      "roomExhaustions": 1,
+      "terminationReasons": {
+        "LOST": 1,
+        "TIME_LIMIT": 1,
+        "WON": 1
+      },
+      "latencyMs": {
+        "median": 1824.5,
+        "max": 7969
+      }
+    }
+  ],
+  "actionFocused": [
+    {
+      "agentClues": false,
+      "trials": 3,
+      "escapes": 1,
+      "decisions": 140,
+      "moves": 77,
+      "collisions": 0,
+      "repeatedPositions": 57,
+      "roomsExplored": 22,
+      "roomExhaustions": 1,
+      "terminationReasons": {
+        "LOST": 1,
+        "TIME_LIMIT": 1,
+        "WON": 1
+      },
+      "latencyMs": {
+        "median": 1576.0,
+        "max": 2750
+      }
+    },
+    {
+      "agentClues": true,
+      "trials": 3,
+      "escapes": 1,
+      "decisions": 126,
+      "moves": 70,
+      "collisions": 0,
+      "repeatedPositions": 50,
+      "roomsExplored": 22,
+      "roomExhaustions": 1,
+      "terminationReasons": {
+        "LOST": 1,
+        "TIME_LIMIT": 1,
+        "WON": 1
+      },
+      "latencyMs": {
+        "median": 1893.5,
+        "max": 2235
+      }
+    }
+  ],
+  "inputsSha256": {
+    "evidence/forward-4b-off.json": "f4f675686e85d87f9257dcad189a1273eba61391f22f5a62a141965d1dfb1036",
+    "evidence/forward-4b-on.json": "59b406cbd7a5c7be5ccfe3eeb88ca9dab37d62517d72354fae67600a38720544",
+    "evidence/policy-4b-off.json": "b5a06468e759c1f8cdc324e5471ebb6386e13f78da1ecba49f6999b605ad4479",
+    "evidence/policy-4b-on.json": "15fdc56ebe5a6c69c6acee58448d9d9727f258ee7f27db2fdc213e7b7c551cdc"
+  }
+}

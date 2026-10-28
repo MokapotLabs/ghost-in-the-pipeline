@@ -1,0 +1,66 @@
+{
+  "result": "PASS",
+  "featureCommit": "4bd190a",
+  "promptVersion": "forward-first-v2",
+  "javaTests": 22,
+  "javaSuites": [
+    {
+      "name": "dev.ghost.SignalsTest",
+      "tests": 3,
+      "errors": 0,
+      "skipped": 0,
+      "failures": 0
+    },
+    {
+      "name": "dev.ghost.RulesTest",
+      "tests": 8,
+      "errors": 0,
+      "skipped": 0,
+      "failures": 0
+    },
+    {
+      "name": "dev.ghost.AgentSafetyTest",
+      "tests": 6,
+      "errors": 0,
+      "skipped": 0,
+      "failures": 0
+    },
+    {
+      "name": "dev.ghost.GhostRecordingE2ETest",
+      "tests": 5,
+      "errors": 0,
+      "skipped": 0,
+      "failures": 0
+    }
+  ],
+  "liveModels": [
+    "tev1:0.8b",
+    "tev1:latest (4B)"
+  ],
+  "namedE2E": "ghostRecordingE2ECompletesHumanCampaignThenBoundedPlayers",
+  "promptControlTests": 10,
+  "historicalClueControlTests": 7,
+  "historicalComparisonTests": 32,
+  "browserChecks": "polish-browser-checks.json",
+  "browserViewport": "1280\u00d7720",
+  "rendererAndReducedMotion": "PASS",
+  "audioLifecycleAndMute": "PASS",
+  "iconSizesVerified": [
+    16,
+    42
+  ],
+  "matrixTrials": 24,
+  "manualUiProviderChecks": [
+    "polish-live-ui.json",
+    "polish-live-resume.json"
+  ],
+  "nativeLineage": "forward-lineage.json",
+  "buildAndPipelineChecks": "polish-build.json",
+  "gameplayChange": "None; prompt question adds explicit open-passage forward instruction. Rules, signals, baseline policies and TPF pipeline unchanged.",
+  "screenshots": [
+    "docs/screenshots/polished-game-1280.png",
+    "docs/screenshots/polished-ai-1280.png"
+  ],
+  "review": "Focused CodeRabbit review reported one minor asynchronous browser-test timing issue. Fixed by awaiting the action POST response, with both browser engines passing. Terminal button Enter handling also regression-tested.",
+  "publication": "Local commits only; no push/upload."
+}

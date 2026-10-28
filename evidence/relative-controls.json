@@ -1,0 +1,15 @@
+{
+  "result": "PASS",
+  "verifiedAt": "2026-10-27T20:01:16.853821+00:00",
+  "pairedCasesPerModel": 9,
+  "startingObservationDifference": "Only the appended relativeEdges object; all pre-existing values identical to compact trials",
+  "rulesAndBaselineSourceIdentity": "Unchanged SHA-256",
+  "modelDigests": "Identical per model across compact and relative trials",
+  "budgets": "128 decisions / 120 seconds in both protocols",
+  "originalFilesSha256": {
+    "evidence/evaluation.json": "0e00d425b8243a916048e80a989f80d83e42a606ecbfbb7cf3f5d32c8a008171",
+    "evidence/model-comparison.json": "8f69ecb1e3a393c6f630ca3d0f8da4b3ee6cf945dd355f2f247a36d64e7e00ea",
+    "evidence/comparison-08b-compact.json": "86edb389f74289dddc8d4e41e5dc46fd6533c195e2556f42e7c0ab4aa2565213",
+    "evidence/comparison-4b-compact.json": "49c4fcf1759380d329c3eac852e9c23f90057b2614f38177d4c6b19ee5f421e4"
+  }
+}

@@ -1,0 +1,440 @@
+{
+  "scope": "Frozen synthetic local-observation classification fixtures, not admitted mazes, gameplay traces or escape trials. Expected labels are test metadata and never sent to the provider. Both prompts receive identical state, including the redundant visit alias and retained observed-memory rows.",
+  "cases": [
+    {
+      "id": "corridor-first",
+      "state": {
+        "level": 1,
+        "size": 3,
+        "room": 4,
+        "facing": "N",
+        "direction": 0,
+        "edges": ".#?#",
+        "entriesLeft": 7,
+        "current_room_visits": 1,
+        "memory": [
+          [
+            4,
+            1,
+            ".#?#",
+            7
+          ]
+        ],
+        "previousAction": "FORWARD",
+        "previousResult": "Entered a room; 7 entries left.",
+        "relativeEdges": {
+          "front": "open passage",
+          "left": "wall",
+          "right": "wall"
+        }
+      },
+      "expected": "FORWARD"
+    },
+    {
+      "id": "corridor-revisited",
+      "state": {
+        "level": 1,
+        "size": 3,
+        "room": 4,
+        "facing": "N",
+        "direction": 0,
+        "edges": ".#?#",
+        "entriesLeft": 7,
+        "current_room_visits": 2,
+        "memory": [
+          [
+            4,
+            2,
+            ".#?#",
+            7
+          ]
+        ],
+        "previousAction": "FORWARD",
+        "previousResult": "Entered a room; 7 entries left.",
+        "relativeEdges": {
+          "front": "open passage",
+          "left": "wall",
+          "right": "wall"
+        }
+      },
+      "expected": "FORWARD"
+    },
+    {
+      "id": "blocked-left-open",
+      "state": {
+        "level": 1,
+        "size": 3,
+        "room": 4,
+        "facing": "N",
+        "direction": 0,
+        "edges": "##?.",
+        "entriesLeft": 7,
+        "current_room_visits": 1,
+        "memory": [
+          [
+            4,
+            1,
+            "##?.",
+            7
+          ]
+        ],
+        "previousAction": "START",
+        "previousResult": "Find the exit. Seven entries per room.",
+        "relativeEdges": {
+          "front": "wall",
+          "left": "open passage",
+          "right": "wall"
+        }
+      },
+      "expected": "TURN_LEFT"
+    },
+    {
+      "id": "blocked-right-open",
+      "state": {
+        "level": 1,
+        "size": 3,
+        "room": 4,
+        "facing": "N",
+        "direction": 0,
+        "edges": "#.?#",
+        "entriesLeft": 7,
+        "current_room_visits": 1,
+        "memory": [
+          [
+            4,
+            1,
+            "#.?#",
+            7
+          ]
+        ],
+        "previousAction": "START",
+        "previousResult": "Find the exit. Seven entries per room.",
+        "relativeEdges": {
+          "front": "wall",
+          "left": "wall",
+          "right": "open passage"
+        }
+      },
+      "expected": "TURN_RIGHT"
+    },
+    {
+      "id": "blocked-two-openings",
+      "state": {
+        "level": 1,
+        "size": 3,
+        "room": 4,
+        "facing": "N",
+        "direction": 0,
+        "edges": "#.?.",
+        "entriesLeft": 7,
+        "current_room_visits": 1,
+        "memory": [
+          [
+            4,
+            1,
+            "#.?.",
+            7
+          ]
+        ],
+        "previousAction": "START",
+        "previousResult": "Find the exit. Seven entries per room.",
+        "relativeEdges": {
+          "front": "wall",
+          "left": "open passage",
+          "right": "open passage"
+        }
+      },
+      "expected": "TURN_LEFT"
+    },
+    {
+      "id": "dead-end-look-behind",
+      "state": {
+        "level": 1,
+        "size": 3,
+        "room": 4,
+        "facing": "N",
+        "direction": 0,
+        "edges": "##?#",
+        "entriesLeft": 7,
+        "current_room_visits": 1,
+        "memory": [
+          [
+            4,
+            1,
+            "##?#",
+            7
+          ]
+        ],
+        "previousAction": "FORWARD",
+        "previousResult": "Entered a room; 7 entries left.",
+        "relativeEdges": {
+          "front": "wall",
+          "left": "wall",
+          "right": "wall"
+        }
+      },
+      "expected": "TURN_RIGHT"
+    },
+    {
+      "id": "exit-ahead",
+      "state": {
+        "level": 1,
+        "size": 3,
+        "room": 1,
+        "facing": "N",
+        "direction": 0,
+        "edges": "E.?.",
+        "entriesLeft": 7,
+        "current_room_visits": 1,
+        "memory": [
+          [
+            1,
+            1,
+            "E.?.",
+            7
+          ]
+        ],
+        "previousAction": "FORWARD",
+        "previousResult": "Entered a room; 7 entries left.",
+        "relativeEdges": {
+          "front": "exit",
+          "left": "open passage",
+          "right": "open passage"
+        }
+      },
+      "expected": "FORWARD"
+    },
+    {
+      "id": "exit-left",
+      "state": {
+        "level": 1,
+        "size": 3,
+        "room": 1,
+        "facing": "E",
+        "direction": 1,
+        "edges": "E.#?",
+        "entriesLeft": 7,
+        "current_room_visits": 1,
+        "memory": [
+          [
+            1,
+            1,
+            "E.#?",
+            7
+          ]
+        ],
+        "previousAction": "FORWARD",
+        "previousResult": "Entered a room; 7 entries left.",
+        "relativeEdges": {
+          "front": "open passage",
+          "left": "exit",
+          "right": "wall"
+        }
+      },
+      "expected": "TURN_LEFT"
+    },
+    {
+      "id": "exit-right",
+      "state": {
+        "level": 1,
+        "size": 3,
+        "room": 1,
+        "facing": "W",
+        "direction": 3,
+        "edges": "E?##",
+        "entriesLeft": 7,
+        "current_room_visits": 1,
+        "memory": [
+          [
+            1,
+            1,
+            "E?##",
+            7
+          ]
+        ],
+        "previousAction": "FORWARD",
+        "previousResult": "Entered a room; 7 entries left.",
+        "relativeEdges": {
+          "front": "wall",
+          "left": "wall",
+          "right": "exit"
+        }
+      },
+      "expected": "TURN_RIGHT"
+    },
+    {
+      "id": "junction-first",
+      "state": {
+        "level": 1,
+        "size": 3,
+        "room": 4,
+        "facing": "N",
+        "direction": 0,
+        "edges": "..?.",
+        "entriesLeft": 7,
+        "current_room_visits": 1,
+        "memory": [
+          [
+            4,
+            1,
+            "..?.",
+            7
+          ]
+        ],
+        "previousAction": "FORWARD",
+        "previousResult": "Entered a room; 7 entries left.",
+        "relativeEdges": {
+          "front": "open passage",
+          "left": "open passage",
+          "right": "open passage"
+        }
+      },
+      "expected": "FORWARD"
+    },
+    {
+      "id": "junction-revisited",
+      "state": {
+        "level": 1,
+        "size": 3,
+        "room": 4,
+        "facing": "N",
+        "direction": 0,
+        "edges": "..?.",
+        "entriesLeft": 7,
+        "current_room_visits": 2,
+        "memory": [
+          [
+            4,
+            2,
+            "..?.",
+            7
+          ]
+        ],
+        "previousAction": "FORWARD",
+        "previousResult": "Entered a room; 7 entries left.",
+        "relativeEdges": {
+          "front": "open passage",
+          "left": "open passage",
+          "right": "open passage"
+        }
+      },
+      "expected": "TURN_LEFT"
+    },
+    {
+      "id": "corner-revisited",
+      "state": {
+        "level": 1,
+        "size": 3,
+        "room": 4,
+        "facing": "N",
+        "direction": 0,
+        "edges": "..?#",
+        "entriesLeft": 7,
+        "current_room_visits": 2,
+        "memory": [
+          [
+            4,
+            2,
+            "..?#",
+            7
+          ]
+        ],
+        "previousAction": "FORWARD",
+        "previousResult": "Entered a room; 7 entries left.",
+        "relativeEdges": {
+          "front": "open passage",
+          "left": "wall",
+          "right": "open passage"
+        }
+      },
+      "expected": "TURN_RIGHT"
+    },
+    {
+      "id": "commit-after-left",
+      "state": {
+        "level": 1,
+        "size": 3,
+        "room": 4,
+        "facing": "N",
+        "direction": 0,
+        "edges": ".#?.",
+        "entriesLeft": 7,
+        "current_room_visits": 2,
+        "memory": [
+          [
+            4,
+            2,
+            ".#?.",
+            7
+          ]
+        ],
+        "previousAction": "TURN_LEFT",
+        "previousResult": "Turned left.",
+        "relativeEdges": {
+          "front": "open passage",
+          "left": "open passage",
+          "right": "wall"
+        }
+      },
+      "expected": "FORWARD"
+    },
+    {
+      "id": "commit-after-right",
+      "state": {
+        "level": 1,
+        "size": 3,
+        "room": 4,
+        "facing": "N",
+        "direction": 0,
+        "edges": "..?#",
+        "entriesLeft": 7,
+        "current_room_visits": 2,
+        "memory": [
+          [
+            4,
+            2,
+            "..?#",
+            7
+          ]
+        ],
+        "previousAction": "TURN_RIGHT",
+        "previousResult": "Turned right.",
+        "relativeEdges": {
+          "front": "open passage",
+          "left": "wall",
+          "right": "open passage"
+        }
+      },
+      "expected": "FORWARD"
+    },
+    {
+      "id": "leave-last-entry",
+      "state": {
+        "level": 1,
+        "size": 3,
+        "room": 4,
+        "facing": "N",
+        "direction": 0,
+        "edges": ".#?#",
+        "entriesLeft": 1,
+        "current_room_visits": 2,
+        "memory": [
+          [
+            4,
+            2,
+            ".#?#",
+            1
+          ]
+        ],
+        "previousAction": "FORWARD",
+        "previousResult": "Entered a room; 1 entries left.",
+        "relativeEdges": {
+          "front": "open passage",
+          "left": "wall",
+          "right": "wall"
+        }
+      },
+      "expected": "FORWARD"
+    }
+  ]
+}

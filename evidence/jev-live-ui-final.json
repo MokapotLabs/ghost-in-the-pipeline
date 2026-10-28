@@ -1,0 +1,188 @@
+{
+  "scope": "Separate live UI verification, not an evaluation trial",
+  "result": "PASS",
+  "frame": {
+    "ready": true,
+    "generation": "59ca760c-de22-44fa-880d-fda2edd1e2e0",
+    "segment": "3924d23f-e2c7-4943-ae58-522b322e6c35",
+    "seed": 1983,
+    "revision": 3,
+    "observation": {
+      "level": 1,
+      "size": 3,
+      "room": 3,
+      "facing": "S",
+      "direction": 2,
+      "edges": "..##",
+      "entriesLeft": 6,
+      "current_room_visits": 1,
+      "memory": [
+        [
+          0,
+          1,
+          "##.#",
+          7
+        ],
+        [
+          3,
+          1,
+          "..##",
+          6
+        ]
+      ],
+      "previousAction": "FORWARD",
+      "previousResult": "Entered a room; 6 entries left.",
+      "relativeEdges": {
+        "front": "wall",
+        "left": "open passage",
+        "right": "wall"
+      }
+    },
+    "navigation": {
+      "signal": "NOTICEABLE",
+      "signalTrend": "UNCHANGED",
+      "level": 1,
+      "room": 3,
+      "readings": [
+        {
+          "room": 0,
+          "signal": "NOTICEABLE"
+        },
+        {
+          "room": 3,
+          "signal": "NOTICEABLE"
+        }
+      ]
+    },
+    "agentClues": true,
+    "level": 1,
+    "status": "PLAYING",
+    "message": "Room 4 · 6 entries left.",
+    "active": false,
+    "pausing": false,
+    "reason": "PAUSED",
+    "player": "JEV",
+    "moves": 1,
+    "actions": 2,
+    "collisions": 0,
+    "repeats": 0,
+    "explored": 2,
+    "exitsFound": 0,
+    "decisions": 2,
+    "latestAction": "FORWARD",
+    "latencyMs": 509,
+    "model": "~typesafe/jev-latest",
+    "models": {
+      "JEV": "~typesafe/jev-latest",
+      "TEV1": "tev1:0.8b",
+      "TEV1_4B": "tev1:latest"
+    },
+    "decisionPrompt": "ordered-policy-v3"
+  },
+  "history": [
+    {
+      "turn": 1,
+      "level": 1,
+      "room": 0,
+      "direction": 1,
+      "action": "START",
+      "result": "Find the exit. Seven entries per room.",
+      "latencyMs": 0,
+      "player": "HUMAN",
+      "signal": "NOTICEABLE",
+      "signalTrend": "NO_MOVEMENT"
+    },
+    {
+      "turn": 1,
+      "level": 1,
+      "room": 0,
+      "direction": 1,
+      "action": "TURN_RIGHT",
+      "result": "Turned right.",
+      "latencyMs": 849,
+      "player": "JEV",
+      "signal": "NOTICEABLE",
+      "signalTrend": "NO_MOVEMENT"
+    },
+    {
+      "turn": 2,
+      "level": 1,
+      "room": 0,
+      "direction": 2,
+      "action": "FORWARD",
+      "result": "Room 4 · 6 entries left.",
+      "latencyMs": 509,
+      "player": "JEV",
+      "signal": "NOTICEABLE",
+      "signalTrend": "NO_MOVEMENT"
+    }
+  ],
+  "postReset": {
+    "ready": true,
+    "generation": "0205fbf2-2917-4a4d-a683-d4478f0abe8a",
+    "segment": "9b43b681-17cd-4ff3-b54d-78ab37d868ef",
+    "seed": 1983,
+    "revision": 1,
+    "observation": {
+      "level": 1,
+      "size": 3,
+      "room": 0,
+      "facing": "E",
+      "direction": 1,
+      "edges": "##.?",
+      "entriesLeft": 7,
+      "current_room_visits": 1,
+      "memory": [
+        [
+          0,
+          1,
+          "##.?",
+          7
+        ]
+      ],
+      "previousAction": "START",
+      "previousResult": "Find the exit. Seven entries per room.",
+      "relativeEdges": {
+        "front": "wall",
+        "left": "wall",
+        "right": "open passage"
+      }
+    },
+    "navigation": {
+      "signal": "NOTICEABLE",
+      "signalTrend": "NO_MOVEMENT",
+      "level": 1,
+      "room": 0,
+      "readings": [
+        {
+          "room": 0,
+          "signal": "NOTICEABLE"
+        }
+      ]
+    },
+    "agentClues": false,
+    "level": 1,
+    "status": "PLAYING",
+    "message": "Find the exit. Seven entries per room.",
+    "active": false,
+    "pausing": false,
+    "reason": "HUMAN_TURN",
+    "player": "HUMAN",
+    "moves": 0,
+    "actions": 0,
+    "collisions": 0,
+    "repeats": 0,
+    "explored": 1,
+    "exitsFound": 0,
+    "decisions": 0,
+    "latestAction": "START",
+    "latencyMs": 0,
+    "model": "tev1:0.8b",
+    "models": {
+      "JEV": "~typesafe/jev-latest",
+      "TEV1": "tev1:0.8b",
+      "TEV1_4B": "tev1:latest"
+    },
+    "decisionPrompt": "ordered-policy-v3"
+  }
+}

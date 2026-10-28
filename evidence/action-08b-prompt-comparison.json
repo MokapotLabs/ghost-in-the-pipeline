@@ -1,0 +1,86 @@
+{
+  "result": "PASS",
+  "controls": "Same seeds, models, initial observations/readings, rules, baselines, signals and budgets. Only observation-authoring class changed among recorded game classes; fixture export shows state unchanged and question text changed.",
+  "previous": [
+    {
+      "agentClues": false,
+      "trials": 9,
+      "escapes": 0,
+      "decisions": 1152,
+      "moves": 4,
+      "collisions": 1148,
+      "repeatedPositions": 0,
+      "roomsExplored": 13,
+      "roomExhaustions": 0,
+      "terminationReasons": {
+        "DECISION_LIMIT": 9
+      },
+      "latencyMs": {
+        "median": 7.0,
+        "max": 330
+      }
+    },
+    {
+      "agentClues": true,
+      "trials": 9,
+      "escapes": 0,
+      "decisions": 1152,
+      "moves": 4,
+      "collisions": 1148,
+      "repeatedPositions": 0,
+      "roomsExplored": 13,
+      "roomExhaustions": 0,
+      "terminationReasons": {
+        "DECISION_LIMIT": 9
+      },
+      "latencyMs": {
+        "median": 7.0,
+        "max": 264
+      }
+    }
+  ],
+  "actionFocused": [
+    {
+      "agentClues": false,
+      "trials": 9,
+      "escapes": 0,
+      "decisions": 1152,
+      "moves": 4,
+      "collisions": 136,
+      "repeatedPositions": 0,
+      "roomsExplored": 13,
+      "roomExhaustions": 0,
+      "terminationReasons": {
+        "DECISION_LIMIT": 9
+      },
+      "latencyMs": {
+        "median": 9.0,
+        "max": 2540
+      }
+    },
+    {
+      "agentClues": true,
+      "trials": 9,
+      "escapes": 0,
+      "decisions": 1152,
+      "moves": 4,
+      "collisions": 6,
+      "repeatedPositions": 0,
+      "roomsExplored": 13,
+      "roomExhaustions": 0,
+      "terminationReasons": {
+        "DECISION_LIMIT": 9
+      },
+      "latencyMs": {
+        "median": 8.0,
+        "max": 694
+      }
+    }
+  ],
+  "inputsSha256": {
+    "evidence/haunted-08b-off.json": "4b3ad3e3e6add86916fb77eb03600da115b16b9e8da2b166cf01829c36a91d9e",
+    "evidence/haunted-08b-on.json": "f113c425cf8fe1f143a38dc87fe254c0c7c6096a6a4d750ef830ee498ba9c254",
+    "evidence/action-08b-off.json": "e24c71f1da574361e1e9ed298e90810d8ef76619d169e6ffced84c9d2ee96fbb",
+    "evidence/action-08b-on.json": "566c5ed9b53d2d0a5af767e8921e1b22fe2cb14af1be4c96f6654c758cf75d11"
+  }
+}

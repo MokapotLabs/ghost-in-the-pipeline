@@ -1,0 +1,71 @@
+{
+  "result": "INCOMPLETE_PROVIDER_FAILURE",
+  "controlsResult": "PASS",
+  "controls": "Identical seeds, initial observations/readings, configured model identities, compiled game classes and budgets; clue availability is the experimental switch.",
+  "players": [
+    "JEV"
+  ],
+  "levels": [
+    1,
+    2,
+    3
+  ],
+  "seeds": [
+    1983,
+    1986,
+    2026
+  ],
+  "models": [
+    {
+      "name": "~typesafe/jev-latest",
+      "provider": "decision.query.jev",
+      "identityScope": "Configured hosted alias; underlying checkpoint is not pinned or disclosed by the game API."
+    }
+  ],
+  "arms": [
+    {
+      "agentClues": false,
+      "trials": 9,
+      "escapes": 8,
+      "decisions": 235,
+      "moves": 138,
+      "collisions": 0,
+      "repeatedPositions": 11,
+      "roomsExplored": 128,
+      "roomExhaustions": 0,
+      "providerFailures": 1,
+      "terminationReasons": {
+        "PROVIDER_OR_PIPELINE_FAILURE: QueryTerminalFailureException": 1,
+        "WON": 8
+      },
+      "latencyMs": {
+        "median": 516,
+        "max": 1866
+      }
+    },
+    {
+      "agentClues": true,
+      "trials": 9,
+      "escapes": 9,
+      "decisions": 265,
+      "moves": 155,
+      "collisions": 0,
+      "repeatedPositions": 17,
+      "roomsExplored": 138,
+      "roomExhaustions": 0,
+      "providerFailures": 0,
+      "terminationReasons": {
+        "WON": 9
+      },
+      "latencyMs": {
+        "median": 519,
+        "max": 2193
+      }
+    }
+  ],
+  "limits": "One attempt per case/arm. Timings include provider/network overhead; deadline cancellation can omit one pending inference from committed totals. Hosted aliases do not pin an underlying checkpoint.",
+  "inputs": [
+    "evidence/jev-off.json",
+    "evidence/jev-on.json"
+  ]
+}

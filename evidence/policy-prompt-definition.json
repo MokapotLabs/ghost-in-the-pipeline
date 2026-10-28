@@ -1,0 +1,68 @@
+{
+  "promptVersion" : "ordered-policy-v3",
+  "off" : {
+    "questions" : {
+      "action" : {
+        "instructions" : "Choose ONE action: FORWARD, TURN_LEFT, TURN_RIGHT.\nfront, left, right mean relativeEdges.front, relativeEdges.left, relativeEdges.right.\nEdge values are \"wall\", \"open passage\", \"exit\".\nApply rules top-to-bottom. Stop at the first match. Other state fields do not override these rules.\n1. If front == \"exit\", choose FORWARD.\n2. If left == \"exit\", choose TURN_LEFT.\n3. If right == \"exit\", choose TURN_RIGHT.\n4. If previousAction is TURN_LEFT or TURN_RIGHT and front == \"open passage\", choose FORWARD.\n5. If front == \"open passage\" and current_room_visits == 1, choose FORWARD.\n6. If left == \"open passage\", choose TURN_LEFT.\n7. If right == \"open passage\", choose TURN_RIGHT.\n8. If front == \"open passage\", choose FORWARD.\n9. Otherwise, choose TURN_RIGHT to look behind.",
+        "type" : "choice",
+        "criteria" : {
+          "FORWARD" : "Move ahead. Appropriate only when front is open passage or exit.",
+          "TURN_LEFT" : "Turn left in place. Appropriate for an opening on the left.",
+          "TURN_RIGHT" : "Turn right in place. Appropriate for an opening on the right."
+        }
+      }
+    },
+    "state" : {
+      "level" : 1,
+      "size" : 3,
+      "room" : 0,
+      "facing" : "E",
+      "direction" : 1,
+      "edges" : "##.?",
+      "entriesLeft" : 7,
+      "current_room_visits" : 1,
+      "memory" : [ [ 0, 1, "##.?", 7 ] ],
+      "previousAction" : "START",
+      "previousResult" : "Find the exit. Seven entries per room.",
+      "relativeEdges" : {
+        "front" : "wall",
+        "left" : "wall",
+        "right" : "open passage"
+      }
+    }
+  },
+  "on" : {
+    "questions" : {
+      "action" : {
+        "instructions" : "Choose ONE action: FORWARD, TURN_LEFT, TURN_RIGHT.\nfront, left, right mean relativeEdges.front, relativeEdges.left, relativeEdges.right.\nEdge values are \"wall\", \"open passage\", \"exit\".\nApply rules top-to-bottom. Stop at the first match. Other state fields do not override these rules.\n1. If front == \"exit\", choose FORWARD.\n2. If left == \"exit\", choose TURN_LEFT.\n3. If right == \"exit\", choose TURN_RIGHT.\n4. If previousAction is TURN_LEFT or TURN_RIGHT and front == \"open passage\", choose FORWARD.\n5. If front == \"open passage\" and current_room_visits == 1, choose FORWARD.\n6. If left == \"open passage\", choose TURN_LEFT.\n7. If right == \"open passage\", choose TURN_RIGHT.\n8. If front == \"open passage\", choose FORWARD.\n9. Otherwise, choose TURN_RIGHT to look behind.\nSignal order: FAINT < NOTICEABLE < STRONG < INTENSE means closer through corridors.\nsignalMemory rows are [visited room, reading]. Prefer openings toward stronger remembered readings.\nIf a move made the signal weaker, try another opening.\nNO_MOVEMENT means a turn or bump, not progress.",
+        "type" : "choice",
+        "criteria" : {
+          "FORWARD" : "Move ahead. Appropriate only when front is open passage or exit.",
+          "TURN_LEFT" : "Turn left in place. Appropriate for an opening on the left.",
+          "TURN_RIGHT" : "Turn right in place. Appropriate for an opening on the right."
+        }
+      }
+    },
+    "state" : {
+      "level" : 1,
+      "size" : 3,
+      "room" : 0,
+      "facing" : "E",
+      "direction" : 1,
+      "edges" : "##.?",
+      "entriesLeft" : 7,
+      "current_room_visits" : 1,
+      "memory" : [ [ 0, 1, "##.?", 7 ] ],
+      "previousAction" : "START",
+      "previousResult" : "Find the exit. Seven entries per room.",
+      "relativeEdges" : {
+        "front" : "wall",
+        "left" : "wall",
+        "right" : "open passage"
+      },
+      "signal" : "NOTICEABLE",
+      "signalTrend" : "NO_MOVEMENT",
+      "signalMemory" : [ [ 0, "NOTICEABLE" ] ]
+    }
+  }
+}

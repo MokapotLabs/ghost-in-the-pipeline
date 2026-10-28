@@ -1,0 +1,106 @@
+{
+  "result": "PASS",
+  "recordedAt": "2026-10-27T21:27:15.440338+00:00",
+  "JavaLiveSuites": [
+    {
+      "name": "dev.ghost.SignalsTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.185"
+    },
+    {
+      "name": "dev.ghost.RulesTest",
+      "tests": "8",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.1"
+    },
+    {
+      "name": "dev.ghost.AgentSafetyTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.185"
+    },
+    {
+      "name": "dev.ghost.GhostRecordingE2ETest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "20.831"
+    }
+  ],
+  "JavaTests": 21,
+  "testNote": "Full live suite passed, followed by focused recheck of signal plateau and level-reset assertions.",
+  "clueControlTests": 7,
+  "controlsMode": "Tests run under Python -O; altered signal starts, absent controls, missing hashes, changed budgets and duplicate cases rejected.",
+  "audioChecks": "PASS: opt-in, conservative gain, spacing/pitch, discovery/crossing, mute/reset/end/destroy cleanup, browser timer receiver regression. Actual browser playback and captured non-silent AAC verified.",
+  "rendererChecks": "PASS: turns, forward steps, visual clue on/off, no observation mutation, reduced motion, cancellation and clipping",
+  "browserChecks": [
+    "Audio starts muted; user gesture successfully enables it",
+    "Visual switch leaves audio/agent switches independent",
+    "Normal halo animation haunted-breath; reduced-motion animation none; emulation restored",
+    "Current human game left running without final reset"
+  ],
+  "nativeLineage": "PASS",
+  "nativeDocumentsDiagnostic": 3,
+  "rootSemantics": "No new roots: settings local; signal pure state transformation; existing native Query and shared action/publication path.",
+  "runtimeClassesSha256": {
+    "dev/ghost/DecodeChoice.class": "83119beca4ad319b7eab74a9b6afd797a6d5a1f1bd6f7e16d25420dfd2b50671",
+    "dev/ghost/ChooseTurn.class": "5ef43cbaa3ac00e34e1964dd4530339509fa4317f4006b3406ff725aa5c5c0db",
+    "dev/ghost/Rules.class": "4623dbf66d0f8d69ffb7b18e108de260197fdab922207c49b56d09720469749e",
+    "dev/ghost/Observations.class": "ac6774d1453cc44037d2264307ed42d5d8371756d0cef3a081b054802ae13cde",
+    "dev/ghost/Baselines.class": "8c647d01a1e3589ad36c3032aab1141a00a2279f4a32bd0a2ab4626f0ad8e400",
+    "dev/ghost/Runs.class": "b60b8ac6eb8f466f9d0b97fab627d814e8f74a593547dc38519c195f02635271",
+    "dev/ghost/Session.class": "960ae0ac64ced013b2ad5815cd398d6da86bad0723036ee6de60413cc3067955",
+    "dev/ghost/Signals.class": "9f71d1b3f90e90d06af2f139c3009fd7150e293d1ef1285be0e2611a51c55451",
+    "dev/ghost/NavigationSignal.class": "5daf36cb2860c7befff0b2b9777bb955b51ccd769d709f7f952ecf6fccc31d1b",
+    "dev/ghost/SignalReading.class": "1d95316d3396f30a07c74da6eaa65b8b8f0ab5cfc832a91f5492d0f863387f88",
+    "dev/ghost/ActionLog.class": "bd990b5e309ee22895b07aa2a14000dac37078781466612e95aea7ddf7ecd3ba",
+    "dev/ghost/RunState.class": "8da339799dda073036e2da2d21254cedf46bdcac704ed186e61502ceda2b6e2e"
+  },
+  "originalResultHashes": {
+    "evidence/evaluation.json": "0e00d425b8243a916048e80a989f80d83e42a606ecbfbb7cf3f5d32c8a008171",
+    "evidence/model-comparison.json": "8f69ecb1e3a393c6f630ca3d0f8da4b3ee6cf945dd355f2f247a36d64e7e00ea",
+    "evidence/comparison-08b-compact.json": "86edb389f74289dddc8d4e41e5dc46fd6533c195e2556f42e7c0ab4aa2565213",
+    "evidence/comparison-4b-compact.json": "49c4fcf1759380d329c3eac852e9c23f90057b2614f38177d4c6b19ee5f421e4",
+    "evidence/relative-08b.json": "7aabe8b5b12fdd8871a206dd9f74f5a033e2266ad0c615e7aa45133ab5581d7c",
+    "evidence/relative-4b.json": "4c0b716e72937d29db1cdc4d02c1996c0124a86b3bcad61b75b8e64c0e0d6d3e",
+    "evidence/relative-model-comparison.json": "d785a3c9c7000aacf48bf324aab9447fbf4e09d8fec2520d25c8dcc8eec9105b"
+  },
+  "mazeAndRules": "Rules.java and Baselines.java unchanged byte-for-byte; 600 generated levels remain verified.",
+  "experimentalTrials": {
+    "tinyModelPaired": 18,
+    "largeModelExploratoryPaired": 6,
+    "baselineReference": 18
+  },
+  "comparisons": [
+    "haunted-08b-comparison.json",
+    "haunted-4b-comparison.json"
+  ],
+  "video": {
+    "file": "docs/recordings/sixth-sense-90s.mp4",
+    "durationSeconds": 90,
+    "sizeBytes": 1234385,
+    "codecs": "H.264/AAC",
+    "dimensions": "1200x740",
+    "fps": 20,
+    "audioPeakDbfs": -30.19,
+    "validation": "Full decode and three sampled human/off/on frames inspected; actual Web Audio track non-silent.",
+    "edits": "First 60s of human source at labelled 1.5x, AI real time, audio 3x boost; no model choices or routes edited."
+  },
+  "review": {
+    "tool": "CodeRabbit",
+    "findingsResolved": [
+      "Resume opted-in audio when visible again",
+      "Require experiment control fields before comparing values"
+    ],
+    "additionalBrowserRepair": "Bind browser timer calls through closures; covered by regression check."
+  },
+  "publication": "Local files and commits only; no push or upload."
+}

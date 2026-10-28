@@ -1,0 +1,421 @@
+{
+  "recordedAt": "2026-10-27T19:59:47.287457+00:00",
+  "protocol": "ghost-paired-relative-v2",
+  "pairedInputs": "PASS: nine identical starting observations; identical rules/observation/policy source hashes and budgets",
+  "sourceSha256": {
+    "connectors/src/main/java/dev/ghost/Rules.java": "15e3a9b9b3305a35ba2777b825fbad8c0582e7a10e8cc5756f8788e0778b93f6",
+    "connectors/src/main/java/dev/ghost/Observations.java": "87c777666eafe6d2d90391b90a22d3c2e6af2604919e0f353d67c61e01cad3ed",
+    "connectors/src/main/java/dev/ghost/Baselines.java": "121a8ba79aac0bfd695256d517e0999c909df16a34d517762a289e0b43040c7a"
+  },
+  "runtimeClassesSha256": {
+    "dev/ghost/DecodeChoice.class": "83119beca4ad319b7eab74a9b6afd797a6d5a1f1bd6f7e16d25420dfd2b50671",
+    "dev/ghost/Rules.class": "4623dbf66d0f8d69ffb7b18e108de260197fdab922207c49b56d09720469749e",
+    "dev/ghost/Observations.class": "4481e2bcad622e34f3669b19b85b028a098223454f9773a526c8f0612db95607",
+    "dev/ghost/Baselines.class": "8c647d01a1e3589ad36c3032aab1141a00a2279f4a32bd0a2ab4626f0ad8e400",
+    "dev/ghost/Runs.class": "4de9c4e55fc83bdf791ef418e7a8e3ee6c3072fb421ebb6ac4a5f3c266a62e1c",
+    "dev/ghost/Session.class": "da3ca8c848a7a17ca98c8d3dc3a485d3b83f1b4d12772cba42c04cb8393005d8"
+  },
+  "inputs": [
+    "evidence/relative-08b.json",
+    "evidence/relative-4b.json"
+  ],
+  "limits": "One trial per model/case; model size and quantization differ. Warm local timings are descriptive, not an isolated speed benchmark.",
+  "models": [
+    {
+      "identity": {
+        "name": "tev1:0.8b",
+        "model": "tev1:0.8b",
+        "modified_at": "2026-10-27T17:49:53.890682345+01:00",
+        "size": 1524372929,
+        "digest": "b661d56508169d2b6c4cab5a047409f50bd9694a215bc232469d44291f4bdbf1",
+        "details": {
+          "parent_model": "",
+          "format": "safetensors",
+          "family": "qwen3_5",
+          "families": [
+            "qwen3_5"
+          ],
+          "parameter_size": "752M",
+          "quantization_level": "BF16",
+          "runner": "mlx"
+        },
+        "capabilities": [
+          "decision"
+        ]
+      },
+      "exitSuccesses": 0,
+      "trials": 9,
+      "decisions": 1152,
+      "moves": 4,
+      "collisions": 1148,
+      "rejectedActions": 1148,
+      "repeatedPositions": 0,
+      "roomsExplored": 13,
+      "decisionLatencyMs": {
+        "median": 8.0,
+        "max": 770
+      },
+      "terminationReasons": {
+        "DECISION_LIMIT": 9
+      },
+      "actionCounts": {
+        "FORWARD": 1152,
+        "TURN_LEFT": 0,
+        "TURN_RIGHT": 0
+      }
+    },
+    {
+      "identity": {
+        "name": "tev1:latest",
+        "model": "tev1:latest",
+        "modified_at": "2026-10-13T19:17:11.060858551+02:00",
+        "size": 4361568327,
+        "digest": "4d24c6f6d61a48d9b72902f4805c5f1da53010736b834b0372377fb4bb7e53d3",
+        "details": {
+          "parent_model": "",
+          "format": "safetensors",
+          "family": "qwen3_5",
+          "families": [
+            "qwen3_5"
+          ],
+          "parameter_size": "4.2B",
+          "quantization_level": "mxfp8",
+          "runner": "mlx"
+        },
+        "capabilities": [
+          "decision"
+        ]
+      },
+      "exitSuccesses": 3,
+      "trials": 9,
+      "decisions": 558,
+      "moves": 276,
+      "collisions": 105,
+      "rejectedActions": 105,
+      "repeatedPositions": 175,
+      "roomsExplored": 107,
+      "decisionLatencyMs": {
+        "median": 1299.0,
+        "max": 3953
+      },
+      "terminationReasons": {
+        "LOST": 1,
+        "TIME_LIMIT": 5,
+        "WON": 3
+      },
+      "actionCounts": {
+        "FORWARD": 381,
+        "TURN_LEFT": 111,
+        "TURN_RIGHT": 66
+      }
+    }
+  ],
+  "cases": [
+    {
+      "seed": 1983,
+      "level": 1,
+      "models": [
+        {
+          "model": "tev1:0.8b",
+          "termination": "DECISION_LIMIT",
+          "exitFound": false,
+          "decisions": 128,
+          "moves": 0,
+          "collisions": 128,
+          "repeatedPositions": 0,
+          "roomsExplored": 1,
+          "decisionLatencyMs": {
+            "median": 9.0,
+            "max": 294
+          }
+        },
+        {
+          "model": "tev1:latest",
+          "termination": "TIME_LIMIT",
+          "exitFound": false,
+          "decisions": 93,
+          "moves": 40,
+          "collisions": 18,
+          "repeatedPositions": 32,
+          "roomsExplored": 9,
+          "decisionLatencyMs": {
+            "median": 1245,
+            "max": 2062
+          }
+        }
+      ]
+    },
+    {
+      "seed": 1983,
+      "level": 2,
+      "models": [
+        {
+          "model": "tev1:0.8b",
+          "termination": "DECISION_LIMIT",
+          "exitFound": false,
+          "decisions": 128,
+          "moves": 0,
+          "collisions": 128,
+          "repeatedPositions": 0,
+          "roomsExplored": 1,
+          "decisionLatencyMs": {
+            "median": 8.0,
+            "max": 342
+          }
+        },
+        {
+          "model": "tev1:latest",
+          "termination": "TIME_LIMIT",
+          "exitFound": false,
+          "decisions": 84,
+          "moves": 45,
+          "collisions": 12,
+          "repeatedPositions": 37,
+          "roomsExplored": 9,
+          "decisionLatencyMs": {
+            "median": 1338.0,
+            "max": 3953
+          }
+        }
+      ]
+    },
+    {
+      "seed": 1983,
+      "level": 3,
+      "models": [
+        {
+          "model": "tev1:0.8b",
+          "termination": "DECISION_LIMIT",
+          "exitFound": false,
+          "decisions": 128,
+          "moves": 0,
+          "collisions": 128,
+          "repeatedPositions": 0,
+          "roomsExplored": 1,
+          "decisionLatencyMs": {
+            "median": 8.0,
+            "max": 167
+          }
+        },
+        {
+          "model": "tev1:latest",
+          "termination": "TIME_LIMIT",
+          "exitFound": false,
+          "decisions": 75,
+          "moves": 39,
+          "collisions": 16,
+          "repeatedPositions": 14,
+          "roomsExplored": 26,
+          "decisionLatencyMs": {
+            "median": 1509,
+            "max": 2616
+          }
+        }
+      ]
+    },
+    {
+      "seed": 1986,
+      "level": 1,
+      "models": [
+        {
+          "model": "tev1:0.8b",
+          "termination": "DECISION_LIMIT",
+          "exitFound": false,
+          "decisions": 128,
+          "moves": 0,
+          "collisions": 128,
+          "repeatedPositions": 0,
+          "roomsExplored": 1,
+          "decisionLatencyMs": {
+            "median": 8.0,
+            "max": 770
+          }
+        },
+        {
+          "model": "tev1:latest",
+          "termination": "WON",
+          "exitFound": true,
+          "decisions": 13,
+          "moves": 7,
+          "collisions": 2,
+          "repeatedPositions": 0,
+          "roomsExplored": 7,
+          "decisionLatencyMs": {
+            "median": 1148,
+            "max": 2067
+          }
+        }
+      ]
+    },
+    {
+      "seed": 1986,
+      "level": 2,
+      "models": [
+        {
+          "model": "tev1:0.8b",
+          "termination": "DECISION_LIMIT",
+          "exitFound": false,
+          "decisions": 128,
+          "moves": 0,
+          "collisions": 128,
+          "repeatedPositions": 0,
+          "roomsExplored": 1,
+          "decisionLatencyMs": {
+            "median": 8.0,
+            "max": 233
+          }
+        },
+        {
+          "model": "tev1:latest",
+          "termination": "WON",
+          "exitFound": true,
+          "decisions": 15,
+          "moves": 8,
+          "collisions": 2,
+          "repeatedPositions": 0,
+          "roomsExplored": 8,
+          "decisionLatencyMs": {
+            "median": 1134,
+            "max": 2340
+          }
+        }
+      ]
+    },
+    {
+      "seed": 1986,
+      "level": 3,
+      "models": [
+        {
+          "model": "tev1:0.8b",
+          "termination": "DECISION_LIMIT",
+          "exitFound": false,
+          "decisions": 128,
+          "moves": 0,
+          "collisions": 128,
+          "repeatedPositions": 0,
+          "roomsExplored": 1,
+          "decisionLatencyMs": {
+            "median": 7.0,
+            "max": 185
+          }
+        },
+        {
+          "model": "tev1:latest",
+          "termination": "TIME_LIMIT",
+          "exitFound": false,
+          "decisions": 79,
+          "moves": 45,
+          "collisions": 11,
+          "repeatedPositions": 28,
+          "roomsExplored": 18,
+          "decisionLatencyMs": {
+            "median": 1542,
+            "max": 2584
+          }
+        }
+      ]
+    },
+    {
+      "seed": 2026,
+      "level": 1,
+      "models": [
+        {
+          "model": "tev1:0.8b",
+          "termination": "DECISION_LIMIT",
+          "exitFound": false,
+          "decisions": 128,
+          "moves": 0,
+          "collisions": 128,
+          "repeatedPositions": 0,
+          "roomsExplored": 1,
+          "decisionLatencyMs": {
+            "median": 7.0,
+            "max": 215
+          }
+        },
+        {
+          "model": "tev1:latest",
+          "termination": "LOST",
+          "exitFound": false,
+          "decisions": 72,
+          "moves": 31,
+          "collisions": 16,
+          "repeatedPositions": 26,
+          "roomsExplored": 6,
+          "decisionLatencyMs": {
+            "median": 1140.5,
+            "max": 1973
+          }
+        }
+      ]
+    },
+    {
+      "seed": 2026,
+      "level": 2,
+      "models": [
+        {
+          "model": "tev1:0.8b",
+          "termination": "DECISION_LIMIT",
+          "exitFound": false,
+          "decisions": 128,
+          "moves": 0,
+          "collisions": 128,
+          "repeatedPositions": 0,
+          "roomsExplored": 1,
+          "decisionLatencyMs": {
+            "median": 8.0,
+            "max": 253
+          }
+        },
+        {
+          "model": "tev1:latest",
+          "termination": "WON",
+          "exitFound": true,
+          "decisions": 35,
+          "moves": 14,
+          "collisions": 8,
+          "repeatedPositions": 0,
+          "roomsExplored": 14,
+          "decisionLatencyMs": {
+            "median": 1231,
+            "max": 1515
+          }
+        }
+      ]
+    },
+    {
+      "seed": 2026,
+      "level": 3,
+      "models": [
+        {
+          "model": "tev1:0.8b",
+          "termination": "DECISION_LIMIT",
+          "exitFound": false,
+          "decisions": 128,
+          "moves": 4,
+          "collisions": 124,
+          "repeatedPositions": 0,
+          "roomsExplored": 5,
+          "decisionLatencyMs": {
+            "median": 8.0,
+            "max": 211
+          }
+        },
+        {
+          "model": "tev1:latest",
+          "termination": "TIME_LIMIT",
+          "exitFound": false,
+          "decisions": 92,
+          "moves": 47,
+          "collisions": 20,
+          "repeatedPositions": 38,
+          "roomsExplored": 10,
+          "decisionLatencyMs": {
+            "median": 1305.0,
+            "max": 1480
+          }
+        }
+      ]
+    }
+  ]
+}

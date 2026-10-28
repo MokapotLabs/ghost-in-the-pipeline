@@ -1,0 +1,4359 @@
+{
+  "recordedAt": "2026-10-27T23:12:17.790954+00:00",
+  "scope": "Policy compliance on synthetic local observations, not maze escapes. No game action is applied. Expected labels remain outside requests.",
+  "fixturesSha256": "fcbd07aed3f2f7bd13b51b459ab23418101d0cf9fb79a7a938e537e612ebd86b",
+  "definitionsSha256": {
+    "evidence/forward-prompt-definition.json": "d07b1acd4fc0900b67783d803c43af211b0009c350d152306fc4be11a6899248",
+    "evidence/policy-prompt-definition.json": "78ef18396ac12d8ab3acf2d2a17a865f42398fba6e428f0f299d8b32d49586cf"
+  },
+  "models": [
+    {
+      "name": "tev1:0.8b",
+      "model": "tev1:0.8b",
+      "modified_at": "2026-10-27T17:49:53.890682345+01:00",
+      "size": 1524372929,
+      "digest": "b661d56508169d2b6c4cab5a047409f50bd9694a215bc232469d44291f4bdbf1",
+      "details": {
+        "parent_model": "",
+        "format": "safetensors",
+        "family": "qwen3_5",
+        "families": [
+          "qwen3_5"
+        ],
+        "parameter_size": "752M",
+        "quantization_level": "BF16",
+        "runner": "mlx"
+      },
+      "capabilities": [
+        "decision"
+      ]
+    },
+    {
+      "name": "tev1:latest",
+      "model": "tev1:latest",
+      "modified_at": "2026-10-13T19:17:11.060858551+02:00",
+      "size": 4361568327,
+      "digest": "4d24c6f6d61a48d9b72902f4805c5f1da53010736b834b0372377fb4bb7e53d3",
+      "details": {
+        "parent_model": "",
+        "format": "safetensors",
+        "family": "qwen3_5",
+        "families": [
+          "qwen3_5"
+        ],
+        "parameter_size": "4.2B",
+        "quantization_level": "mxfp8",
+        "runner": "mlx"
+      },
+      "capabilities": [
+        "decision"
+      ]
+    }
+  ],
+  "timeoutSeconds": 10,
+  "retries": 0,
+  "trials": [
+    {
+      "case": "corridor-first",
+      "model": "tev1:0.8b",
+      "prompt": "forward-first-v2",
+      "expected": "FORWARD",
+      "choice": "FORWARD",
+      "correct": true,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 308,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": ".#?#",
+          "entriesLeft": 7,
+          "current_room_visits": 1,
+          "memory": [
+            [
+              4,
+              1,
+              ".#?#",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "Entered a room; 7 entries left.",
+          "relativeEdges": {
+            "front": "open passage",
+            "left": "wall",
+            "right": "wall"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            },
+            "instructions": "Choose ONE action for this turn. Read relativeEdges: front, left, right.\nIf front is wall, choose a turn: FORWARD cannot pass a wall.\nIf front is exit, choose FORWARD.\nIf front is open passage, choose FORWARD. Do not keep turning when the corridor ahead is open.\nPrefer an open passage and avoid needless revisits or rooms with one entry left.\nmemory rows are [room, visits, NESW edges, entriesLeft].\nEdges: # wall, . passage, E exit, ? unseen. Rooms are row-major."
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.600552156123461,
+              "TURN_LEFT": 0.14721346660349827,
+              "TURN_RIGHT": 0.25223437727304054
+            },
+            "confidence": 0.14829472576893588
+          }
+        },
+        "usage": {
+          "input_tokens": 367,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 0
+      }
+    },
+    {
+      "case": "corridor-revisited",
+      "model": "tev1:0.8b",
+      "prompt": "forward-first-v2",
+      "expected": "FORWARD",
+      "choice": "FORWARD",
+      "correct": true,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 212,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": ".#?#",
+          "entriesLeft": 7,
+          "current_room_visits": 2,
+          "memory": [
+            [
+              4,
+              2,
+              ".#?#",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "Entered a room; 7 entries left.",
+          "relativeEdges": {
+            "front": "open passage",
+            "left": "wall",
+            "right": "wall"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            },
+            "instructions": "Choose ONE action for this turn. Read relativeEdges: front, left, right.\nIf front is wall, choose a turn: FORWARD cannot pass a wall.\nIf front is exit, choose FORWARD.\nIf front is open passage, choose FORWARD. Do not keep turning when the corridor ahead is open.\nPrefer an open passage and avoid needless revisits or rooms with one entry left.\nmemory rows are [room, visits, NESW edges, entriesLeft].\nEdges: # wall, . passage, E exit, ? unseen. Rooms are row-major."
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.6060453289192738,
+              "TURN_LEFT": 0.152231308954557,
+              "TURN_RIGHT": 0.24172336212616935
+            },
+            "confidence": 0.15047476262997517
+          }
+        },
+        "usage": {
+          "input_tokens": 367,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 54
+      }
+    },
+    {
+      "case": "blocked-left-open",
+      "model": "tev1:0.8b",
+      "prompt": "forward-first-v2",
+      "expected": "TURN_LEFT",
+      "choice": "FORWARD",
+      "correct": false,
+      "forwardIntoWall": true,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 150,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": "##?.",
+          "entriesLeft": 7,
+          "current_room_visits": 1,
+          "memory": [
+            [
+              4,
+              1,
+              "##?.",
+              7
+            ]
+          ],
+          "previousAction": "START",
+          "previousResult": "Find the exit. Seven entries per room.",
+          "relativeEdges": {
+            "front": "wall",
+            "left": "open passage",
+            "right": "wall"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            },
+            "instructions": "Choose ONE action for this turn. Read relativeEdges: front, left, right.\nIf front is wall, choose a turn: FORWARD cannot pass a wall.\nIf front is exit, choose FORWARD.\nIf front is open passage, choose FORWARD. Do not keep turning when the corridor ahead is open.\nPrefer an open passage and avoid needless revisits or rooms with one entry left.\nmemory rows are [room, visits, NESW edges, entriesLeft].\nEdges: # wall, . passage, E exit, ? unseen. Rooms are row-major."
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.715409896471481,
+              "TURN_LEFT": 0.10118221932242463,
+              "TURN_RIGHT": 0.18340788420609444
+            },
+            "confidence": 0.28778368110108
+          }
+        },
+        "usage": {
+          "input_tokens": 364,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 54
+      }
+    },
+    {
+      "case": "blocked-right-open",
+      "model": "tev1:0.8b",
+      "prompt": "forward-first-v2",
+      "expected": "TURN_RIGHT",
+      "choice": "FORWARD",
+      "correct": false,
+      "forwardIntoWall": true,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 180,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": "#.?#",
+          "entriesLeft": 7,
+          "current_room_visits": 1,
+          "memory": [
+            [
+              4,
+              1,
+              "#.?#",
+              7
+            ]
+          ],
+          "previousAction": "START",
+          "previousResult": "Find the exit. Seven entries per room.",
+          "relativeEdges": {
+            "front": "wall",
+            "left": "wall",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            },
+            "instructions": "Choose ONE action for this turn. Read relativeEdges: front, left, right.\nIf front is wall, choose a turn: FORWARD cannot pass a wall.\nIf front is exit, choose FORWARD.\nIf front is open passage, choose FORWARD. Do not keep turning when the corridor ahead is open.\nPrefer an open passage and avoid needless revisits or rooms with one entry left.\nmemory rows are [room, visits, NESW edges, entriesLeft].\nEdges: # wall, . passage, E exit, ? unseen. Rooms are row-major."
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.6082924354418188,
+              "TURN_LEFT": 0.11589640842557432,
+              "TURN_RIGHT": 0.275811156132607
+            },
+            "confidence": 0.17404809176187275
+          }
+        },
+        "usage": {
+          "input_tokens": 366,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 67
+      }
+    },
+    {
+      "case": "blocked-two-openings",
+      "model": "tev1:0.8b",
+      "prompt": "forward-first-v2",
+      "expected": "TURN_LEFT",
+      "choice": "FORWARD",
+      "correct": false,
+      "forwardIntoWall": true,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 158,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": "#.?.",
+          "entriesLeft": 7,
+          "current_room_visits": 1,
+          "memory": [
+            [
+              4,
+              1,
+              "#.?.",
+              7
+            ]
+          ],
+          "previousAction": "START",
+          "previousResult": "Find the exit. Seven entries per room.",
+          "relativeEdges": {
+            "front": "wall",
+            "left": "open passage",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            },
+            "instructions": "Choose ONE action for this turn. Read relativeEdges: front, left, right.\nIf front is wall, choose a turn: FORWARD cannot pass a wall.\nIf front is exit, choose FORWARD.\nIf front is open passage, choose FORWARD. Do not keep turning when the corridor ahead is open.\nPrefer an open passage and avoid needless revisits or rooms with one entry left.\nmemory rows are [room, visits, NESW edges, entriesLeft].\nEdges: # wall, . passage, E exit, ? unseen. Rooms are row-major."
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.6246912259047889,
+              "TURN_LEFT": 0.12649273653057827,
+              "TURN_RIGHT": 0.24881603756463283
+            },
+            "confidence": 0.17936299139298773
+          }
+        },
+        "usage": {
+          "input_tokens": 365,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 67
+      }
+    },
+    {
+      "case": "dead-end-look-behind",
+      "model": "tev1:0.8b",
+      "prompt": "forward-first-v2",
+      "expected": "TURN_RIGHT",
+      "choice": "FORWARD",
+      "correct": false,
+      "forwardIntoWall": true,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 212,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": "##?#",
+          "entriesLeft": 7,
+          "current_room_visits": 1,
+          "memory": [
+            [
+              4,
+              1,
+              "##?#",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "Entered a room; 7 entries left.",
+          "relativeEdges": {
+            "front": "wall",
+            "left": "wall",
+            "right": "wall"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            },
+            "instructions": "Choose ONE action for this turn. Read relativeEdges: front, left, right.\nIf front is wall, choose a turn: FORWARD cannot pass a wall.\nIf front is exit, choose FORWARD.\nIf front is open passage, choose FORWARD. Do not keep turning when the corridor ahead is open.\nPrefer an open passage and avoid needless revisits or rooms with one entry left.\nmemory rows are [room, visits, NESW edges, entriesLeft].\nEdges: # wall, . passage, E exit, ? unseen. Rooms are row-major."
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.7515969925758663,
+              "TURN_LEFT": 0.10004018955381294,
+              "TURN_RIGHT": 0.14836281787032077
+            },
+            "confidence": 0.33732452332514584
+          }
+        },
+        "usage": {
+          "input_tokens": 366,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 67
+      }
+    },
+    {
+      "case": "exit-ahead",
+      "model": "tev1:0.8b",
+      "prompt": "forward-first-v2",
+      "expected": "FORWARD",
+      "choice": "FORWARD",
+      "correct": true,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 160,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 1,
+          "facing": "N",
+          "direction": 0,
+          "edges": "E.?.",
+          "entriesLeft": 7,
+          "current_room_visits": 1,
+          "memory": [
+            [
+              1,
+              1,
+              "E.?.",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "Entered a room; 7 entries left.",
+          "relativeEdges": {
+            "front": "exit",
+            "left": "open passage",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            },
+            "instructions": "Choose ONE action for this turn. Read relativeEdges: front, left, right.\nIf front is wall, choose a turn: FORWARD cannot pass a wall.\nIf front is exit, choose FORWARD.\nIf front is open passage, choose FORWARD. Do not keep turning when the corridor ahead is open.\nPrefer an open passage and avoid needless revisits or rooms with one entry left.\nmemory rows are [room, visits, NESW edges, entriesLeft].\nEdges: # wall, . passage, E exit, ? unseen. Rooms are row-major."
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.7355702743641392,
+              "TURN_LEFT": 0.08607642325458868,
+              "TURN_RIGHT": 0.17835330238127203
+            },
+            "confidence": 0.3223417982332788
+          }
+        },
+        "usage": {
+          "input_tokens": 368,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 54
+      }
+    },
+    {
+      "case": "exit-left",
+      "model": "tev1:0.8b",
+      "prompt": "forward-first-v2",
+      "expected": "TURN_LEFT",
+      "choice": "FORWARD",
+      "correct": false,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 146,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 1,
+          "facing": "E",
+          "direction": 1,
+          "edges": "E.#?",
+          "entriesLeft": 7,
+          "current_room_visits": 1,
+          "memory": [
+            [
+              1,
+              1,
+              "E.#?",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "Entered a room; 7 entries left.",
+          "relativeEdges": {
+            "front": "open passage",
+            "left": "exit",
+            "right": "wall"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            },
+            "instructions": "Choose ONE action for this turn. Read relativeEdges: front, left, right.\nIf front is wall, choose a turn: FORWARD cannot pass a wall.\nIf front is exit, choose FORWARD.\nIf front is open passage, choose FORWARD. Do not keep turning when the corridor ahead is open.\nPrefer an open passage and avoid needless revisits or rooms with one entry left.\nmemory rows are [room, visits, NESW edges, entriesLeft].\nEdges: # wall, . passage, E exit, ? unseen. Rooms are row-major."
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.6502501580748634,
+              "TURN_LEFT": 0.12103951537619106,
+              "TURN_RIGHT": 0.22871032654894563
+            },
+            "confidence": 0.2054756259286542
+          }
+        },
+        "usage": {
+          "input_tokens": 367,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 54
+      }
+    },
+    {
+      "case": "exit-right",
+      "model": "tev1:0.8b",
+      "prompt": "forward-first-v2",
+      "expected": "TURN_RIGHT",
+      "choice": "FORWARD",
+      "correct": false,
+      "forwardIntoWall": true,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 139,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 1,
+          "facing": "W",
+          "direction": 3,
+          "edges": "E?##",
+          "entriesLeft": 7,
+          "current_room_visits": 1,
+          "memory": [
+            [
+              1,
+              1,
+              "E?##",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "Entered a room; 7 entries left.",
+          "relativeEdges": {
+            "front": "wall",
+            "left": "wall",
+            "right": "exit"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            },
+            "instructions": "Choose ONE action for this turn. Read relativeEdges: front, left, right.\nIf front is wall, choose a turn: FORWARD cannot pass a wall.\nIf front is exit, choose FORWARD.\nIf front is open passage, choose FORWARD. Do not keep turning when the corridor ahead is open.\nPrefer an open passage and avoid needless revisits or rooms with one entry left.\nmemory rows are [room, visits, NESW edges, entriesLeft].\nEdges: # wall, . passage, E exit, ? unseen. Rooms are row-major."
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.6747841643568888,
+              "TURN_LEFT": 0.12525825039132232,
+              "TURN_RIGHT": 0.19995758525178883
+            },
+            "confidence": 0.22856757984379816
+          }
+        },
+        "usage": {
+          "input_tokens": 366,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 59
+      }
+    },
+    {
+      "case": "junction-first",
+      "model": "tev1:0.8b",
+      "prompt": "forward-first-v2",
+      "expected": "FORWARD",
+      "choice": "FORWARD",
+      "correct": true,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 209,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": "..?.",
+          "entriesLeft": 7,
+          "current_room_visits": 1,
+          "memory": [
+            [
+              4,
+              1,
+              "..?.",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "Entered a room; 7 entries left.",
+          "relativeEdges": {
+            "front": "open passage",
+            "left": "open passage",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            },
+            "instructions": "Choose ONE action for this turn. Read relativeEdges: front, left, right.\nIf front is wall, choose a turn: FORWARD cannot pass a wall.\nIf front is exit, choose FORWARD.\nIf front is open passage, choose FORWARD. Do not keep turning when the corridor ahead is open.\nPrefer an open passage and avoid needless revisits or rooms with one entry left.\nmemory rows are [room, visits, NESW edges, entriesLeft].\nEdges: # wall, . passage, E exit, ? unseen. Rooms are row-major."
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.7625188343671134,
+              "TURN_LEFT": 0.09983525313468374,
+              "TURN_RIGHT": 0.13764591249820282
+            },
+            "confidence": 0.35396169708286307
+          }
+        },
+        "usage": {
+          "input_tokens": 367,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 67
+      }
+    },
+    {
+      "case": "junction-revisited",
+      "model": "tev1:0.8b",
+      "prompt": "forward-first-v2",
+      "expected": "TURN_LEFT",
+      "choice": "FORWARD",
+      "correct": false,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 137,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": "..?.",
+          "entriesLeft": 7,
+          "current_room_visits": 2,
+          "memory": [
+            [
+              4,
+              2,
+              "..?.",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "Entered a room; 7 entries left.",
+          "relativeEdges": {
+            "front": "open passage",
+            "left": "open passage",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            },
+            "instructions": "Choose ONE action for this turn. Read relativeEdges: front, left, right.\nIf front is wall, choose a turn: FORWARD cannot pass a wall.\nIf front is exit, choose FORWARD.\nIf front is open passage, choose FORWARD. Do not keep turning when the corridor ahead is open.\nPrefer an open passage and avoid needless revisits or rooms with one entry left.\nmemory rows are [room, visits, NESW edges, entriesLeft].\nEdges: # wall, . passage, E exit, ? unseen. Rooms are row-major."
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.7558900180823866,
+              "TURN_LEFT": 0.09630467449089981,
+              "TURN_RIGHT": 0.14780530742671352
+            },
+            "confidence": 0.34508125533081113
+          }
+        },
+        "usage": {
+          "input_tokens": 367,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 67
+      }
+    },
+    {
+      "case": "corner-revisited",
+      "model": "tev1:0.8b",
+      "prompt": "forward-first-v2",
+      "expected": "TURN_RIGHT",
+      "choice": "FORWARD",
+      "correct": false,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 141,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": "..?#",
+          "entriesLeft": 7,
+          "current_room_visits": 2,
+          "memory": [
+            [
+              4,
+              2,
+              "..?#",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "Entered a room; 7 entries left.",
+          "relativeEdges": {
+            "front": "open passage",
+            "left": "wall",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            },
+            "instructions": "Choose ONE action for this turn. Read relativeEdges: front, left, right.\nIf front is wall, choose a turn: FORWARD cannot pass a wall.\nIf front is exit, choose FORWARD.\nIf front is open passage, choose FORWARD. Do not keep turning when the corridor ahead is open.\nPrefer an open passage and avoid needless revisits or rooms with one entry left.\nmemory rows are [room, visits, NESW edges, entriesLeft].\nEdges: # wall, . passage, E exit, ? unseen. Rooms are row-major."
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.5204418862041199,
+              "TURN_LEFT": 0.14711382817888347,
+              "TURN_RIGHT": 0.3324442856169967
+            },
+            "confidence": 0.10072488009061131
+          }
+        },
+        "usage": {
+          "input_tokens": 368,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 67
+      }
+    },
+    {
+      "case": "commit-after-left",
+      "model": "tev1:0.8b",
+      "prompt": "forward-first-v2",
+      "expected": "FORWARD",
+      "choice": "FORWARD",
+      "correct": true,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 132,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": ".#?.",
+          "entriesLeft": 7,
+          "current_room_visits": 2,
+          "memory": [
+            [
+              4,
+              2,
+              ".#?.",
+              7
+            ]
+          ],
+          "previousAction": "TURN_LEFT",
+          "previousResult": "Turned left.",
+          "relativeEdges": {
+            "front": "open passage",
+            "left": "open passage",
+            "right": "wall"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            },
+            "instructions": "Choose ONE action for this turn. Read relativeEdges: front, left, right.\nIf front is wall, choose a turn: FORWARD cannot pass a wall.\nIf front is exit, choose FORWARD.\nIf front is open passage, choose FORWARD. Do not keep turning when the corridor ahead is open.\nPrefer an open passage and avoid needless revisits or rooms with one entry left.\nmemory rows are [room, visits, NESW edges, entriesLeft].\nEdges: # wall, . passage, E exit, ? unseen. Rooms are row-major."
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.5134847594697659,
+              "TURN_LEFT": 0.26586650875698986,
+              "TURN_RIGHT": 0.22064873177324426
+            },
+            "confidence": 0.06435984545457074
+          }
+        },
+        "usage": {
+          "input_tokens": 361,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 67
+      }
+    },
+    {
+      "case": "commit-after-right",
+      "model": "tev1:0.8b",
+      "prompt": "forward-first-v2",
+      "expected": "FORWARD",
+      "choice": "TURN_RIGHT",
+      "correct": false,
+      "forwardIntoWall": false,
+      "missedTurnCommit": true,
+      "error": null,
+      "latencyMs": 198,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": "..?#",
+          "entriesLeft": 7,
+          "current_room_visits": 2,
+          "memory": [
+            [
+              4,
+              2,
+              "..?#",
+              7
+            ]
+          ],
+          "previousAction": "TURN_RIGHT",
+          "previousResult": "Turned right.",
+          "relativeEdges": {
+            "front": "open passage",
+            "left": "wall",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            },
+            "instructions": "Choose ONE action for this turn. Read relativeEdges: front, left, right.\nIf front is wall, choose a turn: FORWARD cannot pass a wall.\nIf front is exit, choose FORWARD.\nIf front is open passage, choose FORWARD. Do not keep turning when the corridor ahead is open.\nPrefer an open passage and avoid needless revisits or rooms with one entry left.\nmemory rows are [room, visits, NESW edges, entriesLeft].\nEdges: # wall, . passage, E exit, ? unseen. Rooms are row-major."
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "TURN_RIGHT",
+            "probabilities": {
+              "FORWARD": 0.32634484458197277,
+              "TURN_LEFT": 0.13422344517778817,
+              "TURN_RIGHT": 0.5394317102402391
+            },
+            "confidence": 0.1189306165126559
+          }
+        },
+        "usage": {
+          "input_tokens": 363,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 68
+      }
+    },
+    {
+      "case": "leave-last-entry",
+      "model": "tev1:0.8b",
+      "prompt": "forward-first-v2",
+      "expected": "FORWARD",
+      "choice": "FORWARD",
+      "correct": true,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 152,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": ".#?#",
+          "entriesLeft": 1,
+          "current_room_visits": 2,
+          "memory": [
+            [
+              4,
+              2,
+              ".#?#",
+              1
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "Entered a room; 1 entries left.",
+          "relativeEdges": {
+            "front": "open passage",
+            "left": "wall",
+            "right": "wall"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            },
+            "instructions": "Choose ONE action for this turn. Read relativeEdges: front, left, right.\nIf front is wall, choose a turn: FORWARD cannot pass a wall.\nIf front is exit, choose FORWARD.\nIf front is open passage, choose FORWARD. Do not keep turning when the corridor ahead is open.\nPrefer an open passage and avoid needless revisits or rooms with one entry left.\nmemory rows are [room, visits, NESW edges, entriesLeft].\nEdges: # wall, . passage, E exit, ? unseen. Rooms are row-major."
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.603888091830227,
+              "TURN_LEFT": 0.1571926548915466,
+              "TURN_RIGHT": 0.23891925327822638
+            },
+            "confidence": 0.14667289011486295
+          }
+        },
+        "usage": {
+          "input_tokens": 367,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 68
+      }
+    },
+    {
+      "case": "corridor-first",
+      "model": "tev1:0.8b",
+      "prompt": "ordered-policy-v3",
+      "expected": "FORWARD",
+      "choice": "FORWARD",
+      "correct": true,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 201,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": ".#?#",
+          "entriesLeft": 7,
+          "current_room_visits": 1,
+          "memory": [
+            [
+              4,
+              1,
+              ".#?#",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "Entered a room; 7 entries left.",
+          "relativeEdges": {
+            "front": "open passage",
+            "left": "wall",
+            "right": "wall"
+          }
+        },
+        "questions": {
+          "action": {
+            "instructions": "Choose ONE action: FORWARD, TURN_LEFT, TURN_RIGHT.\nfront, left, right mean relativeEdges.front, relativeEdges.left, relativeEdges.right.\nEdge values are \"wall\", \"open passage\", \"exit\".\nApply rules top-to-bottom. Stop at the first match. Other state fields do not override these rules.\n1. If front == \"exit\", choose FORWARD.\n2. If left == \"exit\", choose TURN_LEFT.\n3. If right == \"exit\", choose TURN_RIGHT.\n4. If previousAction is TURN_LEFT or TURN_RIGHT and front == \"open passage\", choose FORWARD.\n5. If front == \"open passage\" and current_room_visits == 1, choose FORWARD.\n6. If left == \"open passage\", choose TURN_LEFT.\n7. If right == \"open passage\", choose TURN_RIGHT.\n8. If front == \"open passage\", choose FORWARD.\n9. Otherwise, choose TURN_RIGHT to look behind.",
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            }
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.8660096177077375,
+              "TURN_LEFT": 0.040148459205963084,
+              "TURN_RIGHT": 0.0938419230862992
+            },
+            "confidence": 0.566989058829678
+          }
+        },
+        "usage": {
+          "input_tokens": 452,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 81
+      }
+    },
+    {
+      "case": "corridor-revisited",
+      "model": "tev1:0.8b",
+      "prompt": "ordered-policy-v3",
+      "expected": "FORWARD",
+      "choice": "FORWARD",
+      "correct": true,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 162,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": ".#?#",
+          "entriesLeft": 7,
+          "current_room_visits": 2,
+          "memory": [
+            [
+              4,
+              2,
+              ".#?#",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "Entered a room; 7 entries left.",
+          "relativeEdges": {
+            "front": "open passage",
+            "left": "wall",
+            "right": "wall"
+          }
+        },
+        "questions": {
+          "action": {
+            "instructions": "Choose ONE action: FORWARD, TURN_LEFT, TURN_RIGHT.\nfront, left, right mean relativeEdges.front, relativeEdges.left, relativeEdges.right.\nEdge values are \"wall\", \"open passage\", \"exit\".\nApply rules top-to-bottom. Stop at the first match. Other state fields do not override these rules.\n1. If front == \"exit\", choose FORWARD.\n2. If left == \"exit\", choose TURN_LEFT.\n3. If right == \"exit\", choose TURN_RIGHT.\n4. If previousAction is TURN_LEFT or TURN_RIGHT and front == \"open passage\", choose FORWARD.\n5. If front == \"open passage\" and current_room_visits == 1, choose FORWARD.\n6. If left == \"open passage\", choose TURN_LEFT.\n7. If right == \"open passage\", choose TURN_RIGHT.\n8. If front == \"open passage\", choose FORWARD.\n9. Otherwise, choose TURN_RIGHT to look behind.",
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            }
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.8126584639387863,
+              "TURN_LEFT": 0.04863388351896894,
+              "TURN_RIGHT": 0.13870765254224462
+            },
+            "confidence": 0.4633010636470667
+          }
+        },
+        "usage": {
+          "input_tokens": 452,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 81
+      }
+    },
+    {
+      "case": "blocked-left-open",
+      "model": "tev1:0.8b",
+      "prompt": "ordered-policy-v3",
+      "expected": "TURN_LEFT",
+      "choice": "FORWARD",
+      "correct": false,
+      "forwardIntoWall": true,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 172,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": "##?.",
+          "entriesLeft": 7,
+          "current_room_visits": 1,
+          "memory": [
+            [
+              4,
+              1,
+              "##?.",
+              7
+            ]
+          ],
+          "previousAction": "START",
+          "previousResult": "Find the exit. Seven entries per room.",
+          "relativeEdges": {
+            "front": "wall",
+            "left": "open passage",
+            "right": "wall"
+          }
+        },
+        "questions": {
+          "action": {
+            "instructions": "Choose ONE action: FORWARD, TURN_LEFT, TURN_RIGHT.\nfront, left, right mean relativeEdges.front, relativeEdges.left, relativeEdges.right.\nEdge values are \"wall\", \"open passage\", \"exit\".\nApply rules top-to-bottom. Stop at the first match. Other state fields do not override these rules.\n1. If front == \"exit\", choose FORWARD.\n2. If left == \"exit\", choose TURN_LEFT.\n3. If right == \"exit\", choose TURN_RIGHT.\n4. If previousAction is TURN_LEFT or TURN_RIGHT and front == \"open passage\", choose FORWARD.\n5. If front == \"open passage\" and current_room_visits == 1, choose FORWARD.\n6. If left == \"open passage\", choose TURN_LEFT.\n7. If right == \"open passage\", choose TURN_RIGHT.\n8. If front == \"open passage\", choose FORWARD.\n9. Otherwise, choose TURN_RIGHT to look behind.",
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            }
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.6706417054940914,
+              "TURN_LEFT": 0.1100188998867831,
+              "TURN_RIGHT": 0.21933939461912558
+            },
+            "confidence": 0.23219002437549108
+          }
+        },
+        "usage": {
+          "input_tokens": 449,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 68
+      }
+    },
+    {
+      "case": "blocked-right-open",
+      "model": "tev1:0.8b",
+      "prompt": "ordered-policy-v3",
+      "expected": "TURN_RIGHT",
+      "choice": "FORWARD",
+      "correct": false,
+      "forwardIntoWall": true,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 569,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": "#.?#",
+          "entriesLeft": 7,
+          "current_room_visits": 1,
+          "memory": [
+            [
+              4,
+              1,
+              "#.?#",
+              7
+            ]
+          ],
+          "previousAction": "START",
+          "previousResult": "Find the exit. Seven entries per room.",
+          "relativeEdges": {
+            "front": "wall",
+            "left": "wall",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "instructions": "Choose ONE action: FORWARD, TURN_LEFT, TURN_RIGHT.\nfront, left, right mean relativeEdges.front, relativeEdges.left, relativeEdges.right.\nEdge values are \"wall\", \"open passage\", \"exit\".\nApply rules top-to-bottom. Stop at the first match. Other state fields do not override these rules.\n1. If front == \"exit\", choose FORWARD.\n2. If left == \"exit\", choose TURN_LEFT.\n3. If right == \"exit\", choose TURN_RIGHT.\n4. If previousAction is TURN_LEFT or TURN_RIGHT and front == \"open passage\", choose FORWARD.\n5. If front == \"open passage\" and current_room_visits == 1, choose FORWARD.\n6. If left == \"open passage\", choose TURN_LEFT.\n7. If right == \"open passage\", choose TURN_RIGHT.\n8. If front == \"open passage\", choose FORWARD.\n9. Otherwise, choose TURN_RIGHT to look behind.",
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            }
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.5176846896211984,
+              "TURN_LEFT": 0.102425985315007,
+              "TURN_RIGHT": 0.3798893250637947
+            },
+            "confidence": 0.14263407622665703
+          }
+        },
+        "usage": {
+          "input_tokens": 451,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 67
+      }
+    },
+    {
+      "case": "blocked-two-openings",
+      "model": "tev1:0.8b",
+      "prompt": "ordered-policy-v3",
+      "expected": "TURN_LEFT",
+      "choice": "FORWARD",
+      "correct": false,
+      "forwardIntoWall": true,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 159,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": "#.?.",
+          "entriesLeft": 7,
+          "current_room_visits": 1,
+          "memory": [
+            [
+              4,
+              1,
+              "#.?.",
+              7
+            ]
+          ],
+          "previousAction": "START",
+          "previousResult": "Find the exit. Seven entries per room.",
+          "relativeEdges": {
+            "front": "wall",
+            "left": "open passage",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "instructions": "Choose ONE action: FORWARD, TURN_LEFT, TURN_RIGHT.\nfront, left, right mean relativeEdges.front, relativeEdges.left, relativeEdges.right.\nEdge values are \"wall\", \"open passage\", \"exit\".\nApply rules top-to-bottom. Stop at the first match. Other state fields do not override these rules.\n1. If front == \"exit\", choose FORWARD.\n2. If left == \"exit\", choose TURN_LEFT.\n3. If right == \"exit\", choose TURN_RIGHT.\n4. If previousAction is TURN_LEFT or TURN_RIGHT and front == \"open passage\", choose FORWARD.\n5. If front == \"open passage\" and current_room_visits == 1, choose FORWARD.\n6. If left == \"open passage\", choose TURN_LEFT.\n7. If right == \"open passage\", choose TURN_RIGHT.\n8. If front == \"open passage\", choose FORWARD.\n9. Otherwise, choose TURN_RIGHT to look behind.",
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            }
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.6369054984178909,
+              "TURN_LEFT": 0.08958721995011151,
+              "TURN_RIGHT": 0.2735072816319976
+            },
+            "confidence": 0.21897384059454672
+          }
+        },
+        "usage": {
+          "input_tokens": 450,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 67
+      }
+    },
+    {
+      "case": "dead-end-look-behind",
+      "model": "tev1:0.8b",
+      "prompt": "ordered-policy-v3",
+      "expected": "TURN_RIGHT",
+      "choice": "FORWARD",
+      "correct": false,
+      "forwardIntoWall": true,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 167,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": "##?#",
+          "entriesLeft": 7,
+          "current_room_visits": 1,
+          "memory": [
+            [
+              4,
+              1,
+              "##?#",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "Entered a room; 7 entries left.",
+          "relativeEdges": {
+            "front": "wall",
+            "left": "wall",
+            "right": "wall"
+          }
+        },
+        "questions": {
+          "action": {
+            "instructions": "Choose ONE action: FORWARD, TURN_LEFT, TURN_RIGHT.\nfront, left, right mean relativeEdges.front, relativeEdges.left, relativeEdges.right.\nEdge values are \"wall\", \"open passage\", \"exit\".\nApply rules top-to-bottom. Stop at the first match. Other state fields do not override these rules.\n1. If front == \"exit\", choose FORWARD.\n2. If left == \"exit\", choose TURN_LEFT.\n3. If right == \"exit\", choose TURN_RIGHT.\n4. If previousAction is TURN_LEFT or TURN_RIGHT and front == \"open passage\", choose FORWARD.\n5. If front == \"open passage\" and current_room_visits == 1, choose FORWARD.\n6. If left == \"open passage\", choose TURN_LEFT.\n7. If right == \"open passage\", choose TURN_RIGHT.\n8. If front == \"open passage\", choose FORWARD.\n9. Otherwise, choose TURN_RIGHT to look behind.",
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            }
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.776932793268925,
+              "TURN_LEFT": 0.05694706730135149,
+              "TURN_RIGHT": 0.1661201394297235
+            },
+            "confidence": 0.4015347214434858
+          }
+        },
+        "usage": {
+          "input_tokens": 451,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 68
+      }
+    },
+    {
+      "case": "exit-ahead",
+      "model": "tev1:0.8b",
+      "prompt": "ordered-policy-v3",
+      "expected": "FORWARD",
+      "choice": "FORWARD",
+      "correct": true,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 238,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 1,
+          "facing": "N",
+          "direction": 0,
+          "edges": "E.?.",
+          "entriesLeft": 7,
+          "current_room_visits": 1,
+          "memory": [
+            [
+              1,
+              1,
+              "E.?.",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "Entered a room; 7 entries left.",
+          "relativeEdges": {
+            "front": "exit",
+            "left": "open passage",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "instructions": "Choose ONE action: FORWARD, TURN_LEFT, TURN_RIGHT.\nfront, left, right mean relativeEdges.front, relativeEdges.left, relativeEdges.right.\nEdge values are \"wall\", \"open passage\", \"exit\".\nApply rules top-to-bottom. Stop at the first match. Other state fields do not override these rules.\n1. If front == \"exit\", choose FORWARD.\n2. If left == \"exit\", choose TURN_LEFT.\n3. If right == \"exit\", choose TURN_RIGHT.\n4. If previousAction is TURN_LEFT or TURN_RIGHT and front == \"open passage\", choose FORWARD.\n5. If front == \"open passage\" and current_room_visits == 1, choose FORWARD.\n6. If left == \"open passage\", choose TURN_LEFT.\n7. If right == \"open passage\", choose TURN_RIGHT.\n8. If front == \"open passage\", choose FORWARD.\n9. Otherwise, choose TURN_RIGHT to look behind.",
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            }
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.8448757035689289,
+              "TURN_LEFT": 0.046761969613367926,
+              "TURN_RIGHT": 0.10836232681770323
+            },
+            "confidence": 0.5208089601979529
+          }
+        },
+        "usage": {
+          "input_tokens": 453,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 59
+      }
+    },
+    {
+      "case": "exit-left",
+      "model": "tev1:0.8b",
+      "prompt": "ordered-policy-v3",
+      "expected": "TURN_LEFT",
+      "choice": "FORWARD",
+      "correct": false,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 188,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 1,
+          "facing": "E",
+          "direction": 1,
+          "edges": "E.#?",
+          "entriesLeft": 7,
+          "current_room_visits": 1,
+          "memory": [
+            [
+              1,
+              1,
+              "E.#?",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "Entered a room; 7 entries left.",
+          "relativeEdges": {
+            "front": "open passage",
+            "left": "exit",
+            "right": "wall"
+          }
+        },
+        "questions": {
+          "action": {
+            "instructions": "Choose ONE action: FORWARD, TURN_LEFT, TURN_RIGHT.\nfront, left, right mean relativeEdges.front, relativeEdges.left, relativeEdges.right.\nEdge values are \"wall\", \"open passage\", \"exit\".\nApply rules top-to-bottom. Stop at the first match. Other state fields do not override these rules.\n1. If front == \"exit\", choose FORWARD.\n2. If left == \"exit\", choose TURN_LEFT.\n3. If right == \"exit\", choose TURN_RIGHT.\n4. If previousAction is TURN_LEFT or TURN_RIGHT and front == \"open passage\", choose FORWARD.\n5. If front == \"open passage\" and current_room_visits == 1, choose FORWARD.\n6. If left == \"open passage\", choose TURN_LEFT.\n7. If right == \"open passage\", choose TURN_RIGHT.\n8. If front == \"open passage\", choose FORWARD.\n9. Otherwise, choose TURN_RIGHT to look behind.",
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            }
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.865589184057331,
+              "TURN_LEFT": 0.053492508872782146,
+              "TURN_RIGHT": 0.08091830706988701
+            },
+            "confidence": 0.5585021363313115
+          }
+        },
+        "usage": {
+          "input_tokens": 452,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 59
+      }
+    },
+    {
+      "case": "exit-right",
+      "model": "tev1:0.8b",
+      "prompt": "ordered-policy-v3",
+      "expected": "TURN_RIGHT",
+      "choice": "FORWARD",
+      "correct": false,
+      "forwardIntoWall": true,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 196,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 1,
+          "facing": "W",
+          "direction": 3,
+          "edges": "E?##",
+          "entriesLeft": 7,
+          "current_room_visits": 1,
+          "memory": [
+            [
+              1,
+              1,
+              "E?##",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "Entered a room; 7 entries left.",
+          "relativeEdges": {
+            "front": "wall",
+            "left": "wall",
+            "right": "exit"
+          }
+        },
+        "questions": {
+          "action": {
+            "instructions": "Choose ONE action: FORWARD, TURN_LEFT, TURN_RIGHT.\nfront, left, right mean relativeEdges.front, relativeEdges.left, relativeEdges.right.\nEdge values are \"wall\", \"open passage\", \"exit\".\nApply rules top-to-bottom. Stop at the first match. Other state fields do not override these rules.\n1. If front == \"exit\", choose FORWARD.\n2. If left == \"exit\", choose TURN_LEFT.\n3. If right == \"exit\", choose TURN_RIGHT.\n4. If previousAction is TURN_LEFT or TURN_RIGHT and front == \"open passage\", choose FORWARD.\n5. If front == \"open passage\" and current_room_visits == 1, choose FORWARD.\n6. If left == \"open passage\", choose TURN_LEFT.\n7. If right == \"open passage\", choose TURN_RIGHT.\n8. If front == \"open passage\", choose FORWARD.\n9. Otherwise, choose TURN_RIGHT to look behind.",
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            }
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.5401588342342177,
+              "TURN_LEFT": 0.10494170251497942,
+              "TURN_RIGHT": 0.3548994632508029
+            },
+            "confidence": 0.14719450280715696
+          }
+        },
+        "usage": {
+          "input_tokens": 451,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 59
+      }
+    },
+    {
+      "case": "junction-first",
+      "model": "tev1:0.8b",
+      "prompt": "ordered-policy-v3",
+      "expected": "FORWARD",
+      "choice": "FORWARD",
+      "correct": true,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 253,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": "..?.",
+          "entriesLeft": 7,
+          "current_room_visits": 1,
+          "memory": [
+            [
+              4,
+              1,
+              "..?.",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "Entered a room; 7 entries left.",
+          "relativeEdges": {
+            "front": "open passage",
+            "left": "open passage",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "instructions": "Choose ONE action: FORWARD, TURN_LEFT, TURN_RIGHT.\nfront, left, right mean relativeEdges.front, relativeEdges.left, relativeEdges.right.\nEdge values are \"wall\", \"open passage\", \"exit\".\nApply rules top-to-bottom. Stop at the first match. Other state fields do not override these rules.\n1. If front == \"exit\", choose FORWARD.\n2. If left == \"exit\", choose TURN_LEFT.\n3. If right == \"exit\", choose TURN_RIGHT.\n4. If previousAction is TURN_LEFT or TURN_RIGHT and front == \"open passage\", choose FORWARD.\n5. If front == \"open passage\" and current_room_visits == 1, choose FORWARD.\n6. If left == \"open passage\", choose TURN_LEFT.\n7. If right == \"open passage\", choose TURN_RIGHT.\n8. If front == \"open passage\", choose FORWARD.\n9. Otherwise, choose TURN_RIGHT to look behind.",
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            }
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.922302838601417,
+              "TURN_LEFT": 0.02980738452962162,
+              "TURN_RIGHT": 0.04788977686896118
+            },
+            "confidence": 0.7043172574082632
+          }
+        },
+        "usage": {
+          "input_tokens": 452,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 80
+      }
+    },
+    {
+      "case": "junction-revisited",
+      "model": "tev1:0.8b",
+      "prompt": "ordered-policy-v3",
+      "expected": "TURN_LEFT",
+      "choice": "FORWARD",
+      "correct": false,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 177,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": "..?.",
+          "entriesLeft": 7,
+          "current_room_visits": 2,
+          "memory": [
+            [
+              4,
+              2,
+              "..?.",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "Entered a room; 7 entries left.",
+          "relativeEdges": {
+            "front": "open passage",
+            "left": "open passage",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "instructions": "Choose ONE action: FORWARD, TURN_LEFT, TURN_RIGHT.\nfront, left, right mean relativeEdges.front, relativeEdges.left, relativeEdges.right.\nEdge values are \"wall\", \"open passage\", \"exit\".\nApply rules top-to-bottom. Stop at the first match. Other state fields do not override these rules.\n1. If front == \"exit\", choose FORWARD.\n2. If left == \"exit\", choose TURN_LEFT.\n3. If right == \"exit\", choose TURN_RIGHT.\n4. If previousAction is TURN_LEFT or TURN_RIGHT and front == \"open passage\", choose FORWARD.\n5. If front == \"open passage\" and current_room_visits == 1, choose FORWARD.\n6. If left == \"open passage\", choose TURN_LEFT.\n7. If right == \"open passage\", choose TURN_RIGHT.\n8. If front == \"open passage\", choose FORWARD.\n9. Otherwise, choose TURN_RIGHT to look behind.",
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            }
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.8984197716887926,
+              "TURN_LEFT": 0.03354606576241788,
+              "TURN_RIGHT": 0.06803416254878948
+            },
+            "confidence": 0.6422953782842103
+          }
+        },
+        "usage": {
+          "input_tokens": 452,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 80
+      }
+    },
+    {
+      "case": "corner-revisited",
+      "model": "tev1:0.8b",
+      "prompt": "ordered-policy-v3",
+      "expected": "TURN_RIGHT",
+      "choice": "FORWARD",
+      "correct": false,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 175,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": "..?#",
+          "entriesLeft": 7,
+          "current_room_visits": 2,
+          "memory": [
+            [
+              4,
+              2,
+              "..?#",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "Entered a room; 7 entries left.",
+          "relativeEdges": {
+            "front": "open passage",
+            "left": "wall",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "instructions": "Choose ONE action: FORWARD, TURN_LEFT, TURN_RIGHT.\nfront, left, right mean relativeEdges.front, relativeEdges.left, relativeEdges.right.\nEdge values are \"wall\", \"open passage\", \"exit\".\nApply rules top-to-bottom. Stop at the first match. Other state fields do not override these rules.\n1. If front == \"exit\", choose FORWARD.\n2. If left == \"exit\", choose TURN_LEFT.\n3. If right == \"exit\", choose TURN_RIGHT.\n4. If previousAction is TURN_LEFT or TURN_RIGHT and front == \"open passage\", choose FORWARD.\n5. If front == \"open passage\" and current_room_visits == 1, choose FORWARD.\n6. If left == \"open passage\", choose TURN_LEFT.\n7. If right == \"open passage\", choose TURN_RIGHT.\n8. If front == \"open passage\", choose FORWARD.\n9. Otherwise, choose TURN_RIGHT to look behind.",
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            }
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.8179936456016799,
+              "TURN_LEFT": 0.033862334816912726,
+              "TURN_RIGHT": 0.14814401958140735
+            },
+            "confidence": 0.48856730563529793
+          }
+        },
+        "usage": {
+          "input_tokens": 453,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 101
+      }
+    },
+    {
+      "case": "commit-after-left",
+      "model": "tev1:0.8b",
+      "prompt": "ordered-policy-v3",
+      "expected": "FORWARD",
+      "choice": "FORWARD",
+      "correct": true,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 173,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": ".#?.",
+          "entriesLeft": 7,
+          "current_room_visits": 2,
+          "memory": [
+            [
+              4,
+              2,
+              ".#?.",
+              7
+            ]
+          ],
+          "previousAction": "TURN_LEFT",
+          "previousResult": "Turned left.",
+          "relativeEdges": {
+            "front": "open passage",
+            "left": "open passage",
+            "right": "wall"
+          }
+        },
+        "questions": {
+          "action": {
+            "instructions": "Choose ONE action: FORWARD, TURN_LEFT, TURN_RIGHT.\nfront, left, right mean relativeEdges.front, relativeEdges.left, relativeEdges.right.\nEdge values are \"wall\", \"open passage\", \"exit\".\nApply rules top-to-bottom. Stop at the first match. Other state fields do not override these rules.\n1. If front == \"exit\", choose FORWARD.\n2. If left == \"exit\", choose TURN_LEFT.\n3. If right == \"exit\", choose TURN_RIGHT.\n4. If previousAction is TURN_LEFT or TURN_RIGHT and front == \"open passage\", choose FORWARD.\n5. If front == \"open passage\" and current_room_visits == 1, choose FORWARD.\n6. If left == \"open passage\", choose TURN_LEFT.\n7. If right == \"open passage\", choose TURN_RIGHT.\n8. If front == \"open passage\", choose FORWARD.\n9. Otherwise, choose TURN_RIGHT to look behind.",
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            }
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.552496031264362,
+              "TURN_LEFT": 0.25001749762071906,
+              "TURN_RIGHT": 0.19748647111491885
+            },
+            "confidence": 0.0945658223125776
+          }
+        },
+        "usage": {
+          "input_tokens": 446,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 68
+      }
+    },
+    {
+      "case": "commit-after-right",
+      "model": "tev1:0.8b",
+      "prompt": "ordered-policy-v3",
+      "expected": "FORWARD",
+      "choice": "TURN_RIGHT",
+      "correct": false,
+      "forwardIntoWall": false,
+      "missedTurnCommit": true,
+      "error": null,
+      "latencyMs": 193,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": "..?#",
+          "entriesLeft": 7,
+          "current_room_visits": 2,
+          "memory": [
+            [
+              4,
+              2,
+              "..?#",
+              7
+            ]
+          ],
+          "previousAction": "TURN_RIGHT",
+          "previousResult": "Turned right.",
+          "relativeEdges": {
+            "front": "open passage",
+            "left": "wall",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "instructions": "Choose ONE action: FORWARD, TURN_LEFT, TURN_RIGHT.\nfront, left, right mean relativeEdges.front, relativeEdges.left, relativeEdges.right.\nEdge values are \"wall\", \"open passage\", \"exit\".\nApply rules top-to-bottom. Stop at the first match. Other state fields do not override these rules.\n1. If front == \"exit\", choose FORWARD.\n2. If left == \"exit\", choose TURN_LEFT.\n3. If right == \"exit\", choose TURN_RIGHT.\n4. If previousAction is TURN_LEFT or TURN_RIGHT and front == \"open passage\", choose FORWARD.\n5. If front == \"open passage\" and current_room_visits == 1, choose FORWARD.\n6. If left == \"open passage\", choose TURN_LEFT.\n7. If right == \"open passage\", choose TURN_RIGHT.\n8. If front == \"open passage\", choose FORWARD.\n9. Otherwise, choose TURN_RIGHT to look behind.",
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            }
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "TURN_RIGHT",
+            "probabilities": {
+              "FORWARD": 0.3024754808261198,
+              "TURN_LEFT": 0.06721007255845998,
+              "TURN_RIGHT": 0.6303144466154201
+            },
+            "confidence": 0.2408037565276514
+          }
+        },
+        "usage": {
+          "input_tokens": 448,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 101
+      }
+    },
+    {
+      "case": "leave-last-entry",
+      "model": "tev1:0.8b",
+      "prompt": "ordered-policy-v3",
+      "expected": "FORWARD",
+      "choice": "FORWARD",
+      "correct": true,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 165,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": ".#?#",
+          "entriesLeft": 1,
+          "current_room_visits": 2,
+          "memory": [
+            [
+              4,
+              2,
+              ".#?#",
+              1
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "Entered a room; 1 entries left.",
+          "relativeEdges": {
+            "front": "open passage",
+            "left": "wall",
+            "right": "wall"
+          }
+        },
+        "questions": {
+          "action": {
+            "instructions": "Choose ONE action: FORWARD, TURN_LEFT, TURN_RIGHT.\nfront, left, right mean relativeEdges.front, relativeEdges.left, relativeEdges.right.\nEdge values are \"wall\", \"open passage\", \"exit\".\nApply rules top-to-bottom. Stop at the first match. Other state fields do not override these rules.\n1. If front == \"exit\", choose FORWARD.\n2. If left == \"exit\", choose TURN_LEFT.\n3. If right == \"exit\", choose TURN_RIGHT.\n4. If previousAction is TURN_LEFT or TURN_RIGHT and front == \"open passage\", choose FORWARD.\n5. If front == \"open passage\" and current_room_visits == 1, choose FORWARD.\n6. If left == \"open passage\", choose TURN_LEFT.\n7. If right == \"open passage\", choose TURN_RIGHT.\n8. If front == \"open passage\", choose FORWARD.\n9. Otherwise, choose TURN_RIGHT to look behind.",
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            }
+          }
+        },
+        "model": "tev1:0.8b"
+      },
+      "response": {
+        "model": "tev1:0.8b",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.8433686979909817,
+              "TURN_LEFT": 0.0437264224074942,
+              "TURN_RIGHT": 0.11290487960152393
+            },
+            "confidence": 0.5204923221821184
+          }
+        },
+        "usage": {
+          "input_tokens": 452,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 74
+      }
+    },
+    {
+      "case": "corridor-first",
+      "model": "tev1:latest",
+      "prompt": "forward-first-v2",
+      "expected": "FORWARD",
+      "choice": "FORWARD",
+      "correct": true,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 1568,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": ".#?#",
+          "entriesLeft": 7,
+          "current_room_visits": 1,
+          "memory": [
+            [
+              4,
+              1,
+              ".#?#",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "Entered a room; 7 entries left.",
+          "relativeEdges": {
+            "front": "open passage",
+            "left": "wall",
+            "right": "wall"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            },
+            "instructions": "Choose ONE action for this turn. Read relativeEdges: front, left, right.\nIf front is wall, choose a turn: FORWARD cannot pass a wall.\nIf front is exit, choose FORWARD.\nIf front is open passage, choose FORWARD. Do not keep turning when the corridor ahead is open.\nPrefer an open passage and avoid needless revisits or rooms with one entry left.\nmemory rows are [room, visits, NESW edges, entriesLeft].\nEdges: # wall, . passage, E exit, ? unseen. Rooms are row-major."
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.9862998741169807,
+              "TURN_LEFT": 0.009669343727717373,
+              "TURN_RIGHT": 0.004030782155301981
+            },
+            "confidence": 0.9265574797579952
+          }
+        },
+        "usage": {
+          "input_tokens": 367,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 54
+      }
+    },
+    {
+      "case": "corridor-revisited",
+      "model": "tev1:latest",
+      "prompt": "forward-first-v2",
+      "expected": "FORWARD",
+      "choice": "FORWARD",
+      "correct": true,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 1020,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": ".#?#",
+          "entriesLeft": 7,
+          "current_room_visits": 2,
+          "memory": [
+            [
+              4,
+              2,
+              ".#?#",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "Entered a room; 7 entries left.",
+          "relativeEdges": {
+            "front": "open passage",
+            "left": "wall",
+            "right": "wall"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            },
+            "instructions": "Choose ONE action for this turn. Read relativeEdges: front, left, right.\nIf front is wall, choose a turn: FORWARD cannot pass a wall.\nIf front is exit, choose FORWARD.\nIf front is open passage, choose FORWARD. Do not keep turning when the corridor ahead is open.\nPrefer an open passage and avoid needless revisits or rooms with one entry left.\nmemory rows are [room, visits, NESW edges, entriesLeft].\nEdges: # wall, . passage, E exit, ? unseen. Rooms are row-major."
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.9857708184020975,
+              "TURN_LEFT": 0.009664157047993928,
+              "TURN_RIGHT": 0.004565024549908672
+            },
+            "confidence": 0.923935749436614
+          }
+        },
+        "usage": {
+          "input_tokens": 367,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 54
+      }
+    },
+    {
+      "case": "blocked-left-open",
+      "model": "tev1:latest",
+      "prompt": "forward-first-v2",
+      "expected": "TURN_LEFT",
+      "choice": "TURN_LEFT",
+      "correct": true,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 1073,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": "##?.",
+          "entriesLeft": 7,
+          "current_room_visits": 1,
+          "memory": [
+            [
+              4,
+              1,
+              "##?.",
+              7
+            ]
+          ],
+          "previousAction": "START",
+          "previousResult": "Find the exit. Seven entries per room.",
+          "relativeEdges": {
+            "front": "wall",
+            "left": "open passage",
+            "right": "wall"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            },
+            "instructions": "Choose ONE action for this turn. Read relativeEdges: front, left, right.\nIf front is wall, choose a turn: FORWARD cannot pass a wall.\nIf front is exit, choose FORWARD.\nIf front is open passage, choose FORWARD. Do not keep turning when the corridor ahead is open.\nPrefer an open passage and avoid needless revisits or rooms with one entry left.\nmemory rows are [room, visits, NESW edges, entriesLeft].\nEdges: # wall, . passage, E exit, ? unseen. Rooms are row-major."
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "TURN_LEFT",
+            "probabilities": {
+              "FORWARD": 0.11890874443776293,
+              "TURN_LEFT": 0.8786233833040381,
+              "TURN_RIGHT": 0.0024678722581987465
+            },
+            "confidence": 0.6525478771291369
+          }
+        },
+        "usage": {
+          "input_tokens": 364,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 54
+      }
+    },
+    {
+      "case": "blocked-right-open",
+      "model": "tev1:latest",
+      "prompt": "forward-first-v2",
+      "expected": "TURN_RIGHT",
+      "choice": "TURN_RIGHT",
+      "correct": true,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 1001,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": "#.?#",
+          "entriesLeft": 7,
+          "current_room_visits": 1,
+          "memory": [
+            [
+              4,
+              1,
+              "#.?#",
+              7
+            ]
+          ],
+          "previousAction": "START",
+          "previousResult": "Find the exit. Seven entries per room.",
+          "relativeEdges": {
+            "front": "wall",
+            "left": "wall",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            },
+            "instructions": "Choose ONE action for this turn. Read relativeEdges: front, left, right.\nIf front is wall, choose a turn: FORWARD cannot pass a wall.\nIf front is exit, choose FORWARD.\nIf front is open passage, choose FORWARD. Do not keep turning when the corridor ahead is open.\nPrefer an open passage and avoid needless revisits or rooms with one entry left.\nmemory rows are [room, visits, NESW edges, entriesLeft].\nEdges: # wall, . passage, E exit, ? unseen. Rooms are row-major."
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "TURN_RIGHT",
+            "probabilities": {
+              "FORWARD": 0.046987074601724244,
+              "TURN_LEFT": 0.009252303572769958,
+              "TURN_RIGHT": 0.9437606218255057
+            },
+            "confidence": 0.7800535694990506
+          }
+        },
+        "usage": {
+          "input_tokens": 366,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 67
+      }
+    },
+    {
+      "case": "blocked-two-openings",
+      "model": "tev1:latest",
+      "prompt": "forward-first-v2",
+      "expected": "TURN_LEFT",
+      "choice": "TURN_LEFT",
+      "correct": true,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 1014,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": "#.?.",
+          "entriesLeft": 7,
+          "current_room_visits": 1,
+          "memory": [
+            [
+              4,
+              1,
+              "#.?.",
+              7
+            ]
+          ],
+          "previousAction": "START",
+          "previousResult": "Find the exit. Seven entries per room.",
+          "relativeEdges": {
+            "front": "wall",
+            "left": "open passage",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            },
+            "instructions": "Choose ONE action for this turn. Read relativeEdges: front, left, right.\nIf front is wall, choose a turn: FORWARD cannot pass a wall.\nIf front is exit, choose FORWARD.\nIf front is open passage, choose FORWARD. Do not keep turning when the corridor ahead is open.\nPrefer an open passage and avoid needless revisits or rooms with one entry left.\nmemory rows are [room, visits, NESW edges, entriesLeft].\nEdges: # wall, . passage, E exit, ? unseen. Rooms are row-major."
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "TURN_LEFT",
+            "probabilities": {
+              "FORWARD": 0.19811408998094665,
+              "TURN_LEFT": 0.4752509958420675,
+              "TURN_RIGHT": 0.32663491417698587
+            },
+            "confidence": 0.05357865146470242
+          }
+        },
+        "usage": {
+          "input_tokens": 365,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 67
+      }
+    },
+    {
+      "case": "dead-end-look-behind",
+      "model": "tev1:latest",
+      "prompt": "forward-first-v2",
+      "expected": "TURN_RIGHT",
+      "choice": "TURN_RIGHT",
+      "correct": true,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 1023,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": "##?#",
+          "entriesLeft": 7,
+          "current_room_visits": 1,
+          "memory": [
+            [
+              4,
+              1,
+              "##?#",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "Entered a room; 7 entries left.",
+          "relativeEdges": {
+            "front": "wall",
+            "left": "wall",
+            "right": "wall"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            },
+            "instructions": "Choose ONE action for this turn. Read relativeEdges: front, left, right.\nIf front is wall, choose a turn: FORWARD cannot pass a wall.\nIf front is exit, choose FORWARD.\nIf front is open passage, choose FORWARD. Do not keep turning when the corridor ahead is open.\nPrefer an open passage and avoid needless revisits or rooms with one entry left.\nmemory rows are [room, visits, NESW edges, entriesLeft].\nEdges: # wall, . passage, E exit, ? unseen. Rooms are row-major."
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "TURN_RIGHT",
+            "probabilities": {
+              "FORWARD": 0.08494905549848987,
+              "TURN_LEFT": 0.10907674638367854,
+              "TURN_RIGHT": 0.8059741981178316
+            },
+            "confidence": 0.431107385804569
+          }
+        },
+        "usage": {
+          "input_tokens": 366,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 67
+      }
+    },
+    {
+      "case": "exit-ahead",
+      "model": "tev1:latest",
+      "prompt": "forward-first-v2",
+      "expected": "FORWARD",
+      "choice": "FORWARD",
+      "correct": true,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 1161,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 1,
+          "facing": "N",
+          "direction": 0,
+          "edges": "E.?.",
+          "entriesLeft": 7,
+          "current_room_visits": 1,
+          "memory": [
+            [
+              1,
+              1,
+              "E.?.",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "Entered a room; 7 entries left.",
+          "relativeEdges": {
+            "front": "exit",
+            "left": "open passage",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            },
+            "instructions": "Choose ONE action for this turn. Read relativeEdges: front, left, right.\nIf front is wall, choose a turn: FORWARD cannot pass a wall.\nIf front is exit, choose FORWARD.\nIf front is open passage, choose FORWARD. Do not keep turning when the corridor ahead is open.\nPrefer an open passage and avoid needless revisits or rooms with one entry left.\nmemory rows are [room, visits, NESW edges, entriesLeft].\nEdges: # wall, . passage, E exit, ? unseen. Rooms are row-major."
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.6897734942519206,
+              "TURN_LEFT": 0.1744020514834832,
+              "TURN_RIGHT": 0.1358244542645962
+            },
+            "confidence": 0.24276328233922284
+          }
+        },
+        "usage": {
+          "input_tokens": 368,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 59
+      }
+    },
+    {
+      "case": "exit-left",
+      "model": "tev1:latest",
+      "prompt": "forward-first-v2",
+      "expected": "TURN_LEFT",
+      "choice": "FORWARD",
+      "correct": false,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 1031,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 1,
+          "facing": "E",
+          "direction": 1,
+          "edges": "E.#?",
+          "entriesLeft": 7,
+          "current_room_visits": 1,
+          "memory": [
+            [
+              1,
+              1,
+              "E.#?",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "Entered a room; 7 entries left.",
+          "relativeEdges": {
+            "front": "open passage",
+            "left": "exit",
+            "right": "wall"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            },
+            "instructions": "Choose ONE action for this turn. Read relativeEdges: front, left, right.\nIf front is wall, choose a turn: FORWARD cannot pass a wall.\nIf front is exit, choose FORWARD.\nIf front is open passage, choose FORWARD. Do not keep turning when the corridor ahead is open.\nPrefer an open passage and avoid needless revisits or rooms with one entry left.\nmemory rows are [room, visits, NESW edges, entriesLeft].\nEdges: # wall, . passage, E exit, ? unseen. Rooms are row-major."
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.9613865479800947,
+              "TURN_LEFT": 0.032896838642027075,
+              "TURN_RIGHT": 0.0057166133778780315
+            },
+            "confidence": 0.836427107572171
+          }
+        },
+        "usage": {
+          "input_tokens": 367,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 59
+      }
+    },
+    {
+      "case": "exit-right",
+      "model": "tev1:latest",
+      "prompt": "forward-first-v2",
+      "expected": "TURN_RIGHT",
+      "choice": "TURN_RIGHT",
+      "correct": true,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 1010,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 1,
+          "facing": "W",
+          "direction": 3,
+          "edges": "E?##",
+          "entriesLeft": 7,
+          "current_room_visits": 1,
+          "memory": [
+            [
+              1,
+              1,
+              "E?##",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "Entered a room; 7 entries left.",
+          "relativeEdges": {
+            "front": "wall",
+            "left": "wall",
+            "right": "exit"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            },
+            "instructions": "Choose ONE action for this turn. Read relativeEdges: front, left, right.\nIf front is wall, choose a turn: FORWARD cannot pass a wall.\nIf front is exit, choose FORWARD.\nIf front is open passage, choose FORWARD. Do not keep turning when the corridor ahead is open.\nPrefer an open passage and avoid needless revisits or rooms with one entry left.\nmemory rows are [room, visits, NESW edges, entriesLeft].\nEdges: # wall, . passage, E exit, ? unseen. Rooms are row-major."
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "TURN_RIGHT",
+            "probabilities": {
+              "FORWARD": 0.15395792595365304,
+              "TURN_LEFT": 0.06417921195855404,
+              "TURN_RIGHT": 0.7818628620877929
+            },
+            "confidence": 0.40224081931850486
+          }
+        },
+        "usage": {
+          "input_tokens": 366,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 59
+      }
+    },
+    {
+      "case": "junction-first",
+      "model": "tev1:latest",
+      "prompt": "forward-first-v2",
+      "expected": "FORWARD",
+      "choice": "FORWARD",
+      "correct": true,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 1014,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": "..?.",
+          "entriesLeft": 7,
+          "current_room_visits": 1,
+          "memory": [
+            [
+              4,
+              1,
+              "..?.",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "Entered a room; 7 entries left.",
+          "relativeEdges": {
+            "front": "open passage",
+            "left": "open passage",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            },
+            "instructions": "Choose ONE action for this turn. Read relativeEdges: front, left, right.\nIf front is wall, choose a turn: FORWARD cannot pass a wall.\nIf front is exit, choose FORWARD.\nIf front is open passage, choose FORWARD. Do not keep turning when the corridor ahead is open.\nPrefer an open passage and avoid needless revisits or rooms with one entry left.\nmemory rows are [room, visits, NESW edges, entriesLeft].\nEdges: # wall, . passage, E exit, ? unseen. Rooms are row-major."
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.9556932230698136,
+              "TURN_LEFT": 0.028859434691150525,
+              "TURN_RIGHT": 0.015447342239035733
+            },
+            "confidence": 0.8088073252765284
+          }
+        },
+        "usage": {
+          "input_tokens": 367,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 67
+      }
+    },
+    {
+      "case": "junction-revisited",
+      "model": "tev1:latest",
+      "prompt": "forward-first-v2",
+      "expected": "TURN_LEFT",
+      "choice": "FORWARD",
+      "correct": false,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 1042,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": "..?.",
+          "entriesLeft": 7,
+          "current_room_visits": 2,
+          "memory": [
+            [
+              4,
+              2,
+              "..?.",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "Entered a room; 7 entries left.",
+          "relativeEdges": {
+            "front": "open passage",
+            "left": "open passage",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            },
+            "instructions": "Choose ONE action for this turn. Read relativeEdges: front, left, right.\nIf front is wall, choose a turn: FORWARD cannot pass a wall.\nIf front is exit, choose FORWARD.\nIf front is open passage, choose FORWARD. Do not keep turning when the corridor ahead is open.\nPrefer an open passage and avoid needless revisits or rooms with one entry left.\nmemory rows are [room, visits, NESW edges, entriesLeft].\nEdges: # wall, . passage, E exit, ? unseen. Rooms are row-major."
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.9556932230698136,
+              "TURN_LEFT": 0.028859434691150525,
+              "TURN_RIGHT": 0.015447342239035733
+            },
+            "confidence": 0.8088073252765284
+          }
+        },
+        "usage": {
+          "input_tokens": 367,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 67
+      }
+    },
+    {
+      "case": "corner-revisited",
+      "model": "tev1:latest",
+      "prompt": "forward-first-v2",
+      "expected": "TURN_RIGHT",
+      "choice": "FORWARD",
+      "correct": false,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 999,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": "..?#",
+          "entriesLeft": 7,
+          "current_room_visits": 2,
+          "memory": [
+            [
+              4,
+              2,
+              "..?#",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "Entered a room; 7 entries left.",
+          "relativeEdges": {
+            "front": "open passage",
+            "left": "wall",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            },
+            "instructions": "Choose ONE action for this turn. Read relativeEdges: front, left, right.\nIf front is wall, choose a turn: FORWARD cannot pass a wall.\nIf front is exit, choose FORWARD.\nIf front is open passage, choose FORWARD. Do not keep turning when the corridor ahead is open.\nPrefer an open passage and avoid needless revisits or rooms with one entry left.\nmemory rows are [room, visits, NESW edges, entriesLeft].\nEdges: # wall, . passage, E exit, ? unseen. Rooms are row-major."
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.9196818676386311,
+              "TURN_LEFT": 0.004826047521827215,
+              "TURN_RIGHT": 0.0754920848395417
+            },
+            "confidence": 0.7289358316438177
+          }
+        },
+        "usage": {
+          "input_tokens": 368,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 67
+      }
+    },
+    {
+      "case": "commit-after-left",
+      "model": "tev1:latest",
+      "prompt": "forward-first-v2",
+      "expected": "FORWARD",
+      "choice": "FORWARD",
+      "correct": true,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 998,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": ".#?.",
+          "entriesLeft": 7,
+          "current_room_visits": 2,
+          "memory": [
+            [
+              4,
+              2,
+              ".#?.",
+              7
+            ]
+          ],
+          "previousAction": "TURN_LEFT",
+          "previousResult": "Turned left.",
+          "relativeEdges": {
+            "front": "open passage",
+            "left": "open passage",
+            "right": "wall"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            },
+            "instructions": "Choose ONE action for this turn. Read relativeEdges: front, left, right.\nIf front is wall, choose a turn: FORWARD cannot pass a wall.\nIf front is exit, choose FORWARD.\nIf front is open passage, choose FORWARD. Do not keep turning when the corridor ahead is open.\nPrefer an open passage and avoid needless revisits or rooms with one entry left.\nmemory rows are [room, visits, NESW edges, entriesLeft].\nEdges: # wall, . passage, E exit, ? unseen. Rooms are row-major."
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.9210719095753053,
+              "TURN_LEFT": 0.07560618643000076,
+              "TURN_RIGHT": 0.0033219039946939103
+            },
+            "confidence": 0.7361049506768229
+          }
+        },
+        "usage": {
+          "input_tokens": 361,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 67
+      }
+    },
+    {
+      "case": "commit-after-right",
+      "model": "tev1:latest",
+      "prompt": "forward-first-v2",
+      "expected": "FORWARD",
+      "choice": "FORWARD",
+      "correct": true,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 1017,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": "..?#",
+          "entriesLeft": 7,
+          "current_room_visits": 2,
+          "memory": [
+            [
+              4,
+              2,
+              "..?#",
+              7
+            ]
+          ],
+          "previousAction": "TURN_RIGHT",
+          "previousResult": "Turned right.",
+          "relativeEdges": {
+            "front": "open passage",
+            "left": "wall",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            },
+            "instructions": "Choose ONE action for this turn. Read relativeEdges: front, left, right.\nIf front is wall, choose a turn: FORWARD cannot pass a wall.\nIf front is exit, choose FORWARD.\nIf front is open passage, choose FORWARD. Do not keep turning when the corridor ahead is open.\nPrefer an open passage and avoid needless revisits or rooms with one entry left.\nmemory rows are [room, visits, NESW edges, entriesLeft].\nEdges: # wall, . passage, E exit, ? unseen. Rooms are row-major."
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.910529539464182,
+              "TURN_LEFT": 0.004778020511336447,
+              "TURN_RIGHT": 0.08469244002448156
+            },
+            "confidence": 0.7087615956421347
+          }
+        },
+        "usage": {
+          "input_tokens": 363,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 68
+      }
+    },
+    {
+      "case": "leave-last-entry",
+      "model": "tev1:latest",
+      "prompt": "forward-first-v2",
+      "expected": "FORWARD",
+      "choice": "FORWARD",
+      "correct": true,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 1052,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": ".#?#",
+          "entriesLeft": 1,
+          "current_room_visits": 2,
+          "memory": [
+            [
+              4,
+              2,
+              ".#?#",
+              1
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "Entered a room; 1 entries left.",
+          "relativeEdges": {
+            "front": "open passage",
+            "left": "wall",
+            "right": "wall"
+          }
+        },
+        "questions": {
+          "action": {
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            },
+            "instructions": "Choose ONE action for this turn. Read relativeEdges: front, left, right.\nIf front is wall, choose a turn: FORWARD cannot pass a wall.\nIf front is exit, choose FORWARD.\nIf front is open passage, choose FORWARD. Do not keep turning when the corridor ahead is open.\nPrefer an open passage and avoid needless revisits or rooms with one entry left.\nmemory rows are [room, visits, NESW edges, entriesLeft].\nEdges: # wall, . passage, E exit, ? unseen. Rooms are row-major."
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.9677333693739304,
+              "TURN_LEFT": 0.020084665319640427,
+              "TURN_RIGHT": 0.012181965306428958
+            },
+            "confidence": 0.850790991026444
+          }
+        },
+        "usage": {
+          "input_tokens": 367,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 68
+      }
+    },
+    {
+      "case": "corridor-first",
+      "model": "tev1:latest",
+      "prompt": "ordered-policy-v3",
+      "expected": "FORWARD",
+      "choice": "FORWARD",
+      "correct": true,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 1245,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": ".#?#",
+          "entriesLeft": 7,
+          "current_room_visits": 1,
+          "memory": [
+            [
+              4,
+              1,
+              ".#?#",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "Entered a room; 7 entries left.",
+          "relativeEdges": {
+            "front": "open passage",
+            "left": "wall",
+            "right": "wall"
+          }
+        },
+        "questions": {
+          "action": {
+            "instructions": "Choose ONE action: FORWARD, TURN_LEFT, TURN_RIGHT.\nfront, left, right mean relativeEdges.front, relativeEdges.left, relativeEdges.right.\nEdge values are \"wall\", \"open passage\", \"exit\".\nApply rules top-to-bottom. Stop at the first match. Other state fields do not override these rules.\n1. If front == \"exit\", choose FORWARD.\n2. If left == \"exit\", choose TURN_LEFT.\n3. If right == \"exit\", choose TURN_RIGHT.\n4. If previousAction is TURN_LEFT or TURN_RIGHT and front == \"open passage\", choose FORWARD.\n5. If front == \"open passage\" and current_room_visits == 1, choose FORWARD.\n6. If left == \"open passage\", choose TURN_LEFT.\n7. If right == \"open passage\", choose TURN_RIGHT.\n8. If front == \"open passage\", choose FORWARD.\n9. Otherwise, choose TURN_RIGHT to look behind.",
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            }
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.962399089920614,
+              "TURN_LEFT": 0.01762695419783238,
+              "TURN_RIGHT": 0.01997395588155356
+            },
+            "confidence": 0.8304834583495199
+          }
+        },
+        "usage": {
+          "input_tokens": 452,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 81
+      }
+    },
+    {
+      "case": "corridor-revisited",
+      "model": "tev1:latest",
+      "prompt": "ordered-policy-v3",
+      "expected": "FORWARD",
+      "choice": "FORWARD",
+      "correct": true,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 1200,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": ".#?#",
+          "entriesLeft": 7,
+          "current_room_visits": 2,
+          "memory": [
+            [
+              4,
+              2,
+              ".#?#",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "Entered a room; 7 entries left.",
+          "relativeEdges": {
+            "front": "open passage",
+            "left": "wall",
+            "right": "wall"
+          }
+        },
+        "questions": {
+          "action": {
+            "instructions": "Choose ONE action: FORWARD, TURN_LEFT, TURN_RIGHT.\nfront, left, right mean relativeEdges.front, relativeEdges.left, relativeEdges.right.\nEdge values are \"wall\", \"open passage\", \"exit\".\nApply rules top-to-bottom. Stop at the first match. Other state fields do not override these rules.\n1. If front == \"exit\", choose FORWARD.\n2. If left == \"exit\", choose TURN_LEFT.\n3. If right == \"exit\", choose TURN_RIGHT.\n4. If previousAction is TURN_LEFT or TURN_RIGHT and front == \"open passage\", choose FORWARD.\n5. If front == \"open passage\" and current_room_visits == 1, choose FORWARD.\n6. If left == \"open passage\", choose TURN_LEFT.\n7. If right == \"open passage\", choose TURN_RIGHT.\n8. If front == \"open passage\", choose FORWARD.\n9. Otherwise, choose TURN_RIGHT to look behind.",
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            }
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.9576048384137711,
+              "TURN_LEFT": 0.01987445436592905,
+              "TURN_RIGHT": 0.022520707220299738
+            },
+            "confidence": 0.8135955359669718
+          }
+        },
+        "usage": {
+          "input_tokens": 452,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 81
+      }
+    },
+    {
+      "case": "blocked-left-open",
+      "model": "tev1:latest",
+      "prompt": "ordered-policy-v3",
+      "expected": "TURN_LEFT",
+      "choice": "TURN_LEFT",
+      "correct": true,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 1266,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": "##?.",
+          "entriesLeft": 7,
+          "current_room_visits": 1,
+          "memory": [
+            [
+              4,
+              1,
+              "##?.",
+              7
+            ]
+          ],
+          "previousAction": "START",
+          "previousResult": "Find the exit. Seven entries per room.",
+          "relativeEdges": {
+            "front": "wall",
+            "left": "open passage",
+            "right": "wall"
+          }
+        },
+        "questions": {
+          "action": {
+            "instructions": "Choose ONE action: FORWARD, TURN_LEFT, TURN_RIGHT.\nfront, left, right mean relativeEdges.front, relativeEdges.left, relativeEdges.right.\nEdge values are \"wall\", \"open passage\", \"exit\".\nApply rules top-to-bottom. Stop at the first match. Other state fields do not override these rules.\n1. If front == \"exit\", choose FORWARD.\n2. If left == \"exit\", choose TURN_LEFT.\n3. If right == \"exit\", choose TURN_RIGHT.\n4. If previousAction is TURN_LEFT or TURN_RIGHT and front == \"open passage\", choose FORWARD.\n5. If front == \"open passage\" and current_room_visits == 1, choose FORWARD.\n6. If left == \"open passage\", choose TURN_LEFT.\n7. If right == \"open passage\", choose TURN_RIGHT.\n8. If front == \"open passage\", choose FORWARD.\n9. Otherwise, choose TURN_RIGHT to look behind.",
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            }
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "TURN_LEFT",
+            "probabilities": {
+              "FORWARD": 0.02880019873836161,
+              "TURN_LEFT": 0.9537315977210048,
+              "TURN_RIGHT": 0.017468203540633418
+            },
+            "confidence": 0.8015255215853849
+          }
+        },
+        "usage": {
+          "input_tokens": 449,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 68
+      }
+    },
+    {
+      "case": "blocked-right-open",
+      "model": "tev1:latest",
+      "prompt": "ordered-policy-v3",
+      "expected": "TURN_RIGHT",
+      "choice": "TURN_RIGHT",
+      "correct": true,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 1228,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": "#.?#",
+          "entriesLeft": 7,
+          "current_room_visits": 1,
+          "memory": [
+            [
+              4,
+              1,
+              "#.?#",
+              7
+            ]
+          ],
+          "previousAction": "START",
+          "previousResult": "Find the exit. Seven entries per room.",
+          "relativeEdges": {
+            "front": "wall",
+            "left": "wall",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "instructions": "Choose ONE action: FORWARD, TURN_LEFT, TURN_RIGHT.\nfront, left, right mean relativeEdges.front, relativeEdges.left, relativeEdges.right.\nEdge values are \"wall\", \"open passage\", \"exit\".\nApply rules top-to-bottom. Stop at the first match. Other state fields do not override these rules.\n1. If front == \"exit\", choose FORWARD.\n2. If left == \"exit\", choose TURN_LEFT.\n3. If right == \"exit\", choose TURN_RIGHT.\n4. If previousAction is TURN_LEFT or TURN_RIGHT and front == \"open passage\", choose FORWARD.\n5. If front == \"open passage\" and current_room_visits == 1, choose FORWARD.\n6. If left == \"open passage\", choose TURN_LEFT.\n7. If right == \"open passage\", choose TURN_RIGHT.\n8. If front == \"open passage\", choose FORWARD.\n9. Otherwise, choose TURN_RIGHT to look behind.",
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            }
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "TURN_RIGHT",
+            "probabilities": {
+              "FORWARD": 0.07353289386957511,
+              "TURN_LEFT": 0.030653070651276492,
+              "TURN_RIGHT": 0.8958140354791484
+            },
+            "confidence": 0.6383539584827118
+          }
+        },
+        "usage": {
+          "input_tokens": 451,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 67
+      }
+    },
+    {
+      "case": "blocked-two-openings",
+      "model": "tev1:latest",
+      "prompt": "ordered-policy-v3",
+      "expected": "TURN_LEFT",
+      "choice": "TURN_RIGHT",
+      "correct": false,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 1210,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": "#.?.",
+          "entriesLeft": 7,
+          "current_room_visits": 1,
+          "memory": [
+            [
+              4,
+              1,
+              "#.?.",
+              7
+            ]
+          ],
+          "previousAction": "START",
+          "previousResult": "Find the exit. Seven entries per room.",
+          "relativeEdges": {
+            "front": "wall",
+            "left": "open passage",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "instructions": "Choose ONE action: FORWARD, TURN_LEFT, TURN_RIGHT.\nfront, left, right mean relativeEdges.front, relativeEdges.left, relativeEdges.right.\nEdge values are \"wall\", \"open passage\", \"exit\".\nApply rules top-to-bottom. Stop at the first match. Other state fields do not override these rules.\n1. If front == \"exit\", choose FORWARD.\n2. If left == \"exit\", choose TURN_LEFT.\n3. If right == \"exit\", choose TURN_RIGHT.\n4. If previousAction is TURN_LEFT or TURN_RIGHT and front == \"open passage\", choose FORWARD.\n5. If front == \"open passage\" and current_room_visits == 1, choose FORWARD.\n6. If left == \"open passage\", choose TURN_LEFT.\n7. If right == \"open passage\", choose TURN_RIGHT.\n8. If front == \"open passage\", choose FORWARD.\n9. Otherwise, choose TURN_RIGHT to look behind.",
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            }
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "TURN_RIGHT",
+            "probabilities": {
+              "FORWARD": 0.06919784770119637,
+              "TURN_LEFT": 0.35141566709764355,
+              "TURN_RIGHT": 0.5793864852011601
+            },
+            "confidence": 0.20942193319819535
+          }
+        },
+        "usage": {
+          "input_tokens": 450,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 67
+      }
+    },
+    {
+      "case": "dead-end-look-behind",
+      "model": "tev1:latest",
+      "prompt": "ordered-policy-v3",
+      "expected": "TURN_RIGHT",
+      "choice": "TURN_RIGHT",
+      "correct": true,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 1256,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": "##?#",
+          "entriesLeft": 7,
+          "current_room_visits": 1,
+          "memory": [
+            [
+              4,
+              1,
+              "##?#",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "Entered a room; 7 entries left.",
+          "relativeEdges": {
+            "front": "wall",
+            "left": "wall",
+            "right": "wall"
+          }
+        },
+        "questions": {
+          "action": {
+            "instructions": "Choose ONE action: FORWARD, TURN_LEFT, TURN_RIGHT.\nfront, left, right mean relativeEdges.front, relativeEdges.left, relativeEdges.right.\nEdge values are \"wall\", \"open passage\", \"exit\".\nApply rules top-to-bottom. Stop at the first match. Other state fields do not override these rules.\n1. If front == \"exit\", choose FORWARD.\n2. If left == \"exit\", choose TURN_LEFT.\n3. If right == \"exit\", choose TURN_RIGHT.\n4. If previousAction is TURN_LEFT or TURN_RIGHT and front == \"open passage\", choose FORWARD.\n5. If front == \"open passage\" and current_room_visits == 1, choose FORWARD.\n6. If left == \"open passage\", choose TURN_LEFT.\n7. If right == \"open passage\", choose TURN_RIGHT.\n8. If front == \"open passage\", choose FORWARD.\n9. Otherwise, choose TURN_RIGHT to look behind.",
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            }
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "TURN_RIGHT",
+            "probabilities": {
+              "FORWARD": 0.049552993505616164,
+              "TURN_LEFT": 0.072099180119303,
+              "TURN_RIGHT": 0.8783478263750808
+            },
+            "confidence": 0.5881846421274567
+          }
+        },
+        "usage": {
+          "input_tokens": 451,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 68
+      }
+    },
+    {
+      "case": "exit-ahead",
+      "model": "tev1:latest",
+      "prompt": "ordered-policy-v3",
+      "expected": "FORWARD",
+      "choice": "FORWARD",
+      "correct": true,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 1304,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 1,
+          "facing": "N",
+          "direction": 0,
+          "edges": "E.?.",
+          "entriesLeft": 7,
+          "current_room_visits": 1,
+          "memory": [
+            [
+              1,
+              1,
+              "E.?.",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "Entered a room; 7 entries left.",
+          "relativeEdges": {
+            "front": "exit",
+            "left": "open passage",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "instructions": "Choose ONE action: FORWARD, TURN_LEFT, TURN_RIGHT.\nfront, left, right mean relativeEdges.front, relativeEdges.left, relativeEdges.right.\nEdge values are \"wall\", \"open passage\", \"exit\".\nApply rules top-to-bottom. Stop at the first match. Other state fields do not override these rules.\n1. If front == \"exit\", choose FORWARD.\n2. If left == \"exit\", choose TURN_LEFT.\n3. If right == \"exit\", choose TURN_RIGHT.\n4. If previousAction is TURN_LEFT or TURN_RIGHT and front == \"open passage\", choose FORWARD.\n5. If front == \"open passage\" and current_room_visits == 1, choose FORWARD.\n6. If left == \"open passage\", choose TURN_LEFT.\n7. If right == \"open passage\", choose TURN_RIGHT.\n8. If front == \"open passage\", choose FORWARD.\n9. Otherwise, choose TURN_RIGHT to look behind.",
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            }
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.9130832849585563,
+              "TURN_LEFT": 0.03540408105865451,
+              "TURN_RIGHT": 0.0515126339827892
+            },
+            "confidence": 0.6776931487679289
+          }
+        },
+        "usage": {
+          "input_tokens": 453,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 67
+      }
+    },
+    {
+      "case": "exit-left",
+      "model": "tev1:latest",
+      "prompt": "ordered-policy-v3",
+      "expected": "TURN_LEFT",
+      "choice": "FORWARD",
+      "correct": false,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 1292,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 1,
+          "facing": "E",
+          "direction": 1,
+          "edges": "E.#?",
+          "entriesLeft": 7,
+          "current_room_visits": 1,
+          "memory": [
+            [
+              1,
+              1,
+              "E.#?",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "Entered a room; 7 entries left.",
+          "relativeEdges": {
+            "front": "open passage",
+            "left": "exit",
+            "right": "wall"
+          }
+        },
+        "questions": {
+          "action": {
+            "instructions": "Choose ONE action: FORWARD, TURN_LEFT, TURN_RIGHT.\nfront, left, right mean relativeEdges.front, relativeEdges.left, relativeEdges.right.\nEdge values are \"wall\", \"open passage\", \"exit\".\nApply rules top-to-bottom. Stop at the first match. Other state fields do not override these rules.\n1. If front == \"exit\", choose FORWARD.\n2. If left == \"exit\", choose TURN_LEFT.\n3. If right == \"exit\", choose TURN_RIGHT.\n4. If previousAction is TURN_LEFT or TURN_RIGHT and front == \"open passage\", choose FORWARD.\n5. If front == \"open passage\" and current_room_visits == 1, choose FORWARD.\n6. If left == \"open passage\", choose TURN_LEFT.\n7. If right == \"open passage\", choose TURN_RIGHT.\n8. If front == \"open passage\", choose FORWARD.\n9. Otherwise, choose TURN_RIGHT to look behind.",
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            }
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.7359052514238741,
+              "TURN_LEFT": 0.23891345561672744,
+              "TURN_RIGHT": 0.02518129295939846
+            },
+            "confidence": 0.39886126239664943
+          }
+        },
+        "usage": {
+          "input_tokens": 452,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 67
+      }
+    },
+    {
+      "case": "exit-right",
+      "model": "tev1:latest",
+      "prompt": "ordered-policy-v3",
+      "expected": "TURN_RIGHT",
+      "choice": "TURN_RIGHT",
+      "correct": true,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 1387,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 1,
+          "facing": "W",
+          "direction": 3,
+          "edges": "E?##",
+          "entriesLeft": 7,
+          "current_room_visits": 1,
+          "memory": [
+            [
+              1,
+              1,
+              "E?##",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "Entered a room; 7 entries left.",
+          "relativeEdges": {
+            "front": "wall",
+            "left": "wall",
+            "right": "exit"
+          }
+        },
+        "questions": {
+          "action": {
+            "instructions": "Choose ONE action: FORWARD, TURN_LEFT, TURN_RIGHT.\nfront, left, right mean relativeEdges.front, relativeEdges.left, relativeEdges.right.\nEdge values are \"wall\", \"open passage\", \"exit\".\nApply rules top-to-bottom. Stop at the first match. Other state fields do not override these rules.\n1. If front == \"exit\", choose FORWARD.\n2. If left == \"exit\", choose TURN_LEFT.\n3. If right == \"exit\", choose TURN_RIGHT.\n4. If previousAction is TURN_LEFT or TURN_RIGHT and front == \"open passage\", choose FORWARD.\n5. If front == \"open passage\" and current_room_visits == 1, choose FORWARD.\n6. If left == \"open passage\", choose TURN_LEFT.\n7. If right == \"open passage\", choose TURN_RIGHT.\n8. If front == \"open passage\", choose FORWARD.\n9. Otherwise, choose TURN_RIGHT to look behind.",
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            }
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "TURN_RIGHT",
+            "probabilities": {
+              "FORWARD": 0.04997638731107678,
+              "TURN_LEFT": 0.06417095154165331,
+              "TURN_RIGHT": 0.8858526611472699
+            },
+            "confidence": 0.6055610294320242
+          }
+        },
+        "usage": {
+          "input_tokens": 451,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 59
+      }
+    },
+    {
+      "case": "junction-first",
+      "model": "tev1:latest",
+      "prompt": "ordered-policy-v3",
+      "expected": "FORWARD",
+      "choice": "FORWARD",
+      "correct": true,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 1384,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": "..?.",
+          "entriesLeft": 7,
+          "current_room_visits": 1,
+          "memory": [
+            [
+              4,
+              1,
+              "..?.",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "Entered a room; 7 entries left.",
+          "relativeEdges": {
+            "front": "open passage",
+            "left": "open passage",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "instructions": "Choose ONE action: FORWARD, TURN_LEFT, TURN_RIGHT.\nfront, left, right mean relativeEdges.front, relativeEdges.left, relativeEdges.right.\nEdge values are \"wall\", \"open passage\", \"exit\".\nApply rules top-to-bottom. Stop at the first match. Other state fields do not override these rules.\n1. If front == \"exit\", choose FORWARD.\n2. If left == \"exit\", choose TURN_LEFT.\n3. If right == \"exit\", choose TURN_RIGHT.\n4. If previousAction is TURN_LEFT or TURN_RIGHT and front == \"open passage\", choose FORWARD.\n5. If front == \"open passage\" and current_room_visits == 1, choose FORWARD.\n6. If left == \"open passage\", choose TURN_LEFT.\n7. If right == \"open passage\", choose TURN_RIGHT.\n8. If front == \"open passage\", choose FORWARD.\n9. Otherwise, choose TURN_RIGHT to look behind.",
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            }
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.8552710085933382,
+              "TURN_LEFT": 0.10214755522877343,
+              "TURN_RIGHT": 0.042581436177888475
+            },
+            "confidence": 0.5438383861909784
+          }
+        },
+        "usage": {
+          "input_tokens": 452,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 80
+      }
+    },
+    {
+      "case": "junction-revisited",
+      "model": "tev1:latest",
+      "prompt": "ordered-policy-v3",
+      "expected": "TURN_LEFT",
+      "choice": "FORWARD",
+      "correct": false,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 1254,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": "..?.",
+          "entriesLeft": 7,
+          "current_room_visits": 2,
+          "memory": [
+            [
+              4,
+              2,
+              "..?.",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "Entered a room; 7 entries left.",
+          "relativeEdges": {
+            "front": "open passage",
+            "left": "open passage",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "instructions": "Choose ONE action: FORWARD, TURN_LEFT, TURN_RIGHT.\nfront, left, right mean relativeEdges.front, relativeEdges.left, relativeEdges.right.\nEdge values are \"wall\", \"open passage\", \"exit\".\nApply rules top-to-bottom. Stop at the first match. Other state fields do not override these rules.\n1. If front == \"exit\", choose FORWARD.\n2. If left == \"exit\", choose TURN_LEFT.\n3. If right == \"exit\", choose TURN_RIGHT.\n4. If previousAction is TURN_LEFT or TURN_RIGHT and front == \"open passage\", choose FORWARD.\n5. If front == \"open passage\" and current_room_visits == 1, choose FORWARD.\n6. If left == \"open passage\", choose TURN_LEFT.\n7. If right == \"open passage\", choose TURN_RIGHT.\n8. If front == \"open passage\", choose FORWARD.\n9. Otherwise, choose TURN_RIGHT to look behind.",
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            }
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.8338453529847986,
+              "TURN_LEFT": 0.11284869702173102,
+              "TURN_RIGHT": 0.05330594999347029
+            },
+            "confidence": 0.49573103802596385
+          }
+        },
+        "usage": {
+          "input_tokens": 452,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 80
+      }
+    },
+    {
+      "case": "corner-revisited",
+      "model": "tev1:latest",
+      "prompt": "ordered-policy-v3",
+      "expected": "TURN_RIGHT",
+      "choice": "FORWARD",
+      "correct": false,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 1209,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": "..?#",
+          "entriesLeft": 7,
+          "current_room_visits": 2,
+          "memory": [
+            [
+              4,
+              2,
+              "..?#",
+              7
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "Entered a room; 7 entries left.",
+          "relativeEdges": {
+            "front": "open passage",
+            "left": "wall",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "instructions": "Choose ONE action: FORWARD, TURN_LEFT, TURN_RIGHT.\nfront, left, right mean relativeEdges.front, relativeEdges.left, relativeEdges.right.\nEdge values are \"wall\", \"open passage\", \"exit\".\nApply rules top-to-bottom. Stop at the first match. Other state fields do not override these rules.\n1. If front == \"exit\", choose FORWARD.\n2. If left == \"exit\", choose TURN_LEFT.\n3. If right == \"exit\", choose TURN_RIGHT.\n4. If previousAction is TURN_LEFT or TURN_RIGHT and front == \"open passage\", choose FORWARD.\n5. If front == \"open passage\" and current_room_visits == 1, choose FORWARD.\n6. If left == \"open passage\", choose TURN_LEFT.\n7. If right == \"open passage\", choose TURN_RIGHT.\n8. If front == \"open passage\", choose FORWARD.\n9. Otherwise, choose TURN_RIGHT to look behind.",
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            }
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.7594731860969822,
+              "TURN_LEFT": 0.022934102999540424,
+              "TURN_RIGHT": 0.21759271090347723
+            },
+            "confidence": 0.42892454613266395
+          }
+        },
+        "usage": {
+          "input_tokens": 453,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 101
+      }
+    },
+    {
+      "case": "commit-after-left",
+      "model": "tev1:latest",
+      "prompt": "ordered-policy-v3",
+      "expected": "FORWARD",
+      "choice": "FORWARD",
+      "correct": true,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 1304,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": ".#?.",
+          "entriesLeft": 7,
+          "current_room_visits": 2,
+          "memory": [
+            [
+              4,
+              2,
+              ".#?.",
+              7
+            ]
+          ],
+          "previousAction": "TURN_LEFT",
+          "previousResult": "Turned left.",
+          "relativeEdges": {
+            "front": "open passage",
+            "left": "open passage",
+            "right": "wall"
+          }
+        },
+        "questions": {
+          "action": {
+            "instructions": "Choose ONE action: FORWARD, TURN_LEFT, TURN_RIGHT.\nfront, left, right mean relativeEdges.front, relativeEdges.left, relativeEdges.right.\nEdge values are \"wall\", \"open passage\", \"exit\".\nApply rules top-to-bottom. Stop at the first match. Other state fields do not override these rules.\n1. If front == \"exit\", choose FORWARD.\n2. If left == \"exit\", choose TURN_LEFT.\n3. If right == \"exit\", choose TURN_RIGHT.\n4. If previousAction is TURN_LEFT or TURN_RIGHT and front == \"open passage\", choose FORWARD.\n5. If front == \"open passage\" and current_room_visits == 1, choose FORWARD.\n6. If left == \"open passage\", choose TURN_LEFT.\n7. If right == \"open passage\", choose TURN_RIGHT.\n8. If front == \"open passage\", choose FORWARD.\n9. Otherwise, choose TURN_RIGHT to look behind.",
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            }
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.7235137837184686,
+              "TURN_LEFT": 0.266165846434186,
+              "TURN_RIGHT": 0.010320369847345334
+            },
+            "confidence": 0.423214989972994
+          }
+        },
+        "usage": {
+          "input_tokens": 446,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 68
+      }
+    },
+    {
+      "case": "commit-after-right",
+      "model": "tev1:latest",
+      "prompt": "ordered-policy-v3",
+      "expected": "FORWARD",
+      "choice": "FORWARD",
+      "correct": true,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 1183,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": "..?#",
+          "entriesLeft": 7,
+          "current_room_visits": 2,
+          "memory": [
+            [
+              4,
+              2,
+              "..?#",
+              7
+            ]
+          ],
+          "previousAction": "TURN_RIGHT",
+          "previousResult": "Turned right.",
+          "relativeEdges": {
+            "front": "open passage",
+            "left": "wall",
+            "right": "open passage"
+          }
+        },
+        "questions": {
+          "action": {
+            "instructions": "Choose ONE action: FORWARD, TURN_LEFT, TURN_RIGHT.\nfront, left, right mean relativeEdges.front, relativeEdges.left, relativeEdges.right.\nEdge values are \"wall\", \"open passage\", \"exit\".\nApply rules top-to-bottom. Stop at the first match. Other state fields do not override these rules.\n1. If front == \"exit\", choose FORWARD.\n2. If left == \"exit\", choose TURN_LEFT.\n3. If right == \"exit\", choose TURN_RIGHT.\n4. If previousAction is TURN_LEFT or TURN_RIGHT and front == \"open passage\", choose FORWARD.\n5. If front == \"open passage\" and current_room_visits == 1, choose FORWARD.\n6. If left == \"open passage\", choose TURN_LEFT.\n7. If right == \"open passage\", choose TURN_RIGHT.\n8. If front == \"open passage\", choose FORWARD.\n9. Otherwise, choose TURN_RIGHT to look behind.",
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            }
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.8039331638830418,
+              "TURN_LEFT": 0.016685100511101076,
+              "TURN_RIGHT": 0.179381735605857
+            },
+            "confidence": 0.4975784302251016
+          }
+        },
+        "usage": {
+          "input_tokens": 448,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 101
+      }
+    },
+    {
+      "case": "leave-last-entry",
+      "model": "tev1:latest",
+      "prompt": "ordered-policy-v3",
+      "expected": "FORWARD",
+      "choice": "FORWARD",
+      "correct": true,
+      "forwardIntoWall": false,
+      "missedTurnCommit": false,
+      "error": null,
+      "latencyMs": 1296,
+      "request": {
+        "state": {
+          "level": 1,
+          "size": 3,
+          "room": 4,
+          "facing": "N",
+          "direction": 0,
+          "edges": ".#?#",
+          "entriesLeft": 1,
+          "current_room_visits": 2,
+          "memory": [
+            [
+              4,
+              2,
+              ".#?#",
+              1
+            ]
+          ],
+          "previousAction": "FORWARD",
+          "previousResult": "Entered a room; 1 entries left.",
+          "relativeEdges": {
+            "front": "open passage",
+            "left": "wall",
+            "right": "wall"
+          }
+        },
+        "questions": {
+          "action": {
+            "instructions": "Choose ONE action: FORWARD, TURN_LEFT, TURN_RIGHT.\nfront, left, right mean relativeEdges.front, relativeEdges.left, relativeEdges.right.\nEdge values are \"wall\", \"open passage\", \"exit\".\nApply rules top-to-bottom. Stop at the first match. Other state fields do not override these rules.\n1. If front == \"exit\", choose FORWARD.\n2. If left == \"exit\", choose TURN_LEFT.\n3. If right == \"exit\", choose TURN_RIGHT.\n4. If previousAction is TURN_LEFT or TURN_RIGHT and front == \"open passage\", choose FORWARD.\n5. If front == \"open passage\" and current_room_visits == 1, choose FORWARD.\n6. If left == \"open passage\", choose TURN_LEFT.\n7. If right == \"open passage\", choose TURN_RIGHT.\n8. If front == \"open passage\", choose FORWARD.\n9. Otherwise, choose TURN_RIGHT to look behind.",
+            "type": "choice",
+            "criteria": {
+              "FORWARD": "Move ahead. Appropriate only when front is open passage or exit.",
+              "TURN_LEFT": "Turn left in place. Appropriate for an opening on the left.",
+              "TURN_RIGHT": "Turn right in place. Appropriate for an opening on the right."
+            }
+          }
+        },
+        "model": "tev1:latest"
+      },
+      "response": {
+        "model": "tev1:latest",
+        "answers": {
+          "action": {
+            "type": "choice",
+            "choice": "FORWARD",
+            "probabilities": {
+              "FORWARD": 0.923607379393946,
+              "TURN_LEFT": 0.03581214448353298,
+              "TURN_RIGHT": 0.04058047612252108
+            },
+            "confidence": 0.706291589398309
+          }
+        },
+        "usage": {
+          "input_tokens": 452,
+          "output_tokens": 0
+        },
+        "prompt_eval_cached_count": 74
+      }
+    }
+  ],
+  "summary": [
+    {
+      "model": "tev1:0.8b",
+      "prompt": "forward-first-v2",
+      "correct": 6,
+      "cases": 15,
+      "wallAttempts": 5,
+      "missedTurnCommits": 1,
+      "providerErrors": 0,
+      "medianLatencyMs": 158
+    },
+    {
+      "model": "tev1:0.8b",
+      "prompt": "ordered-policy-v3",
+      "correct": 6,
+      "cases": 15,
+      "wallAttempts": 5,
+      "missedTurnCommits": 1,
+      "providerErrors": 0,
+      "medianLatencyMs": 177
+    },
+    {
+      "model": "tev1:latest",
+      "prompt": "forward-first-v2",
+      "correct": 12,
+      "cases": 15,
+      "wallAttempts": 0,
+      "missedTurnCommits": 0,
+      "providerErrors": 0,
+      "medianLatencyMs": 1020
+    },
+    {
+      "model": "tev1:latest",
+      "prompt": "ordered-policy-v3",
+      "correct": 11,
+      "cases": 15,
+      "wallAttempts": 0,
+      "missedTurnCommits": 0,
+      "providerErrors": 0,
+      "medianLatencyMs": 1256
+    }
+  ]
+}
