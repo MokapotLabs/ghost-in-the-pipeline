@@ -115,8 +115,12 @@ class GhostRecordingE2ETest {
         .post("/api/game/actions")
         .then()
         .statusCode(409);
+    long revision = session.latest().revision();
+    int historySize = session.history().size();
     play("EXPLORER", 1, 120000);
     waitForPlayer();
+    assertEquals(revision + 1, session.latest().revision());
+    assertEquals(historySize + 1, session.history().size());
     assertEquals(1, session.latest().decisions());
     assertEquals("DECISION_LIMIT", session.frame().get("reason"));
     reset(1986, 1, true);
@@ -155,6 +159,19 @@ class GhostRecordingE2ETest {
     assertTrue(contract.contains("Ask Jev"));
     assertTrue(contract.contains("Publish frame"));
     assertTrue(contract.contains("play"));
+    assertTrue(contract.contains("apply-and-publish"));
+    assertFalse(contract.contains("Finish play"));
+    try (var input = getClass().getClassLoader()
+        .getResourceAsStream("META-INF/pipeline/branching.json")) {
+      var branching = new com.fasterxml.jackson.databind.ObjectMapper().readTree(input);
+      var completions = new HashSet<String>();
+      branching.get("definitionCompletions").forEach(
+          completion -> completions.add(completion.get("definitionId").asText()));
+      assertEquals(Set.of("play", "apply-and-publish"), completions);
+      var definitions = new HashSet<String>();
+      branching.get("steps").forEach(step -> definitions.add(step.get("definitionId").asText()));
+      assertEquals(Set.of("$root", "play", "apply-and-publish"), definitions);
+    }
   }
 
   @Test

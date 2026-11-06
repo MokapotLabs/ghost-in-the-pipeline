@@ -10,12 +10,16 @@ def inspect(path):
  assert all(e['endTime']>=e['startTime'] for e in events),f'{path}: inverted event interval'
  starts={e['spanId']:e for e in events if e['event']=='start' and e.get('spanId')}
  ends={e['spanId']:e for e in events if e['event'] in ('success','error','failure') and e.get('spanId')}
- roots=[e for e in starts.values() if e['step'].startswith('PipelineInvocation_') and not e.get('from')]
+ invocation_steps={s['step'] for s in j.get('topology',{}).get('steps',[])
+                   if s.get('actorKind','').startswith('pipeline:') or 'PipelineInvocation_' in s.get('runtimeStepClass','')}
+ def invocation(event):
+  return event['step'] in invocation_steps or event['step'].startswith('PipelineInvocation_')
+ roots=[e for e in starts.values() if invocation(e) and not e.get('from')]
  # Native exports include nested composition spans. Root entry is the first invocation span.
  assert roots,f'{path}: no native root invocation'
  root=min(roots,key=lambda e:e['sequence']);assert root['spanId'] in ends,f'{path}: root has no terminal event'
  terminal=ends[root['spanId']]
- nested=[e for e in starts.values() if e['step'].startswith('PipelineInvocation_') and e is not root]
+ nested=[e for e in starts.values() if invocation(e) and e is not root]
  for event in nested:
   assert event.get('parentSpanId'),f'{path}: nested invocation has no parent identity'
   assert event['traceId']==root['traceId'],f'{path}: recursive turn changed root trace'

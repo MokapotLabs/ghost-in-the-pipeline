@@ -5,9 +5,9 @@ import jakarta.enterprise.context.ApplicationScoped;
 import org.pipelineframework.service.ReactiveService;
 
 @ApplicationScoped
-public class ChooseTurn implements ReactiveService<RunState, NextTurn> {
-  public Uni<NextTurn> process(RunState r) {
-    return Uni.createFrom().item(() -> transform(r));
+public class ChooseTurn implements ReactiveService<ControlObservation, NextTurn> {
+  public Uni<NextTurn> process(ControlObservation value) {
+    return Uni.createFrom().item(() -> transform(value.run()));
   }
 
   private NextTurn transform(RunState r) {

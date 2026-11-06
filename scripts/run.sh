@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 cd "$(dirname "$0")/.."
-if [[ "${1:-}" != "--no-build" ]]; then mvn -B -ntp install -DskipTests; fi
+if [[ "${1:-}" != "--no-build" ]]; then mvn -B -ntp -Dmaven.repo.local="$PWD/.m2/repository" package -DskipTests; fi
 mkdir -p .work
 # Only this credential is read, without shell evaluation or echoing it to logs.
 if [[ -z "${OPENROUTER_API_KEY:-}" && -f .env.local ]]; then

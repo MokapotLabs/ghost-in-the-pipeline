@@ -33,3 +33,6 @@ evidence/raw/
 /evidence/captured-*/
 
 __pycache__/
+
+# Isolated dependency cache for this checkout.
+.m2/
