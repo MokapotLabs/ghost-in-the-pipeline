@@ -30,7 +30,7 @@ public class SessionConnector implements ConnectorProvider<ConnectorConfiguratio
 
   public record EmptyConfig() {}
 
-  static final class Control implements QueryOperation<RunState, EmptyConfig, RunState> {
+  static final class Control implements QueryOperation<RunState, EmptyConfig, ControlObservation> {
     private final SessionConnector host;
 
     Control(SessionConnector h) {
@@ -45,16 +45,16 @@ public class SessionConnector implements ConnectorProvider<ConnectorConfiguratio
       return Optional.of(ConnectorConfigSchema.record(EmptyConfig.class, "ghost.control", 1));
     }
 
-    public CompletionStage<QueryOutcome<RunState>> query(
-        QueryInvocation<RunState, EmptyConfig, RunState> i) {
+    public CompletionStage<QueryOutcome<ControlObservation>> query(
+        QueryInvocation<RunState, EmptyConfig, ControlObservation> i) {
       long delay = i.input().player().equals("HUMAN") ? 0 : Math.clamp(host.paceMs, 0, 2000);
       return CompletableFuture.supplyAsync(
-          () -> new QueryOutcome.Found<>(host.session.control(i.input())),
+          () -> new QueryOutcome.Found<>(new ControlObservation(host.session.control(i.input()))),
           CompletableFuture.delayedExecutor(delay, TimeUnit.MILLISECONDS));
     }
   }
 
-  static final class Publish implements CommandOperation<RunState, EmptyConfig, RunState> {
+  static final class Publish implements CommandOperation<RunState, EmptyConfig, PublishedFrame> {
     private final SessionConnector host;
 
     Publish(SessionConnector h) {
@@ -69,11 +69,13 @@ public class SessionConnector implements ConnectorProvider<ConnectorConfiguratio
       return Optional.of(ConnectorConfigSchema.record(EmptyConfig.class, "ghost.publish", 1));
     }
 
-    public CompletionStage<CommandOutcome<RunState>> dispatch(
+    public CompletionStage<CommandOutcome<PublishedFrame>> dispatch(
         CommandInvocation<RunState, EmptyConfig> i) {
       return CompletableFuture.completedFuture(
           new CommandOutcome.Succeeded<>(
-              host.session.publish(i.input()), CommandConfirmation.none(), List.of()));
+              new PublishedFrame(host.session.publish(i.input())),
+              CommandConfirmation.none(),
+              List.of()));
     }
   }
 }

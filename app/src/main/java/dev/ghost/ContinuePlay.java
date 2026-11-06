@@ -5,9 +5,9 @@ import jakarta.enterprise.context.ApplicationScoped;
 import org.pipelineframework.service.ReactiveService;
 
 @ApplicationScoped
-public class ContinuePlay implements ReactiveService<RunState, Continuation> {
-  public Uni<Continuation> process(RunState r) {
-    return Uni.createFrom().item(() -> transform(r));
+public class ContinuePlay implements ReactiveService<PublishedFrame, Continuation> {
+  public Uni<Continuation> process(PublishedFrame value) {
+    return Uni.createFrom().item(() -> transform(value.run()));
   }
 
   private Continuation transform(RunState r) {

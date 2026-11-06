@@ -36,15 +36,18 @@ A second launch can reuse the package with `./scripts/run.sh --no-build`. Change
 ## Test and compare
 
 ```sh
-mvn -B -ntp verify
-mvn -B -ntp verify -Dghost.live=true  # Includes real Tev1 inference; Ollama must be running.
-OPENROUTER_API_KEY="$(python3 scripts/local_env.py)" mvn -B -ntp verify -Dghost.jev.live=true  # Real hosted Jev.
+mvn -B -ntp -Dmaven.repo.local="$PWD/.m2/repository" verify
+mvn -B -ntp -Dmaven.repo.local="$PWD/.m2/repository" verify -Dghost.live=true  # Includes real Tev1 inference; Ollama must be running.
+OPENROUTER_API_KEY="$(python3 scripts/local_env.py)" mvn -B -ntp -Dmaven.repo.local="$PWD/.m2/repository" verify -Dghost.jev.live=true  # Real hosted Jev.
+python3 scripts/test-verify-replay.py # Replay lineage verifier regression checks.
 node scripts/test-renderer.cjs      # Optional renderer/animation checks; Node.js 18+.
 
 # With the application running:
 python3 scripts/evaluate.py
 ./scripts/recording-reset.sh
 ```
+
+The [TPF 26.11.1 migration validation](evidence/tpf-26.11.1-migration.json) records 26 passing Java tests, two opt-in live-model tests skipped, and successful campaign lineage across 85 replay documents and 107 nested invocations.
 
 The ordinary test suite uses real TPF gameplay and observation-only baselines. The opt-in live test validates genuine decisions from both models without requiring an escape or an exact action. The [Jev acceptance record](evidence/jev-acceptance.json) reports **27 passing Java tests**, including real hosted decisions, with one opt-in local-model test skipped in that run. Signal privacy, audio, renderer, browser controls and native lineage passed. The [previous Tev1 acceptance](evidence/policy-acceptance.json) retains its 23-test live-model run. Core tests validate **600 seeded levels**. `haunted-acceptance.json`, `relative-acceptance.json` and `acceptance.json` retain the historical 21-, 18- and 16-test deliveries.
 
@@ -71,7 +74,7 @@ One bounded TPF execution owns each automated Play segment. Typed recursive comp
 
 The model receives visited rooms, observed walls/passages/exits, entry allowances, orientation and the prior result. Front/left/right labels express the same visible edges in plain language. It does not receive unseen topology, the maze seed, the validation witness or a computed route. Explorer uses those same observations, not the solver.
 
-See [architecture](docs/architecture.md), [execution contract](docs/execution-contract.md), and [bounded qualification](docs/qualification.md). Published TPF snapshot binaries are pinned by timestamp; [dependency identities and SHA-256 values](evidence/dependencies.json) record what was exercised. No TPF runtime changes were made. MCP was unnecessary and is omitted.
+See [architecture](docs/architecture.md), [execution contract](docs/execution-contract.md), and [bounded qualification](docs/qualification.md). The application now uses the released TPF `26.11.1` BOM, with Decision Query adapters and connector tooling pinned to `26.10.1` (the BOM’s connector release line). The [dependency identities and SHA-256 values](evidence/dependencies.json) preserve the timestamp-pinned snapshot binaries used for the historical experiments. No TPF runtime changes were made. MCP was unnecessary and is omitted.
 
 ## Record and inspect
 

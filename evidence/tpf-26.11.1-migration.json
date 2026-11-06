@@ -1,0 +1,38 @@
+{
+  "bom": "org.pipelineframework:pipelineframework-bom:26.11.1",
+  "decisionQueryAndToolingVersion": "26.10.1",
+  "artifactSource": "Released Maven Central artifacts; no patched framework builds or snapshots",
+  "javaSuite": {
+    "tests": 28,
+    "passed": 26,
+    "skipped": 2,
+    "failures": 0,
+    "errors": 0,
+    "skippedReason": "Opt-in local Ollama and hosted Jev inference"
+  },
+  "replayVerifierRegressionTests": {
+    "passed": 4
+  },
+  "successfulCampaignReplay": {
+    "result": "PASS",
+    "documents": 85,
+    "nestedInvocations": 107,
+    "checks": [
+      "one trace per document",
+      "ordered unique event sequences",
+      "parent identity",
+      "nested completion within root lifetime"
+    ]
+  },
+  "historicalReplay": {
+    "result": "PASS"
+  },
+  "limits": [
+    "Live inference was not run.",
+    "The deliberate 1 ms watchdog case can export an incomplete replay without a terminal event; the strict verifier continues to reject it."
+  ],
+  "graphAnalysis": {
+    "preEditImpact": "Completed against managed Ghost index and checked against source references.",
+    "detectChanges": "Unavailable for separate clone: server only accepts worktrees sharing the managed indexed repository. Managed clone was not modified."
+  }
+}

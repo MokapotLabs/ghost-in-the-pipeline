@@ -116,6 +116,14 @@ types:
       - [run, "RunState"]
       - [action, "string"]
       - [latencyMs, "int64"]
+  ControlObservation:
+    java: dev.ghost.ControlObservation
+    fields:
+      - [run, "RunState"]
+  PublishedFrame:
+    java: dev.ghost.PublishedFrame
+    fields:
+      - [run, "RunState"]
   RunResult:
     java: dev.ghost.RunResult
     fields:
@@ -172,15 +180,15 @@ pipelines:
         operation: control
         operationVersion: 1
         input: RunState
-        output: RunState
+        output: ControlObservation
         cardinality: ONE_TO_ONE
-        java: { input: dev.ghost.RunState, output: dev.ghost.RunState }
+        java: { input: dev.ghost.RunState, output: dev.ghost.ControlObservation }
       - name: Choose turn branch
         service: dev.ghost.ChooseTurn
-        input: RunState
+        input: ControlObservation
         output: NextTurn
         cardinality: ONE_TO_ONE
-        java: { input: dev.ghost.RunState, output: dev.ghost.NextTurn }
+        java: { input: dev.ghost.ControlObservation, output: dev.ghost.NextTurn }
       - name: Ask Tev1
         # The prompt is question.instructions inside the typed DecisionRequest below.
         # Authority: dev.ghost.Observations.ACTION_PROMPT and optional CLUE_PROMPT.
@@ -228,6 +236,23 @@ pipelines:
         output: ActionTurn
         cardinality: ONE_TO_ONE
         java: { input: dev.ghost.Chosen, output: dev.ghost.ActionTurn }
+      - name: Apply and publish turn
+        pipeline: apply-and-publish
+        input: ActionTurn
+        output: Continuation
+        cardinality: ONE_TO_ONE
+        java: { input: dev.ghost.ActionTurn, output: dev.ghost.Continuation }
+      - name: Next turn
+        pipeline: self
+        accepts: [RunState]
+        input: RunState
+        output: RunResult
+        cardinality: ONE_TO_ONE
+        java: { input: dev.ghost.RunState, output: dev.ghost.RunResult }
+  apply-and-publish:
+    input: ActionTurn
+    output: Continuation
+    steps:
       - name: Shared action
         service: dev.ghost.ApplyAction
         input: ActionTurn
@@ -242,28 +267,15 @@ pipelines:
         commandIdGenerator: dev.ghost.FrameCommandId
         duplicatePolicy: RETURN_RECORDED
         input: RunState
-        output: RunState
+        output: PublishedFrame
         cardinality: ONE_TO_ONE
-        java: { input: dev.ghost.RunState, output: dev.ghost.RunState }
+        java: { input: dev.ghost.RunState, output: dev.ghost.PublishedFrame }
       - name: Continue or finish
         service: dev.ghost.ContinuePlay
-        input: RunState
+        input: PublishedFrame
         output: Continuation
         cardinality: ONE_TO_ONE
-        java: { input: dev.ghost.RunState, output: dev.ghost.Continuation }
-      - name: Next turn
-        pipeline: play
-        input: RunState
-        output: RunResult
-        cardinality: ONE_TO_ONE
-        java: { input: dev.ghost.RunState, output: dev.ghost.RunResult }
-      - name: Finish play
-        service: dev.ghost.FinishPlay
-        input: RunResult
-        output: RunResult
-        cardinality: ONE_TO_ONE
-        java: { input: dev.ghost.RunResult, output: dev.ghost.RunResult }
-        terminal: true
+        java: { input: dev.ghost.PublishedFrame, output: dev.ghost.Continuation }
 
 steps:
   - name: Play segment

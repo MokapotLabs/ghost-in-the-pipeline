@@ -17,9 +17,16 @@ flowchart LR
     A --> G
     G --> F[Publish frame Command]
     F --> T{Continue or complete}
-    T -->|bounded nested recursion| C
+    T -->|bounded pipeline: self| C
     T -->|finish| U[Result and human control]
 ```
+
+The `play` definition calls an `apply-and-publish` child for the shared rules,
+publication and continuation policy. Its returned `RunState` selects an explicit
+`pipeline: self` step; a `RunResult` completes the definition. `ControlObservation`
+records a fresh host observation before branch selection, and `PublishedFrame`
+records the publication acknowledgement before continuation. The caller owns the
+next turn; the child starts no independent execution.
 
 TPF's existing `decision.query.jev` provider makes one decision request to Ollama. Its canonical request contains only an explicitly constructed observation. The completion projection carries trusted run state alongside the result; the model cannot replace it. Typed unions route model, action and complete branches, and native recursive composition owns iteration.
 
@@ -45,4 +52,4 @@ Each automated segment is capped at 128 decisions and 120 seconds; every transla
 
 The native model bindings are deployment configuration. `scripts/run.sh` supplies a native `PIPELINE_CONFIG` file with both models and the endpoint. Menu selection uses the existing typed pipeline branches. No custom agent runtime, inference proxy, model-side tools, persistence, cloud service or MCP server is involved.
 
-See [execution-contract.md](execution-contract.md) for root/lineage expectations and the bounded compiler-shape adaptation. Native replay documents remain unchanged; the verifier checks identity, nesting lifetime and ordering rather than asserting a particular file count.
+See [execution-contract.md](execution-contract.md) for root/lineage expectations and the released compiler shape. Native replay documents remain unchanged; the verifier checks identity, nesting lifetime and ordering rather than asserting a particular file count.
