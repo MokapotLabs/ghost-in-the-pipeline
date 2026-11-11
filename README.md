@@ -74,7 +74,7 @@ One bounded TPF execution owns each automated Play segment. Typed recursive comp
 
 The model receives visited rooms, observed walls/passages/exits, entry allowances, orientation and the prior result. Front/left/right labels express the same visible edges in plain language. It does not receive unseen topology, the maze seed, the validation witness or a computed route. Explorer uses those same observations, not the solver.
 
-See [architecture](docs/architecture.md), [execution contract](docs/execution-contract.md), and [bounded qualification](docs/qualification.md). The application now uses the released TPF `26.11.1` BOM, with Decision Query adapters and connector tooling pinned to `26.10.1` (the BOM’s connector release line). The [dependency identities and SHA-256 values](evidence/dependencies.json) preserve the timestamp-pinned snapshot binaries used for the historical experiments. No TPF runtime changes were made. MCP was unnecessary and is omitted.
+See [architecture](docs/architecture.md), [execution contract](docs/execution-contract.md), and [bounded qualification](docs/qualification.md). The application now uses the released TPF `26.11.2` BOM. It manages the Decision Query adapters. The connector Maven plugin is pinned explicitly to the BOM’s Connector version, `26.10.1`. The [dependency identities and SHA-256 values](evidence/dependencies.json) preserve the timestamp-pinned snapshot binaries used for the historical experiments. No TPF runtime changes were made. MCP was unnecessary and is omitted.
 
 ## Record and inspect
 
