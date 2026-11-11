@@ -8,8 +8,8 @@
   <properties>
     <maven.compiler.release>21</maven.compiler.release>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <tpf.version>26.11.1</tpf.version>
-    <!-- The BOM selects connectors 26.10.1; Decision Query and its tooling need explicit pins. -->
+    <tpf.version>26.11.2</tpf.version>
+    <!-- Maven build plugins require an explicit version. Use the BOM’s Connector version. -->
     <tpf.connectors.version>26.10.1</tpf.connectors.version>
     <quarkus.version>3.39.2</quarkus.version>
   </properties>
@@ -32,16 +32,6 @@
         <version>${tpf.version}</version>
         <type>pom</type>
         <scope>import</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.pipelineframework</groupId>
-        <artifactId>decision-query-connector</artifactId>
-        <version>${tpf.connectors.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.pipelineframework</groupId>
-        <artifactId>decision-query-jev-connector</artifactId>
-        <version>${tpf.connectors.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>

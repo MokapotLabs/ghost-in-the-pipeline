@@ -3,10 +3,9 @@ One new game/reset or admitted human action starts one root. One AI/baseline Pla
 
 ## Released compiler shape
 
-The application imports the TPF `26.11.1` BOM. Compiler, contracts and runtime are
-selected by that BOM. Decision Query adapters and connector generation tooling are
-explicitly pinned to release `26.10.1`, matching the BOM's connector release line;
-these particular artifacts are not managed by the BOM.
+The application imports the TPF `26.11.2` BOM for the compiler, contracts, runtime
+and Decision Query adapters. The connector Maven plugin has an explicit
+`26.10.1` version, matching the BOM’s Connector version.
 
 The named `play` definition observes control/time, selects a typed turn, invokes
 `apply-and-publish`, then uses `pipeline: self` for a continuing `RunState`.
